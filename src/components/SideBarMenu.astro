@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { sideBarActiveItemID } = Astro.props;
+const activeClass = "bg-base-300"; // For primary color replace with `active` class
+---
+
+<ul class="menu grow shrink menu-md overflow-y-auto">
+    <li><a class="py-3 text-base" id="home" href="/"><Icon name="mdi:home" /> Home</a></li>
+    <li><a class="py-3 text-base" id="about" href="/about"><Icon name="mdi:about-circle-outline" /> Sobre mi</a></li>
+    <li><a class="py-3 text-base" id="proyectos" href="/proyectos"><Icon name="carbon:portfolio" /> Proyectos</a></li>
+    <li><a class="py-3 text-base" id="services" href="/services"><Icon name="mdi:account-service" /> Servicios</a></li>
+    <li><a class="py-3 text-base" id="blog" href="/blog/"><Icon name="mdi:blog-outline" class="text-gray-400 w-4 h-4" /> Blog</a></li>
+    <li><a class="py-3 text-base" id="cv" href="/cv"><Icon name="academicons:cv-square" /> CV</a></li>
+    <li><a class="py-3 text-base" id="contacto" href="/contacto"><Icon name="mdi:contact-outline" /> Contacto</a></li>
+    </li>
+</ul>
+
+<script define:vars={{ sideBarActiveItemID: sideBarActiveItemID, activeClass: activeClass }}>
+const activeItemElem = document.getElementById(sideBarActiveItemID);
+activeItemElem && activeItemElem.classList.add(activeClass);
+</script>
+
+<style>
+li{
+    flex-direction: row;
+    align-items: center;
+}
+li ::before, ::after{
+    box-sizing: content-box;
+}
+</style>

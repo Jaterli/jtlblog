@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+import createSlug from "../lib/createSlug"
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const last_posts = posts.slice(0, 3);
+---
+
+<BaseLayout sideBarActiveItemID="about">
+  <div class="pb-12 mt-5">
+    <div class="text-xl py-1">Hey there 👋</div>
+    <div class="text-5xl font-bold">Soy Jaime TL</div>
+    <div class="text-3xl py-3 font-bold">Apasinado del Diseño y Desarrollo Web</div>
+    <div class="py-2">
+      <text class="text-lg">
+
+        <div class="mx-auto max-w-4xl mt-4 prose prose-lg">
+  
+          <p>Soy un profesional con más de 20 años de experiencia en el sector de la informática, donde he trabajado en la misma empresa desde que obtuve mi titulación como Técnico Superior en Administración de Sistemas Informáticos. A lo largo de mi carrera, he demostrado una sólida dedicación y capacidad para adaptarme a los desafíos tecnológicos, sin embargo, reconociendo la necesidad de mantenerme actualizado en un campo en constante evolución, tomé la decisión de reciclarme y expandir mis conocimientos en desarrollo web.</p>
+          <p>Actualmente, estoy cursando dos másters que representan un nuevo capítulo en mi carrera profesional:</p>
+          
+          <ul>
+            <li><strong>Máster en Desarrollo Full Stack:</strong> Donde he profundizado en tecnologías como <strong>JavaScript</strong>, <strong>TypeScript</strong>, <strong>Node.js</strong>, <strong>React</strong>, y <strong>Astro</strong>, entre otras. Este programa me ha permitido dominar tanto el front-end como el back-end, fortaleciendo mi capacidad para construir aplicaciones web completas y dinámicas.</li>
+            <li><strong>Máster en Desarrollo Blockchain:</strong> Aquí, me estoy sumergiendo en el futuro de las tecnologías descentralizadas, aprendiendo a desarrollar soluciones basadas en blockchain que pueden transformar sectores enteros.</li>
+          </ul>
+          <p>A lo largo de este proceso de formación, he ampliado mis habilidades en varios lenguajes y frameworks clave:</p>
+          <ul>
+            <li><b>Lenguajes de Programación:</b> Python, JavaScript, TypeScript, PHP, SQL, Java, HTML, CSS.</li>
+            <li><b>Frameworks y Tecnologías:</b> Astro, Node.js, React, Django, IntelliJ IDEA.</li>
+          </ul>
+          <p>Una de mis pasiones ha sido combinar mi experiencia con nuevas tecnologías, como Astro, para crear proyectos innovadores.
+            Actualmente, estoy desarrollando este blog dinámico como parte de mis proyectos de fin de máster, el cual refleja mi habilidad para integrar contenido dinámico extraído de bases de datos y renderizarlo en un entorno de alto rendimiento.</p>       
+          
+          <p><b>Mi enfoque</b> se centra en la eficiencia y la automatización, buscando optimizar cada fase del proceso de desarrollo. Creo firmemente en el poder de la formación continua y en la importancia de mantenerse al día con las últimas tendencias y tecnologías del sector.</p>       
+          <p>Estoy siempre en busca de nuevos desafíos y oportunidades para aplicar mis conocimientos y seguir creciendo como desarrollador. Si estás interesado en colaborar en proyectos de vanguardia o discutir ideas innovadoras, estaré encantado de conectarme contigo.</p>
+  
+      </div>
+
+      </text>
+    </div>
+
+    
+  </div>
+</BaseLayout>
