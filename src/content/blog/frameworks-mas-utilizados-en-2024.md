@@ -3,7 +3,7 @@ draft: false
 title: "Frameworks Más Utilizados en 2024"
 description: "En 2024, varios frameworks han ganado popularidad debido a su capacidad para resolver desafíos complejos de manera eficiente y escalable. Aquí te presento los más utilizados."
 pubDate: "2024-08-26"
-heroImage: "/post_img.webp"
+heroImage: "/assets/images/blog/blog.framewoks.webp"
 category: "Tutoriales"
 tags: [blog, desarrolladores, frameworks]
 ---

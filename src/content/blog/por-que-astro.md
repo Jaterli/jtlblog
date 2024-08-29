@@ -3,7 +3,7 @@ draft: false
 title: "¿Por qué Astro?"
 description: "Astro es un framework emergente que ha captado la atención de la comunidad de desarrolladores web por su enfoque en la construcción de sitios web rápidos y optimizados."
 pubDate: "2024-08-26"
-heroImage: "/post_img.webp"
+heroImage: "/assets/images/blog/blog.por-que-astro.webp"
 category: "Frameworks"
 tags: [blog, desarrolladores, Frameworks, Astro]
 ---

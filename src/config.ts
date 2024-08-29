@@ -3,5 +3,5 @@
 
 export const SITE_TITLE = 'Blog personal de Jaime TL';
 export const SITE_DESCRIPTION = 'Apasinado del Diseño y Desarrollo Web.';
-export const GENERATE_SLUG_FROM_TITLE = true
+export const GENERATE_SLUG_FROM_TITLE = false
 export const TRANSITION_API = true

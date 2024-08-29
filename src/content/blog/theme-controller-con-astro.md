@@ -1,10 +1,10 @@
 ---
-title: "Demo Post 3"
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-pubDate: "Sep 12 2022"
-heroImage: "/post_img.webp"
+title: "Theme Controller con Astro"
+description: "Incorporar un botón en una plantilla de Astro para cambiar entre tema claro a tema oscuro."
+pubDate: "2024-08-29"
+heroImage: "/assets/images/blog/blog.theme-controller.png"
 badge: "Demo badge"
-tags: ["rust","tokio"]
+tags: ["Astro"]
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

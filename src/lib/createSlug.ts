@@ -2,6 +2,9 @@
 
 import { GENERATE_SLUG_FROM_TITLE } from '../config'
 
+// Set GENERATE_SLUG_FROM_TITLE = true for generate slug from title
+// Set GENERATE_SLUG_FROM_TITLE = false for generate slug from file name
+
 export default function (title: string, staticSlug: string) {
   return (
     !GENERATE_SLUG_FROM_TITLE ? staticSlug : title
@@ -10,6 +13,8 @@ export default function (title: string, staticSlug: string) {
       // output lowercase
       .toLowerCase()
       // replace spaces
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      // remplazar acentos
       .replace(/\s+/g, '-')
       // remove special characters
       .replace(/[^\w-]/g, '')
