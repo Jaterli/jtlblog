@@ -3,11 +3,10 @@ const {
   title,
   description,
   heroImage,
-  startDate,
-  endDate,
   badge,
   details,
   url,
+  codes
 } = Astro.props;
 import { Image } from "astro:assets";
 ---
@@ -28,12 +27,19 @@ import { Image } from "astro:assets";
         )
       }
       <div class="grow w-full p-5 md:p-0">
-        <h1 class="text-xl font-bold">
-          {title} &nbsp;
+        <h1 class="text-xl font-bold pb-2">
+          {title}  &nbsp;
           {badge && <div class="badge badge-neutral rounded">{badge}</div>}
         </h1>
-        <p class="text-xs pt-2 opacity-70">{startDate} - {endDate}</p>
         <p class="text-1xl">{description}</p>
+        <div class="card-actions justify-end pt-1">
+          {
+            codes && codes.map((code) => (
+              <span class="badge badge-outline">{code}</span>      
+            ))
+          }
+        </div>
+
       </div>
     </div>
   </a>

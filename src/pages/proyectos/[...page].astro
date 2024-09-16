@@ -1,10 +1,10 @@
 ---
+import HorizontalProjectItem from "@components/HorizontalProjectItem.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import HorizontalJobpItem from "../../components/HorizontalJobItem.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }) {
-  const items = await getCollection("jobs");
+  const items = await getCollection("proyectos");
   items.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   return paginate(items, { pageSize: 10 });
 }
@@ -38,9 +38,9 @@ const { page } = Astro.props as { page: Page };
 ---
 
 
-<BaseLayout title="Jobs" sideBarActiveItemID="trabajos">
+<BaseLayout title="Projects" sideBarActiveItemID="proyectos">
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Trabajos</div>
+    <div class="text-3xl w-full font-bold">Proyectos</div>
     <div>Pág(s). {page.currentPage} de {page.lastPage}</div>
   </div>
 
@@ -48,21 +48,20 @@ const { page } = Astro.props as { page: Page };
     page.data.length === 0 ? (
       <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
         <p class="font-bold">Lo siento!</p>
-        <p>No hay trabajos publicados en este momento.</p>
+        <p>No hay proyectos publicados en este momento.</p>
       </div>
     ) : (
       <ul>
         {page.data.map((item) => (
           <>
-          <HorizontalJobpItem
+          <HorizontalProjectItem
               title={item.data.title}
               description={item.data.description}
               heroImage={item.data.heroImage}
-              startDate={item.data.startDate}
-              endDate={item.data.endDate}
               badge={item.data.badge}
               details={item.data.details}
-              url={"/jobs/" +  item.slug} // crea el slug basado en el nombre del fichero md
+              codes={item.data.codes}
+              url={"/proyectos/" +  item.slug} // crea el slug basado en el nombre del fichero md
             />
             <div class="divider my-0" />
           </>

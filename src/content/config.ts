@@ -21,13 +21,27 @@ const jobSchema = z.object({
     heroImage: z.string().optional(),
 });
 
+const projectSchema = z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    badge: z.string().optional(),
+    heroImage: z.string().optional(),
+    codes: z.array(z.string()).refine(items => new Set(items).size === items.length, {
+        message: 'codes must be unique',
+    }).optional(),
+});
+
 export type BlogSchema = z.infer<typeof blogSchema>;
 export type JobSchema = z.infer<typeof jobSchema>;
+export type ProjectSchema = z.infer<typeof projectSchema>;
 
 const blogCollection = defineCollection({ schema: blogSchema });
 const jobCollection = defineCollection({ schema: jobSchema });
+const projectCollection = defineCollection({ schema: projectSchema });
 
 export const collections = {
     'blog': blogCollection,
-    'job': jobCollection
+    'job': jobCollection,
+    'project': projectSchema
 }

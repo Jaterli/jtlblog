@@ -11,13 +11,11 @@ const {
   description,
   startDate,
   endDate,
-  updatedDate,
   heroImage,
   badge,
 } = Astro.props;
 
 dayjs.extend(localizedFormat);
-const displayDate = dayjs(updatedDate).format("ll");
 import { Image } from "astro:assets";
 ---
 
@@ -32,7 +30,7 @@ import { Image } from "astro:assets";
       <div class="">
         <h1 class="title my-2 text-4xl font-bold">
           {title}
-          {badge && <div class="badge badge-secondary mx-2">{badge}</div>}
+          {badge && <div class="badge badge-neutral rounded my-2">{badge}</div>}
         </h1>
         <div class="flex place-content-between items-center">
           <div class="grow md:grow-0">

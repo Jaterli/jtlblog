@@ -1,0 +1,45 @@
+---
+draft: false
+title: "iostdin().read_line(&mut input) vs read!() de text_io"
+description: "Cuándo utilizar `read!()` de la crate `text_io` y cuándo la función `io::stdin().read_line()` de la biblioteca estándar"
+pubDate: "2024-09-14"
+heroImage: "/assets/images/blog/blog.rust-logo.jpg"
+category: "Tutoriales"
+tags: [blog, Rust]
+---
+
+### Introducción ###
+Estoy comenzando el módulo de Rust en el Máster de Desarrollo Full Stack y he trabajado en mi primer ejercicio: un juego donde el objetivo es adivinar un número aleatorio entre 1 y 100. El jugador introduce números por consola, y el programa indica si el número secreto es mayor o menor que la última suposición, hasta que se adivine correctamente.
+
+Al ser principiante en Rust, investigué las mejores formas de capturar datos desde la consola. Encontré dos opciones: usar `read!()` de la crate `text_io` o la función `io::stdin().read_line()` de la biblioteca estándar. Inicialmente, opté por `read!()` debido a su simplicidad, pero pronto me di cuenta de que esta opción no permite un manejo efectivo de los errores cuando el valor ingresado no es del tipo esperado o contiene espacios no deseados.
+
+Después de profundizar más, descubrí que `io::stdin().read_line()` es una alternativa más robusta para leer datos de la consola. Esta opción proporciona un control detallado sobre la entrada del usuario y permite manejar errores de manera eficiente, lo que la hace más adecuada para escenarios donde se requiere validación y manejo de errores.
+
+La decisión entre usar `read!()` de la crate `text_io` y usar `io::stdin().read_line(&mut input)` depende de la situación y de lo que quieras lograr en tu programa.
+
+### Ventajas de usar `io::stdin().read_line(&mut input)`
+1. **Mayor control sobre el manejo de errores**: Te permite controlar mejor la entrada y salida del programa. Puedes manejar errores de conversión de forma explícita, mostrando mensajes de error claros al usuario cuando ingresa datos inválidos.
+   
+2. **Posibilidad de procesar cadenas**: Capturas la entrada como una cadena completa, lo que te da la posibilidad de limpiar o manipular la entrada antes de convertirla. Por ejemplo, puedes hacer validaciones adicionales o eliminar espacios en blanco con `.trim()`.
+
+3. **Manejo más robusto de varios tipos de datos**: Si más adelante necesitas procesar datos más complejos (como múltiples valores en una sola línea), usar `stdin().read_line()` te da más flexibilidad para procesarlos como prefieras.
+
+4. **Compatibilidad**: No necesitas dependencias adicionales. `io::stdin().read_line()` es parte de la biblioteca estándar de Rust, lo que reduce la complejidad del proyecto.
+
+### Ventajas de usar `read!()` de `text_io`
+1. **Simplicidad**: Si tu programa solo necesita leer valores simples de entrada y no te importa manejar errores de entrada no válidos con detalle, `read!()` es más directo y conciso. Convierte automáticamente el valor de entrada al tipo especificado sin la necesidad de manipular cadenas o hacer conversiones explícitas.
+   
+2. **Menos código**: Como viste en tu versión original, `read!()` es más breve y más legible si estás trabajando con entradas simples y no te preocupa controlar excepciones o errores en detalle.
+
+### ¿Cuál es preferible?
+- Si necesitas un **control detallado sobre los errores** y quieres mostrar mensajes claros al usuario cuando ingrese un valor inválido (como en tu caso, si el usuario ingresa algo que no es un número), entonces es preferible **usar `io::stdin().read_line()`** y manejar la conversión manualmente con `parse` o `from_str`.
+
+- Si tu programa es simple y puedes tolerar errores de entrada (es decir, si la entrada incorrecta simplemente hace que el programa se bloquee o no es un problema para ti), entonces **`read!()` es más rápido y fácil** de usar.
+
+<br />
+
+import ButtonLink from '@components/ButtonLink.astro';
+
+<div class="text-center">
+  <ButtonLink url="https://github.com/Jaterli/adivinanza" text="Ver en GitHub" />
+</div>

@@ -1,14 +1,38 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import HorizontalJobpItem from "../../components/HorizontalJobItem.astro";
+import HorizontalCard from "@components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
+import { wpquery } from "../../graphql/wordPressQuery";
+
+const data = await wpquery({
+	query: `
+ 	 {
+      posts(where: {categoryName: "Blog"}) {
+        nodes {
+        slug
+        date
+        title
+        excerpt
+        content
+        tags {
+            nodes {
+            name
+            }
+        }
+        date
+        }
+      }
+    }  
+`,
+});
+
+
 
 export async function getStaticPaths({ paginate }) {
-  const items = await getCollection("jobs");
-  items.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-  return paginate(items, { pageSize: 10 });
+  const all_posts = await getCollection("blog");
+  all_posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  return paginate(all_posts, { pageSize: 10 });
 }
-
 interface Page<T = any> {
   /** resultado */
   data: T[];
@@ -38,31 +62,29 @@ const { page } = Astro.props as { page: Page };
 ---
 
 
-<BaseLayout title="Jobs" sideBarActiveItemID="trabajos">
+<BaseLayout title="Blog" sideBarActiveItemID="blog">
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Trabajos</div>
+    <div class="text-3xl w-full font-bold">Blog</div>
     <div>Pág(s). {page.currentPage} de {page.lastPage}</div>
   </div>
-
   {
     page.data.length === 0 ? (
       <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
         <p class="font-bold">Lo siento!</p>
-        <p>No hay trabajos publicados en este momento.</p>
+        <p>No hay posts publicados en este momento.</p>
       </div>
     ) : (
       <ul>
-        {page.data.map((item) => (
+        {data.posts.nodes.map((post) => (
           <>
-          <HorizontalJobpItem
-              title={item.data.title}
-              description={item.data.description}
-              heroImage={item.data.heroImage}
-              startDate={item.data.startDate}
-              endDate={item.data.endDate}
-              badge={item.data.badge}
-              details={item.data.details}
-              url={"/jobs/" +  item.slug} // crea el slug basado en el nombre del fichero md
+            <HorizontalCard
+              title={post.title}
+              img={post.heroImage}
+              desc={post.excerpt}
+              badge={post.badge}
+              tags={post.tags.nodes.name}
+              url={"/blog/" +  post.slug} // crea el link basado en el nombre del fichero md
+              target="_self"
             />
             <div class="divider my-0" />
           </>
@@ -70,7 +92,6 @@ const { page } = Astro.props as { page: Page };
       </ul>
     )
   }
-
   <div class="flex justify-between">
     {
       page.url.prev ? (
@@ -85,7 +106,7 @@ const { page } = Astro.props as { page: Page };
           >
             <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
           </svg>{" "}
-          Trabajos más recientes
+          all_posts más recientes
         </a>
       ) : (
         <div />
@@ -94,7 +115,7 @@ const { page } = Astro.props as { page: Page };
     {
       page.url.next ? (
         <a href={page.url.next} class="btn btn-ghost my-10 mx-5">
-          Trabajos más antiguos{" "}
+          all_posts más antiguos{" "}
           <svg
             class="h-6 w-6 fill-current md:h-8 md:w-8"
             xmlns="http://www.w3.org/2000/svg"

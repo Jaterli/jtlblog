@@ -15,7 +15,7 @@ export default defineConfig({
       watch: { 
         ignored: '*.txt',
         usePolling: true,
-        interval: 30000,
+        interval: 1000,
         binaryInterval: 30000,
         alwaysStat: false,
         awaitWriteFinish: {

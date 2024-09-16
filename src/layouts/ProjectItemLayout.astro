@@ -1,12 +1,20 @@
 ---
-import { type BlogSchema } from "../content/config";
+import { type ProjectSchema } from "../content/config";
 import BaseLayout from "./BaseLayout.astro";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 
-export interface Props extends BlogSchema {}
+export interface Props extends ProjectSchema {}
 
-const { title, description, pubDate, updatedDate, heroImage, badge, tags = [] } = Astro.props;
+const {
+  title,
+  description,
+  heroImage,
+  badge,
+  pubDate,
+  codes
+} = Astro.props;
+
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
 import { Image } from "astro:assets";
@@ -21,20 +29,12 @@ import { Image } from "astro:assets";
       <br />
       {badge && <div class="badge badge-neutral rounded my-2">{badge}</div>}
       {
-        tags &&
-          tags.map((tag) => (
-            <a href={`/blog/tag/${tag}`} class="badge badge-outline mr-2 no-underline">
-              {tag}
-            </a>
+        codes &&
+        codes.map((code) => (
+            <span class="badge badge-outline ml-2 no-underline">
+              {code}
+            </span>
           ))
-      }
-      {
-        updatedDate && (
-          <div>
-            {" "}
-            Última actualización el <time>{updatedDate}</time>{" "}
-          </div>
-        )
       }
       <div class="divider my-2"></div>
       <slot />
