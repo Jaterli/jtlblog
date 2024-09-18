@@ -1,4 +1,4 @@
-name: Ejecutar código mjs diariamente
+name: Actualizar conteo de publicaciones por mes
 
 # Definir cuándo se ejecutará la acción (cron expression para todos los días a las 12:00 UTC)
 
