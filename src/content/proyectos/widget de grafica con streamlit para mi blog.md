@@ -107,3 +107,24 @@ Este script permite llevar un registro organizado del número de posts por mes e
 
 
 ### Paso 2: Conectar el archivo JSON con Streamlit ###
+
+
+Hay que empezar por crear el Entorno: ....
+pip install streamlit fastapi matplotlib 
+luego lo guardemos en github y conectaremos con Streamlit a través de una api...
+
+### Paso 3: Crear la app.py que genera el gráfico ###
+
+Explicación...
+
+### Paso 4: GitHub Action ###
+
+Subirlo a GitHub y crear un GitHub Action que ejecute el código una vez al día y guarde el gráfico en un archivo png
+
+Crear una GitHub Action:
+1. Menú -> Actions -> set up a workflow yourselft
+
+### Paso 5: Lincar archivo en la página de Astro ###
+
+
+
