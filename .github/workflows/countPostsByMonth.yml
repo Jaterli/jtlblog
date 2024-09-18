@@ -1,4 +1,4 @@
-name: Ejecutar código Python diariamente
+name: Ejecutar código mjs diariamente
 
 # Definir cuándo se ejecutará la acción (cron expression para todos los días a las 12:00 UTC)
 
@@ -34,7 +34,7 @@ jobs:
 
       # Paso 2: Configurar Node.js (versión estable más reciente)
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'  # Usar la última versión estable (LTS)
 
