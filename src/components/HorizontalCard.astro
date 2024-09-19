@@ -23,8 +23,8 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
       }
       <div class="grow w-full">
         <h1 class="text-xl font-bold">
-          {title} &nbsp;
-          {badge && <div class="badge badge-neutral rounded">{badge}</div>}
+          {title}
+          {badge && <div class="badge badge-neutral rounded"> {badge}</div>}
         </h1>
         <p class="py-1 text-1xl">{desc}</p>
         <div class="card-actions justify-end">
