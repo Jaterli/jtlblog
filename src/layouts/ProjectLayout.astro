@@ -12,7 +12,7 @@ const {
   heroImage,
   badge,
   pubDate,
-  codes
+  tags
 } = Astro.props;
 
 dayjs.extend(localizedFormat);
@@ -29,15 +29,16 @@ import { Image } from "astro:assets";
       <br />
       {badge && <div class="badge badge-neutral rounded my-2">{badge}</div>}
       {
-        codes &&
-        codes.map((code) => (
+        tags &&
+        tags.map((tag) => (
             <span class="badge badge-outline ml-2 no-underline">
-              {code}
+              {tag}
             </span>
           ))
       }
       <div class="divider my-2"></div>
       <slot />
+      <div class="divider my-2"></div>
     </article>
   </main>
 </BaseLayout>

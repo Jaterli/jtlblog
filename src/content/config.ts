@@ -27,8 +27,8 @@ const projectSchema = z.object({
     pubDate: z.coerce.date(),
     badge: z.string().optional(),
     heroImage: z.string().optional(),
-    codes: z.array(z.string()).refine(items => new Set(items).size === items.length, {
-        message: 'codes must be unique',
+    tags: z.array(z.string()).refine(items => new Set(items).size === items.length, {
+        message: 'tags must be unique',
     }).optional(),
 });
 
@@ -43,5 +43,5 @@ const projectCollection = defineCollection({ schema: projectSchema });
 export const collections = {
     'blog': blogCollection,
     'job': jobCollection,
-    'project': projectSchema
+    'project': projectCollection
 }

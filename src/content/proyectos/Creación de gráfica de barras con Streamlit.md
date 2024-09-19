@@ -4,7 +4,7 @@ description: "Obtención de datos desde una API y visualización mediante una gr
 pubDate: "2024-09-18"
 heroImage: "/assets/images/proyectos/projects.streamlit.webp"
 badge: "Finalizado"
-codes: ["Python", "Streamlit"]
+tags: ["Python", "Streamlit"]
 ---
 
 

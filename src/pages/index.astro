@@ -5,8 +5,10 @@ import { getCollection } from "astro:content";
 import createSlug from "../lib/createSlug"
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const projects = (await getCollection("proyectos")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const last_posts = posts.slice(0, 3);
+const last_projects = projects.slice(0, 3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
@@ -30,40 +32,6 @@ const last_posts = posts.slice(0, 3);
     </div>
   </div>
 
-  <div class="mb-14">
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Nº posts por Mes</div>
-    <img src="https://raw.githubusercontent.com/Jaterli/fastAPI/refs/heads/main/grap.png" title="Nº posts por Mes" alt="Nº posts por Mes" class="grap" />    
-  </div>
-
-  <div>&nbsp;</div>
-
-  <div>
-    <div class="text-3xl w-full font-bold mb-2 mt-10">Mis últimos proyectos {"</>"}</div>
-  </div>
-
-  <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  />
-
   <div>
     <div class="text-3xl w-full font-bold mb-5 mt-10">Últimos posts del blog</div>
   </div>
@@ -82,10 +50,39 @@ const last_posts = posts.slice(0, 3);
       </>
     ))
   }
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-5 mt-10">Últimos proyectos</div>
+  </div>
+  {
+    last_projects.map((project) => (
+      <>
+        <HorizontalCard
+          title={project.data.title}
+          img={project.data.heroImage}
+          desc={project.data.description}
+          url={"/proyectos/" + createSlug(project.data.title, project.slug)}
+          target="_self"
+          badge={project.data.badge}
+        />
+        <div class="divider my-0" />
+      </>
+    ))
+  }
+
+<div>&nbsp;</div>
+
+<div class="mb-14 text-center">
+  <div class="text-3xl w-full font-bold mb-5 mt-10">Nº posts por Mes</div>
+  <img src="https://raw.githubusercontent.com/Jaterli/fastAPI/main/grap.png" title="Nº posts por Mes" alt="Nº posts por Mes" class="grap" />    
+  <div class="mt-4">Gráfica desarrollada con Python <br />utilizando la librería de Streamlit</div>
+</div>
+
 </BaseLayout>
 
 <style>
   .grap{
     width: 300px;
+    display: inline;
   }
 </style>

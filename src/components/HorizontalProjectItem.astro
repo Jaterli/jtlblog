@@ -4,9 +4,8 @@ const {
   description,
   heroImage,
   badge,
-  details,
   url,
-  codes
+  tags
 } = Astro.props;
 import { Image } from "astro:assets";
 ---
@@ -34,8 +33,8 @@ import { Image } from "astro:assets";
         <p class="text-1xl">{description}</p>
         <div class="card-actions justify-end pt-1">
           {
-            codes && codes.map((code) => (
-              <span class="badge badge-outline">{code}</span>      
+            tags && tags.map((tag) => (
+              <span class="badge badge-outline">{tag}</span>      
             ))
           }
         </div>

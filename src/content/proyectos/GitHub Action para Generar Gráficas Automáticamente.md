@@ -4,7 +4,7 @@ description: "Cómo implementé un sistema automatizado que actualiza diariament
 pubDate: "2024-09-18"
 heroImage: "/assets/images/proyectos/projects.github-actions.jpg"
 badge: "Finalizado"
-codes: ["GitHub Actions", "Python", "Node.js"]
+tags: ["GitHub Actions", "Python", "Node.js"]
 ---
 
 ## Automatización de Gráficas en un Blog con GitHub Actions

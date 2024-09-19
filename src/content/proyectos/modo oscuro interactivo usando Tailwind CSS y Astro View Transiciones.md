@@ -4,7 +4,7 @@ description: "Funcionalidad para cambiar entre modo oscuro y modo claro utilizan
 pubDate: "2024-09-12"
 heroImage: "/assets/images/proyectos/projects.theme-controller.png"
 badge: "En curso"
-codes: ["Astro", "Javascript"]
+tags: ["Astro", "Javascript"]
 ---
 
 ### Introducción
