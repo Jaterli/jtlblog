@@ -21,11 +21,11 @@ import { Image } from "astro:assets";
             format="webp"
             src={heroImage}
             alt={title}
-            class="max-w-full md:max-w-[13rem] rounded-lg object-cover max-h-28"
+            class="max-w-48 md:max-w-[13rem] max-h-28 rounded-lg object-cover"
           />
         )
       }
-      <div class="grow w-full p-5 md:p-0">
+      <div class="grow w-full md:p-0">
         <h1 class="text-xl font-bold pb-2">
           {title}
           {badge && <div class="badge badge-neutral rounded"> {badge}</div>}
