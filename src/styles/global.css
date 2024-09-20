@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .time-line-container>div:last-child .education__time>.education__line {
   display: none;
 }
@@ -9,4 +13,12 @@
 .prose :where(blockquote):not(:where([class~="not-prose"], [class~="not-prose"] *)){
   color: inherit;
   font-size: 0.9em;
+}
+
+.prose :where(h2){
+  font-weight: 600;
+}
+
+.hero-content{
+  @apply px-0;
 }

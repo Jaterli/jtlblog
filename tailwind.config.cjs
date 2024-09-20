@@ -17,7 +17,7 @@ module.exports = {
 	
 	plugins: [
 		require("@tailwindcss/typography"), // Para dar estilos a los MD: https://tailwindcss.com/docs/plugins#typography
-		require("daisyui")
+		require("daisyui"),
 	],
 	
 	daisyui: {
