@@ -3,16 +3,15 @@ title: "Desarrollo de Aplicaciones Web. Gestión de Proyectos."
 description: "Desarrollador de Aplicaciones Web y Gestor de Proyectos en una empresa de traducciones."
 startDate: "01-06-2004"
 endDate: "30-03-2024"
-updatedDate: "2024-08-28"
-badge: "Featured"
+pubDate: "2024-08-28"
+badge: 
 heroImage: "/assets/images/jobs/jobs-translations.png"
 ---
 
-**Desarrollador de Aplicaciones Web y Gestor de Proyectos de Traducción en Advance Translations**
-
+**Empresa:** Advance Translations SL.  
 **Duración:** 20 años
 
-**Principales responsabilidades y logros:**
+### Principales responsabilidades y logros:
 
 1. **Desarrollo de Plataforma de Gestión de Traductores:**
    - Diseñé y desarrollé una plataforma online en PHP y MySQL para la gestión integral de traductores.
