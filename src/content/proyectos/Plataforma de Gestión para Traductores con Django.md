@@ -3,11 +3,11 @@ title: "Plataforma de Gestión para Traductores."
 description: "Plataforma en Django que servirá como área privada para traductores."
 pubDate: "2024-09-20"
 heroImage: "/assets/images/proyectos/projects.django.jpg"
-badge: "Pendiente"
-tags: ["Python", "Django"]
+badge: "En curso"
+tags: ["Python", "MySQL", "Django"]
 ---
 
-## Proyecto: Plataforma de Gestión para Traductores
+## Proyecto
 
 Este proyecto tiene como objetivo desarrollar una plataforma en Django que servirá como área privada para traductores. A través de esta plataforma, los traductores podrán registrarse y gestionar sus datos tanto personales como profesionales mediante diversos formularios. Entre las funcionalidades clave, se incluye la posibilidad de adjuntar su currículum en formato digital y subir una nota de voz.
 

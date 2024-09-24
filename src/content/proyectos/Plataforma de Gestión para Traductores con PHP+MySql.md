@@ -3,15 +3,14 @@ title: "Plataforma de Gestión para Traductores."
 description: "Plataforma de gestión para traductores (PHP + MySQL)."
 pubDate: "2024-09-20"
 heroImage: "/assets/images/proyectos/projects.php+mysql.png"
-badge: "Pendiente"
+badge: "Finalizado"
 tags: ["PHP", "MySQL"]
 ---
 
-## Plataforma de Gestión para Traductores
 
 Este es un proyecto personal que realicé para una empresa. Se trata de una plataforma desarrollada con PHP y MySQL que sirve como área privada para traductores. A través de esta plataforma online, los traductores pueden registrarse y gestionar sus datos tanto personales como profesionales mediante diversos formularios. Entre las funcionalidades clave, se incluye la posibilidad de adjuntar su currículum en formato digital y subir una nota de voz.
 
-### Funcionalidades Principales
+## Funcionalidades Principales
 
 1. **Registro y Gestión de Datos**:  
    Los traductores podrán registrarse en la plataforma, proporcionando su información personal y profesional. Esta información podrá ser actualizada en cualquier momento, permitiendo a los usuarios mantener su perfil al día según sus necesidades.
@@ -30,7 +29,7 @@ Este es un proyecto personal que realicé para una empresa. Se trata de una plat
    <img src="/projects/traductores-php/Screenshot-formacion.png" />
 
 
-### Administración y Gestión de Datos
+## Administración y Gestión de Datos
 
 El panel de administración proporciona funcionalidades avanzadas para la gestión de los perfiles de los traductores. Entre estas se incluyen:
 
