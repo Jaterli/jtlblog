@@ -41,10 +41,12 @@ const last_projects = projects.slice(0, 3);
         <HorizontalCard
           title={post.data.title}
           img={post.data.heroImage}
-          desc={post.data.description}
+          description={post.data.description}
+          badge={post.data.badge}
+          pubDate={post.data.pubDate}
+          tags={post.data.tags}
           url={"/blog/" + createSlug(post.data.title, post.slug)}
           target="_self"
-          badge={post.data.badge}
         />
         <div class="divider my-0" />
       </>
@@ -60,10 +62,12 @@ const last_projects = projects.slice(0, 3);
         <HorizontalCard
           title={project.data.title}
           img={project.data.heroImage}
-          desc={project.data.description}
+          description={project.data.description}
+          badge={project.data.badge}
+          pubDate={project.data.pubDate}
+          tags={project.data.tags}
           url={"/proyectos/" + createSlug(project.data.title, project.slug)}
           target="_self"
-          badge={project.data.badge}
         />
         <div class="divider my-0" />
       </>
