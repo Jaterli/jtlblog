@@ -1,13 +1,18 @@
 ---
+import { Image } from "astro:assets";
+import dayjs from "dayjs";
+
 const {
   title,
   description,
   heroImage,
   badge,
+  pubDate,
   url,
   tags
 } = Astro.props;
-import { Image } from "astro:assets";
+const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
+
 ---
 
 <div class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
@@ -26,15 +31,15 @@ import { Image } from "astro:assets";
         )
       }
       <div class="grow w-full md:p-0">
-        <h1 class="text-xl font-bold pb-2">
-          {title}
-          {badge && <div class="badge badge-neutral rounded"> {badge}</div>}
+        <h1 class="text-xl font-bold">{title}
+          {badge && <div class="badge badge-neutral rounded my-2 ml-1">{badge}</div>}  
         </h1>
-        <p class="text-1xl">{description}</p>
-        <div class="card-actions justify-end pt-1">
+        <p class="py-2 text-1xl">{description}</p>
+        <div class="text-sm opacity-70 float-left">{displayDate}</div>
+        <div class="card-actions justify-end">
           {
             tags && tags.map((tag) => (
-              <span class="badge badge-outline">{tag}</span>      
+              <span class="badge badge-outline opacity-70">{tag}</span>      
             ))
           }
         </div>
