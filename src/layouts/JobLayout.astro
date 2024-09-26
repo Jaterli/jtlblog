@@ -1,8 +1,6 @@
 ---
 import { type JobSchema } from "../content/config";
 import BaseLayout from "./BaseLayout.astro";
-import dayjs from "dayjs";
-import localizedFormat from "dayjs/plugin/localizedFormat";
 
 export interface Props extends JobSchema {}
 
@@ -15,7 +13,6 @@ const {
   badge,
 } = Astro.props;
 
-dayjs.extend(localizedFormat);
 import { Image } from "astro:assets";
 ---
 

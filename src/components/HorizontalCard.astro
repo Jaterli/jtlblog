@@ -1,7 +1,11 @@
 ---
-const { title, img, desc, badge, tags, url, target = "_blank" } = Astro.props;
 import { Image } from "astro:assets";
+import dayjs from "dayjs";
+
+const { title, img, description, badge, pubDate, tags, url, target = "_blank" } = Astro.props;
 const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
+const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
+
 ---
 
 <div
@@ -22,16 +26,15 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
         )
       }
       <div class="grow w-full">
-        <h1 class="text-xl font-bold">
-          {title}
-          {badge && <div class="badge badge-neutral rounded"> {badge}</div>}
-        </h1>
-        <p class="py-1 text-1xl">{desc}</p>
+        <h1 class="text-xl font-bold">{title}</h1>
+        {badge && <div class="badge badge-neutral rounded my-2">{badge}</div>}        
+        <p class="py-2 text-1xl">{description}</p>
+        <div class="text-sm opacity-70 float-left">{displayDate}</div>
         <div class="card-actions justify-end">
           {
             tags &&
               tags.map((tag) => (
-                <a href={`${tag_url}/${tag}`} class="badge badge-outline">
+                <a href={`${tag_url}/${tag}`} class="badge badge-outline opacity-70">
                   {tag}
                 </a>
               ))

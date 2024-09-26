@@ -55,8 +55,9 @@ const { page } = Astro.props as { page: Page };
             <HorizontalCard
               title={post.data.title}
               img={post.data.heroImage}
-              desc={post.data.description}
+              description={post.data.description}
               badge={post.data.badge}
+              pubDate={post.data.pubDate}
               tags={post.data.tags}
               url={"/blog/" +  post.slug} // crea el link basado en el nombre del fichero md
               target="_self"

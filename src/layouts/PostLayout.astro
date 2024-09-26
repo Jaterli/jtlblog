@@ -2,14 +2,12 @@
 import { type BlogSchema } from "../content/config";
 import BaseLayout from "./BaseLayout.astro";
 import dayjs from "dayjs";
-import localizedFormat from "dayjs/plugin/localizedFormat";
+import { Image } from "astro:assets";
 
 export interface Props extends BlogSchema {}
 
-const { title, description, pubDate, updatedDate, heroImage, badge, tags = [] } = Astro.props;
-dayjs.extend(localizedFormat);
+const { title, description, pubDate, heroImage, badge, tags = [] } = Astro.props;
 const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
-import { Image } from "astro:assets";
 ---
 
 <BaseLayout title={title} description={description} image={heroImage}, ogType="article">
@@ -27,14 +25,6 @@ import { Image } from "astro:assets";
               {tag}
             </a>
           ))
-      }
-      {
-        updatedDate && (
-          <div>
-            {" "}
-            Última actualización el <time>{updatedDate}</time>{" "}
-          </div>
-        )
       }
       <div class="divider my-2"></div>
       <slot />
