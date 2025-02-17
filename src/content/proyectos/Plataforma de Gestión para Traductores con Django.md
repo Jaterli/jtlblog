@@ -1,125 +1,100 @@
 ---
-title: "Plataforma de Gestión para Traductores."
+title: "Gestión de Traductores y Consultas Personalizadas."
 description: "Plataforma en Django que servirá como área privada para traductores."
-pubDate: "2024-09-20"
-heroImage: "/assets/images/proyectos/projects.django.jpg"
-badge: "En curso"
-tags: ["Python", "MySQL", "Django"]
+pubDate: "2025-02-17"
+heroImage: "/assets/images/proyectos/React+Django+SQLite.png"
+badge: "Finalizado"
+tags: ["Python", "React", "Django"]
 ---
 
-# Aplicación de Gestión de Traductores y Consultas Personalizadas
+Soy un estudiante de un máster en desarrollo full-stack, y esta aplicación es una muestra de mi trabajo como parte de mi portafolio profesional. Mi objetivo es demostrar mis habilidades técnicas y mi capacidad para crear soluciones web completas y escalables que puedan adaptarse a las necesidades de empresas y organizaciones. A medida que avanzo en mi formación, sigo mejorando y desarrollando proyectos más ambiciosos, lo que me convierte en un candidato con un gran potencial de crecimiento.
 
-## Introducción
-
-Os presento una aplicación web que he desarrollado como parte de mi portafolio profesional. Esta aplicación demuestra mis habilidades como desarrollador full-stack, abarcando tanto el **backend** (con Django) como el **frontend** (con React y TypeScript). La aplicación está diseñada para gestionar perfiles de traductores profesionales y permitir a los administradores realizar consultas personalizadas sobre la base de datos de traductores. Su arquitectura modular y escalable la convierte en una solución adaptable a las necesidades específicas de cualquier empresa.
+Esta aplicación, desarrollada con **Django** en el backend y **React + TypeScript** en el frontend, es una herramienta diseñada para gestionar perfiles de traductores profesionales y permitir a los administradores realizar consultas personalizadas sobre la base de datos. Su arquitectura modular, escalabilidad y facilidad de personalización la convierten en una solución ideal para empresas que buscan optimizar la gestión de profesionales.
 
 ---
 
-## Características Principales
+## Características Destacadas
 
-### 1. **Gestión de Perfiles de Traductores**
-Los traductores profesionales pueden registrarse y crear un perfil que incluye:
+### 1. **Gestión Completa de Perfiles de Traductores**
+La aplicación permite a los traductores profesionales registrarse y gestionar sus perfiles de manera eficiente. Las funcionalidades incluyen:
 - **Datos personales**: Nombre, dirección, teléfono, etc.
 - **Perfil profesional**: Formación, experiencia, combinaciones de idiomas, etc.
 - **Documentación**: Posibilidad de adjuntar un currículum y una nota de voz.
 - **Actualización y baja**: Los traductores pueden actualizar sus datos o darse de baja en cualquier momento.
 
-Captura de pantalla de la interfaz de Dashboard.
-  <img src="\projects\translator_management\Screenshot-Dashboard.png" />
+**Capturas de pantalla:**
+- **Dashboard**: <img src="\projects\translator_management\Screenshot-Dashboard.png" />
+- **Registro y perfil de traductor**: <img src="\projects\translator_management\Screenshot-Registro.png" />
+- **Datos personales**: <img src="\projects\translator_management\Screenshot-Datos personales.png" />
+- **Edición de datos personales**: <img src="\projects\translator_management\Screenshot-Editando datos personales.png" />
+- **Combinaciones de idiomas**: <img src="\projects\translator_management\Screenshot-Combinaciones de idiomas.png" />
+- **Edición de combinaciones de idiomas**: <img src="\projects\translator_management\Screenshot-Editando combinaciones.png" />
+- **Documentación (currículum y nota de voz)**: <img src="\projects\translator_management\Screenshot-Currículum y Nota de Voz.png" />
 
-Captura de pantalla de la interfaz de registro y perfil de traductor.
-  <img src="\projects\translator_management\Screenshot-Registro.png" />
-
-Captura de pantalla de la interfaz de datos personales.
-  <img src="\projects\translator_management\Screenshot-Datos personales.png" />
-
-Captura de pantalla de la interfaz de la edición de datos personales.
-  <img src="\projects\translator_management\Screenshot-Editando datos personales.png" />
-
-Captura de pantalla de la interfaz de combinaciones de idiomas.
-  <img src="\projects\translator_management\Screenshot-Combinaciones de idiomas.png" />
-
-Captura de pantalla de la interfaz de la edición de combinaciones de idiomas.
-  <img src="\projects\translator_management\Screenshot-Editando combinaciones.png" />
-
-Captura de pantalla de la interfaz de la edición de documentación.
-  <img src="\projects\translator_management\Screenshot-Currículum y Nota de Voz.png" />
 ---
 
 ### 2. **Consultas Personalizadas para Administradores**
-Los usuarios con permisos de administrador (`is_staff`) pueden:
-- **Crear consultas personalizadas**: Filtrar traductores según criterios específicos (idiomas, experiencia, disponibilidad, etc.).
+Los administradores tienen acceso a herramientas avanzadas para realizar consultas personalizadas sobre la base de datos de traductores:
+- **Crear consultas personalizadas**: Filtrar traductores según idiomas, experiencia, disponibilidad, etc.
 - **Guardar y ejecutar consultas**: Las consultas pueden guardarse para su uso futuro.
-- **Exportar resultados**: Los resultados de las consultas pueden exportarse a Excel.
-- **Visualización detallada**: Acceder al perfil completo de cada traductor, incluyendo sus documentos adjuntos.
+- **Exportar resultados**: Los resultados pueden exportarse a Excel para su análisis.
+- **Visualización detallada**: Acceso al perfil completo de cada traductor, incluyendo documentos adjuntos.
 
+**Capturas de pantalla:**
+- **Crear consulta**: <img src="\projects\translator_management\Screenshot-Admin-crear-consulta.png" />
+- **Listado de consultas**: <img src="\projects\translator_management\Screenshot-Admin-Consultas.png" />
+- **Resultados de consulta**: <img src="\projects\translator_management\Screenshot-Admin-Consulta-resultados.png" />
+- **Detalle de traductor**: <img src="\projects\translator_management\Screenshot-Admin-detalle-traductor.png" />
 
-Captura de pantalla de la interfaz de Dashboard.
-  <img src="\projects\translator_management\Screenshot-Dashboard.png" />
-
-Captura de pantalla de la interfaz para crear una nueva consulta.
-  <img src="\projects\translator_management\Screenshot-Admin-crear-consulta.png" />
-
-Captura de pantalla de la interfaz del listado de consultas creadas.
-  <img src="\projects\translator_management\Screenshot-Admin-Consultas.png" />
-
-Captura de pantalla de la interfaz de los resultados de una consulta.
-  <img src="\projects\translator_management\Screenshot-Admin-Consulta-resultados.png" />
-
-Captura de pantalla de la vista de detalle de un traductor.
-  <img src="\projects\translator_management\Screenshot-Admin-detalle-traductor.png" />
 ---
 
 ### 3. **Autenticación y Seguridad**
 - **Autenticación JWT**: Los administradores deben autenticarse mediante JSON Web Tokens (JWT) para acceder a las funcionalidades de consulta.
-- **Protección de datos**: Los datos sensibles, como contraseñas, se almacenan de forma segura utilizando técnicas de hashing.
+- **Protección de datos**: Las contraseñas se almacenan de forma segura utilizando técnicas de hashing.
 
-Captura de pantalla de la interfaz del login de usuarios administradores.
-  <img src="\projects\translator_management\Screenshot-Admin-login.png" />
+**Captura de pantalla:**
+- **Login de administradores**: <img src="\projects\translator_management\Screenshot-Admin-login.png" />
 
 ---
 
-### 4. **Interfaz Responsive**
-La aplicación está diseñada para ser **totalmente responsive**, lo que significa que se adapta perfectamente a cualquier dispositivo, ya sea un ordenador de escritorio, una tablet o un teléfono móvil. Esto garantiza una experiencia de usuario óptima en cualquier situación.
+### 4. **Interfaz Responsive y Adaptable**
+La aplicación está diseñada para ser **totalmente responsive**, lo que garantiza una experiencia de usuario óptima en cualquier dispositivo (escritorio, tablet o móvil).
 
-Captura de pantalla de la interfaz de Dashboard.
-  <img src="\projects\translator_management\Screenshot-Dashboard-mv.png" />
+**Capturas de pantalla:**
+- **Dashboard (versión móvil)**: <img src="\projects\translator_management\Screenshot-Dashboard-mv.png" />
+- **Combinaciones de idiomas (versión móvil)**: <img src="\projects\translator_management\Screenshot-Combinaciones de idiomas-mv.png" />
+- **Edición de combinaciones de idiomas (versión móvil)**: <img src="\projects\translator_management\Screenshot-Editando combinaciones-mv.png" />
 
-Captura de pantalla de la interfaz de edición de combinaciones de idiomas.
-  <img src="\projects\translator_management\Screenshot-Combinaciones de idiomas-mv.png" /
-
-Captura de pantalla de la interfaz de edición de combinaciones de idiomas.
-  <img src="\projects\translator_management\Screenshot-Editando combinaciones-mv.png" />
 ---
 
-## Arquitectura y Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 ### Backend (Django)
-- **Django**: Framework de Python utilizado para desarrollar la lógica del servidor, la gestión de la base de datos y la API.
-- **Modelos**: Estructuras de datos para gestionar traductores, perfiles profesionales, combinaciones de idiomas y consultas.
+- **Django**: Framework de Python para la lógica del servidor, gestión de la base de datos y API.
+- **Modelos**: Estructuras de datos para traductores, perfiles profesionales, combinaciones de idiomas y consultas.
 - **Vistas y API**: Endpoints para gestionar traductores y consultas personalizadas.
 - **Autenticación JWT**: Implementación de tokens para asegurar el acceso a las funcionalidades de administración.
 
 ### Frontend (React + TypeScript)
 - **React**: Biblioteca de JavaScript para construir interfaces de usuario interactivas.
 - **TypeScript**: Añade tipado estático para mejorar la calidad y mantenibilidad del código.
-- **Componentes modulares**: La interfaz está dividida en componentes reutilizables, lo que facilita su mantenimiento y escalabilidad.
-- **Llamadas a la API**: Uso de servicios para interactuar con el backend de Django.
+- **Componentes modulares**: Interfaz dividida en componentes reutilizables para facilitar el mantenimiento y la escalabilidad.
+- **Llamadas a la API**: Servicios para interactuar con el backend de Django.
 
 ---
 
 ## Modularidad y Escalabilidad
 
-Una de las características más destacadas de esta aplicación es su **modularidad**. Está diseñada de forma que cada componente (gestión de traductores, consultas personalizadas, autenticación, etc.) puede modificarse o ampliarse de manera independiente. Esto permite:
-- **Adaptación rápida**: La aplicación puede ajustarse fácilmente a las necesidades específicas de cualquier empresa. Por ejemplo, en lugar de gestionar traductores, podría utilizarse para gestionar otros tipos de profesionales o clientes.
-- **Escalabilidad**: La arquitectura modular facilita la adición de nuevas funcionalidades sin afectar al resto del sistema.
+La aplicación está diseñada con una arquitectura **modular y escalable**, lo que permite:
+- **Adaptación rápida**: Puede ajustarse fácilmente a las necesidades específicas de cualquier empresa. Por ejemplo, en lugar de gestionar traductores, podría utilizarse para gestionar otros tipos de profesionales o clientes.
+- **Escalabilidad**: Facilita la adición de nuevas funcionalidades sin afectar al resto del sistema.
 
 ---
 
-## Fácil Personalización
+## Personalización Fácil y Rápida
 
 La aplicación es **fácilmente personalizable** en términos de diseño y funcionalidad:
-- **Colores y logotipo**: Los colores de la interfaz pueden ajustarse a los colores corporativos de la empresa.
+- **Colores y logotipo**: La interfaz puede ajustarse a los colores corporativos de la empresa.
 - **Plantillas**: Las plantillas de Django y los componentes de React pueden modificarse para reflejar la identidad visual de la empresa.
 - **Funcionalidades adicionales**: Pueden añadirse nuevas características, como notificaciones, integración con otras herramientas, etc.
 
@@ -129,8 +104,13 @@ La aplicación es **fácilmente personalizable** en términos de diseño y funci
 
 Esta aplicación es un ejemplo de mi capacidad para desarrollar soluciones web completas, desde la lógica del servidor hasta la interfaz de usuario. Su arquitectura modular, escalabilidad y facilidad de personalización la convierten en una herramienta valiosa para cualquier empresa que necesite gestionar perfiles profesionales y realizar consultas personalizadas.
 
-Si estás interesado en conocer más sobre este proyecto o en colaborar en el desarrollo de soluciones similares, no dudes en contactarme. Estoy disponible para discutir cómo puedo aportar valor a tu equipo con mis habilidades como desarrollador full-stack.
+Si estás interesado en conocer más sobre este proyecto o en colaborar en el desarrollo de soluciones similares, no dudes en contactarme. Estoy disponible para discutir cómo puedo aportar valor a tu equipo con mis habilidades como desarrollador full-stack. ¡Espero poder contribuir a tus proyectos y seguir creciendo profesionalmente!
 
 ---
 
+### Contacto
+- **Email**: [Tu correo electrónico]
+- **LinkedIn**: [Tu perfil de LinkedIn]
+- **Portafolio**: [Enlace a tu portafolio]
 
+¡Gracias por tu interés! 😊
