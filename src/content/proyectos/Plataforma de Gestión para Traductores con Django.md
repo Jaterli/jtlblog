@@ -103,14 +103,3 @@ La aplicación es **fácilmente personalizable** en términos de diseño y funci
 ## Conclusión
 
 Esta aplicación es un ejemplo de mi capacidad para desarrollar soluciones web completas, desde la lógica del servidor hasta la interfaz de usuario. Su arquitectura modular, escalabilidad y facilidad de personalización la convierten en una herramienta valiosa para cualquier empresa que necesite gestionar perfiles profesionales y realizar consultas personalizadas.
-
-Si estás interesado en conocer más sobre este proyecto o en colaborar en el desarrollo de soluciones similares, no dudes en contactarme. Estoy disponible para discutir cómo puedo aportar valor a tu equipo con mis habilidades como desarrollador full-stack. ¡Espero poder contribuir a tus proyectos y seguir creciendo profesionalmente!
-
----
-
-### Contacto
-- **Email**: [Tu correo electrónico]
-- **LinkedIn**: [Tu perfil de LinkedIn]
-- **Portafolio**: [Enlace a tu portafolio]
-
-¡Gracias por tu interés! 😊
