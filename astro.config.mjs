@@ -8,6 +8,7 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://jaterli.netlify.app',
+  //base: '/jtlblog',
   integrations: [mdx(), sitemap(), tailwind(), icon()],
 
   vite: {

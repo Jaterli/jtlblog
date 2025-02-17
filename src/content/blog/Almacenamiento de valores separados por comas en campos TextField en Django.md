@@ -8,13 +8,11 @@ category: "Tutoriales"
 tags: [desarrolladores, Django]
 ---
 
-Aquí os dejo una explicación del qué le dí a una aplicación Django para gestionar listas de valores en campos `TextField` en Django:
+A continuación os dejo la explicación del enfoque qué le dí a una aplicación Django para gestionar listas de valores en campos `TextField`.
 
----
+En lugar de utilizar relaciones *OneToMany*, que generan tablas adicionales en la base de datos para gestionar datos relacionados, podemos optar por un enfoque más sencillo: almacenar los valores directamente en campos de tipo `TextField`, separados por comas. Este método es ideal cuando no necesitamos realizar consultas complejas sobre esos datos, ya que simplifica la estructura del modelo y reduce la complejidad del sistema. Además, es una técnica útil y práctica, aunque parece que existe muy poca documentación al respecto.
 
-En lugar de utilizar relaciones *OneToMany* o crear tablas adicionales para gestionar datos que se almacenan en listas, podemos optar por un enfoque más simple, que consiste en almacenar estos valores directamente en campos de tipo `TextField`, separados por comas. Este método resulta útil cuando no necesitamos realizar consultas complejas sobre esos valores.
-
-### Modelo
+### Modelos
 
 En el archivo `models.py`, se define un campo `TextField` que almacenará los valores separados por comas. Por ejemplo:
 
