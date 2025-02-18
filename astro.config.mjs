@@ -10,7 +10,7 @@ export default defineConfig({
   site: 'https://jaterli.netlify.app',
   //base: '/jtlblog',
   integrations: [mdx(), sitemap(), tailwind(), icon()],
-
+  //output: 'server', // Habilita el modo SSR
   vite: {
     server:{
       watch: { 

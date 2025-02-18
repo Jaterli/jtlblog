@@ -7,8 +7,6 @@ badge: "Finalizado"
 tags: ["Python", "React", "Django"]
 ---
 
-Soy un estudiante de un máster en desarrollo full-stack, y esta aplicación es una muestra de mi trabajo como parte de mi portafolio profesional. Mi objetivo es demostrar mis habilidades técnicas y mi capacidad para crear soluciones web completas y escalables que puedan adaptarse a las necesidades de empresas y organizaciones. A medida que avanzo en mi formación, sigo mejorando y desarrollando proyectos más ambiciosos, lo que me convierte en un candidato con un gran potencial de crecimiento.
-
 Esta aplicación, desarrollada con **Django** en el backend y **React + TypeScript** en el frontend, es una herramienta diseñada para gestionar perfiles de traductores profesionales y permitir a los administradores realizar consultas personalizadas sobre la base de datos. Su arquitectura modular, escalabilidad y facilidad de personalización la convierten en una solución ideal para empresas que buscan optimizar la gestión de profesionales.
 
 ---
@@ -103,3 +101,7 @@ La aplicación es **fácilmente personalizable** en términos de diseño y funci
 ## Conclusión
 
 Esta aplicación es un ejemplo de mi capacidad para desarrollar soluciones web completas, desde la lógica del servidor hasta la interfaz de usuario. Su arquitectura modular, escalabilidad y facilidad de personalización la convierten en una herramienta valiosa para cualquier empresa que necesite gestionar perfiles profesionales y realizar consultas personalizadas.
+
+Actualmente, me encuentro inmerso en mi formación como estudiante de un máster en desarrollo full-stack, y esta aplicación ha sido desarrollada como parte de mi portafolio personal para demostrar mis habilidades y conocimientos en este campo. Aunque ya he logrado crear una solución funcional y robusta, sigo en un proceso constante de aprendizaje y mejora. Esto significa que, a medida que avanzo en mi formación, mis futuras aplicaciones serán aún más completas, innovadoras y optimizadas.
+
+Mi objetivo es seguir creciendo como desarrollador, ampliando mi experiencia y enfrentándome a nuevos desafíos técnicos. Si estás interesado en conocer más sobre este proyecto o en colaborar en el desarrollo de soluciones similares, no dudes en contactarme. Estoy disponible para discutir cómo puedo aportar valor a tu equipo con mis habilidades como desarrollador full-stack, y estoy emocionado por la posibilidad de contribuir a proyectos que impulsen mi crecimiento profesional.

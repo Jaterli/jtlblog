@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }) {
   const items = await getCollection("proyectos");
+
   items.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   return paginate(items, { pageSize: 10 });
 }
@@ -61,7 +62,7 @@ const { page } = Astro.props as { page: Page };
               badge={item.data.badge}
               details={item.data.details}
               tags={item.data.tags}
-              url={"/proyectos/" +  item.slug} // crea el slug basado en el nombre del fichero md
+              url={"/proyectos/entry/" + item.slug} // crea el slug basado en el nombre del fichero md
             />
             <div class="divider my-0" />
           </>

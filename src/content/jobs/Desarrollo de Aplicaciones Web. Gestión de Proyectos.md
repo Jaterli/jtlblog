@@ -2,9 +2,8 @@
 title: "Desarrollo de Aplicaciones Web. Gestión de Proyectos."
 description: "Desarrollador de Aplicaciones Web y Gestor de Proyectos en una empresa de traducciones."
 startDate: "01-06-2004"
-endDate: "30-03-2024"
+endDate: "2024-03-30"
 pubDate: "2024-08-28"
-badge: 
 heroImage: "/assets/images/jobs/jobs-translations.png"
 ---
 

@@ -2,23 +2,18 @@
 import Button from "./ui/Button.astro";
 ---
 
-<!-- To make this contact form work, create your free access key from https://web3forms.com/
-     Then you will get all form submissions in your email inbox. -->
 <form
-  action="https://api.web3forms.com/submit"
-  method="POST"
   id="form"
   class="needs-validation"
-  novalidate>
-  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
-  <!-- Create your free access key from https://web3forms.com/ -->
+  novalidate
+>
   <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
   <div class="mb-5">
     <input
       type="text"
       placeholder="Nombre Completo"
       required
-      class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+      class="w-full px-4 py-3 border-2 placeholder:text-gray-400 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
       name="name"
     />
     <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
@@ -26,13 +21,14 @@ import Button from "./ui/Button.astro";
     </div>
   </div>
   <div class="mb-5">
-    <label for="email_address" class="sr-only">Email</label><input
+    <label for="email_address" class="sr-only">Email</label>
+    <input
       id="email_address"
       type="email"
       placeholder="Email de contacto"
       name="email"
       required
-      class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+      class="w-full px-4 py-3 border-2 placeholder:text-gray-400 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
     />
     <div class="empty-feedback text-red-400 text-sm mt-1">
       Por favor, introduce tu email.
@@ -46,7 +42,7 @@ import Button from "./ui/Button.astro";
       name="message"
       required
       placeholder="Tu mensaje"
-      class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none h-36 focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
+      class="w-full px-4 py-3 border-2 placeholder:text-gray-400 rounded-md outline-none h-36 focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
     ></textarea>
     <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
       Por favor, introduce un mensaje.
@@ -87,13 +83,15 @@ import Button from "./ui/Button.astro";
       form.querySelectorAll(":invalid")[0].focus();
       return;
     }
+
     const formData = new FormData(form);
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
 
-    result.innerHTML = "Sending...";
+    result.innerHTML = "Enviando...";
+    result.style.display = "block";
 
-    fetch("https://api.web3forms.com/submit", {
+    fetch("/api/submit-form", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -104,17 +102,20 @@ import Button from "./ui/Button.astro";
       .then(async (response) => {
         let json = await response.json();
         if (response.status == 200) {
+          result.classList.remove("text-red-500");
           result.classList.add("text-green-500");
-          result.innerHTML = json.message;
+          result.innerHTML = "¡Mensaje enviado correctamente!";
         } else {
-          console.log(response);
+          result.classList.remove("text-green-500");
           result.classList.add("text-red-500");
-          result.innerHTML = json.message;
+          result.innerHTML = json.message || "Hubo un error al enviar el formulario.";
         }
       })
       .catch((error) => {
         console.log(error);
-        result.innerHTML = "Something went wrong!";
+        result.classList.remove("text-green-500");
+        result.classList.add("text-red-500");
+        result.innerHTML = "Hubo un error al enviar el formulario.";
       })
       .then(function () {
         form.reset();
