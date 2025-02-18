@@ -9,7 +9,10 @@ export async function GET() {
   });
 }
 
-export const POST: APIRoute = async ({ request }) => {
+
+import { defineMiddleware } from "astro/middleware";
+
+export const POST = defineMiddleware(async ({ request }) => {
   try {
     const formData = await request.json();
 
@@ -72,4 +75,4 @@ export const POST: APIRoute = async ({ request }) => {
       }
     );
   }
-};
+});

@@ -3,14 +3,15 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
+import netlify from "@astrojs/netlify/functions";
 
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://jaterli.netlify.app',
   //base: '/jtlblog',
   integrations: [mdx(), sitemap(), tailwind(), icon()],
-  //output: 'server', // Habilita el modo SSR
+  output: "static", // El sitio se construye como estático por defecto  
+  adapter: netlify(), // Adaptador de Netlify para funciones serverless
   vite: {
     server:{
       watch: { 
