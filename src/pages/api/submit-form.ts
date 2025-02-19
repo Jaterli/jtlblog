@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 
-export const prerender = false; // Deshabilita la prerenderización
+export const prerender = false;
 
 export async function GET() {
   return new Response(JSON.stringify({ message: "API de formulario disponible" }), {
@@ -9,16 +9,13 @@ export async function GET() {
   });
 }
 
-
-import { defineMiddleware } from "astro/middleware";
-
-export const POST = defineMiddleware(async ({ request }) => {
+export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = await request.json();
 
-    // Reemplaza con tu API Key de Web3Forms
-    const accessKey = "3f29590d-7f93-4bdc-9b20-14c4e840787a";
-
+    // API Key de Web3Forms
+    const accessKey = import.meta.env.VITE_PUBLIC_ACCESS_KEY
+    
     // Envía los datos a Web3Forms
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -75,4 +72,4 @@ export const POST = defineMiddleware(async ({ request }) => {
       }
     );
   }
-});
+};

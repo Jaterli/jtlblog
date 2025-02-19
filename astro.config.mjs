@@ -5,12 +5,11 @@ import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import netlify from "@astrojs/netlify/functions";
 
-
 export default defineConfig({
   site: 'https://jaterli.netlify.app',
   //base: '/jtlblog',
   integrations: [mdx(), sitemap(), tailwind(), icon()],
-  output: "static", // El sitio se construye como estático por defecto  
+  output: "static", // El sitio se construye como estático por defecto
   adapter: netlify(), // Adaptador de Netlify para funciones serverless
   vite: {
     server:{
