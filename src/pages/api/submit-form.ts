@@ -16,10 +16,38 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const formData = await request.json();
 
-    // API Key de Web3Forms
-    const accessKey = import.meta.env.VITE_PUBLIC_ACCESS_KEY
-    
-    // Envía los datos a Web3Forms
+    // Envía los datos a hCaptcha para verificar el token
+    const hCaptchaResponse = await fetch("https://hcaptcha.com/siteverify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        secret: import.meta.env.VITE_HCAPTCHA_SECRET_KEY, // Tu clave secreta de hCaptcha
+        response: formData["h-captcha-response"], // El token de hCaptcha
+      }),
+    });
+
+    const hCaptchaResult = await hCaptchaResponse.json();
+
+    if (!hCaptchaResult.success) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          message: "Por favor, completa el captcha correctamente.",
+        }),
+        {
+          status: 400,
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
+    }
+
+    // Si el captcha es válido, envía los datos a Web3Forms
+    const accessKey = import.meta.env.VITE_PUBLIC_ACCESS_KEY;
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
@@ -43,7 +71,7 @@ export const POST: APIRoute = async ({ request }) => {
           status: 200,
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*", // Permite el acceso desde cualquier origen
+            "Access-Control-Allow-Origin": "*",
           },
         }
       );
@@ -57,7 +85,7 @@ export const POST: APIRoute = async ({ request }) => {
           status: 400,
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*", // Permite el acceso desde cualquier origen
+            "Access-Control-Allow-Origin": "*",
           },
         }
       );
@@ -73,7 +101,7 @@ export const POST: APIRoute = async ({ request }) => {
         status: 500,
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*", // Permite el acceso desde cualquier origen
+          "Access-Control-Allow-Origin": "*",
         },
       }
     );
