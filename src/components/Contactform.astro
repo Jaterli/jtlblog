@@ -1,6 +1,7 @@
 ---
 import Button from "./ui/Button.astro";
 ---
+<script src="https://js.hcaptcha.com/1/api.js?hl=es" async defer></script>
 
 <form
   id="form"
@@ -48,19 +49,12 @@ import Button from "./ui/Button.astro";
       Por favor, introduce un mensaje.
     </div>
 
-    <!-- Optional: But Recommended: To Prevent SPAM Submission.
-        Make sure its hidden by default -->
-    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-    <!-- hCaptcha: Recommended for Advanced Spam Protection. -->
-    <div class="h-captcha text-center mt-4 w-full px-4 py-3 border-2 border-gray-300 rounded-md" data-theme="dark" data-captcha="true" data-sitekey="6e462a08-d868-43da-9b28-7370248e93a2"></div>
+    <div class="h-captcha text-center mt-4 w-full px-4 py-3 border-2 border-gray-300 rounded-md" data-theme="dark" data-sitekey="6e462a08-d868-43da-9b28-7370248e93a2"></div>
 
   </div>
   <Button type="submit" size="lg" block>Enviar mensaje</Button>
-  
   <div id="result" class="mt-3 text-center"></div>
 </form>
-
 
 <style>
   .invalid-feedback,
@@ -83,34 +77,6 @@ import Button from "./ui/Button.astro";
 </style>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const result = document.getElementById("result");
-    //const form = document.getElementById("form");
-
-    if (urlParams.get("form") === "success") {
-      result.classList.remove("hidden");
-      //form.classList.add("hidden");
-    }
-  });
-</script>
-
-<script is:inline>
-  const form = document.getElementById('form');
-  
-  form.addEventListener('submit', function(e) {
-    const hCaptchaResponse = form.querySelector('[name="h-captcha-response"]');
-    if (!hCaptchaResponse || !hCaptchaResponse.value) {
-        e.preventDefault();
-        alert("Por favor, completa el captcha.");
-        return;
-    }
-  });
-</script>
-
-<script is:inline src="https://js.hcaptcha.com/1/api.js?hl=es" async defer></script>
-
-<!-- <script is:inline>
   const form = document.getElementById("form");
   const result = document.getElementById("result");
 
@@ -164,5 +130,3 @@ import Button from "./ui/Button.astro";
       });
   });
 </script>
-
-<script src="https://js.hcaptcha.com/1/api.js?hl=es" async defer></script>
