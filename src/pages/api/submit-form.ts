@@ -5,7 +5,10 @@ export const prerender = false;
 export async function GET() {
   return new Response(JSON.stringify({ message: "API de formulario disponible" }), {
       status: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*", // Permite el acceso desde cualquier origen
+      },
   });
 }
 
@@ -40,6 +43,7 @@ export const POST: APIRoute = async ({ request }) => {
           status: 200,
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*", // Permite el acceso desde cualquier origen
           },
         }
       );
@@ -53,6 +57,7 @@ export const POST: APIRoute = async ({ request }) => {
           status: 400,
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*", // Permite el acceso desde cualquier origen
           },
         }
       );
@@ -68,6 +73,7 @@ export const POST: APIRoute = async ({ request }) => {
         status: 500,
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*", // Permite el acceso desde cualquier origen
         },
       }
     );
