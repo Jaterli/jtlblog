@@ -3,7 +3,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
-import netlify from "@astrojs/netlify/functions";
+import netlify from "@astrojs/netlify";
 
 export default defineConfig({
   site: 'https://jaterli.netlify.app',

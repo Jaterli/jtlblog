@@ -103,9 +103,7 @@ const accessKey = import.meta.env.VITE_PUBLIC_ACCESS_KEY;
     }
 
     console.log("hCaptcha está disponible.");
-    // hcaptcha.render(captchaContainer, {
-    //   sitekey: "6e462a08-d868-43da-9b28-7370248e93a2", // Reemplaza con tu site key de hCaptcha
-    // });
+    hcaptcha.render(captchaContainer, {});
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
