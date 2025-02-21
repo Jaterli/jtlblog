@@ -44,7 +44,7 @@ import Button from "./ui/Button.astro";
     ></textarea>
   </div>
 
-  <div data-netlify-recaptcha="true" class="mb-2"></div>
+  <div data-netlify-recaptcha="true" class="mb-2 mx-2"></div>
   <Button type="submit" size="lg" block>Enviar mensaje</Button>
 </form>
 
@@ -59,7 +59,7 @@ import Button from "./ui/Button.astro";
     e.preventDefault();
     let formData = new FormData(contactForm);
 
-    existe_captcha = document.getElementById('g-recaptcha');
+    existe_captcha = document.getElementsByClassName('g-recaptcha');
     if (!existe_captcha){
       alert('No existe captcha, recarga la página');
       return;
