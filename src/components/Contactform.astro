@@ -10,6 +10,7 @@ const reCAPTCHA_site_key = import.meta.env.VITE_SITE_RECAPTCHA_KEY;
   method="post"
   class="needs-validation"
   name="contact" 
+  id="form"
   data-netlify-recaptcha="true"
   data-netlify="true"
 >
@@ -46,4 +47,56 @@ const reCAPTCHA_site_key = import.meta.env.VITE_SITE_RECAPTCHA_KEY;
   <div data-netlify-recaptcha="true"></div>
 
   <Button type="submit" size="lg" block>Enviar mensaje</Button>
+
+  <div id="result"></div>
 </form>
+
+
+<script is:inline>
+
+  document.addEventListener("astro:page-load", () => {
+    const form = document.getElementById("form");
+    const result = document.getElementById("result");
+
+    console.log("DOM cargado")
+    
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      result.innerHTML = "Enviando...";
+
+      fetch("/", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: json,
+      })
+        .then(async (response) => {
+          let json = await response.json();
+          if (response.status == 200) {
+            result.innerHTML = json.message;
+          } else {
+            result.innerHTML = json.message;
+          }
+        })
+        .catch((error) => {
+          result.innerHTML = "¡Algo salió mal!";
+        })
+        .then(function () {
+          form.reset();
+          setTimeout(() => {
+            result.style.display = "none";
+          }, 5000);
+        });
+    });
+  }, { once: true });
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
