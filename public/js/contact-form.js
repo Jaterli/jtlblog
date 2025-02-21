@@ -1,4 +1,4 @@
-const handleSubmit = (e) => {
+let handleSubmit = (e) => {
   e.preventDefault();
 
   const contactForm = document.getElementById("contact-form");
