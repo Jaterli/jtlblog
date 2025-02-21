@@ -43,7 +43,22 @@ const reCAPTCHA_site_key = import.meta.env.VITE_SITE_RECAPTCHA_KEY;
     ></textarea>
   </div>
 
-  <div data-netlify-recaptcha="true"></div>
+  <div class="g-recaptcha" data-sitekey={reCAPTCHA_site_key}></div>
 
   <Button type="submit" size="lg" block>Enviar mensaje</Button>
 </form>
+
+<script lang="ts">
+  document.querySelector('form[name="contact"]')?.addEventListener('submit', (e: Event) => {
+    e.preventDefault();
+
+    // Verifica si el reCAPTCHA se ha completado
+    if (grecaptcha.getResponse().length === 0) {
+      alert("Por favor, completa el reCAPTCHA.");
+      return false;
+    }
+
+    // Si el reCAPTCHA está completo, envía el formulario
+    (e.target as HTMLFormElement).submit();
+  });
+</script>
