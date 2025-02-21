@@ -1,8 +1,5 @@
 ---
 import Button from "./ui/Button.astro";
-
-// const accessKey = import.meta.env.VITE_PUBLIC_ACCESS_KEY;
-// const reCAPTCHA_site_key = import.meta.env.VITE_SITE_RECAPTCHA_KEY;
 ---
 
 <form
@@ -26,7 +23,8 @@ import Button from "./ui/Button.astro";
     />
   </div>
   <div class="mb-5">
-    <label for="email_address" class="sr-only">Correo electrónico</label><input
+    <label for="email_address" class="sr-only">Correo electrónico</label>
+    <input
       id="email_address"
       type="email"
       placeholder="Correo electrónico"
@@ -44,26 +42,22 @@ import Button from "./ui/Button.astro";
     ></textarea>
   </div>
 
-  <div data-netlify-recaptcha="true" class="mb-2 mx-2"></div>
+  <div class="d-flex justify-content-center mb-2">
+    <div data-netlify-recaptcha="true"></div>
+  </div>
   <Button type="submit" size="lg" block>Enviar mensaje</Button>
 </form>
 
-<div id="contact-form-result"></div>
+<div id="contact-form-result" class="d-flex align-items-center justify-content-center" style="min-height: 100px;"></div>
 
 <script is:inline>
-
-  const contactForm = document.getElementById("contact-form");
-  const submitMessage = document.getElementById("contact-form-result");
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    let formData = new FormData(contactForm);
 
-    existe_captcha = document.getElementsByClassName('g-recaptcha');
-    if (!existe_captcha){
-      alert('No existe captcha, recarga la página');
-      return;
-    }
+    const contactForm = document.getElementById("contact-form");
+    const submitMessage = document.getElementById("contact-form-result");
+
+    let formData = new FormData(contactForm);
 
     if (!formData.get('g-recaptcha-response')) {
       submitMessage.innerHTML = `
