@@ -1,11 +1,10 @@
 ---
 import Button from "./ui/Button.astro";
 
-const accessKey = import.meta.env.VITE_PUBLIC_ACCESS_KEY;
-const reCAPTCHA_site_key = import.meta.env.VITE_SITE_RECAPTCHA_KEY;
+// const accessKey = import.meta.env.VITE_PUBLIC_ACCESS_KEY;
+// const reCAPTCHA_site_key = import.meta.env.VITE_SITE_RECAPTCHA_KEY;
 ---
 
-<!-- // Styling Requires Tailwind CSS -->
 <form
   method="post"
   class="needs-validation"
@@ -46,12 +45,10 @@ const reCAPTCHA_site_key = import.meta.env.VITE_SITE_RECAPTCHA_KEY;
   </div>
 
   <div data-netlify-recaptcha="true"></div>
-
   <Button type="submit" size="lg" block>Enviar mensaje</Button>
-
-  <div id="contact-form-result"></div>
 </form>
 
+<div id="contact-form-result"></div>
 
 <script is:inline>
 
@@ -64,7 +61,7 @@ const reCAPTCHA_site_key = import.meta.env.VITE_SITE_RECAPTCHA_KEY;
 
     if (!formData.get('g-recaptcha-response')) {
       submitMessage.innerHTML = `
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
           <strong>Error!</strong> Por favor, completa el reCAPTCHA.
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -80,7 +77,7 @@ const reCAPTCHA_site_key = import.meta.env.VITE_SITE_RECAPTCHA_KEY;
       .then((response) => {
         if (response.status === 303) {
           submitMessage.innerHTML = `
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
               <strong>Error!</strong> Parece que hubo un problema con el reCAPTCHA. Por favor, inténtalo de nuevo.
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -88,7 +85,7 @@ const reCAPTCHA_site_key = import.meta.env.VITE_SITE_RECAPTCHA_KEY;
         } else {
           submitMessage.innerHTML = `
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-              <strong>¡Gracias!</strong> Tu mensaje ha sido enviado, te contactaremos pronto.
+              <strong>¡Gracias!</strong> Tu mensaje ha sido enviado.
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           `;
