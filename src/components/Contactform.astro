@@ -2,19 +2,22 @@
 import Button from "./ui/Button.astro";
 
 const accessKey = import.meta.env.VITE_PUBLIC_ACCESS_KEY;
+const reCAPTCHA_site_key = import.meta.env.VITE_SITE_RECAPTCHA_KEY;
 ---
+
+<!-- <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdPR94qAAAAAFxkrrfaVFA-jvtyCf57PecbUwqO"></script> -->
+
 
 <!-- // Styling Requires Tailwind CSS -->
 <form
-  action="https://api.web3forms.com/submit"
-  method="POST"
-  id="form"
+  method="post"
   class="needs-validation"
-  data-astro-reload
+  name="contact" 
+  netlify 
   novalidate>
   
    <!-- Add your Web3Forms Access Key -->
-  <input type="hidden" name="access_key" value={accessKey} />
+  <!-- <input type="hidden" name="access_key" value={accessKey} /> -->
 
   <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
   <div class="mb-5">
@@ -55,11 +58,18 @@ const accessKey = import.meta.env.VITE_PUBLIC_ACCESS_KEY;
     <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
       Please enter your message.
     </div>
-    <div class="h-captcha" data-captcha="true" data-lang="es" data-theme="dark"></div>
 
+    
   </div>
   <Button type="submit" size="lg" block>Send Message</Button>
+  <!-- <button class="g-recaptcha" 
+    data-sitekey={reCAPTCHA_site_key} 
+    data-callback='onSubmit' 
+    data-action='submit'>Enviar</button> -->
+
+  <input type="hidden" name="recaptcha_response" id="recaptchaResponse">    
   <div id="result" class="mt-3 text-center"></div>
+
 </form>
 
 <style>
@@ -81,82 +91,3 @@ const accessKey = import.meta.env.VITE_PUBLIC_ACCESS_KEY;
     border-color: #dc3545;
   }
 </style>
-
-<script is:inline>
-
-  document.addEventListener("astro:page-load", () => {
-    const form = document.getElementById("form");
-    const result = document.getElementById("result");
-
-
-    // Verifica si el contenedor del captcha existe
-    const captchaContainer = document.querySelector(".h-captcha");
-
-    if (!captchaContainer) {
-      console.error("No se encontró el contenedor del captcha.");
-      return;
-    }
-
-    if (typeof hcaptcha === "undefined") {
-      console.error("hCaptcha no está disponible.");
-      return;
-    }
-
-    console.log("hCaptcha está disponible.");
-    hcaptcha.render(captchaContainer, {});
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      form.classList.add("was-validated");
-      if (!form.checkValidity()) {
-        form.querySelectorAll(":invalid")[0].focus();
-        return;
-      }
-
-      // Verifica si el captcha ha sido completado
-      if (!hcaptcha.getResponse()) {
-        result.innerHTML = "Por favor, completa el captcha.";
-        result.classList.add("text-red-500");
-        return;
-      }
-
-      const formData = new FormData(form);
-      const object = Object.fromEntries(formData);
-      const json = JSON.stringify(object);
-
-      result.innerHTML = "Enviando...";
-
-      fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: json,
-      })
-        .then(async (response) => {
-          let json = await response.json();
-          if (response.status == 200) {
-            result.classList.add("text-green-500");
-            result.innerHTML = json.message;
-          } else {
-            result.classList.add("text-red-500");
-            result.innerHTML = json.message;
-          }
-        })
-        .catch((error) => {
-          result.classList.add("text-red-500");
-          result.innerHTML = "¡Algo salió mal!";
-        })
-        .then(function () {
-          form.reset();
-          form.classList.remove("was-validated");
-          setTimeout(() => {
-            result.style.display = "none";
-          }, 5000);
-        });
-    });
-  }, { once: true });
-</script>
-
-<script src="https://web3forms.com/client/script.js" async defer></script>
