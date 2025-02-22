@@ -1,13 +1,19 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import Contactform from "@components/Contactform.astro";
+
+//import Contactform from "@components/Contactform.astro";
 import { Icon } from "astro-icon/components";
 
+import Button from "@components/ui/Button.astro";
+import { defineMiddleware } from "astro:middleware";
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+export const onRequest = defineMiddleware(async (context, next) => {
+  const response = await next(); // Llamamos a la siguiente función en la cadena de middleware
+  response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+  return response;
+});
 
-const last_posts = posts.slice(0, 3);
+
 ---
 
 <BaseLayout sideBarActiveItemID="contacto">
@@ -36,7 +42,62 @@ const last_posts = posts.slice(0, 3);
             </div>
           </div>
           <div>
-            <Contactform />
+            
+            
+            <form
+            method="post"
+            class="needs-validation"
+            name="contact" 
+            id="contact-form"
+            action="/"
+            data-netlify-recaptcha="true"
+            data-netlify="true"
+          >
+            
+            <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
+            <div class="mb-5">
+              <input
+                type="text"
+                placeholder="Nombre completo"
+                required
+                class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
+                name="name"
+              />
+            </div>
+            <div class="mb-5">
+              <label for="email_address" class="sr-only">Correo electrónico</label>
+              <input
+                id="email_address"
+                type="email"
+                placeholder="Correo electrónico"
+                name="email"
+                required
+                class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
+              />
+            </div>
+            <div class="mb-3">
+              <textarea
+                name="message"
+                required
+                placeholder="Tu mensaje"
+                class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none h-36 focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
+              ></textarea>
+            </div>
+          
+            <div class="d-flex justify-content-center mb-2">
+              <div id="recaptcha-container" data-netlify-recaptcha="true"></div>
+            </div>
+            <Button type="submit" size="lg" block>Enviar mensaje</Button>
+          </form>
+          
+          <div id="contact-form-result" class="d-flex align-items-center justify-content-center" style="min-height: 100px;"></div>
+          
+          
+          <script src="/js/contact-form.js" defer></script>
+          
+
+
+
           </div>
         </div>
     
