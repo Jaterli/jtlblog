@@ -42,13 +42,27 @@ import Button from "./ui/Button.astro";
     ></textarea>
   </div>
 
-  <div id="recaptcha-container" class="mb-3" data-netlify-recaptcha="true"></div>
-  
-   <Button type="submit" size="lg" block>Enviar mensaje</Button>
+  <div id="recaptcha-container" class="mb-3 flex justify-center items-center" data-netlify-recaptcha="true"></div>
+
+  <Button type="submit" size="lg" block>Enviar mensaje</Button>
 
 </form>
 
-<div id="contact-form-result" class="d-flex align-items-center justify-content-center" style="min-height: 100px;"></div>
-
+<div id="contact-form-result" class="flex items-center justify-center min-h-[100px]"></div>
 
 <script src="/js/contact-form.js" defer></script>
+
+<style>
+  /* Estilos para centrar el iframe */
+  .iframe-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+  }
+
+  .iframe-container iframe {
+      border: none;
+  }
+</style>
