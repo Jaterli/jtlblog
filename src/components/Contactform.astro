@@ -50,4 +50,14 @@ import Button from "./ui/Button.astro";
 
 <div id="contact-form-result" class="d-flex align-items-center justify-content-center" style="min-height: 100px;"></div>
 
-<script src="/js/contact-form.js" defer></script>
+
+<!-- <script src="/js/contact-form.js" defer></script> -->
+
+<script>
+  import scriptUrl from '/js/contact-form?url';
+
+  const timestamp = Date.now();
+  const script = document.createElement("script");
+  script.src = `${scriptUrl}?v=${timestamp}`;
+  document.body.appendChild(script);
+</script>
