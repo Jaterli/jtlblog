@@ -1,4 +1,4 @@
-let handleSubmit = (e) => {
+const handleSubmit = (e) => {
   e.preventDefault();
 
   const contactForm = document.getElementById("contact-form");
@@ -18,7 +18,7 @@ let handleSubmit = (e) => {
 
   fetch("/", {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    headers: { "Content-Type": "application/x-www-form-urlencoded", "Cache-Control": "no-store" },
     body: new URLSearchParams(formData).toString(),
   })
     .then((response) => {
