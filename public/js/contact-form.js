@@ -1,3 +1,13 @@
+import { defineMiddleware } from "astro:middleware";
+
+export const onRequest = defineMiddleware(async (context, next) => {
+  const response = await next(); // Llamamos a la siguiente función en la cadena de middleware
+  response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+  return response;
+});
+
+
+
 const handleSubmit = (e) => {
   e.preventDefault();
 
