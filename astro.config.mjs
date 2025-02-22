@@ -10,7 +10,7 @@ export default defineConfig({
   //base: '/jtlblog',
   integrations: [mdx(), sitemap(), tailwind(), icon()],
   output: "static", // El sitio se construye como estático por defecto
-  //adapter: netlify(), // Adaptador de Netlify para funciones serverless
+  adapter: netlify(), // Adaptador de Netlify para funciones serverless
   vite: {
     server:{
       watch: { 
