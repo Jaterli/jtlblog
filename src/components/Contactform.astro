@@ -1,5 +1,7 @@
 ---
 import Button from "./ui/Button.astro";
+// Evita que Astro pre-renderice la página y la genere dinámicamente, para que no se cahcé la información de reCaptcha
+export const prerender = false;
 ---
 
 <form
@@ -51,13 +53,4 @@ import Button from "./ui/Button.astro";
 <div id="contact-form-result" class="d-flex align-items-center justify-content-center" style="min-height: 100px;"></div>
 
 
-<!-- <script src="/js/contact-form.js" defer></script> -->
-
-<script>
-  import scriptUrl from '/js/contact-form.js?url';
-
-  const timestamp = Date.now();
-  const script = document.createElement("script");
-  script.src = `${scriptUrl}?v=${timestamp}`;
-  document.body.appendChild(script);
-</script>
+<script src="/js/contact-form.js" defer></script>
