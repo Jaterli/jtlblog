@@ -48,17 +48,6 @@ import Button from "./ui/Button.astro";
 
 </form>
 
-<div id="contact-form-result" class="flex items-center justify-center min-h-[100px]"></div>
+<div id="contact-form-result" class="mt-3"></div>
 
 <script src="/js/contact-form.js" defer></script>
-
-
-<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-  <div class="flex-1">
-    <strong class="font-bold">Error!</strong><br />
-    <span class="block sm:inline"> Por favor, completa el reCAPTCHA.</span>
-  </div>
-  <button type="button" class="absolute top-0 right-1 px-0 py-0" onclick="this.parentElement.style.display='none'" aria-label="Close">
-    &times;
-  </button>
-</div>
