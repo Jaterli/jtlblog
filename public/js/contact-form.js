@@ -12,7 +12,7 @@ const handleSubmit = (e) => {
     msg_error_text.innerHTML = `
       Por favor, completa el reCAPTCHA
     `;
-    msg_success_container.display='none';
+    msg_success_container.style.display='none';
     msg_error_container.style.display='block';
     return;
   }
@@ -27,12 +27,12 @@ const handleSubmit = (e) => {
         msg_error_text.innerHTML = `
           Parece que hubo un problema con el reCAPTCHA. Por favor, inténtalo de nuevo.</span>
         `;
-        msg_success_container.display='none';
+        msg_success_container.style.display='none';
         msg_error_container.style.display='block';
         return;
       } else {
         msg_error_container.style.display='none';                
-        msg_success_container.display='block';        
+        msg_success_container.style.display='block';        
         contactForm.reset();
       }
     })
@@ -41,7 +41,7 @@ const handleSubmit = (e) => {
       msg_error_text.innerHTML = `
         No se pudo enviar el mensaje, por favor inténtalo de nuevo más tarde.</span>
       `;
-      msg_success_container.display='none';
+      msg_success_container.style.display='none';
       msg_error_container.style.display='block';      
     });
 };
