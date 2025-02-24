@@ -1,162 +1,72 @@
 ---
 import Button from "./ui/Button.astro";
-
-const accessKey = import.meta.env.VITE_PUBLIC_ACCESS_KEY;
 ---
 
-<!-- // Styling Requires Tailwind CSS -->
 <form
-  action="https://api.web3forms.com/submit"
-  method="POST"
-  id="form"
-  class="needs-validation"
-  data-astro-reload
-  novalidate>
+  method="post"
+  name="contact" 
+  id="contact-form"
+  action="/"
+  data-netlify-recaptcha="true"
+  data-netlify="true"
+>
   
-   <!-- Add your Web3Forms Access Key -->
-  <input type="hidden" name="access_key" value={accessKey} />
-
   <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
   <div class="mb-5">
     <input
       type="text"
-      placeholder="Full Name"
+      placeholder="Nombre completo"
       required
       class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
       name="name"
     />
-    <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
-      Please provide your full name.
-    </div>
   </div>
   <div class="mb-5">
-    <label for="email_address" class="sr-only">Email Address</label><input
+    <label for="email_address" class="sr-only">Correo electrónico</label>
+    <input
       id="email_address"
       type="email"
-      placeholder="Email Address"
+      placeholder="Correo electrónico"
       name="email"
       required
       class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
     />
-    <div class="empty-feedback text-red-400 text-sm mt-1">
-      Please provide your email address.
-    </div>
-    <div class="invalid-feedback text-red-400 text-sm mt-1">
-      Please provide a valid email address.
-    </div>
   </div>
   <div class="mb-3">
     <textarea
       name="message"
       required
-      placeholder="Your Message"
+      placeholder="Tu mensaje"
       class="w-full px-4 py-3 border placeholder:text-slate-400 rounded-md outline-none h-36 focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
     ></textarea>
-    <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
-      Please enter your message.
-    </div>
-    <div class="h-captcha" data-captcha="true" data-lang="es" data-theme="dark"></div>
-
   </div>
-  <Button type="submit" size="lg" block>Send Message</Button>
-  <div id="result" class="mt-3 text-center"></div>
+
+  <div id="recaptcha-container" class="flex justify-center items-center" data-netlify-recaptcha="true"></div>
+
+  <Button type="submit" size="lg" class="mt-3" block>Enviar mensaje</Button>
+
 </form>
 
-<style>
-  .invalid-feedback,
-  .empty-feedback {
-    display: none;
-  }
+<div id="msg-error-container" class="mt-3 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" style="display: none;" role="alert">
+  <div class="flex-1">
+    <strong class="font-bold">Error!</strong><br />
+    <span class="block sm:inline"></span>
+  </div>
+  <button type="button" class="absolute top-0 right-1 px-0 py-0" onclick="this.parentElement.style.display='none'" aria-label="Close">
+    &times;
+  </button>
+</div>
 
-  .was-validated :placeholder-shown:invalid ~ .empty-feedback {
-    display: block;
-  }
-
-  .was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
-    display: block;
-  }
-
-  .is-invalid,
-  .was-validated :invalid {
-    border-color: #dc3545;
-  }
-</style>
-
-<script is:inline>
-
-  document.addEventListener("astro:page-load", () => {
-    const form = document.getElementById("form");
-    const result = document.getElementById("result");
+<div id="msg-success-container" class="mt-3 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" style="display: none;" role="alert">
+  <div class="flex-1">
+    <strong class="font-bold">¡Gracias!</strong><br />
+    <span class="block sm:inline">Tu mensaje ha sido enviado.</span>
+  </div>
+  <button type="button" class="absolute top-0 right-1 px-0 py-0" onclick="this.parentElement.style.display='none'" aria-label="Close">
+    &times;
+  </button>
+</div>
 
 
-    // Verifica si el contenedor del captcha existe
-    const captchaContainer = document.querySelector(".h-captcha");
 
-    if (!captchaContainer) {
-      console.error("No se encontró el contenedor del captcha.");
-      return;
-    }
-
-    if (typeof hcaptcha === "undefined") {
-      console.error("hCaptcha no está disponible.");
-      return;
-    }
-
-    console.log("hCaptcha está disponible.");
-    hcaptcha.render(captchaContainer, {});
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      form.classList.add("was-validated");
-      if (!form.checkValidity()) {
-        form.querySelectorAll(":invalid")[0].focus();
-        return;
-      }
-
-      // Verifica si el captcha ha sido completado
-      if (!hcaptcha.getResponse()) {
-        result.innerHTML = "Por favor, completa el captcha.";
-        result.classList.add("text-red-500");
-        return;
-      }
-
-      const formData = new FormData(form);
-      const object = Object.fromEntries(formData);
-      const json = JSON.stringify(object);
-
-      result.innerHTML = "Enviando...";
-
-      fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: json,
-      })
-        .then(async (response) => {
-          let json = await response.json();
-          if (response.status == 200) {
-            result.classList.add("text-green-500");
-            result.innerHTML = json.message;
-          } else {
-            result.classList.add("text-red-500");
-            result.innerHTML = json.message;
-          }
-        })
-        .catch((error) => {
-          result.classList.add("text-red-500");
-          result.innerHTML = "¡Algo salió mal!";
-        })
-        .then(function () {
-          form.reset();
-          form.classList.remove("was-validated");
-          setTimeout(() => {
-            result.style.display = "none";
-          }, 5000);
-        });
-    });
-  }, { once: true });
-</script>
-
-<script src="https://web3forms.com/client/script.js" async defer></script>
+<script src="/js/contact-form.js" defer></script>

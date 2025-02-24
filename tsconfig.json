@@ -11,7 +11,7 @@
         "src/layouts/*"
       ],
       "@scripts/*": [
-        "src/scripts/*"
+        "public/scripts/*"
       ]           
     }
   }

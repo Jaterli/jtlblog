@@ -1,13 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
 import Contactform from "@components/Contactform.astro";
 import { Icon } from "astro-icon/components";
-
-
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const last_posts = posts.slice(0, 3);
 ---
 
 <BaseLayout sideBarActiveItemID="contacto">
@@ -42,7 +36,6 @@ const last_posts = posts.slice(0, 3);
     
       </text>
     </div>
-    
-  </div>
   
+  </div>
 </BaseLayout>
