@@ -22,3 +22,20 @@
 .hero-content{
   @apply px-0;
 }
+
+@layer base {
+  @media (max-width: 640px) { /* Se aplica en móviles (sm y menores) */
+    .text-3xl {
+      font-size: 1.5rem !important;
+      line-height: 2rem !important;
+    }
+    .text-4xl {
+      font-size: 1.8rem !important;
+      line-height: 2.2rem !important;
+    }    
+  }
+}
+
+.g-recaptcha iframe{
+  max-width: 100%;
+}

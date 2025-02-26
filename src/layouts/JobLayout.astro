@@ -1,6 +1,7 @@
 ---
 import { type JobSchema } from "../content/config";
 import BaseLayout from "./BaseLayout.astro";
+import dayjs from "dayjs";
 
 export interface Props extends JobSchema {}
 
@@ -14,6 +15,10 @@ const {
 } = Astro.props;
 
 import { Image } from "astro:assets";
+
+const format_startDate = dayjs(startDate).format("DD/MM/YYYY")
+const format_endDate = dayjs(endDate).format("DD/MM/YYYY")
+
 ---
 
 <BaseLayout title={title} description={description} image={heroImage}>
@@ -31,7 +36,7 @@ import { Image } from "astro:assets";
         </h1>
         <div class="flex place-content-between items-center">
           <div class="grow md:grow-0">
-            <span class="text-md mr-1"> {startDate} - {endDate}</span>
+            <span class="text-md mr-1"> {format_startDate} - {format_endDate}</span>
           </div>
         </div>
       </div>

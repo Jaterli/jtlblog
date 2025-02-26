@@ -1,4 +1,6 @@
 ---
+import dayjs from "dayjs";
+
 const {
   title,
   description,
@@ -10,6 +12,9 @@ const {
   url,
 } = Astro.props;
 import { Image } from "astro:assets";
+
+const format_startDate = dayjs(startDate).format("DD/MM/YYYY")
+const format_endDate = dayjs(endDate).format("DD/MM/YYYY")
 ---
 
 <div class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
@@ -33,7 +38,7 @@ import { Image } from "astro:assets";
           {badge && <div class="badge badge-neutral rounded"> {badge}</div>}
         </h1>        
         <p class="text-1xl">{description}</p>
-        <p class="pt-2 text-sm opacity-70">{startDate} - {endDate}</p>        
+        <p class="pt-2 text-sm opacity-70">{format_startDate} - {format_endDate}</p>        
       </div>
     </div>
   </a>

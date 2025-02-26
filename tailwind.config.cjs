@@ -7,12 +7,13 @@ module.exports = {
 	], 
 
 	theme: {	
-		extend: {},
-		/*
-		fontSize: {
-			lg: '3rem', // Adds a new `font-display` class
-		}
-		*/		
+		extend: {
+			fontSize: {
+				//lg: '3rem', // Adds a new `font-display` class
+				//sm: '0.6rem',    // Extra small
+				'4xl': ['2.25rem', { lineHeight: '3rem' }],
+			}			
+		},			
 	  },
 	
 	plugins: [

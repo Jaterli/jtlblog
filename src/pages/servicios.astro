@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Desarrollador Full Stack | Especialista en Django, React y Blockchain";
+const description="Construyo soluciones web eficientes con Django y React, optimizando rendimiento y seguridad. Desarrollo API, marketplaces y contratos inteligentes en Solidity";
+---
+
+<BaseLayout title={title} description={description} ogType="article" sideBarActiveItemID="servicios">
+    <article class="max-w-3xl mx-auto prose prose-lg">
+        <h1 class="text-3xl font-bold mb-6">Servicios de Programación</h1>
+        
+        <h2 class="text-2xl font-semibold mb-4">Desarrollo Backend y API</h2>
+        <ul>
+            <li><strong>Desarrollo de aplicaciones web con Django y Django Rest Framework</strong> – Creación de sistemas robustos con autenticación, gestión de usuarios y bases de datos.</li>
+            <li><strong>Diseño y desarrollo de API REST</strong> – Implementación de API seguras y eficientes para conectar el backend con frontend o aplicaciones móviles.</li>
+            <li><strong>Gestión y optimización de bases de datos</strong> – Modelado y administración de bases de datos SQL y NoSQL, incluyendo PostgreSQL y SQLite.</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold mb-4">Desarrollo Frontend</h2>
+        <ul>
+            <li><strong>Desarrollo de aplicaciones web con React y TypeScript</strong> – Creación de interfaces dinámicas y eficientes utilizando Vite para optimizar el rendimiento.</li>
+            <li><strong>Integración de Astro para sitios web rápidos</strong> – Desarrollo de sitios estáticos o híbridos con Astro para optimizar tiempos de carga y SEO.</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold mb-4">Desarrollo Blockchain y Smart Contracts</h2>
+        <ul>
+            <li><strong>Desarrollo de contratos inteligentes en Solidity</strong> – Creación y auditoría de contratos inteligentes para aplicaciones descentralizadas (DApps).</li>
+            <li><strong>Desarrollo de marketplaces con Hardhat y Next.js</strong> – Implementación de plataformas para la compra y venta de activos digitales con integración de MetaMask y redes de prueba como Sepolia.</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold mb-4">Gestión y despliegue de proyectos</h2>
+        <ul>
+            <li><strong>Configuración y administración de monorepos con frontend y backend</strong> – Estructuración eficiente de proyectos en un solo repositorio con Django y React.</li>
+            <li><strong>Despliegue de aplicaciones web</strong> – Configuración de servidores y hosting para aplicaciones en producción.</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold mb-4">Automatización y consultoría</h2>
+        <ul class="list-disc list-inside">
+            <li><strong>Automatización de procesos y consultas personalizadas en Django</strong> – Desarrollo de herramientas para generar informes dinámicos y facilitar la gestión de datos en proyectos.</li>
+        </ul>
+    </article>
+</BaseLayout>
