@@ -15,7 +15,19 @@
   font-size: 0.9em;
 }
 
+.prose :where(h1){
+  font-weight:700;
+}
+
 .prose :where(h2){
+  font-weight: 600;
+}
+
+h1{
+  font-weight: 700;
+}
+
+h2{
   font-weight: 600;
 }
 
@@ -32,10 +44,14 @@
     .text-4xl {
       font-size: 1.8rem !important;
       line-height: 2.2rem !important;
-    }    
+    }
   }
 }
 
+.g-recaptcha > div{
+  max-width: 100%;
+}
 .g-recaptcha iframe{
   max-width: 100%;
 }
+

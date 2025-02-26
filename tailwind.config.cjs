@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: [
 		'./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', // solo se aplica al directorio src
@@ -11,7 +10,7 @@ module.exports = {
 			fontSize: {
 				//lg: '3rem', // Adds a new `font-display` class
 				//sm: '0.6rem',    // Extra small
-				'4xl': ['2.25rem', { lineHeight: '3rem' }],
+				'4xl': ['2.8rem', { lineHeight: '3rem' }],				
 			}			
 		},			
 	  },
