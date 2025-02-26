@@ -48,7 +48,7 @@ h2{
   }
 }
 
-.g-recaptcha > div{
+.g-recaptcha .div{
   max-width: 100%;
 }
 .g-recaptcha iframe{
