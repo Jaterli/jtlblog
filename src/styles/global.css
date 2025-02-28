@@ -15,6 +15,10 @@
   font-size: 0.9em;
 }
 
+.prose-lg{
+  line-height: ;
+}
+
 .prose :where(h1){
   font-weight:700;
 }
@@ -25,6 +29,7 @@
 
 h1{
   font-weight: 700;
+  line-height: 3.6rem !important;
 }
 
 h2{
