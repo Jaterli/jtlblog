@@ -6,7 +6,7 @@ import icon from "astro-icon";
 import netlify from "@astrojs/netlify";
 
 export default defineConfig({
-  site: 'https://jaterli.netlify.app',
+  site: 'https://jaterli.com',
   //base: '/jtlblog',
   integrations: [mdx(), sitemap(), tailwind(), icon()],
   output: "static", // El sitio se construye como estático por defecto
