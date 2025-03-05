@@ -4,7 +4,8 @@ name: Actualizar conteo de publicaciones por mes
 
 on:
   schedule:    
-    - cron: '0 11 * * *'  # Todos los días a las 12:00 UTC
+    #- cron: '0 11 * * *'  # Todos los días a las 12:00 UTC
+    - cron: '0 0 * * 5' # Ejecuta el workflow todos los viernes a las 12 de la noche, hora de Madrid (CET/CEST)
   workflow_dispatch:
     inputs:
       logLevel:
