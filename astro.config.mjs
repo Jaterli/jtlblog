@@ -9,11 +9,8 @@ export default defineConfig({
   site: 'https://jaterli.com',
   //base: '/jtlblog',
   integrations: [mdx(), tailwind(), icon(), sitemap({
-    filter: (page) => {
-      // Excluye todas las páginas que empiecen por...
-      return !page.startsWith('/blog/tag/');
-    },
-
+    // Escluye las páginas que cumplan con la condición
+      filter: (page) => !page.includes('/blog/tag/')
   }) ],
   output: "static", // El sitio se construye como estático por defecto
   adapter: netlify(), // Adaptador de Netlify para funciones serverless
