@@ -8,7 +8,14 @@ import netlify from "@astrojs/netlify";
 export default defineConfig({
   site: 'https://jaterli.com',
   //base: '/jtlblog',
-  integrations: [mdx(), sitemap(), tailwind(), icon()],
+  integrations: [mdx(), tailwind(), icon(), sitemap({
+    filter: (page) => {
+      // Excluye las páginas que no quieres que aparezcan en el sitemap
+      const excludedPages = ['/blog/tag/'];
+      return !excludedPages.includes(page);
+    },
+
+  }) ],
   output: "static", // El sitio se construye como estático por defecto
   adapter: netlify(), // Adaptador de Netlify para funciones serverless
   vite: {

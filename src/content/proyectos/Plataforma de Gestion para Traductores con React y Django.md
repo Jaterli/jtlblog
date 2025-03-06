@@ -1,6 +1,6 @@
 ---
 title: "Gestión de Traductores y Consultas Personalizadas."
-description: "Plataforma en Django que servirá como área privada para traductores."
+description: "Plataforma en Django + React que servirá como área privada para traductores"
 pubDate: "2025-02-17"
 heroImage: "/assets/images/proyectos/React+Django+SQLite.png"
 badge: "Finalizado"
