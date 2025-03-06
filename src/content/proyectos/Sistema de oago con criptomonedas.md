@@ -21,7 +21,7 @@ Con este sistema, busco ofrecer a las empresas una **alternativa eficiente y tra
 ## 🔥 **Plan de Desarrollo**  
 
 ### 🏗 **Tecnologías a usar**  
-✅ **Frontend**: Next.js (con TypeScript)  
+✅ **Frontend**: React + Vite (con TypeScript)  
 ✅ **Backend**: Django (con Django REST Framework)  
 ✅ **Blockchain**: Ethereum + Web3.js / ethers.js  
 ✅ **Billeteras**: Web3Modal (MetaMask, WalletConnect, Coinbase Wallet)  
