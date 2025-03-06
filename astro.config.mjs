@@ -10,9 +10,8 @@ export default defineConfig({
   //base: '/jtlblog',
   integrations: [mdx(), tailwind(), icon(), sitemap({
     filter: (page) => {
-      // Excluye las páginas que no quieres que aparezcan en el sitemap
-      const excludedPages = ['/blog/tag/'];
-      return !excludedPages.includes(page);
+      // Excluye todas las páginas que empiecen por...
+      return !page.startsWith('/blog/tag/');
     },
 
   }) ],
