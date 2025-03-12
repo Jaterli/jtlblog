@@ -10,11 +10,11 @@ tags: ["Web3Modal", "React", "Django", "Python", "Typescript"]
 
 ## 📢 Introducción  
 
-Este proyecto tiene como objetivo desarrollar una **plataforma de pagos basada en blockchain**, permitiendo a las empresas aceptar pagos en **ETH, USDT y USDC** de manera segura y sencilla. A través de una integración con **Web3Modal**, los usuarios podrán autenticarse con sus billeteras digitales y realizar transacciones sin intermediarios.  
+Este proyecto tiene como objetivo desarrollar una **plataforma de pagos basada en blockchain**, permitiendo a las empresas aceptar pagos en **ETH, USDT y USDC** de manera segura y sencilla. A través de una integración con **Wagmi**, los usuarios podrán autenticarse con sus billeteras digitales y realizar transacciones sin intermediarios, mientras que **Chakra UI** garantizará una experiencia de usuario moderna y accesible.  
 
 El desarrollo comenzará el **5 de marzo de 2025** y se espera completar el MVP para el **30 de abril de 2025**. La plataforma incluirá funcionalidades clave como la **autenticación descentralizada, generación de pagos en cripto, un panel de administración para empresas y facturación en blockchain**.  
 
-Con este sistema, busco ofrecer a las empresas una **alternativa eficiente y transparente** para recibir pagos en criptomonedas, simplificando su adopción y automatizando el proceso de conversión y facturación.  
+Con este sistema, busco ofrecer a las empresas una **alternativa eficiente y transparente** para recibir pagos en criptomonedas, simplificando su adopción y automatizando el proceso de conversión y facturación. La combinación de **Wagmi** para la integración con blockchain y **Chakra UI** para la interfaz de usuario permitirá crear una plataforma robusta, escalable y fácil de usar.  
 
 ---
 
