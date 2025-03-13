@@ -36,7 +36,7 @@ const isTaskPending = (endDay: string | null): boolean => {
       {tasks.slice(0, visibleTasks).map((task) => {
         const isPending = isTaskPending(task.endDay);
         return (
-          <li class="p-4 bg-base-200 border rounded-lg shadow-sm">
+          <li class="p-4 bg-base-200">
             <div class="flex items-center gap-2">
               {isPending ? (
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -83,6 +83,7 @@ const isTaskPending = (endDay: string | null): boolean => {
     document.addEventListener("DOMContentLoaded", () => {
       const tasksContainer = document.getElementById("tasks-list");
       const loadMoreButton = document.getElementById("load-more-button");
+      console.log("DOM cargado");
 
       if (!tasksContainer || !loadMoreButton) return;
 
@@ -99,7 +100,7 @@ const isTaskPending = (endDay: string | null): boolean => {
           data.forEach((task) => {
             const isPending = !task.endDay || new Date(task.endDay) > new Date();
             const taskElement = document.createElement("li");
-            taskElement.className = "p-4 bg-base-200 border rounded-lg shadow-sm";
+            taskElement.className = "p-4 bg-base-200";
             taskElement.innerHTML = `
               <div class="flex items-center gap-2">
                 ${
