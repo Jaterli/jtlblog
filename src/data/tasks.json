@@ -1,13 +1,17 @@
 {
-  "pending": [
+  "tasks": [
+    {
+      "description": "Búsqueda de empleo",
+      "details": "Actualmente, me encuentro en búsqueda activa de oportunidades laborales mientras fortalezco mis conocimientos en desarrollo web a través de la creación y ejecución de proyectos prácticos.",
+      "startDay": "2025-01-01",
+      "endDay": ""
+    },      
     {
       "description": "Proyecto en curso",
       "details": "Sistema de Pago con Criptomonedas.",
       "startDay": "2025-03-05",
-      "endDay": "2025-05-30"
-    }
-  ],
-  "completed": [
+      "endDay": "2025-05-05"
+    },    
     {
       "description": "Página de tareas para mi website",
       "details": "Página de tareas realizadas y pendientes que me servirán como motivación personal.",

@@ -7,7 +7,7 @@ export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
   const start = parseInt(url.searchParams.get('start') || '0');
   const end = parseInt(url.searchParams.get('end') || '10');
-  const tasks = tasksData.completed.slice(start, end);
+  const tasks = tasksData.tasks.slice(start, end);
 
   return new Response(JSON.stringify(tasks), {
     headers: {
