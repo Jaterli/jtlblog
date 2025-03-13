@@ -26,7 +26,7 @@ const totalCompletedTasks = tasksByStatus.completed.length;
   <article class="max-w-3xl mx-auto prose prose-lg">
     <h1 class="text-4xl text-center">Mis tareas</h1>
     <div class="text-xl text-center">
-      Esta página sirve como fuente de motivación personal. Ver el progreso tangible me impulsa a seguir aprendiendo, creando y mejorando, mientras comparto mi viaje con quienes visitan mi sitio.
+      Esta sección sirve como fuente de motivación personal. Ver el progreso tangible me impulsa a seguir aprendiendo, creando y mejorando, mientras comparto mi viaje con quienes visitan mi sitio.
     </div>
     <hr />
   </article>
@@ -42,7 +42,7 @@ const totalCompletedTasks = tasksByStatus.completed.length;
           <p class="text-sm mt-2 opacity-75">
             {task.startDay === task.endDay
               ? `Desde el ${new Date(task.startDay).toLocaleDateString()} hasta el ${new Date(task.endDay).toLocaleDateString()}`
-              : `Día ${new Date(task.startDay).toLocaleDateString()}`}
+              : `Comenzado el ${new Date(task.startDay).toLocaleDateString()}`}
           </p>
         </div>
       ))}
@@ -58,7 +58,9 @@ const totalCompletedTasks = tasksByStatus.completed.length;
           <p class="text-xl text-green-600">{task.description}</p>
           {task.details && <p class="mt-2 italic opacity-85">{task.details}</p>}
           <p class="text-sm mt-2 opacity-75">
-            Días: {new Date(task.startDay).toLocaleDateString()} - {new Date(task.endDay).toLocaleDateString()}
+            {task.startDay === task.endDay
+              ? `Desde el ${new Date(task.startDay).toLocaleDateString()} hasta el ${new Date(task.endDay).toLocaleDateString()}`
+              : `Día ${new Date(task.startDay).toLocaleDateString()}`}
           </p>
         </div>
       ))}
