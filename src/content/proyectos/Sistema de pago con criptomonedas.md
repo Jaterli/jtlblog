@@ -8,10 +8,6 @@ tags: ["Wagmi", "Chakra UI", "React", "Django", "Python", "Typescript"]
 ---
 
 
-Aquí tienes la versión modificada del README, donde se ha actualizado la información para que el proyecto autodetecte el proveedor de MetaMask en lugar de depender específicamente de la Testnet Sepolia:
-
----
-
 ## 📢 Introducción  
 
 Este proyecto tiene como objetivo desarrollar una **plataforma de pagos basada en blockchain**, permitiendo a las empresas aceptar pagos en **ETH, USDT y USDC** de manera segura y sencilla. A través de una integración con **Wagmi**, los usuarios podrán autenticarse con sus billeteras digitales y realizar transacciones sin intermediarios, mientras que **Chakra UI** garantizará una experiencia de usuario moderna y accesible.  

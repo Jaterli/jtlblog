@@ -1,5 +1,5 @@
 {
-  "tasks": [
+  "tasks": [  
     {
       "description": "Búsqueda de empleo",
       "details": "Actualmente, me encuentro en búsqueda activa de oportunidades laborales mientras fortalezco mis conocimientos en desarrollo web a través de la creación y ejecución de proyectos prácticos.",
@@ -7,8 +7,14 @@
       "endDay": ""
     },      
     {
-      "description": "Proyecto en curso",
-      "details": "Sistema de Pago con Criptomonedas.",
+      "description": "Generación de Snippets para Redes Sociales con la api de ChatGPT",
+      "details": "Generar hilos de Twitter a partir de un post, crear resúmenes atractivos para LinkedIn, proponer hashtags relevantes.",
+      "startDay": "",
+      "endDay": ""
+    },       
+    {
+      "description": "Sistema de Pago con Criptomonedas",
+      "details": "plataforma de pagos basada en blockchain, permitiendo a las empresas aceptar pagos en ETH, USDT y USDC de manera segura y sencilla.",
       "startDay": "2025-03-05",
       "endDay": "2025-05-05"
     },    

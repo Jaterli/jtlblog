@@ -5,8 +5,8 @@ import tasksData from "../data/tasks.json";
 interface Task {
   description: string;
   details?: string;
-  startDay: string;
-  endDay: string | null; // Permitir null para tareas pendientes
+  startDay: string | null; // Permitir null para tareas pendientes
+  endDay: string | null;
 }
 
 const tasks: Task[] = tasksData.tasks;
@@ -21,7 +21,7 @@ const isTaskPending = (endDay: string | null): boolean => {
 };
 ---
 
-<BaseLayout title="Objetivos Diarios" sideBarActiveItemID="daily-tasks">
+<BaseLayout title="Tareas" sideBarActiveItemID="tareas">
   <article class="max-w-3xl mx-auto prose prose-lg">
     <h1 class="text-4xl text-center">Mis tareas</h1>
     <p class="text-xl text-center">
@@ -53,11 +53,13 @@ const isTaskPending = (endDay: string | null): boolean => {
             </div>
             {task.details && <p class="mt-2 italic opacity-85">{task.details}</p>}
             <p class="text-sm mt-2 opacity-75">
-              {task.endDay
-                ? task.startDay === task.endDay
-                  ? `Completado el ${new Date(task.startDay).toLocaleDateString()}`
-                  : `Desde el ${new Date(task.startDay).toLocaleDateString()} hasta el ${new Date(task.endDay).toLocaleDateString()}`
-                : `Iniciado el ${new Date(task.startDay).toLocaleDateString()}`}
+              {task.startDay
+                ? task.endDay
+                  ? task.startDay === task.endDay
+                    ? `Completado el ${new Date(task.startDay).toLocaleDateString()}`
+                    : `Desde el ${new Date(task.startDay).toLocaleDateString()} hasta el ${new Date(task.endDay).toLocaleDateString()}`
+                  : `Iniciado el ${new Date(task.startDay).toLocaleDateString()}`
+                : "Sin iniciar"}
             </p>
           </li>
         );
@@ -114,11 +116,13 @@ const isTaskPending = (endDay: string | null): boolean => {
               ${task.details ? `<p class="mt-2 italic opacity-85">${task.details}</p>` : ""}
               <p class="text-sm mt-2 opacity-75">
                 ${
-                  task.endDay
+                  task.startDay
+                  ? task.endDay
                     ? task.startDay === task.endDay
                       ? `Completado el ${new Date(task.startDay).toLocaleDateString()}`
                       : `Desde el ${new Date(task.startDay).toLocaleDateString()} hasta el ${new Date(task.endDay).toLocaleDateString()}`
                     : `Iniciado el ${new Date(task.startDay).toLocaleDateString()}`
+                  : "Sin iniciar"
                 }
               </p>
             `;
