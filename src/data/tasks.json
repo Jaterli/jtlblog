@@ -1,0 +1,108 @@
+{
+  "pending": [
+    {
+      "description": "Proyecto en curso",
+      "details": "Sistema de Pago con Criptomonedas.",
+      "startDay": "2025-03-05",
+      "endDay": "2025-05-30"
+    }
+  ],
+  "completed": [
+    {
+      "description": "Página de tareas para mi website",
+      "details": "Página de tareas realizadas y pendientes que me servirán como motivación personal.",
+      "startDay": "2025-03-12",
+      "endDay": "2025-03-13"
+    },
+    {
+      "description": "Proyecto realizado",
+      "details": "Gestión de Traductores y Consultas Personalizadas con React y Django.",
+      "startDay": "2024-11-10",
+      "endDay": "2025-02-17"
+    },
+    {
+      "description": "Post para el blog",
+      "details": "Almacenamiento de valores separados por comas en campos TextField en Django.",
+      "startDay": "2024-09-26",
+      "endDay": "2024-09-26"
+    },
+    {
+      "description": "Post para el blog",
+      "details": "Error: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'",
+      "startDay": "2024-09-24",
+      "endDay": "2024-09-24"
+    },
+    {
+      "description": "Post para el blog",
+      "details": "Rust como parte de mi aprendizaje.",
+      "startDay": "2024-09-21",
+      "endDay": "2024-09-21"
+    },
+    {
+      "description": "Proyecto realizado",
+      "details": "GitHub Action automatizar flujos de trabajo.",
+      "startDay": "2024-09-18",
+      "endDay": "2024-09-18"
+    },
+    {
+      "description": "Proyecto realizado",
+      "details": "Creación de gráfica de barras con Streamlit.",
+      "startDay": "2024-09-12",
+      "endDay": "2024-09-18"
+    },
+    {
+      "description": "Proyecto realizado",
+      "details": "Tema claro/oscuro interactivo con Tailwind CSS + daisyui + Astro View Transicions.",
+      "startDay": "2024-09-11",
+      "endDay": "2024-09-12"
+    },
+    {
+      "description": "Post para el blog",
+      "details": "Frameworks Más Utilizados en 2024",
+      "startDay": "2024-08-26",
+      "endDay": "2024-08-26"
+    },
+    {
+      "description": "Post para el blog",
+      "details": "iostdin().read_line(&mut input) VS read!() de text_io",
+      "startDay": "2024-08-26",
+      "endDay": "2024-08-26"
+    },
+    {
+      "description": "Post para el blog",
+      "details": "¿Por qué Astro?",
+      "startDay": "2024-08-26",
+      "endDay": "2024-08-26"
+    },
+    {
+      "description": "Post para el blog",
+      "details": "Cómo Iniciar un Blog para Desarrolladores Web y No Morir en el Intento",
+      "startDay": "2024-08-22",
+      "endDay": "2024-08-22"
+    },
+    {
+      "description": "Crear este blog con Astro",
+      "details": "Poniendo en práctica los conocimientos obtenidos en la academia Conquer Blocks",
+      "startDay": "2024-07-05",
+      "endDay": "2024-08-02"
+    },
+    {
+      "description": "Post para el blog",
+      "details": "Cómo Iniciar un Blog para Desarrolladores Web y No Morir en el Intento",
+      "startDay": "2024-07-10",
+      "endDay": "2024-07-23"
+    },
+    {
+      "description": "Aprender a usar Astro",
+      "details": "Ver las clases de Astro de Conquer y hacer las prácticas propuestas.",
+      "startDay": "2024-07-10",
+      "endDay": "2024-07-23"
+    },
+    {
+      "description": "Proyecto realizado",
+      "details": "Plataforma de Gestión para Traductores con PHP y MySQL.",
+      "startDay": "2022-10-12",
+      "endDay": "2022-02-02"
+    }
+  ]
+}

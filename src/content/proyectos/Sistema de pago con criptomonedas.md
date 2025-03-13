@@ -4,9 +4,13 @@ description: "Sistema de pago basado en Ethereum y USDT/USDC, que permita a las 
 pubDate: "2025-03-05"
 heroImage: "/assets/images/proyectos/projects.pending.jpg"
 badge: "En curso"
-tags: ["Web3Modal", "React", "Django", "Python", "Typescript"]
+tags: ["Wagmi", "Chakra UI", "React", "Django", "Python", "Typescript"]
 ---
 
+
+Aquí tienes la versión modificada del README, donde se ha actualizado la información para que el proyecto autodetecte el proveedor de MetaMask en lugar de depender específicamente de la Testnet Sepolia:
+
+---
 
 ## 📢 Introducción  
 
@@ -25,13 +29,13 @@ Con este sistema, busco ofrecer a las empresas una **alternativa eficiente y tra
 ✔️ **Seleccionar tecnologías:**  
   - **Frontend:** React + TypeScript (Vite) con **Chakra UI** para la interfaz de usuario.  
   - **Backend:** Django + Django REST Framework (API).  
-  - **Blockchain:** Ethereum (Testnet Sepolia) + **Wagmi** para la integración con Ethereum.  
+  - **Blockchain:** Ethereum (autodetección del proveedor de MetaMask) + **Wagmi** para la integración con Ethereum.  
 ✔️ **Elegir wallet compatible:** MetaMask (compatible con Wagmi).  
 ✔️ **Definir la infraestructura:** Backend en Django para gestionar usuarios y transacciones, frontend en React con Chakra UI para la UI.  
 
 ---
 
-### ✅ FASE 2: Integración de Wagmi y Conexión de Wallet (COMPLETADA)  
+### ✅ FASE 2: Integración de Wagmi y Conexión de Wallet   
 ✔️ **Implementar conexión con MetaMask usando Wagmi.**  
 ✔️ **Recuperar la dirección de la wallet y almacenarla en el estado global usando Wagmi hooks.**  
 ✔️ **Obtener información de la red y el saldo en ETH usando Wagmi.**  
@@ -99,6 +103,3 @@ Con este sistema, busco ofrecer a las empresas una **alternativa eficiente y tra
 🟡 Optimizar el rendimiento del frontend con lazy loading y code splitting.  
 🟡 Añadir un sistema de notificaciones en tiempo real usando WebSockets.  
 
----
-
-Con la integración de **Wagmi** y **Chakra UI**, el proyecto se beneficiará de una mayor simplicidad en la integración con Ethereum y una interfaz de usuario moderna y accesible. Estas herramientas permitirán un desarrollo más rápido y un producto final más robusto y escalable.

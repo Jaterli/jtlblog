@@ -1,0 +1,118 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import tasksData from "../data/tasks.json";
+
+interface Task {
+  description: string;
+  details?: string;
+  startDay: string;
+  endDay: string;
+}
+
+interface TasksByStatus {
+  pending: Task[];
+  completed: Task[];
+}
+
+const tasksByStatus: TasksByStatus = JSON.parse(JSON.stringify(tasksData));
+
+// Estado de la paginación
+let visibleCompletedTasks = 10;
+const totalCompletedTasks = tasksByStatus.completed.length;
+---
+
+<BaseLayout title="Objetivos Diarios" sideBarActiveItemID="daily-tasks">
+
+  <article class="max-w-3xl mx-auto prose prose-lg">
+    <h1 class="text-4xl text-center">Mis tareas</h1>
+    <div class="text-xl text-center">
+      Esta página sirve como fuente de motivación personal. Ver el progreso tangible me impulsa a seguir aprendiendo, creando y mejorando, mientras comparto mi viaje con quienes visitan mi sitio.
+    </div>
+    <hr />
+  </article>
+
+  <!-- Sección de Objetivos Pendientes -->
+  <article class="mt-10 mb-10">
+    <h2 class="text-2xl mb-4">Pendientes</h2>
+    <div class="space-y-4">
+      {tasksByStatus.pending.map((task) => (
+        <div class="p-4 bg-base-200 border rounded-lg shadow-sm">
+          <p class="text-xl text-red-600">{task.description}</p>
+          {task.details && <p class="mt-2 italic opacity-85">{task.details}</p>}
+          <p class="text-sm mt-2 opacity-75">
+            {task.startDay === task.endDay
+              ? `Desde el ${new Date(task.startDay).toLocaleDateString()} hasta el ${new Date(task.endDay).toLocaleDateString()}`
+              : `Día ${new Date(task.startDay).toLocaleDateString()}`}
+          </p>
+        </div>
+      ))}
+    </div>
+  </article>
+
+  <!-- Sección de Objetivos Completados -->
+  <article class="mb-6">
+    <h2 class="text-2xl mb-4">Completadas</h2>
+    <div class="space-y-4" id="completed-tasks" data-visible={visibleCompletedTasks} data-total={totalCompletedTasks}>
+      {tasksByStatus.completed.slice(0, visibleCompletedTasks).map((task) => (
+        <div class="p-4 bg-base-200 border rounded-lg">
+          <p class="text-xl text-green-600">{task.description}</p>
+          {task.details && <p class="mt-2 italic opacity-85">{task.details}</p>}
+          <p class="text-sm mt-2 opacity-75">
+            Días: {new Date(task.startDay).toLocaleDateString()} - {new Date(task.endDay).toLocaleDateString()}
+          </p>
+        </div>
+      ))}
+    </div>
+  </article>
+
+  {visibleCompletedTasks < totalCompletedTasks && (
+    <div class="text-center">
+      <button 
+        id="load-more-button"
+        class="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+        >
+        Ver más
+      </button>
+    </div>
+  )}
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const completedTasksContainer = document.getElementById("completed-tasks");
+      const loadMoreButton = document.getElementById("load-more-button");
+
+      if (!completedTasksContainer || !loadMoreButton) return;
+
+      loadMoreButton.addEventListener("click", async () => {
+        let visibleCompletedTasks = parseInt(completedTasksContainer.dataset.visible || "10");
+        const totalCompletedTasks = parseInt(completedTasksContainer.dataset.total || "0");
+        const newVisibleTasks = visibleCompletedTasks + 3;
+
+        try {
+          const response = await fetch(`/api/getMoreTasks?start=${visibleCompletedTasks}&end=${newVisibleTasks}`);
+          if (!response.ok) throw new Error("Error al cargar más tareas");
+
+          const data = await response.json();
+          data.forEach((task) => {
+            const taskElement = document.createElement("div");
+            taskElement.className = "p-4 bg-base-200 border rounded-lg";
+            taskElement.innerHTML = `
+              <p class="text-xl text-green-600">${task.description}</p>
+              ${task.details ? `<p class="mt-2 italic opacity-85">${task.details}</p>` : ""}
+              <p class="text-sm mt-2 opacity-75">
+                Días: ${new Date(task.startDay).toLocaleDateString()} - ${new Date(task.endDay).toLocaleDateString()}
+              </p>
+            `;
+            completedTasksContainer.appendChild(taskElement);
+          });
+
+          completedTasksContainer.dataset.visible = newVisibleTasks.toString();
+          if (newVisibleTasks >= totalCompletedTasks) loadMoreButton.style.display = "none";
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      });
+    });
+  </script>
+</BaseLayout>

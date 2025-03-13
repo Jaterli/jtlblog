@@ -5,14 +5,13 @@ import { Icon } from "astro-icon/components";
 ---
 
 <BaseLayout sideBarActiveItemID="contacto">
-  <div class="pb-12 mt-5">
-    <div class="text-5xl font-bold">Contacto</div>
-    <div class="py-2">
-      <text class="text-lg">
 
+  <article class="max-w-3xl mx-auto prose prose-lg">
+    <h1 class="text-center text-4xl mb-6">Contacto</h1>
+      <div class="text-lg">
         <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
           <div>            
-            <p class="text-lg leading-relaxed mt-3">
+            <p class="text-lg leading-relaxed mt-0">
               Puedes preguntarme cualquier cosa relacionada con mi blog o con mis conocimientos personales,
               estaré encantado de responderrte.
             </p>
@@ -20,10 +19,12 @@ import { Icon } from "astro-icon/components";
               <div class="flex items-center mt-2 space-x-2">
                 <Icon class="w-4 h-4" name="uil:map-marker" />
                 <span>Madrid, España</span>
-              </div><div class="flex items-center mt-2 space-x-2">
-                <Icon class="w-4 h-4" name="uil:envelope" /><img src="/assets/images/others/mi-email.png" class="max-w-[180px]" alt="Email" />
-              </div><div class="flex items-center mt-2 space-x-2">
-                <Icon class="w-4 h-4" name="uil:phone" /><img src="/assets/images/others/mi-tlf.png" class="max-w-[140px]" alt="Teléfono" />
+              </div>
+              <div class="flex items-center mt-2 space-x-2">
+                <Icon class="w-4 h-4" name="uil:envelope" /><img src="/assets/images/others/mi-email.png" class="max-w-[175px] my-0 opacity-[.85]" alt="Email" />
+              </div>
+              <div class="flex items-center mt-2 space-x-2">
+                <Icon class="w-4 h-4" name="uil:phone" /><img src="/assets/images/others/mi-tlf.png" class="max-w-[135px] my-0 opacity-[.85]" alt="Teléfono" />
               </div>
             </div>
           </div>
@@ -31,9 +32,7 @@ import { Icon } from "astro-icon/components";
             <Contactform />
           </div>
         </div>
-    
-      </text>
-    </div>
-  
-  </div>
+      </div>
+
+    </article>
 </BaseLayout>
