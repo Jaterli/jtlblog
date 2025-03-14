@@ -11,15 +11,27 @@
       "details": "Generar hilos de Twitter a partir de un post, crear resúmenes atractivos para LinkedIn, proponer hashtags relevantes.",
       "startDay": "",
       "endDay": ""
+    }, 
+    {
+      "description": "Post para el blog",
+      "details": "Mi secreto para ser rápido y eficiente: IA y aprovechamiento de código existente.",
+      "startDay": "2025-01-14",
+      "endDay": "2025-01-14"
     },       
     {
+      "description": "Post para el blog",
+      "details": "Sección de tareas incoporada en este website",
+      "startDay": "2025-03-14",
+      "endDay": "2025-03-14"
+    },           
+    {
       "description": "Sistema de Pago con Criptomonedas",
-      "details": "plataforma de pagos basada en blockchain, permitiendo a las empresas aceptar pagos en ETH, USDT y USDC de manera segura y sencilla.",
+      "details": "Plataforma de pagos basada en blockchain, permitiendo a las empresas aceptar pagos en ETH, USDT y USDC de manera segura y sencilla.",
       "startDay": "2025-03-05",
       "endDay": "2025-05-05"
     },    
     {
-      "description": "Página de tareas para mi website",
+      "description": "Página de tareas para mi website.",
       "details": "Página de tareas realizadas y pendientes que me servirán como motivación personal.",
       "startDay": "2025-03-12",
       "endDay": "2025-03-13"
