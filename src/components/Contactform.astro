@@ -41,7 +41,10 @@ import Button from "./ui/Button.astro";
     ></textarea>
   </div>
 
-  <div id="recaptcha-container" class="flex justify-center w-full items-center" data-netlify-recaptcha="true"></div>
+  <div id="recaptcha-container" class="flex justify-center w-full items-center" data-netlify-recaptcha="true">
+    <div style="width: 304px; height: 78px;">caja</div>
+
+  </div>
 
   <Button type="submit" size="lg" class="mt-3" block>Enviar mensaje</Button>
 
@@ -49,7 +52,7 @@ import Button from "./ui/Button.astro";
 
 <div id="msg-error-container" class="mt-3 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" style="display: none;" role="alert">
   <div class="flex-1">
-    <strong class="font-bold">Error!</strong><br />
+    <span class="font-bold">Error!</span><br />
     <span class="block sm:inline"></span>
   </div>
   <button type="button" class="absolute top-0 right-1 px-0 py-0" onclick="this.parentElement.style.display='none'" aria-label="Close">
@@ -59,7 +62,7 @@ import Button from "./ui/Button.astro";
 
 <div id="msg-success-container" class="mt-3 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" style="display: none;" role="alert">
   <div class="flex-1">
-    <strong class="font-bold">¡Gracias!</strong><br />
+    <span class="font-bold">¡Gracias!</span><br />
     <span class="block sm:inline">Tu mensaje ha sido enviado.</span>
   </div>
   <button type="button" class="absolute top-0 right-1 px-0 py-0" onclick="this.parentElement.style.display='none'" aria-label="Close">
@@ -70,3 +73,10 @@ import Button from "./ui/Button.astro";
 
 
 <script src="/js/contact-form.js" defer></script>
+
+<style>
+
+  #recaptcha-container > div{
+    width: fit-content !important;
+  }
+</style>
