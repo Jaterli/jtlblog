@@ -13,6 +13,30 @@
       "endDay": ""
     }, 
     {
+      "description": "Sistema de Pago con Criptomonedas",
+      "details": "Integración de Chakra UI v3.13 con Temas Claro y Oscuro.",
+      "startDay": "2025-03-20",
+      "endDay": "2025-03-19"
+    },      
+    {
+      "description": "Post para el blog",
+      "details": "Integración de Chakra UI v3.13 con Temas Claro y Oscuro.",
+      "startDay": "2025-03-20",
+      "endDay": "2025-03-20"
+    },           
+    {
+      "description": "OBS-Studio",
+      "details": "Descarga de este programa de grabación de video y realización de pruebas",
+      "startDay": "2025-01-18",
+      "endDay": "2025-01-18"
+    },    
+    {
+      "description": "Sistema de Pago con Criptomonedas",
+      "details": "Implementación de la librería Chakra UI y firma de mensaje",
+      "startDay": "2025-01-17",
+      "endDay": "2025-01-17"
+    },      
+    {
       "description": "Post para el blog",
       "details": "Mi secreto para ser rápido y eficiente: IA y aprovechamiento de código existente.",
       "startDay": "2025-01-14",
