@@ -5,7 +5,7 @@ description: "integrar Chakra UI v3.13 con temas claro y oscuro en tu aplicació
 pubDate: "2025-03-20"
 heroImage: "/assets/images/blog/blog.tutorial.jpg"
 category: "Tutoriales"
-tags: [desarrolladores, React, Chakra UI]
+tags: [Tutorial, React, Chakra UI]
 ---
 
 ### **Introducción**
