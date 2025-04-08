@@ -4,7 +4,7 @@ title: "Error: Can't connect to local MySQL server through socket '/var/run/mysq
 description: "Este documento recopila todas las posibles soluciones a este error que pueden ocurrir al trabajar con Django y MySQL."
 pubDate: "2024-09-24"
 heroImage: "/assets/images/blog/blog.error.jpg"
-category: "Frameworks"
+category: "Solución de errores"
 tags: [blog, MySQL, Frameworks, Django]
 ---
 

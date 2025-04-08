@@ -18,84 +18,112 @@ Con este sistema, busco ofrecer a las empresas una **alternativa eficiente y tra
 
 ---
 
-## 🔥 Plan de Desarrollo
 
-### ✅ FASE 1: Investigación y Definición del Proyecto (COMPLETADA)  
-✔️ **Definir el objetivo del sistema:** Facilitar pagos en Ethereum y simplificar la conversión y facturación.  
-✔️ **Seleccionar tecnologías:**  
-  - **Frontend:** React + TypeScript (Vite) con **Chakra UI** para la interfaz de usuario.  
-  - **Backend:** Django + Django REST Framework (API).  
-  - **Blockchain:** Ethereum (autodetección del proveedor de MetaMask) + **Wagmi** para la integración con Ethereum.  
-✔️ **Elegir wallet compatible:** MetaMask (compatible con Wagmi).  
-✔️ **Definir la infraestructura:** Backend en Django para gestionar usuarios y transacciones, frontend en React con Chakra UI para la UI.  
+### 🔥 Plan de Desarrollo
 
 ---
 
-### ✅ FASE 2: Integración de Wagmi y Conexión de Wallet   
-✔️ **Implementar conexión con MetaMask usando Wagmi.**  
-✔️ **Recuperar la dirección de la wallet y almacenarla en el estado global usando Wagmi hooks.**  
-✔️ **Obtener información de la red y el saldo en ETH usando Wagmi.**  
-✔️ **Manejar cambios de red en tiempo real con Wagmi.**  
-✔️ **Persistir la conexión tras recargar la página usando Wagmi's `useAccount` y `useConnect`.**  
-✔️ **Integrar el backend en Django con un endpoint para recibir la dirección de la wallet.**  
+#### ✅ **FASE 1: Investigación y Definición** (COMPLETADA)
+- ✔️ Definición del sistema de pagos blockchain
+- ✔️ Stack tecnológico confirmado:
+  - **Frontend**: React + TypeScript (Vite) + Chakra UI v3.13
+  - **Backend**: Django REST Framework
+  - **Blockchain**: Wagmi + Viem (sin dependencia de red específica)
+- ✔️ Estructura de proyecto con carpetas `frontend/` y `backend/`
 
 ---
 
-### 🛠️ FASE 3: Autenticación con Firma Digital (EN PROGRESO)  
-🎯 **Objetivo:** Asegurar que el usuario es el dueño real de la wallet conectada.  
-🔹 **Pasos:**  
-🟡 Implementar un sistema de firma digital usando `useSignMessage` de Wagmi.  
-🟡 Verificar la firma en el backend antes de aceptar transacciones.  
-🟡 Asociar wallets a cuentas de usuario en el backend.  
+#### ✅ **FASE 2: Conexión de Wallet** (COMPLETADA CON MEJORAS)
+- ✔️ Implementación con `useConnect` y `useAccount` de Wagmi
+- ✔️ Detección automática de MetaMask
+- ✔️ Persistencia de sesión con `localStorage`
+- ✔️ Manejo de múltiples redes con `useNetwork` → *Actualizado a detección dinámica*
+- ✔️ Componente `ConnectWallet` con Chakra UI
+- ✔️ Integración con backend Django para registro de wallets
 
 ---
 
-### 🛠️ FASE 4: Implementación de Pagos en Ethereum (POR HACER)  
-🎯 **Objetivo:** Permitir a las empresas recibir pagos en ETH y registrar transacciones.  
-🔹 **Pasos:**  
-🟡 Crear un contrato inteligente en Solidity que reciba pagos y emita eventos.  
-🟡 Integrar el contrato con el frontend usando `useContractWrite` y `useContractEvent` de Wagmi.  
-🟡 Mostrar el estado de las transacciones en tiempo real usando Chakra UI para notificaciones y alertas.  
-🟡 Enviar la transacción al backend para registrarla en la base de datos.  
-🟡 Gestionar errores y reintentos en caso de fallos usando Wagmi's `useWaitForTransaction`.  
+#### ✅ **FASE 3: Autenticación con Firma** (COMPLETADA)
+- ✔️ Implementación con `useSignMessage`
+- ✔️ Flujo completo:
+  1. Usuario conecta wallet
+  2. Completa formulario de datos (nombre/email)
+  3. Firma mensaje con wallet
+  4. Backend verifica firma y asocia datos
+- ✔️ Validación de wallet duplicada
+- ✔️ Notificaciones con toaster personalizado
 
 ---
 
-### 🛠️ FASE 5: Conversión Automática y Facturación (POR HACER)  
-🎯 **Objetivo:** Automatizar la conversión de pagos a monedas fiduciarias y generar facturas.  
-🔹 **Pasos:**  
-🟡 Integrar una API de conversión de criptomonedas (ej. CoinGecko, Chainlink).  
-🟡 Calcular el monto en EUR/USD al momento de la transacción.  
-🟡 Generar facturas automáticas con la información del pago usando Chakra UI para la interfaz de facturación.  
-🟡 Permitir que las empresas descarguen sus facturas en PDF o reciban un email con ellas.  
+#### 🚀 **FASE 4: Pagos en Ethereum** (EN PROGRESO - AJUSTES)
+1. **Contrato Inteligente**:
+   - ✔️ Contrato `PaymentContract.sol` desplegado en Sepolia
+   - ✔️ Funcionalidades básicas (`pay()`, `getBalance()`)
+   - 🔄 Pendiente: Eventos para registro de pagos
+
+2. **Integración Frontend**:
+   - ✔️ Componente `Payment.tsx` con Chakra UI
+   - ✔️ Uso de `useWriteContract` para transacciones
+   - ✔️ Conversión ETH → Wei
+   - 🔄 Pendiente: Integración completa con backend
+
+3. **Backend**:
+   - ✔️ Endpoint para registro de transacciones
+   - 🔄 Pendiente: Validación de recibos on-chain
 
 ---
 
-### 🛠️ FASE 6: Seguridad y Auditoría (POR HACER)  
-🎯 **Objetivo:** Asegurar el sistema contra fraudes y ataques.  
-🔹 **Pasos:**  
-🟡 Implementar validaciones en el backend para evitar transacciones fraudulentas.  
-🟡 Usar logs y registros para auditar pagos en blockchain.  
-🟡 Proteger claves privadas y datos sensibles usando Wagmi's `useSigner` y `useProvider`.  
+#### 📅 **FASE 5: Conversión y Facturación** (PRÓXIMOS PASOS)
+- **API de conversión**:
+  - Evaluar CoinGecko vs Chainlink
+  - Implementar servicio en Django
+- **Facturación**:
+  - Generación de PDF con datos de transacción
+  - Historial de pagos en frontend
+- **Nuevo componente**: `InvoiceGenerator`
 
 ---
 
-### 🛠️ FASE 7: Despliegue y Producción (POR HACER)  
-🎯 **Objetivo:** Hacer el sistema accesible para empresas reales.  
-🔹 **Pasos:**  
-🟡 Desplegar el contrato en la mainnet de Ethereum.  
-🟡 Implementar soporte para otras redes como Polygon o Arbitrum usando Wagmi's `useNetwork`.  
-🟡 Desplegar el backend en AWS, Vercel o Railway.  
-🟡 Desplegar el frontend en Vercel o Netlify.  
-🟡 Optimizar la UI y la experiencia del usuario usando Chakra UI para componentes responsive y accesibles.  
+#### 🔒 **FASE 6: Seguridad** (PLANIFICACIÓN)
+- Validación de firmas en backend
+- Protección contra replay attacks
+- Auditoría de contrato con Slither o MythX
 
 ---
 
-### 🛠️ FASE 8: Mejoras y Escalabilidad (OPCIONAL)  
-🎯 **Objetivo:** Mejorar la plataforma con funcionalidades adicionales y optimizaciones.  
-🔹 **Pasos:**  
-🟡 Implementar soporte para más wallets (ej. WalletConnect, Coinbase Wallet) usando Wagmi.  
-🟡 Añadir soporte para pagos en USDT y USDC usando Wagmi's `useContractRead` y `useContractWrite`.  
-🟡 Optimizar el rendimiento del frontend con lazy loading y code splitting.  
-🟡 Añadir un sistema de notificaciones en tiempo real usando WebSockets.  
+#### 🌐 **FASE 7: Despliegue** (PREPARACIÓN)
+- **Contrato**:
+  - Pruebas en Goerli antes de mainnet
+- **Infraestructura**:
+  - Frontend: Vercel
+  - Backend: Railway (Dockerizado)
+  - Base de datos: PostgreSQL
+
+---
+
+#### 🛠 **FASE 8: Mejoras** (FUTURO)
+- **Wallets adicionales**: WalletConnect
+- **Soporte multi-moneda**: USDC en Polygon
+- **Notificaciones**: WebSockets para estado de tx
+
+---
+
+### 🔄 Cambios Relevantes vs Plan Original:
+1. **Autenticación**:
+   - Se añadió formulario de usuario antes de firma
+   - Validación de wallets registradas
+
+2. **Wagmi v2**:
+   - Eliminada configuración obsoleta de contratos en `createConfig`
+   - Uso de `useContractRead/Write` en lugar de configuración global
+
+3. **Chakra UI v3.13**:
+   - Migración a nuevos componentes como `Field.Root`
+   - Eliminación de componentes deprecados
+
+4. **Flujo de Pagos**:
+   - Separación clara entre:
+     1. Autenticación (Fase 3)
+     2. Operaciones de pago (Fase 4)
+     3. Facturación (Fase 5)
 
