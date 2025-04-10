@@ -13,6 +13,18 @@
       "endDay": ""
     }, 
     {
+      "description": "Post para el blog",
+      "details": "Escuchar eventos de la blockchain en Django: confirmación automática de pagos con Web3.",
+      "startDay": "2025-04-11",
+      "endDay": "2025-04-11"
+    },         
+    {
+      "description": "Post para el blog",
+      "details": "Problema con ModuleNotFoundError: No module named 'django_extensions' en Django.",
+      "startDay": "2025-04-08",
+      "endDay": "2025-04-08"
+    },     
+    {
       "description": "Sistema de Pago con Criptomonedas",
       "details": "Integración de Chakra UI v3.13 con Temas Claro y Oscuro.",
       "startDay": "2025-03-20",
