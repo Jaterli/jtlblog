@@ -13,6 +13,12 @@
       "endDay": ""
     }, 
     {
+      "description": "Sección de comentarios en la web",
+      "details": "Ya sea en cada entrada del blog o a nivel general. Sería necesario introducir un email.",
+      "startDay": "",
+      "endDay": ""
+    },     
+    {
       "description": "Post para el blog",
       "details": "Escuchar eventos de la blockchain en Django: confirmación automática de pagos con Web3.",
       "startDay": "2025-04-11",

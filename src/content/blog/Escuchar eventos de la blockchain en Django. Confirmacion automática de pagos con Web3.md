@@ -1,7 +1,7 @@
 ---
 draft: false
 title: "Escuchar eventos de la blockchain en Django: confirmación automática de pagos con Web3"
-description: "Mecanismo que nos permite detectar de forma automática cuándo se ha registrado una transacción de forma exitoso en la Blockchain."
+description: "Mecanismo que nos permite detectar de forma automática cuándo se ha registrado una transacción de forma exitosa en la Blockchain."
 pubDate: "2025-04-11"
 heroImage: "/assets/images/blog/blog.blockchain.png"
 category: "Máster en Desarrollo BlockChain"
@@ -29,10 +29,9 @@ El sistema se ejecuta con un simple comando:
 python manage.py listener
 ```
 
-El código completo del listener es el siguiente:
+Puedes ver el código completo del listener en el siguiente enlace:
 
-
-(Enlace a github)
+[Ver archivo listener.py en GitHub](https://github.com/Jaterli/blockchain-payments/blob/main/backend/payments/management/commands/listener.py)
 
 
 ### Partes clave del código

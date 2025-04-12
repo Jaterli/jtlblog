@@ -15,9 +15,9 @@
   font-size: 0.9em;
 }
 
-.prose-lg{
+/* .prose-lg{
   line-height: ;
-}
+} */
 
 .prose :where(h1){
   font-weight:700;
@@ -51,6 +51,10 @@ h2{
       line-height: 2.2rem !important;
     }
   }
+}
+
+#recaptcha-container > div {
+  margin: 0 auto; /* Centrar el widget */
 }
 
 .g-recaptcha .div{
