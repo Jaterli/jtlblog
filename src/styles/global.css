@@ -53,10 +53,6 @@ h2{
   }
 }
 
-#recaptcha-container > div {
-  margin: 0 auto; /* Centrar el widget */
-}
-
 .g-recaptcha .div{
   max-width: 100%;
 }
