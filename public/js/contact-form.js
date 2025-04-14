@@ -53,6 +53,8 @@
 
 
 const handleSubmit = (e) => {
+  const msg_success_container = document.getElementById("msg-success-container");
+
   e.preventDefault();
   grecaptcha.execute();
   msg_success_container.style.display = 'block';
