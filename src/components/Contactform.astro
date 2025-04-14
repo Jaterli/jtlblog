@@ -10,6 +10,7 @@ const SITE_KEY = '6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM';
   name="contact" 
   id="contact-form"
   action="/"
+  netlify
 
 >
   
@@ -84,57 +85,50 @@ const SITE_KEY = '6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM';
 
 <script is:inline>
   const form = document.getElementById('contact-form');
+  const msgErrorContainer = document.getElementById('msg-error-container');
+  const msgSuccessContainer = document.getElementById('msg-success-container');
+  const msgErrorText = msgErrorContainer.querySelector('span:last-child');
   
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // Generar token reCAPTCHA
-    const token = await grecaptcha.execute('6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM', {action: 'submit'});
-    
-    // Verificar con endpoint
-    const response = await fetch('/api/recaptcha', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ token })
-    });
-    
-    const result = await response.json();
-    
-    if (result.success && result.score > 0.5) {
-      // Verificación exitosa, enviar formulario
-      //form.submit();
-      fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded", "Cache-Control": "no-store" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then((response) => {
-        if (response.status === 303) {
-          msg_error_text.innerHTML = `
-            Parece que hubo un problema con el reCAPTCHA. Por favor, inténtalo de nuevo.</span>
-          `;
-          msg_success_container.style.display='none';
-          msg_error_container.style.display='block';
-          return;
-        } else {
-          msg_error_container.style.display='none';                
-          msg_success_container.style.display='block';        
-          contactForm.reset();
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        msg_error_text.innerHTML = `
-          No se pudo enviar el mensaje, por favor inténtalo de nuevo más tarde.</span>
-        `;
-        msg_success_container.style.display='none';
-        msg_error_container.style.display='block';      
+    try {
+      // 1. Obtener token reCAPTCHA
+      const token = await grecaptcha.execute('${SITE_KEY}', {action: 'submit'});
+      
+      // 2. Verificar token con nuestro endpoint
+      const verification = await fetch('/api/recaptcha', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token })
       });
-
-      } else {
-        alert('Error de verificación reCAPTCHA');
+      
+      const result = await verification.json();
+      
+      if (!result.success || result.score < 0.5) {
+        throw new Error('Verificación reCAPTCHA fallida');
       }
+      
+      // 3. Si reCAPTCHA es válido, enviar formulario a Netlify
+      const formData = new FormData(form);
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+      });
+      
+      if (response.ok) {
+        msgErrorContainer.style.display = 'none';
+        msgSuccessContainer.style.display = 'block';
+        form.reset();
+      } else {
+        throw new Error('Error al enviar el formulario');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      msgErrorText.textContent = 'Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.';
+      msgSuccessContainer.style.display = 'none';
+      msgErrorContainer.style.display = 'block';
+    }
   });
-  </script>
+</script>
