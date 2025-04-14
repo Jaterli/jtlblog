@@ -102,7 +102,11 @@ const SITE_KEY = '6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM';
         body: JSON.stringify({ token })
       });
       
+      // Manejar respuesta
+      if (!verification.ok) throw new Error("Error en la verificación");
       const result = await verification.json();
+      
+      if (!result.success) throw new Error(result.errors?.join(', ') || 'Error reCAPTCHA');
       
       if (!result.success || result.score < 0.5) {
         throw new Error('Verificación reCAPTCHA fallida');
