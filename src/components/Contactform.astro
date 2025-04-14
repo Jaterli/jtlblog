@@ -86,52 +86,51 @@ const SITE_KEY = '6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM';
   const form = document.getElementById('contact-form');
   const msgErrorContainer = document.getElementById('msg-error-container');
   const msgSuccessContainer = document.getElementById('msg-success-container');
-  const msgErrorText = msgErrorContainer.querySelector('span:last-child');
-  
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    try {
-      // 1. Obtener token reCAPTCHA
-      const token = await grecaptcha.execute('6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM', {action: 'submit'});
+
+  // Cargar reCAPTCHA correctamente
+  grecaptcha.ready(() => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
       
-      // 2. Verificar token con nuestro endpoint
-      const verification = await fetch('/api/recaptcha', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token })
-      });
-      
-      // Manejar respuesta
-      if (!verification.ok) throw new Error("Error en la verificación");
-      const result = await verification.json();
-      
-      if (!result.success) throw new Error(result.errors?.join(', ') || 'Error reCAPTCHA');
-      
-      if (!result.success || result.score < 0.5) {
-        throw new Error('Verificación reCAPTCHA fallida');
-      }
-      
-      // 3. Si reCAPTCHA es válido, enviar formulario a Netlify
-      const formData = new FormData(form);
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString()
-      });
-      
-      if (response.ok) {
-        msgErrorContainer.style.display = 'none';
+      try {
+        // Generar token con acción específica
+        const token = await grecaptcha.execute(`${SITE_KEY}`, {
+          action: 'submit'
+        });
+
+        // Verificar token
+        const verification = await fetch('/api/recaptcha', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token })
+        });
+
+        const result = await verification.json();
+        
+        if (!result.success) {
+          throw new Error(`reCAPTCHA Error: ${result.errors.join(', ')}`);
+        }
+
+        // Enviar formulario a Netlify
+        const formData = new FormData(form);
+        const netlifyResponse = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString()
+        });
+
+        if (!netlifyResponse.ok) throw new Error('Form submission failed');
+        
         msgSuccessContainer.style.display = 'block';
+        msgErrorContainer.style.display = 'none';
         form.reset();
-      } else {
-        throw new Error('Error al enviar el formulario');
+
+      } catch (error) {
+        console.error('Error:', error);
+        msgErrorContainer.querySelector('span:last-child').textContent = error.message;
+        msgSuccessContainer.style.display = 'none';
+        msgErrorContainer.style.display = 'block';
       }
-    } catch (error) {
-      console.error('Error:', error);
-      msgErrorText.textContent = 'Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.';
-      msgSuccessContainer.style.display = 'none';
-      msgErrorContainer.style.display = 'block';
-    }
+    });
   });
 </script>
