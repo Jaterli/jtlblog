@@ -105,7 +105,7 @@ import Button from "./ui/Button.astro";
       container.classList.remove('hidden');
       
       grecaptcha.render(container, {
-        sitekey: import.meta.env.VITE_SITE_RECAPTCHA_SECRET,
+        sitekey: '6LdPR94qAAAAALzCZS684qB2vFUhfJK76W_GtKkd',//import.meta.env.VITE_SITE_RECAPTCHA_SECRET,
         callback: (token) => {
           document.getElementById('g-recaptcha-response').value = token;
           form.submit(); // Enviar formulario automáticamente
