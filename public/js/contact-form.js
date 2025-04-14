@@ -55,6 +55,7 @@
 const handleSubmit = (e) => {
   e.preventDefault();
   grecaptcha.execute();
+  msg_success_container.style.display = 'block';
 }
 
 // Inicializar el evento submit
