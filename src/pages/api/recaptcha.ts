@@ -1,10 +1,12 @@
 import type { APIRoute } from 'astro';
+// De esta manera se activa el modo server para esta página para poder obtener los parámetros pasados por url
+export const prerender = false;
 
 export const post: APIRoute = async ({ request }) => {
   const data = await request.json();
   
   const recaptchaURL = 'https://www.google.com/recaptcha/api/siteverify';
-  const secretKey = import.meta.env.RECAPTCHA_SECRET_KEY;
+  const secretKey = '6LdUxxgrAAAAAIgSJRfx-O21m-dtuHu08FOMRhTQ';
 
   const response = await fetch(recaptchaURL, {
     method: "POST",
