@@ -5,9 +5,11 @@ const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 <script is:inline src={`https://www.google.com/recaptcha/api.js?render=${SITE_KEY}`}></script>
 
 <form
+  method="post"
   name="contact" 
   id="contact-form"
   action="/"
+
 >
   
   <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
