@@ -7,6 +7,8 @@ const handleSubmit = (e) => {
   const msg_success_container = document.getElementById("msg-success-container")  
 
   let formData = new FormData(contactForm);
+  const captcha = document.getElementById("recaptcha-container")
+  captcha.style.display='block';
 
   if (!formData.get('g-recaptcha-response')) {
     msg_error_text.innerHTML = `
@@ -15,6 +17,8 @@ const handleSubmit = (e) => {
     msg_success_container.style.display='none';
     msg_error_container.style.display='block';
     return;
+  }else{
+    contactForm.submit();
   }
 
   fetch("/", {
