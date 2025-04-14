@@ -1,6 +1,8 @@
 ---
 import Button from "./ui/Button.astro";
+const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 ---
+<script is:inline src={`https://www.google.com/recaptcha/api.js?render=${SITE_KEY}`}></script>
 
 <form
   method="post"
@@ -69,7 +71,7 @@ import Button from "./ui/Button.astro";
 
 
 
-<script src="/js/contact-form.js" defer></script>
+<!-- <script src="/js/contact-form.js" defer></script> -->
 
 <style>
 
@@ -77,3 +79,62 @@ import Button from "./ui/Button.astro";
     width: fit-content !important;
   }
 </style>
+
+
+
+<script is:inline>
+  const form = document.getElementById('miFormulario');
+  
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Generar token reCAPTCHA
+    const token = await grecaptcha.execute('${SITE_KEY}', {action: 'submit'});
+    
+    // Verificar con endpoint
+    const response = await fetch('/api/recaptcha', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ token })
+    });
+    
+    const result = await response.json();
+    
+    if (result.success && result.score > 0.5) {
+      // Verificación exitosa, enviar formulario
+      //form.submit();
+      fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded", "Cache-Control": "no-store" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then((response) => {
+        if (response.status === 303) {
+          msg_error_text.innerHTML = `
+            Parece que hubo un problema con el reCAPTCHA. Por favor, inténtalo de nuevo.</span>
+          `;
+          msg_success_container.style.display='none';
+          msg_error_container.style.display='block';
+          return;
+        } else {
+          msg_error_container.style.display='none';                
+          msg_success_container.style.display='block';        
+          contactForm.reset();
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        msg_error_text.innerHTML = `
+          No se pudo enviar el mensaje, por favor inténtalo de nuevo más tarde.</span>
+        `;
+        msg_success_container.style.display='none';
+        msg_error_container.style.display='block';      
+      });
+
+      } else {
+        alert('Error de verificación reCAPTCHA');
+      }
+  });
+  </script>
