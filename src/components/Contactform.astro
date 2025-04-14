@@ -89,7 +89,7 @@ const SITE_KEY = '6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM';
     e.preventDefault();
     
     // Generar token reCAPTCHA
-    const token = await grecaptcha.execute('${SITE_KEY}', {action: 'submit'});
+    const token = await grecaptcha.execute('6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM', {action: 'submit'});
     
     // Verificar con endpoint
     const response = await fetch('/api/recaptcha', {
