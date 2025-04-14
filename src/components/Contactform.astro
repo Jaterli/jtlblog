@@ -1,18 +1,20 @@
 ---
 import Button from "./ui/Button.astro";
 ---
-
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <form
-  method="post"
+  method="POST"
   name="contact" 
   id="contact-form"
   action="/"
   data-netlify-recaptcha="true"
   data-netlify="true"
-  data-callback="onCaptchaSuccess"
+  class="form-container"  
 >
-  
+
   <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
+  <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
+
   <div class="mb-5">
     <input
       type="text"
@@ -42,11 +44,15 @@ import Button from "./ui/Button.astro";
     ></textarea>
   </div>
 
-  <div id="recaptcha-container" style="display: none;" class="flex justify-center w-full items-center" data-netlify-recaptcha="true"></div>
-
   <Button type="submit" size="lg" class="mt-3" block>Enviar mensaje</Button>
 
 </form>
+
+<div class="g-recaptcha"
+      data-sitekey="6Le9sBgrAAAAAHbAe9J7Tc1wNle0YUXlumXgwRc7"
+      data-callback="onSubmit"
+      data-size="invisible">
+</div>
 
 <div id="msg-error-container" class="mt-3 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" style="display: none;" role="alert">
   <div class="flex-1">
@@ -73,8 +79,7 @@ import Button from "./ui/Button.astro";
 <script src="/js/contact-form.js" defer></script>
 
 <style>
-
-  #recaptcha-container > div{
+   #recaptcha-container > div{
     width: fit-content !important;
   }
 </style>
