@@ -10,8 +10,7 @@ const SITE_KEY = '6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM';
   name="contact" 
   id="contact-form"
   action="/"
-  netlify
-
+  data-netlify="true"
 >
   
   <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
@@ -94,7 +93,7 @@ const SITE_KEY = '6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM';
     
     try {
       // 1. Obtener token reCAPTCHA
-      const token = await grecaptcha.execute('${SITE_KEY}', {action: 'submit'});
+      const token = await grecaptcha.execute('6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM', {action: 'submit'});
       
       // 2. Verificar token con nuestro endpoint
       const verification = await fetch('/api/recaptcha', {
