@@ -1,55 +1,56 @@
 const handleSubmit = (e) => {
   e.preventDefault();
-
+  
   const contactForm = document.getElementById("contact-form");
-  const msg_error_container = document.getElementById("msg-error-container")
+  const msg_error_container = document.getElementById("msg-error-container");
   const msg_error_text = msg_error_container.querySelector("span");
-  const msg_success_container = document.getElementById("msg-success-container")  
+  const msg_success_container = document.getElementById("msg-success-container");
+  const captcha = document.getElementById("recaptcha-container");
 
   let formData = new FormData(contactForm);
-  const captcha = document.getElementById("recaptcha-container")
-  captcha.style.display='block';
 
+  // Mostrar recaptcha si no está completado
   if (!formData.get('g-recaptcha-response')) {
-    msg_error_text.innerHTML = `
-      Por favor, completa el reCAPTCHA
-    `;
-    msg_success_container.style.display='none';
-    msg_error_container.style.display='block';
+    captcha.style.display = 'block';
+    msg_error_text.innerHTML = "Por favor, completa el reCAPTCHA";
+    msg_success_container.style.display = 'none';
+    msg_error_container.style.display = 'block';
     return;
-  }else{
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded", "Cache-Control": "no-store" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then((response) => {
-        if (response.status === 303) {
-          msg_error_text.innerHTML = `
-            Parece que hubo un problema con el reCAPTCHA. Por favor, inténtalo de nuevo.</span>
-          `;
-          msg_success_container.style.display='none';
-          msg_error_container.style.display='block';
-          return;
-        } else {
-          msg_error_container.style.display='none';                
-          msg_success_container.style.display='block';        
-          contactForm.reset();
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        msg_error_text.innerHTML = `
-          No se pudo enviar el mensaje, por favor inténtalo de nuevo más tarde.</span>
-        `;
-        msg_success_container.style.display='none';
-        msg_error_container.style.display='block';      
-      });
-  };
-  
+  }
+
+  // Enviar formulario si el recaptcha está completo
+  fetch("/", {
+    method: "POST",
+    headers: { 
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Cache-Control": "no-store" 
+    },
+    body: new URLSearchParams(formData).toString(),
+  })
+  .then((response) => {
+    if (response.status === 303) {
+      throw new Error('Error de reCAPTCHA');
+    }
+    msg_error_container.style.display = 'none';
+    msg_success_container.style.display = 'block';
+    contactForm.reset();
+    captcha.style.display = 'none'; // Ocultar recaptcha después de enviar
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+    msg_error_text.innerHTML = "Error al enviar, intenta nuevamente";
+    msg_success_container.style.display = 'none';
+    msg_error_container.style.display = 'block';
+  });
 }
 
+// Función global para el callback de recaptcha
+function onCaptchaSuccess() {
+  const contactForm = document.getElementById("contact-form");
+  contactForm.dispatchEvent(new Event('submit'));
+}
 
+// Inicializar el evento submit
 const contactForm = document.getElementById("contact-form");
 if (contactForm) {
   contactForm.addEventListener("submit", handleSubmit);
