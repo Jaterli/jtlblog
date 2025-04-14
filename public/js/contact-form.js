@@ -56,8 +56,32 @@ const handleSubmit = (e) => {
   const msg_success_container = document.getElementById("msg-success-container");
 
   e.preventDefault();
-  grecaptcha.execute();
-  msg_success_container.style.display = 'block';
+
+  grecaptcha.enterprise.ready(async () => {
+    const token = await grecaptcha.enterprise.execute('6Lf_wxgrAAAAAJjX8qcZqV4EcB2JyL9o9wb9frJv', {action: 'contact'});
+  })
+  .then((response) => response.json())
+  .then((gResponse) => {
+    if (gResponse.success) {
+      console.log('Token verificado con éxito');
+      console.log(gResponse);
+      fetch("/", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Cache-Control": "no-store" 
+        },
+        body: new URLSearchParams(formData).toString(),
+      })
+      msg_success_container.style.display = 'block';
+
+
+    } else {
+      console.log("Falló la verificación del token")
+    }
+  });
+
+
 }
 
 // Inicializar el evento submit
@@ -65,3 +89,4 @@ const contactForm = document.getElementById("contact-form");
 if (contactForm) {
   contactForm.addEventListener("submit", handleSubmit);
 }
+
