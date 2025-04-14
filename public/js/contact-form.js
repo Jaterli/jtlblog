@@ -58,7 +58,7 @@ const handleSubmit = (e) => {
   e.preventDefault();
 
   grecaptcha.enterprise.ready(async () => {
-    const token = await grecaptcha.enterprise.execute('6Lf_wxgrAAAAAJjX8qcZqV4EcB2JyL9o9wb9frJv', {action: 'contact'});
+    const token = await grecaptcha.enterprise.execute('6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM', {action: 'contact'});
   })
   .then((response) => response.json())
   .then((gResponse) => {
