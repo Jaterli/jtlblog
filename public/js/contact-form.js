@@ -47,6 +47,7 @@ const handleSubmit = (e) => {
 // Función global para el callback de recaptcha
 function onCaptchaSuccess() {
   const contactForm = document.getElementById("contact-form");
+  alert('Enviando formulario')
   contactForm.dispatchEvent(new Event('submit'));
 }
 
