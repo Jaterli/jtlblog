@@ -13,7 +13,6 @@ form.addEventListener('submit', async (e) => {
                 try {
                     const token = await grecaptcha.enterprise.execute(siteKey, { action: 'contact' });
                     
-                    console.log('Token generado:', token);
                     const recaptchaResponse = await fetch('/api/recaptcha', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },

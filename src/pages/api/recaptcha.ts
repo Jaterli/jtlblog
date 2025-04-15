@@ -1,15 +1,15 @@
 import type { APIRoute } from 'astro';
 export const prerender = false;
 
+const secretKey = import.meta.env.VITE_RECAPTCHA_SECRET_KEY;
+const recaptchaURL = 'https://www.google.com/recaptcha/api/siteverify';
 
 export const POST: APIRoute = async ({ request }) => {
-  console.log("Dentro de la api");
   try {
     // Asegurar que el cuerpo es JSON válido
     const data = await request.json().catch(() => {
       throw new Error('Invalid JSON format');
     });
-    console.log("¿Token pasado a la api?: "+data.token);
 
     if (!data.token) {
       return new Response(JSON.stringify({
@@ -17,16 +17,11 @@ export const POST: APIRoute = async ({ request }) => {
         error: 'Missing reCAPTCHA token'
       }), { status: 400 });
     }
-    console.log("Token pasado a la api ok: "+data.token);
    
-    const secretKey = import.meta.env.VITE_RECAPTCHA_SECRET_KEY;
-    const recaptchaURL = 'https://www.google.com/recaptcha/api/siteverify';
-
     const requestBody = new URLSearchParams({
       secret: secretKey,
-      response: data.token,    // El token pasado desde el cliente
+      response: data.token,  // El token pasado desde el cliente
     });
-
 
     const verification = await fetch(recaptchaURL, {
       method: "POST",
