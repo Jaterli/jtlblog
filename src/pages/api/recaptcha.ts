@@ -3,12 +3,13 @@ export const prerender = false;
 
 
 export const POST: APIRoute = async ({ request }) => {
+  console.log("Dentro de la api");
   try {
     // Asegurar que el cuerpo es JSON válido
     const data = await request.json().catch(() => {
       throw new Error('Invalid JSON format');
     });
-    console.log("¿Token pasado a la api?: "+data.token)
+    console.log("¿Token pasado a la api?: "+data.token);
 
     if (!data.token) {
       return new Response(JSON.stringify({
@@ -16,15 +17,14 @@ export const POST: APIRoute = async ({ request }) => {
         error: 'Missing reCAPTCHA token'
       }), { status: 400 });
     }
-    console.log("Token pasado a la api ok: "+data.token)
+    console.log("Token pasado a la api ok: "+data.token);
    
     const secretKey = '6LfVdBkrAAAAAHq252SP5MySLPt7w8otmTqzVqT2';
     const recaptchaURL = 'https://www.google.com/recaptcha/api/siteverify';
 
     const requestBody = new URLSearchParams({
       secret: secretKey,   // Esto puede ser una variable de entorno
-      response: data.recaptcha,          // El token pasado desde el cliente
-      remoteip: '0.0.0.0'
+      response: data.token,          // El token pasado desde el cliente
     });
 
 
@@ -37,7 +37,7 @@ export const POST: APIRoute = async ({ request }) => {
     const responseData = await verification.json();
     
     // Verificar acción y puntuación
-    const isValidAction = responseData.action === 'submit';
+    const isValidAction = responseData.action === 'contact';
     const isValidScore = responseData.score >= 0.5;
 
     return new Response(JSON.stringify({
