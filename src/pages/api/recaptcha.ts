@@ -19,12 +19,12 @@ export const POST: APIRoute = async ({ request }) => {
     }
     console.log("Token pasado a la api ok: "+data.token);
    
-    const secretKey = '6LfVdBkrAAAAAHq252SP5MySLPt7w8otmTqzVqT2';
+    const secretKey = import.meta.env.VITE_RECAPTCHA_SECRET_KEY;
     const recaptchaURL = 'https://www.google.com/recaptcha/api/siteverify';
 
     const requestBody = new URLSearchParams({
-      secret: secretKey,   // Esto puede ser una variable de entorno
-      response: data.token,          // El token pasado desde el cliente
+      secret: secretKey,
+      response: data.token,    // El token pasado desde el cliente
     });
 
 

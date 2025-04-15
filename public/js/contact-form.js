@@ -2,6 +2,7 @@ const form = document.getElementById('contact-form');
 const msgErrorContainer = document.getElementById('msg-error-container');
 const msgSuccessContainer = document.getElementById('msg-success-container');
 const errorMessageSpan = msgErrorContainer.querySelector('span:last-child');
+const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -10,10 +11,7 @@ form.addEventListener('submit', async (e) => {
         await new Promise((resolve, reject) => {
             grecaptcha.enterprise.ready(async () => {
                 try {
-                    const token = await grecaptcha.enterprise.execute(
-                        '6LfVdBkrAAAAAJ5d-acgwQXvLhaPghlzX4I595M1', 
-                        { action: 'contact' }
-                    );
+                    const token = await grecaptcha.enterprise.execute(siteKey, { action: 'contact' });
                     
                     console.log('Token generado:', token);
                     const recaptchaResponse = await fetch('/api/recaptcha', {
