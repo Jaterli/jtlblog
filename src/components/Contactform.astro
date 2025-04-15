@@ -57,7 +57,7 @@ if (!recaptchaSiteKey) {
     <span class="font-bold">Error!</span><br />
     <span class="block sm:inline"></span>
   </div>
-  <button type="button" class="absolute top-0 right-1 px-0 py-0" onclick="this.parentElement.style.display='none'" aria-label="Close">
+  <button type="button" class="alert-close absolute top-0 right-1 px-0 py-0" aria-label="Close">
     &times;
   </button>
 </div>
@@ -67,13 +67,10 @@ if (!recaptchaSiteKey) {
     <span class="font-bold">¡Gracias!</span><br />
     <span class="block sm:inline">Tu mensaje ha sido enviado.</span>
   </div>
-  <button type="button" class="absolute top-0 right-1 px-0 py-0" onclick="this.parentElement.style.display='none'" aria-label="Close">
+  <button type="button" class="alert-close absolute top-0 right-1 px-0 py-0" aria-label="Close">
     &times;
   </button>
 </div>
-
-
-<!-- <script src="../pages/js/contact-form.js" defer></script> -->
 
 
 <script is:inline>
@@ -81,7 +78,6 @@ if (!recaptchaSiteKey) {
   const msgErrorContainer = document.getElementById('msg-error-container');
   const msgSuccessContainer = document.getElementById('msg-success-container');
   const errorMessageSpan = msgErrorContainer.querySelector('span:last-child');
-
   const siteKey = form.dataset.sitekey;
 
   if (!siteKey) {
@@ -139,18 +135,32 @@ if (!recaptchaSiteKey) {
       if (!response.ok) throw new Error('Error en envío de formulario');
   }
 
-  function handleSuccess() {
-      console.log("Formulario enviado correctamente");
-      msgSuccessContainer.style.display = 'block';
-      msgErrorContainer.style.display = 'none';
-      form.reset();
-  }
+  const handleSuccess = () => {
+    console.log("Formulario enviado correctamente");
+    form.style.display = 'none';
+    msgSuccessContainer.style.display = 'block';
+    msgErrorContainer.style.display = 'none';
+    form.reset();
+  };
 
-  function handleError(error) {
-      console.error('Error:', error);
-      errorMessageSpan.textContent = error.message;
-      msgSuccessContainer.style.display = 'none';
-      msgErrorContainer.style.display = 'block';
-  }
+  const handleError = (error) => {
+    console.error('Error:', error);
+    errorMessageSpan.textContent = error.message;
+    form.style.display = 'none';
+    msgSuccessContainer.style.display = 'none';
+    msgErrorContainer.style.display = 'block';
+  };
+
+  // Función para restaurar la vista inicial
+  const resetFormView = () => {
+    form.style.display = 'block';
+    msgErrorContainer.style.display = 'none';
+    msgSuccessContainer.style.display = 'none';
+  };  
+
+  // Manejadores para los botones de cierre
+  document.querySelectorAll('.alert-close').forEach(button => {
+    button.addEventListener('click', resetFormView);
+  });
 
 </script>
