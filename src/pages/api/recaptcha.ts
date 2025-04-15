@@ -15,17 +15,21 @@ export const post: APIRoute = async ({ request }) => {
         error: 'Missing reCAPTCHA token'
       }), { status: 400 });
     }
-
+    console.log("Token pasado a la api: "+data.token)
+   
     const secretKey = '6LfVdBkrAAAAAHq252SP5MySLPt7w8otmTqzVqT2';
     const recaptchaURL = 'https://www.google.com/recaptcha/api/siteverify';
+
+    const requestBody = new URLSearchParams({
+      secret: secretKey,   // Esto puede ser una variable de entorno
+      response: data.recaptcha          // El token pasado desde el cliente
+    });
+
 
     const verification = await fetch(recaptchaURL, {
       method: "POST",
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        secret: secretKey,
-        response: data.token
-      })
+      body: requestBody.toString()
     });
 
     const responseData = await verification.json();
