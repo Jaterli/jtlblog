@@ -8,7 +8,7 @@ export const post: APIRoute = async ({ request }) => {
       throw new Error("Formato JSON inválido");
     });
 
-    const secretKey = '6LdUxxgrAAAAAIgSJRfx-O21m-dtuHu08FOMRhTQ';
+    const secretKey = '6LfVdBkrAAAAAHq252SP5MySLPt7w8otmTqzVqT2';
     if (!secretKey) throw new Error("Falta la clave secreta de reCAPTCHA");
 
     const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
@@ -16,11 +16,12 @@ export const post: APIRoute = async ({ request }) => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({
         secret: secretKey,
-        response: data.token // <- Asegúrate que coincida con el nombre enviado desde el cliente
+        response: data.token
       })
     });
-
+    
     const responseData = await response.json();
+    console.log("Respuesta: "+responseData);    
 
     return new Response(JSON.stringify({
       success: responseData.success,
