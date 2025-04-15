@@ -12,7 +12,7 @@ export default defineConfig({
     // Escluye las páginas que cumplan con la condición
       filter: (page) => !page.includes('/blog/tag/')
   }) ],
-  output: "server", // El sitio se construye como estático por defecto
+  output: "static", // El sitio se construye como estático por defecto
   adapter: netlify(), // Adaptador de Netlify para funciones serverless
   vite: {
     server:{

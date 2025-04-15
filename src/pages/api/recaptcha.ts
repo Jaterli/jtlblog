@@ -1,8 +1,8 @@
 import type { APIRoute } from 'astro';
-// export const prerender = false;
+export const prerender = false;
 
 
-export const post: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request }) => {
   try {
     // Asegurar que el cuerpo es JSON válido
     const data = await request.json().catch(() => {
