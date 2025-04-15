@@ -22,7 +22,8 @@ export const POST: APIRoute = async ({ request }) => {
 
     const requestBody = new URLSearchParams({
       secret: secretKey,   // Esto puede ser una variable de entorno
-      response: data.recaptcha          // El token pasado desde el cliente
+      response: data.recaptcha,          // El token pasado desde el cliente
+      remoteip: '0.0.0.0'
     });
 
 
