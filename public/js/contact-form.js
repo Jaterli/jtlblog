@@ -2,8 +2,15 @@ const form = document.getElementById('contact-form');
 const msgErrorContainer = document.getElementById('msg-error-container');
 const msgSuccessContainer = document.getElementById('msg-success-container');
 const errorMessageSpan = msgErrorContainer.querySelector('span:last-child');
-const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
+// Obtener la clave desde las variables de entorno
+const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+
+if (!RECAPTCHA_SITE_KEY) {
+  throw new Error('Falta la clave reCAPTCHA en las variables de entorno');
+}
+
+// Cargar reCAPTCHA correctamente
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -11,8 +18,12 @@ form.addEventListener('submit', async (e) => {
         await new Promise((resolve, reject) => {
             grecaptcha.enterprise.ready(async () => {
                 try {
-                    const token = await grecaptcha.enterprise.execute(siteKey, { action: 'contact' });
+                    const token = await grecaptcha.enterprise.execute(
+                        RECAPTCHA_SITE_KEY, 
+                        { action: 'contact' }
+                    );
                     
+                    console.log('Token generado:', token);
                     const recaptchaResponse = await fetch('/api/recaptcha', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -40,7 +51,7 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
-async function submitForm() {
+async function submitForm(form) {
     const formData = new FormData(form);
     const response = await fetch("/", {
         method: "POST",

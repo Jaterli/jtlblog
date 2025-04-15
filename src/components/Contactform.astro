@@ -2,16 +2,19 @@
 import Button from "./ui/Button.astro";
 export const prerender = false;
 
-// const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-const SITE_KEY = '6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM';
+const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+if (!recaptchaSiteKey) {
+  throw new Error("Falta la clave RECAPTCHA_SITE_KEY en el entorno");
+}
 ---
-<script is:inline src={`https://www.google.com/recaptcha/enterprise.js?render=6LfVdBkrAAAAAJ5d-acgwQXvLhaPghlzX4I595M1`}></script>
+<script is:inline src={`https://www.google.com/recaptcha/enterprise.js?render=${recaptchaSiteKey}`}></script>
 
 <form
   method="post"
   name="contact" 
   id="contact-form"
   data-netlify="true"
+  data-sitekey={recaptchaSiteKey}
 >
   
   <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
@@ -71,4 +74,84 @@ const SITE_KEY = '6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM';
 
 
 
-<script src="/js/contact-form.js" defer></script>
+<!-- <script src="../pages/js/contact-form.js" defer></script> -->
+
+
+<script is:inline>
+  const form = document.getElementById('contact-form');
+  const msgErrorContainer = document.getElementById('msg-error-container');
+  const msgSuccessContainer = document.getElementById('msg-success-container');
+  const errorMessageSpan = msgErrorContainer.querySelector('span:last-child');
+
+  const siteKey = form.dataset.sitekey;
+
+  if (!siteKey) {
+    throw new Error("Falta la clave RECAPTCHA_SITE_KEY");
+  }
+ 
+  // Cargar reCAPTCHA correctamente
+  form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      try {
+          await new Promise((resolve, reject) => {
+              grecaptcha.enterprise.ready(async () => {
+                  try {
+                      const token = await grecaptcha.enterprise.execute(
+                        siteKey, 
+                        { action: 'contact' }
+                      );
+                      
+                      console.log('Token generado:', token);
+                      const recaptchaResponse = await fetch('/api/recaptcha', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ token })
+                      });
+
+                      if (!recaptchaResponse.ok) throw new Error('Error en validación reCAPTCHA');
+                      
+                      const result = await recaptchaResponse.json();
+                      
+                      if (result.success && result.score > 0.5) {
+                          await submitForm(form);
+                          handleSuccess();
+                      } else {
+                          throw new Error('Error de verificación reCAPTCHA');
+                      }
+                      resolve();
+                  } catch (error) {
+                      reject(error);
+                  }
+              });
+          });
+      } catch (error) {
+          handleError(error);
+      }
+  });
+
+  async function submitForm(form) {
+      const formData = new FormData(form);
+      const response = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString()
+      });
+      if (!response.ok) throw new Error('Error en envío de formulario');
+  }
+
+  function handleSuccess() {
+      console.log("Formulario enviado correctamente");
+      msgSuccessContainer.style.display = 'block';
+      msgErrorContainer.style.display = 'none';
+      form.reset();
+  }
+
+  function handleError(error) {
+      console.error('Error:', error);
+      errorMessageSpan.textContent = error.message;
+      msgSuccessContainer.style.display = 'none';
+      msgErrorContainer.style.display = 'block';
+  }
+
+</script>

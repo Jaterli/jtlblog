@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 export const prerender = false;
 
-const secretKey = import.meta.env.VITE_RECAPTCHA_SECRET_KEY;
+const secretKey = import.meta.env.PUBLIC_RECAPTCHA_SECRET_KEY;
 const recaptchaURL = 'https://www.google.com/recaptcha/api/siteverify';
 
 export const POST: APIRoute = async ({ request }) => {
