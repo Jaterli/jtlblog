@@ -8,14 +8,15 @@ export const POST: APIRoute = async ({ request }) => {
     const data = await request.json().catch(() => {
       throw new Error('Invalid JSON format');
     });
-    
+    console.log("¿Token pasado a la api?: "+data.token)
+
     if (!data.token) {
       return new Response(JSON.stringify({
         success: false,
         error: 'Missing reCAPTCHA token'
       }), { status: 400 });
     }
-    console.log("Token pasado a la api: "+data.token)
+    console.log("Token pasado a la api ok: "+data.token)
    
     const secretKey = '6LfVdBkrAAAAAHq252SP5MySLPt7w8otmTqzVqT2';
     const recaptchaURL = 'https://www.google.com/recaptcha/api/siteverify';
