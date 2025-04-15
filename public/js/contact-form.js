@@ -1,51 +1,55 @@
-const handleSubmit = (e) => {
-  e.preventDefault();
+const form = document.getElementById('contact-form');
 
-  const contactForm = document.getElementById("contact-form");
-  const msg_error_container = document.getElementById("msg-error-container");
-  const msg_error_text = msg_error_container.querySelector("span");
-  const msg_success_container = document.getElementById("msg-success-container");
+// Cargar reCAPTCHA correctamente
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const msgErrorContainer = document.getElementById('msg-error-container');
+    const msgSuccessContainer = document.getElementById('msg-success-container');
+    
+    try{
+    
+      grecaptcha.enterprise.ready(async () => {
+        const token = await grecaptcha.enterprise.execute('6LfVdBkrAAAAAJ5d-acgwQXvLhaPghlzX4I595M1', {action: 'contact'});
+        console.log('Token generado:', token);        
+        
+        const response = await fetch('/api/recaptcha', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token })
+        });
 
-  let formData = new FormData(contactForm);
+        const result = await response.json();
+        
+        if (result.success && result.score > 0.5) { // Verificación exitosa, enviar formulario
+          
+          const formData = new FormData(form);
+          fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString()
+          })
+          .then((response) => {
+            console.log("Formulario enviado. "+response)
+            msgSuccessContainer.style.display = 'block';
+            msgErrorContainer.style.display = 'none';
+            form.reset();              
+          })
+          .catch((error) => {
+            msgErrorContainer.querySelector('span:last-child').textContent = "Error. "+error;
+          });
+        
+        } else {
+          console.log("Error: "+result.errors)
+          msgErrorContainer.querySelector('span:last-child').textContent = "Error de verificación reCAPTCHA";
+          msgSuccessContainer.style.display = 'none';
+          msgErrorContainer.style.display = 'block';    
+        }
+      });
 
-  // Validar campos obligatorios
-  const name = formData.get('name').trim();
-  const email = formData.get('email').trim();
-  const message = formData.get('message').trim();
-
-  if (!name || !email || !message) {
-    msg_error_text.innerHTML = "Por favor, completa todos los campos obligatorios.";
-    msg_error_container.style.display = 'block';
-    msg_success_container.style.display = 'none';
-    return;
-  }
-
-  // Enviar formulario si todo está correcto
-  fetch("/", {
-    method: "POST",
-    headers: { 
-      "Content-Type": "application/x-www-form-urlencoded",
-      "Cache-Control": "no-store"
-    },
-    body: new URLSearchParams(formData).toString(),
-  })
-  .then((response) => {
-    if (response.ok) {
-      msg_error_container.style.display = 'none';                
-      msg_success_container.style.display = 'block';
-      contactForm.reset();
+    } catch (error) {
+      console.error('Error:', error);
+      msgErrorContainer.querySelector('span:last-child').textContent = error.message;
+      msgSuccessContainer.style.display = 'none';
+      msgErrorContainer.style.display = 'block';
     }
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-    msg_error_text.innerHTML = "Error al enviar el mensaje. Inténtalo de nuevo.";
-    msg_error_container.style.display = 'block';
-    msg_success_container.style.display = 'none';
   });
-};
-
-// Inicializar el evento submit
-const contactForm = document.getElementById("contact-form");
-if (contactForm) {
-  contactForm.addEventListener("submit", handleSubmit);
-}
