@@ -1,55 +1,68 @@
 const form = document.getElementById('contact-form');
+const msgErrorContainer = document.getElementById('msg-error-container');
+const msgSuccessContainer = document.getElementById('msg-success-container');
+const errorMessageSpan = msgErrorContainer.querySelector('span:last-child');
 
-// Cargar reCAPTCHA correctamente
-  form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const msgErrorContainer = document.getElementById('msg-error-container');
-    const msgSuccessContainer = document.getElementById('msg-success-container');
     
-    try{
-    
-      grecaptcha.enterprise.ready(async () => {
-        const token = await grecaptcha.enterprise.execute('6LfVdBkrAAAAAJ5d-acgwQXvLhaPghlzX4I595M1', {action: 'contact'});
-        console.log('Token generado:', token);        
-        
-        const response = await fetch('/api/recaptcha', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ token })
+    try {
+        await new Promise((resolve, reject) => {
+            grecaptcha.enterprise.ready(async () => {
+                try {
+                    const token = await grecaptcha.enterprise.execute(
+                        '6LfVdBkrAAAAAJ5d-acgwQXvLhaPghlzX4I595M1', 
+                        { action: 'contact' }
+                    );
+                    
+                    console.log('Token generado:', token);
+                    const recaptchaResponse = await fetch('/api/recaptcha', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ token })
+                    });
+
+                    if (!recaptchaResponse.ok) throw new Error('Error en validación reCAPTCHA');
+                    
+                    const result = await recaptchaResponse.json();
+                    
+                    if (result.success && result.score > 0.5) {
+                        await submitForm(form);
+                        handleSuccess();
+                    } else {
+                        throw new Error('Error de verificación reCAPTCHA');
+                    }
+                    resolve();
+                } catch (error) {
+                    reject(error);
+                }
+            });
         });
-
-        const result = await response.json();
-        
-        if (result.success && result.score > 0.5) { // Verificación exitosa, enviar formulario
-          
-          const formData = new FormData(form);
-          fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString()
-          })
-          .then((response) => {
-            console.log("Formulario enviado. "+response)
-            msgSuccessContainer.style.display = 'block';
-            msgErrorContainer.style.display = 'none';
-            form.reset();              
-          })
-          .catch((error) => {
-            msgErrorContainer.querySelector('span:last-child').textContent = "Error. "+error;
-          });
-        
-        } else {
-          console.log("Error: "+result.errors)
-          msgErrorContainer.querySelector('span:last-child').textContent = "Error de verificación reCAPTCHA";
-          msgSuccessContainer.style.display = 'none';
-          msgErrorContainer.style.display = 'block';    
-        }
-      });
-
     } catch (error) {
-      console.error('Error:', error);
-      msgErrorContainer.querySelector('span:last-child').textContent = error.message;
-      msgSuccessContainer.style.display = 'none';
-      msgErrorContainer.style.display = 'block';
+        handleError(error);
     }
-  });
+});
+
+async function submitForm() {
+    const formData = new FormData(form);
+    const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+    });
+    if (!response.ok) throw new Error('Error en envío de formulario');
+}
+
+function handleSuccess() {
+    console.log("Formulario enviado correctamente");
+    msgSuccessContainer.style.display = 'block';
+    msgErrorContainer.style.display = 'none';
+    form.reset();
+}
+
+function handleError(error) {
+    console.error('Error:', error);
+    errorMessageSpan.textContent = error.message;
+    msgSuccessContainer.style.display = 'none';
+    msgErrorContainer.style.display = 'block';
+}
