@@ -97,7 +97,7 @@ const SITE_KEY = '6LdUxxgrAAAAAJBH7V847nzcuLmmX_GCAP64warM';
           console.log('Token generado:', token);        
           
 
-          const response = await fetch('/api/recaptcha', {
+          const response = await fetch('../pages/api/recaptcha', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token })
