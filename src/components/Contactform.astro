@@ -1,21 +1,24 @@
 ---
 import Button from "./ui/Button.astro";
+export const prerender = false;
+
+const recaptchaSiteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+if (!recaptchaSiteKey) {
+  throw new Error("Falta la clave RECAPTCHA_SITE_KEY en el entorno");
+}
 ---
+<script is:inline src={`https://www.google.com/recaptcha/enterprise.js?render=${recaptchaSiteKey}`}></script>
 
 <form
   method="post"
   name="contact" 
   id="contact-form"
-  action="/"
-  data-netlify-recaptcha="true"
   data-netlify="true"
-  netlify-honeypot="bot-field"
-  class="form-container"
+  data-sitekey={recaptchaSiteKey}
 >
   
+  <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
   <input type="hidden" name="form-name" value="contact" />
-  <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
-  <input name="bot-field" style="display:none" name="bot-field" />
   <div class="mb-5">
     <input
       type="text"
@@ -49,14 +52,12 @@ import Button from "./ui/Button.astro";
 
 </form>
 
-<div id="recaptcha-container" class="hidden"></div>
-
 <div id="msg-error-container" class="mt-3 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" style="display: none;" role="alert">
   <div class="flex-1">
     <span class="font-bold">Error!</span><br />
     <span class="block sm:inline"></span>
   </div>
-  <button type="button" class="absolute top-0 right-1 px-0 py-0" onclick="this.parentElement.style.display='none'" aria-label="Close">
+  <button type="button" class="alert-close absolute top-0 right-1 px-0 py-0" aria-label="Close">
     &times;
   </button>
 </div>
@@ -66,57 +67,100 @@ import Button from "./ui/Button.astro";
     <span class="font-bold">¡Gracias!</span><br />
     <span class="block sm:inline">Tu mensaje ha sido enviado.</span>
   </div>
-  <button type="button" class="absolute top-0 right-1 px-0 py-0" onclick="this.parentElement.style.display='none'" aria-label="Close">
+  <button type="button" class="alert-close absolute top-0 right-1 px-0 py-0" aria-label="Close">
     &times;
   </button>
 </div>
 
 
+<script is:inline>
+  const form = document.getElementById('contact-form');
+  const msgErrorContainer = document.getElementById('msg-error-container');
+  const msgSuccessContainer = document.getElementById('msg-success-container');
+  const errorMessageSpan = msgErrorContainer.querySelector('span:last-child');
+  const siteKey = form.dataset.sitekey;
 
-
-<style>
-
-  #recaptcha-container > div{
-    width: fit-content !important;
+  if (!siteKey) {
+    throw new Error("Falta la clave RECAPTCHA_SITE_KEY");
   }
-</style>
-
-
-<script type="text/javascript" defer>
-  document.querySelector('form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    
-    // Cargar reCAPTCHA dinámicamente
-    if (typeof grecaptcha === 'undefined') {
-      await new Promise((resolve) => {
-        const script = document.createElement('script');
-        script.src = 'https://www.google.com/recaptcha/api.js?render=explicit';
-        script.async = true;
-        script.defer = true;
-        script.onload = resolve;
-        document.head.appendChild(script);
-      });
-    }
-
-    // Renderizar reCAPTCHA
-    window.grecaptcha.ready(() => {
-      const container = document.getElementById('recaptcha-container');
-      container.classList.remove('hidden');
+ 
+  // Cargar reCAPTCHA correctamente
+  form.addEventListener('submit', async (e) => {
+      e.preventDefault();
       
-      grecaptcha.render(container, {
-        sitekey: import.meta.env.VITE_SITE_RECAPTCHA_SECRET,
-        callback: (token) => {
-          document.getElementById('g-recaptcha-response').value = token;
-          form.submit(); // Enviar formulario automáticamente
-        },
-        'expired-callback': () => {
-          grecaptcha.reset();
-        }
-      });
-    });
+      try {
+          await new Promise((resolve, reject) => {
+              grecaptcha.enterprise.ready(async () => {
+                  try {
+                      const token = await grecaptcha.enterprise.execute(
+                        siteKey, 
+                        { action: 'contact' }
+                      );
+                      
+                      console.log('Token generado:', token);
+                      const recaptchaResponse = await fetch('/api/recaptcha', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ token })
+                      });
+
+                      if (!recaptchaResponse.ok) throw new Error('Error en validación reCAPTCHA');
+                      
+                      const result = await recaptchaResponse.json();
+                      
+                      if (result.success && result.score > 0.5) {
+                          await submitForm(form);
+                          handleSuccess();
+                      } else {
+                          throw new Error('Error de verificación reCAPTCHA');
+                      }
+                      resolve();
+                  } catch (error) {
+                      reject(error);
+                  }
+              });
+          });
+      } catch (error) {
+          handleError(error);
+      }
   });
+
+  async function submitForm(form) {
+      const formData = new FormData(form);
+      const response = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString()
+      });
+      if (!response.ok) throw new Error('Error en envío de formulario');
+  }
+
+  const handleSuccess = () => {
+    console.log("Formulario enviado correctamente");
+    form.style.display = 'none';
+    msgSuccessContainer.style.display = 'block';
+    msgErrorContainer.style.display = 'none';
+    form.reset();
+  };
+
+  const handleError = (error) => {
+    console.error('Error:', error);
+    errorMessageSpan.textContent = error.message;
+    form.style.display = 'none';
+    msgSuccessContainer.style.display = 'none';
+    msgErrorContainer.style.display = 'block';
+  };
+
+  // Función para restaurar la vista inicial
+  const resetFormView = () => {
+    form.style.display = 'block';
+    msgErrorContainer.style.display = 'none';
+    msgSuccessContainer.style.display = 'none';
+  };  
+
+  // Manejadores para los botones de cierre
+  document.querySelectorAll('.alert-close').forEach(button => {
+    button.addEventListener('click', resetFormView);
+  });
+
 </script>
-
-
-<script src="/js/contact-form.js" defer></script>

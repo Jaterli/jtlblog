@@ -1,6 +1,6 @@
 // Adapted from https://equk.co.uk/2023/02/02/generating-slug-from-title-in-astro/
 
-import { GENERATE_SLUG_FROM_TITLE } from '../config'
+import { GENERATE_SLUG_FROM_TITLE } from '../types/config'
 
 // Set GENERATE_SLUG_FROM_TITLE = true for generate slug from title
 // Set GENERATE_SLUG_FROM_TITLE = false for generate slug from file name

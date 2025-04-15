@@ -19,6 +19,12 @@
       "endDay": ""
     },     
     {
+      "description": "reCaptcha v3",
+      "details": "Incorporar reCaptcha v3 en el formulario de contacto (se me atragantó un poco)",
+      "startDay": "2025-04-15",
+      "endDay": "2025-04-15"
+    },      
+    {
       "description": "Post para el blog",
       "details": "Escuchar eventos de la blockchain en Django: confirmación automática de pagos con Web3.",
       "startDay": "2025-04-11",
