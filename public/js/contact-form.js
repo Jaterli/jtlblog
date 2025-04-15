@@ -4,10 +4,10 @@ const msgSuccessContainer = document.getElementById('msg-success-container');
 const errorMessageSpan = msgErrorContainer.querySelector('span:last-child');
 
 // Obtener la clave desde las variables de entorno
-const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+const siteKey = form.dataset.sitekey;
 
-if (!RECAPTCHA_SITE_KEY) {
-  throw new Error('Falta la clave reCAPTCHA en las variables de entorno');
+if (!siteKey) {
+  throw new Error("Falta la clave RECAPTCHA_SITE_KEY");
 }
 
 // Cargar reCAPTCHA correctamente
@@ -19,7 +19,7 @@ form.addEventListener('submit', async (e) => {
             grecaptcha.enterprise.ready(async () => {
                 try {
                     const token = await grecaptcha.enterprise.execute(
-                        RECAPTCHA_SITE_KEY, 
+                        siteKey, 
                         { action: 'contact' }
                     );
                     
