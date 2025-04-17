@@ -56,9 +56,9 @@ const isTaskPending = (endDay: string | null): boolean => {
               {task.startDay
                 ? task.endDay
                   ? task.startDay === task.endDay
-                    ? `Completado el ${new Date(task.startDay).toLocaleDateString()}`
-                    : `Desde el ${new Date(task.startDay).toLocaleDateString()} hasta el ${new Date(task.endDay).toLocaleDateString()}`
-                  : `Iniciado el ${new Date(task.startDay).toLocaleDateString()}`
+                    ? `Completado el ${new Date(task.startDay).toLocaleDateString("es-ES")}`
+                    : `Desde el ${new Date(task.startDay).toLocaleDateString("es-ES")} hasta el ${new Date(task.endDay).toLocaleDateString("es-ES")}`
+                  : `Iniciado el ${new Date(task.startDay).toLocaleDateString("es-ES")}`
                 : "Sin iniciar"}
             </p>
           </li>
