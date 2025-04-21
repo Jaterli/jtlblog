@@ -19,6 +19,18 @@
       "endDay": ""
     },     
     {
+      "description": "Reestructuración directorios del blog",
+      "details": "Ahora las entradas están categorizadas por año y mes: posts/YYYYmm/entry.",
+      "startDay": "2025-04-21",
+      "endDay": "2025-04-21"
+    },    
+    {
+      "description": "Evaluación para puesto de trabajo",
+      "details": "Me pidieron realizar un pequeño desarrolo en un tiempo limitado. A la espera de que me digan algo, o no...",
+      "startDay": "2025-04-18",
+      "endDay": "2025-04-18"
+    },         
+    {
       "description": "reCaptcha v3",
       "details": "Incorporar reCaptcha v3 en el formulario de contacto (se me atragantó un poco)",
       "startDay": "2025-04-15",

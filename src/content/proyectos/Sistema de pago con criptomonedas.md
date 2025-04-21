@@ -21,109 +21,70 @@ Con este sistema, busco ofrecer a las empresas una **alternativa eficiente y tra
 
 ### 🔥 Plan de Desarrollo
 
----
 
-#### ✅ **FASE 1: Investigación y Definición** (COMPLETADA)
-- ✔️ Definición del sistema de pagos blockchain
-- ✔️ Stack tecnológico confirmado:
-  - **Frontend**: React + TypeScript (Vite) + Chakra UI v3.13
-  - **Backend**: Django REST Framework
-  - **Blockchain**: Wagmi + Viem (sin dependencia de red específica)
-- ✔️ Estructura de proyecto con carpetas `frontend/` y `backend/`
+✅ **FASE 1: Core Blockchain Infrastructure** (COMPLETADA)
+- Arquitectura full-stack modular:
+  - Frontend: React + TS + Chakra UI 3.16
+  - Backend: Django REST Framework
+  - Blockchain: Wagmi v2
+- Contrato Inteligente desplegado en Sepolia
+- Sistema de autenticación con firma digital
 
----
+✅ **FASE 2: Gestión de Usuarios** (COMPLETADA)
+- Modelo User-Wallet integrado:
+  - Registro con datos personales (UserForm)
+  - Validación de wallets únicas
+  - Asociación email/wallet (views.py users)
+- Contexto global de wallet (WalletContext)
+- Sistema anti-spoofing con localStorage
 
-#### ✅ **FASE 2: Conexión de Wallet** (COMPLETADA CON MEJORAS)
-- ✔️ Implementación con `useConnect` y `useAccount` de Wagmi
-- ✔️ Detección automática de MetaMask
-- ✔️ Persistencia de sesión con `localStorage`
-- ✔️ Manejo de múltiples redes con `useNetwork` → *Actualizado a detección dinámica*
-- ✔️ Componente `ConnectWallet` con Chakra UI
-- ✔️ Integración con backend Django para registro de wallets
+✅ **FASE 3: Sistema de Pagos Base** (COMPLETADA)
+- Flujo completo de transacciones:
+  - Pagos ETH/ERC20 (USDC, USDT, LINK)
+  - Conversión científica → decimales
+  - Registro en blockchain + base de datos
+- Componentes UI/UX:
+  - PaymentForm con validación en tiempo real
+  - TransactionData con actualización dinámica
 
----
+🚀 **FASE 4: Confirmación Automática** (EN PROGRESO 90%)
+| Componente              | Estado       | Detalles técnicos |
+|-------------------------|--------------|-------------------|
+| Listener de Eventos     | ✔️ Implementado | WebSocket + AsyncWeb3 |
+| Actualización de Estado | ✔️ Funcional | confirmed/pending |
+| Manejo de Reconexiones  | 🔄 En pruebas | Exponential backoff |
+| Sepolia Integration     | ✔️ Completo  | Testnet configurada |
 
-#### ✅ **FASE 3: Autenticación con Firma** (COMPLETADA)
-- ✔️ Implementación con `useSignMessage`
-- ✔️ Flujo completo:
-  1. Usuario conecta wallet
-  2. Completa formulario de datos (nombre/email)
-  3. Firma mensaje con wallet
-  4. Backend verifica firma y asocia datos
-- ✔️ Validación de wallet duplicada
-- ✔️ Notificaciones con toaster personalizado
+📅 **FASE 5: Panel de Administración Empresas** (PRÓXIMOS PASOS)
+- **Funcionalidades Clave**:
+  - Dashboard analítico (transacciones/usuarios)
+  - Gestión manual de transacciones
+  - Exportación de datos (CSV/PDF)
+  - Sistema de alertas empresariales
+- **Tech Stack**:
+  - Vistas protegidas por JWT
+  - Tablas dinámicas con paginación
+  - Filtros avanzados por fecha/token
 
----
+🔒 **FASE 6: Seguridad Avanzada** (80% COMPLETADO)
+- ✔️ Validación on-chain de transacciones
+- ✔️ Protección contra replay attacks
+- 🔄 Pendiente: Auditoría formal de contratos
 
-#### 🚀 **FASE 4: Pagos en Ethereum** (EN PROGRESO - AJUSTES)
-1. **Contrato Inteligente**:
-   - ✔️ Contrato `PaymentContract.sol` desplegado en Sepolia
-   - ✔️ Funcionalidades básicas (`pay()`, `getBalance()`)
-   - 🔄 Pendiente: Eventos para registro de pagos
+📊 **FASE 7: Mejoras UX/UI**
+- Historial de pagos responsive (PaymentHistory)
+- Previsualización de facturas en UI
+- Sistema de notificaciones in-app
+- Internacionalización (es/en)
 
-2. **Integración Frontend**:
-   - ✔️ Componente `Payment.tsx` con Chakra UI
-   - ✔️ Uso de `useWriteContract` para transacciones
-   - ✔️ Conversión ETH → Wei
-   - 🔄 Pendiente: Integración completa con backend
+⚙️ **Componentes Destacados:**
+```python
+# Backend Core
+- UserProfile Model → Relación 1:1 User-Wallet
+- Transaction Service → CoinGecko API + Web3.py
+- Async Listener → Manejo de eventos en tiempo real
 
-3. **Backend**:
-   - ✔️ Endpoint para registro de transacciones
-   - 🔄 Pendiente: Validación de recibos on-chain
-
----
-
-#### 📅 **FASE 5: Conversión y Facturación** (PRÓXIMOS PASOS)
-- **API de conversión**:
-  - Evaluar CoinGecko vs Chainlink
-  - Implementar servicio en Django
-- **Facturación**:
-  - Generación de PDF con datos de transacción
-  - Historial de pagos en frontend
-- **Nuevo componente**: `InvoiceGenerator`
-
----
-
-#### 🔒 **FASE 6: Seguridad** (PLANIFICACIÓN)
-- Validación de firmas en backend
-- Protección contra replay attacks
-- Auditoría de contrato con Slither o MythX
-
----
-
-#### 🌐 **FASE 7: Despliegue** (PREPARACIÓN)
-- **Contrato**:
-  - Pruebas en Goerli antes de mainnet
-- **Infraestructura**:
-  - Frontend: Vercel
-  - Backend: Railway (Dockerizado)
-  - Base de datos: PostgreSQL
-
----
-
-#### 🛠 **FASE 8: Mejoras** (FUTURO)
-- **Wallets adicionales**: WalletConnect
-- **Soporte multi-moneda**: USDC en Polygon
-- **Notificaciones**: WebSockets para estado de tx
-
----
-
-### 🔄 Cambios Relevantes vs Plan Original:
-1. **Autenticación**:
-   - Se añadió formulario de usuario antes de firma
-   - Validación de wallets registradas
-
-2. **Wagmi v2**:
-   - Eliminada configuración obsoleta de contratos en `createConfig`
-   - Uso de `useContractRead/Write` en lugar de configuración global
-
-3. **Chakra UI v3.13**:
-   - Migración a nuevos componentes como `Field.Root`
-   - Eliminación de componentes deprecados
-
-4. **Flujo de Pagos**:
-   - Separación clara entre:
-     1. Autenticación (Fase 3)
-     2. Operaciones de pago (Fase 4)
-     3. Facturación (Fase 5)
-
+# Frontend Avanzado
+- WalletContext → Estado global de conexión
+- Dynamic Forms → Validación con react-hook-form
+- Transaction Flow → Estados visuales con Chakra UI
