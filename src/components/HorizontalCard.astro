@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import dayjs from "dayjs";
 
 const { title, img, description, badge, pubDate, tags, url, target = "_blank" } = Astro.props;
-const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
+const tag_url = '/blog/tag/' //url.split("/").slice(0, -1).join("/") + "/tag";
 const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
 
 ---
@@ -29,12 +29,12 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
         <h2 class="text-xl font-bold">{title}
           {badge && <div class="badge badge-neutral rounded my-2 ml-1">{badge}</div>}  
         </h2>
-        <p class="py-2 text-1xl">{description}</p>
+        <p class="pb-2 text-1xl">{description}</p>
         <div class="text-sm opacity-70 float-left">{displayDate}</div>
-        <div class="card-actions justify-end">
+        <div class="card-actions justify-end leading-[1.2]">
           {
             tags && tags.map((tag) => (
-              <span class="badge badge-outline opacity-70">{tag}</span>      
+            <a href={`${tag_url}${tag}`}><span class="badge badge-outline opacity-70 hover:bg-gray-500">{tag}</span></a>
             ))
           }
         </div>

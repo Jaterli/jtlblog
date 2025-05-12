@@ -12,7 +12,7 @@ const {
   tags
 } = Astro.props;
 const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
-
+const tag_url = '/blog/tag/'
 ---
 
 <div class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
@@ -34,12 +34,12 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
         <h2 class="text-xl font-bold">{title}
           {badge && <div class="badge badge-neutral rounded my-2 ml-1">{badge}</div>}  
         </h2>
-        <p class="py-2 text-1xl">{description}</p>
+        <p class="pb-1 text-1xl">{description}</p>
         <div class="text-sm opacity-70 float-left">{displayDate}</div>
-        <div class="card-actions justify-end">
+        <div class="card-actions justify-end leading-[1.2]">
           {
             tags && tags.map((tag) => (
-              <span class="badge badge-outline opacity-70">{tag}</span>      
+            <a href={`${tag_url}${tag}`}><span class="badge badge-outline opacity-70 hover:bg-gray-500">{tag}</span></a>
             ))
           }
         </div>
