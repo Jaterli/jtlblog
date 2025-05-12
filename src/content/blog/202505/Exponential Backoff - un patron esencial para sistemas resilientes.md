@@ -1,7 +1,7 @@
 ---
 draft: false
 title: "Exponential Backoff: un patrón esencial para sistemas resilientes"
-description: "El *exponential backoff* es un patrón de reintento que incrementa progresivamente el tiempo de espera entre intentos fallidos."
+description: "El exponential backoff es un patrón de reintento que incrementa progresivamente el tiempo de espera entre intentos fallidos."
 pubDate: "2025-04-21"
 heroImage: "/assets/images/blog/blog.exponential-backoff.png"
 category: "Máster en Desarrollo Full Stack"

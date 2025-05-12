@@ -19,6 +19,12 @@
       "endDay": ""
     },     
     {
+      "description": "El sistema de pago con criptos será un Marketplace",
+      "details": "El sistema de pago con criptomonedas está evolucionando a un completo marketplace, y estoy profundizando en la seguridad, por eso me estoy demorando.",
+      "startDay": "2025-03-01",
+      "endDay": "2025-05-12"
+    },         
+    {
       "description": "Reestructuración directorios del blog",
       "details": "Ahora las entradas están categorizadas por año y mes: posts/YYYYmm/entry.",
       "startDay": "2025-04-21",

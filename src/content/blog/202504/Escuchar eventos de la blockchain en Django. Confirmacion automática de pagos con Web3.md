@@ -5,9 +5,14 @@ description: "Mecanismo que nos permite detectar de forma automática cuándo se
 pubDate: "2025-04-11"
 heroImage: "/assets/images/blog/blog.blockchain.png"
 category: "Máster en Desarrollo BlockChain"
-tags: [Django, Blockchain, Automatización]
+tags: [Seguridad, Django, Python, Web3, Blockchain, Automatización]
 ---
 
+Antes de nada, quiero deciros que el desarrollo al que se refiere este post a sido actualizado a una versión que mejora su seguridad. Podéis ver el post haciendo clic [aquí](/blog/posts/202505/evolución-del-listener-de-pagos-blockchain "listener actualizado").
+
+---
+
+## Introducción
 
 Una de las piezas fundamentales en una aplicación de pagos descentralizados es la capacidad de detectar automáticamente cuándo se ha completado una transacción en la blockchain. Para ello, se utiliza un **sistema de escucha de eventos** que se mantiene conectado a la red y reacciona en tiempo real a los eventos emitidos por el contrato inteligente.
 
@@ -81,6 +86,3 @@ Este sistema de escucha permite que la aplicación esté sincronizada con los ev
 
 [Ver archivo listener.py en GitHub](https://github.com/Jaterli/blockchain-payments/blob/main/backend/payments/management/commands/listener.py)
 
---- 
-
-¿Quieres que también lo convierta en un post compatible con plataformas como Dev.to o Medium?
