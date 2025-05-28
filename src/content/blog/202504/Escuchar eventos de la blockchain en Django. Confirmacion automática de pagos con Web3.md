@@ -5,7 +5,7 @@ description: "Mecanismo que nos permite detectar de forma automática cuándo se
 pubDate: "2025-04-11"
 heroImage: "/assets/images/blog/blog.blockchain.png"
 category: "Máster en Desarrollo BlockChain"
-tags: [Seguridad, Django, Python, Web3, Blockchain, Automatización]
+tags: [Cyberseguridad, Django, Python, Web3, Blockchain, Automatización]
 ---
 
 Antes de nada, quiero deciros que el desarrollo al que se refiere este post a sido actualizado a una versión que mejora su seguridad. Podéis ver el post haciendo clic [aquí](/blog/posts/202505/evolución-del-listener-de-pagos-blockchain "listener actualizado").

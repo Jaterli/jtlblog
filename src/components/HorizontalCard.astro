@@ -25,7 +25,7 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
           />
         )
       }
-      <div class="grow w-full md:p-0">
+      <article class="grow w-full md:p-0">
         <h2 class="text-xl font-bold">{title}
           {badge && <div class="badge badge-neutral rounded my-2 ml-1">{badge}</div>}  
         </h2>
@@ -38,7 +38,7 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
             ))
           }
         </div>
-      </div>
+      </article>
     </div>
   </a>
 </div>

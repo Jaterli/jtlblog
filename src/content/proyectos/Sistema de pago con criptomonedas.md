@@ -9,7 +9,7 @@ tags: ["Wagmi", "Chakra UI", "React", "Django", "Python", "Typescript"]
 
 
 
-## 🧾 **Descripción del Proyecto: Blockchain Payments**
+## 🧾 Descripción del Proyecto: Blockchain Payments
 
 **Blockchain Payments** es una plataforma Web3 diseñada para facilitar pagos descentralizados mediante contratos inteligentes en Ethereum (Sepolia en esta versión de portafolio). A través de una experiencia UI moderna (Chakra UI), integración con MetaMask y funcionalidades extendidas como facturación automática y persistencia de sesión, este proyecto combina blockchain, UX y backend para resolver un problema real de pagos digitales.
 
@@ -17,7 +17,7 @@ Además, está construida para ser fácilmente **personalizable y escalable** ha
 
 ---
 
-## 🧭 **Roadmap Técnico + Funcional para el Blog**
+## 🧭 Roadmap Técnico + Funcional para el Blog
 
 ---
 
@@ -110,7 +110,7 @@ Además, está construida para ser fácilmente **personalizable y escalable** ha
 
 ---
 
-## 💬 Puntos Clave para tu Blog
+## 💬 Puntos Clave
 
 - Tecnología usada: **Solidity, Django, React, ethers.js, Chakra UI**
 - APIs integradas: **CoinGecko**

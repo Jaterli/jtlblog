@@ -5,12 +5,12 @@ description: "Sistema de seguridad mejorado que asegura que ningún pago se pier
 pubDate: "2025-05-12"
 heroImage: "/assets/images/blog/blog.blockchain-actualizado.png"
 category: "Tutoriales"
-tags: [Seguridad, Blockchain, Web3, Django, Python, SmartContracts, Automatización, Actualización]
+tags: [Cyberseguridad, Blockchain, Web3, Django, Python, SmartContracts, Automatización, Actualización]
 ---
 
 En el desarrollo de mi [marketplace con pagos en criptomonedas](/proyectos/entry/sistema-de-pago-con-criptomonedas/ "marketplace con pagos en criptomonedas"), uno de los mayores retos ha sido garantizar que **ningún pago se pierda**, incluso si el usuario abandona la página antes de que la transacción se confirme en la blockchain. La solución: un **listener de eventos mejorado** que actúa como guardián en segundo plano, asegurando que todas las transacciones se registren correctamente.
 
-## **El Problema con el Enfoque Anterior**
+## El Problema con el Enfoque Anterior
 
 Mi primer listener ([versión anterior](/blog/posts/202504/escuchar-eventos-de-la-blockchain-en-django-confirmacion-automática-de-pagos-con-web3/ "Mi primer listener")) presentaba varias limitaciones:
 
@@ -25,9 +25,9 @@ Mi primer listener ([versión anterior](/blog/posts/202504/escuchar-eventos-de-l
 2. **Estados ambiguos**:  
    Las transacciones no encontradas quedaban en un limbo sin clasificar (ni confirmadas ni fallidas).
 
-## **La Solución: Un Listener Robustecido**
+## La Solución: Un Listener Robustecido
 
-### **Cambios Clave Implementados**
+### Cambios Clave Implementados
 
 1. **Registro anticipado con estado `pending`**  
    Ahora, la transacción se crea en la base de datos **inmediatamente** cuando el usuario firma en su wallet, antes de que se confirme en blockchain. Esto elimina la ventana de vulnerabilidad.
@@ -57,7 +57,7 @@ Mi primer listener ([versión anterior](/blog/posts/202504/escuchar-eventos-de-l
    wallet_address__iexact=sender_address  # Versión nueva
    ```
 
-### **Flujo Mejorado (vs Antiguo)**
+### Flujo Mejorado (vs Antiguo)
 
 | **Etapa**               | **Versión Antigua**                          | **Versión Nueva**                              |
 |-------------------------|---------------------------------------------|-----------------------------------------------|
@@ -66,7 +66,7 @@ Mi primer listener ([versión anterior](/blog/posts/202504/escuchar-eventos-de-l
 | Manejo de errores       | Transacción "perdida"                       | Marcado automático como `failed`              |
 | Resiliencia             | Sin reintentos inteligentes                 | Backoff exponencial + 5 reintentos            |
 
-## **Beneficios Clave para Usuarios y Negocio**
+## Beneficios Clave para Usuarios y Negocio
 
 1. **Protección contra pérdidas**  
    - Ahora es irrelevante si el usuario cierra el navegador: el listener sigue trabajando.
@@ -85,7 +85,7 @@ Mi primer listener ([versión anterior](/blog/posts/202504/escuchar-eventos-de-l
 4. **Arquitectura portable**  
    Este patrón funciona para cualquier aplicación con pagos on-chain (no solo Django).
 
-## **Implementación Técnica**
+## Implementación Técnica
 
 El listener se ejecuta como un comando de Django:
 ```bash
@@ -99,7 +99,7 @@ mi_app/
 │  │  └─ listener.py  # Código completo
 ```
 
-## **Conclusión y Mejoras Futuras**
+## Conclusión y Mejoras Futuras
 
 Este nuevo diseño resuelve los puntos débiles de la versión original priorizando:
 - **Seguridad**: No se pierden transacciones válidas.

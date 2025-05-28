@@ -14,7 +14,7 @@ const last_projects = projects.slice(0, 3);
 <BaseLayout sideBarActiveItemID="home">
   <div class="bg-base-200 py-8 sm:py-12 px-4 sm:px-6 text-base text-center">
 
-    <h1 class="text-4xl mb-6">¡Hola! Soy Jaime 👋</h1>
+    <p class="text-4xl mb-4">¡Hola! Soy Jaime 👋</p>
     <p class="text-lg mb-6">
       Este espacio está dedicado a compartir los conocimientos que voy adquiriendo en mis estudios de desarrollo full stack y blockchain. Aquí encontrarás proyectos que voy construyendo, artículos sobre temas de actualidad en tecnología y soluciones a problemas comunes en desarrollo web y blockchain.       
     </p>
@@ -34,12 +34,36 @@ const last_projects = projects.slice(0, 3);
         Contacto
       </a>
     </div>
-
   </div>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-12">Últimos posts</div>
-  </div>
+  <!-- Publicación destacada -->
+  <article class="max-w-3xl mx-auto mt-12">
+    <h2 class="text-2xl font-bold mb-4">🚀 En lo que estoy trabajando ahora: una app de pagos onchain con Web3 y React</h2>
+    <p class="mb-4">
+      Últimamente he estado completamente sumergido en el desarrollo de una aplicación que une dos mundos que me apasionan: las interfaces modernas con React y el ecosistema blockchain. Se trata de una plataforma de compras <strong>onchain</strong> que permite a los usuarios realizar pagos con tokens como <code>USDT</code>, <code>USDC</code>, <code>ETH</code> o <code>LINK</code> directamente desde su wallet.
+    </p>
+    <p class="mb-4">
+      El núcleo de la app gira en torno a ofrecer una experiencia de compra Web3 fluida, segura y eficiente, donde los usuarios pueden conectar su wallet, seleccionar productos de un catálogo, y finalizar el pago directamente en la blockchain. Todo el proceso incluye validaciones de stock, firma de mensajes para autenticación, emisión y verificación de eventos en smart contracts, y una gestión robusta del carrito y las transacciones.
+    </p>
+    <p class="mb-4">Estoy utilizando tecnologías como:</p>
+    <ul class="list-disc list-inside mb-4">
+      <li><strong>React</strong> y <strong>Chakra UI</strong> para el frontend.</li>
+      <li><strong>wagmi</strong> para la integración con wallets y contratos inteligentes.</li>
+      <li><strong>Django</strong> como backend y API, con una base de datos relacional para registrar transacciones y carritos.</li>
+      <li><strong>Smart Contracts en Solidity</strong> desplegados en testnet (por ahora).</li>
+    </ul>
+    <p class="mb-4">
+      Uno de los principales desafíos ha sido gestionar correctamente los estados asincrónicos entre la interfaz de usuario, la blockchain y el backend. Esto incluye casos como cuando un usuario inicia un pago pero abandona la página antes de que la transacción se confirme. Para ello, he diseñado una estrategia que registra la transacción anticipadamente en el backend y luego la actualiza con el <em>hash</em> real de blockchain una vez que se emite el evento correspondiente desde el contrato inteligente.
+    </p>
+    <p class="mb-4">
+      Además, estoy trabajando en mejorar la experiencia de autenticación del usuario con su wallet mediante firma de mensajes, <abbr title="JSON Web Tokens">JWT</abbr> y control de sesión con <em>refresh tokens</em>.
+    </p>
+    <p>
+      Es un proyecto ambicioso, pero extremadamente enriquecedor. Estoy aprendiendo muchísimo sobre seguridad, validación criptográfica, sincronización con eventos onchain y la importancia de manejar cada caso límite. Poco a poco, esta app se va consolidando como un producto sólido y preparado para un entorno de producción Web3.
+    </p>
+  </article>
+
+  <div class="text-3xl w-full font-bold mb-5 mt-12">Últimos posts</div>
   {
     last_posts.map((post) => (
       <>
@@ -79,18 +103,17 @@ const last_projects = projects.slice(0, 3);
     ))
   }
 
-<div>&nbsp;</div>
+  <div>&nbsp;</div>
 
-<div class="mb-14 text-center">
-  <div class="text-3xl w-full font-bold mb-5 mt-10">Nº publicaciones por Mes</div>
-  <img src="https://raw.githubusercontent.com/Jaterli/fastAPI/main/grap.png" title="Nº posts por Mes" alt="Nº posts por Mes" class="grap" />    
-  <div class="mt-4">Gráfica desarrollada con <a class="text-blue-500 underline" href="/proyectos/entry/creacion-de-grafica-de-barras-con-streamlit">Streamlit</a></div>
-</div>
-
+  <div class="mb-14 text-center">
+    <div class="text-3xl w-full font-bold mb-5 mt-10">Nº publicaciones por Mes</div>
+    <img src="https://raw.githubusercontent.com/Jaterli/fastAPI/main/grap.png" title="Nº posts por Mes" alt="Nº posts por Mes" class="grap" />    
+    <div class="mt-4">Gráfica desarrollada con <a class="text-blue-500 underline" href="/proyectos/entry/creacion-de-grafica-de-barras-con-streamlit">Streamlit</a></div>
+  </div>
 </BaseLayout>
 
 <style>
-  .grap{
+  .grap {
     width: 400px;
     display: inline;
   }

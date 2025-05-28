@@ -11,9 +11,9 @@ tags: [Seguridad, Cyberseguridad, Blockchain, JWT, Django, React]
 
 En mi [marketplace con pagos blockchain](/proyectos/entry/sistema-de-pago-con-criptomonedas/ "marketplace con pagos blockchain"), he desarrollado un **sistema de autenticación descentralizado** que combina la seguridad de las firmas criptográficas con la flexibilidad de los JWT, ofreciendo una experiencia sin fricciones mientras garantizo la máxima protección para los usuarios. Este es el enfoque técnico:
 
-## **Arquitectura Clave**
+## Arquitectura Clave
 
-### **1. Autenticación con Wallet (Web3)**
+### 1. Autenticación con Wallet (Web3)
 El flujo sigue un patrón EIP-4361 mejorado:
 ```typescript
 // WalletProvider.tsx - Flujo de autenticación
@@ -44,7 +44,7 @@ const authenticate = async (): Promise<boolean> => {
 }
 ```
 
-### **2. Verificación en Backend (Django)**
+### 2. Verificación en Backend (Django)
 ```python
 # views.py - Validación de firmas
 @api_view(['POST'])
@@ -64,9 +64,9 @@ def wallet_auth(request):
         return Response({'error': 'Firma inválida'}, status=401)
 ```
 
-## **Componentes Esenciales**
+## Componentes Esenciales
 
-### **JSON Web Tokens (JWT)**
+### JSON Web Tokens (JWT)
 - **Ventajas**: 
   - Sin estado (stateless): Reduce carga en la base de datos.
   - Seguridad: Firmados criptográficamente.
@@ -78,7 +78,7 @@ def wallet_auth(request):
   refresh['wallet'] = wallet  # Incluye dirección en el payload
   ```
 
-### **Decoradores Clave**
+### Decoradores Clave
 | Decorador | Función | Ejemplo de Uso |
 |-----------|---------|----------------|
 | `@permission_classes` | Control de acceso | `@permission_classes([IsAuthenticated])` |
@@ -86,7 +86,7 @@ def wallet_auth(request):
 | `@csrf_exempt` | Exime de CSRF para APIs externas | Usado en `register_wallet` |
 | `@wallet_required` (custom) | Valida JWT + wallet | Protege endpoints críticos |
 
-### **Almacenamiento en Frontend**
+### Almacenamiento en Frontend
 - **LocalStorage**: Guarda tokens JWT de forma persistente.
   ```typescript
   // authUserAxios.ts - Interceptor
@@ -100,7 +100,7 @@ def wallet_auth(request):
   - JWT de corta duración (access_token)
   - Refresh tokens con validación estricta
 
-## **Protección de Transacciones**
+## Protección de Transacciones
 Integración con el sistema de pagos:
 ```python
 # payments/views.py
@@ -112,7 +112,7 @@ def register_transaction(request):
         return Response({"error": "Ya existe una transacción pendiente"}, status=409)
 ```
 
-## **Recomendaciones de Mejora**
+## Recomendaciones de Mejora
 1. **Sustituir LocalStorage por Cookies HttpOnly** para mayor seguridad contra XSS.
 2. **Implementar nonces secuenciales** en lugar de UUIDs para prevenir replay attacks.
 3. **Añadir CAPTCHA** en `get_wallet_nonce` para evitar spam (ya tiene rate limiting).
@@ -121,7 +121,7 @@ def register_transaction(request):
    ALLOWED_DOMAINS = ["midominio.com"]  # En settings.py
    ```
 
-## **Conclusión**
+## Conclusión
 Este sistema resuelve elegantemente los desafíos únicos de los pagos on-chain:
 - **Usuario**: Sin contraseñas, sin esperas.
 - **Desarrollador**: Fácil integración con wallets estándar.
