@@ -79,12 +79,27 @@ def wallet_auth(request):
   ```
 
 ### Decoradores Clave
-| Decorador | Función | Ejemplo de Uso |
-|-----------|---------|----------------|
-| `@permission_classes` | Control de acceso | `@permission_classes([IsAuthenticated])` |
-| `@api_view` | Define métodos HTTP aceptados | `@api_view(["POST"])` |
-| `@csrf_exempt` | Exime de CSRF para APIs externas | Usado en `register_wallet` |
-| `@wallet_required` (custom) | Valida JWT + wallet | Protege endpoints críticos |
+
+#### `@permission_classes`
+
+* **Función:** Control de acceso
+* **Ejemplo:** `@permission_classes([IsAuthenticated])`
+
+#### `@api_view`
+
+* **Función:** Define métodos HTTP aceptados
+* **Ejemplo:** `@api_view(["POST"])`
+
+#### `@csrf_exempt`
+
+* **Función:** Exime de CSRF para APIs externas
+* **Ejemplo:** Usado en `register_wallet`
+
+#### `@wallet_required` *(custom)*
+
+* **Función:** Valida JWT + wallet
+* **Ejemplo:** Protege endpoints críticos
+
 
 ### Almacenamiento en Frontend
 - **LocalStorage**: Guarda tokens JWT de forma persistente.

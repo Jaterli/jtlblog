@@ -38,7 +38,7 @@ const last_projects = projects.slice(0, 3);
 
   <!-- Publicación destacada -->
   <article class="max-w-3xl mx-auto mt-12">
-    <h2 class="text-2xl font-bold mb-4">🚀 En lo que estoy trabajando ahora: una app de pagos onchain con Web3 y React</h2>
+    <h2 class="text-3xl font-bold mb-4">🚀 En lo que estoy trabajando ahora: <br />una app de pagos onchain con Web3 y React</h2>
     <p class="mb-4">
       Últimamente he estado completamente sumergido en el desarrollo de una aplicación que une dos mundos que me apasionan: las interfaces modernas con React y el ecosistema blockchain. Se trata de una plataforma de compras <strong>onchain</strong> que permite a los usuarios realizar pagos con tokens como <code>USDT</code>, <code>USDC</code>, <code>ETH</code> o <code>LINK</code> directamente desde su wallet.
     </p>
@@ -63,13 +63,15 @@ const last_projects = projects.slice(0, 3);
     </p>
   </article>
 
+  <div class="divider my-0 pt-4" />
+
   <div class="text-3xl w-full font-bold mb-5 mt-12">Últimos posts</div>
   {
     last_posts.map((post) => (
       <>
         <HorizontalCard
           title={post.data.title}
-          img={post.data.heroImage}
+          heroImage={post.data.heroImage}
           description={post.data.description}
           badge={post.data.badge}
           pubDate={post.data.pubDate}
@@ -90,7 +92,7 @@ const last_projects = projects.slice(0, 3);
       <>
         <HorizontalCard
           title={project.data.title}
-          img={project.data.heroImage}
+          heroImage={project.data.heroImage}
           description={project.data.description}
           badge={project.data.badge}
           pubDate={project.data.pubDate}
