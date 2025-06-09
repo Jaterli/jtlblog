@@ -7,11 +7,23 @@ import getPostUrl from "../../../../lib/getPostUrl";
 export async function getStaticPaths({ paginate }) {
   const all_posts = await getCollection("blog");
 
-  const all_tags = [...new Set(all_posts.flatMap((post) => post.data.tags || []))];
+  // Paso 1: Extraer todos los tags y normalizarlos a minúsculas
+  const all_tags = [
+    ...new Set(
+      all_posts.flatMap((post) => 
+        (post.data.tags || []).map(tag => tag.toLowerCase()) // Convertir cada tag a minúsculas
+      )
+    )
+  ];
 
+  // Paso 2: Generar las rutas paginadas
   return all_tags.flatMap((tag) => {
     const filtred_posts = all_posts
-      .filter((post) => post.data.tags?.includes(tag))
+      .filter((post) => 
+        (post.data.tags || [])
+          .map(postTag => postTag.toLowerCase()) // Normalizar tags del post a minúsculas
+          .includes(tag) // Comparar con el tag en minúsculas
+      )
       .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
     return paginate(filtred_posts, {

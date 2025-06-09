@@ -20,26 +20,29 @@ const tag_url = '/blog/tag/'
     <div class="hero-content flex-col md:flex-row">
       {
         heroImage && (
+          <div class="w-full md:w-[13rem] aspect-video rounded-lg overflow-hidden">
           <Image
-            width={750}
-            height={422}
-            format="webp"
             src={heroImage}
+            width={750}
+            height={500}
+            format="webp"
             alt={title}
-            class="max-w-48 md:max-w-[13rem] max-h-28 rounded-lg object-cover"
+            class="w-full h-full object-cover"
           />
+          </div>
         )
       }
+
       <article class="grow w-full md:p-0">
-        <h2 class="text-xl font-bold">{title}
+        <h2 class="text-xl leading-[1.2] pb-1">{title}
           {badge && <div class="badge badge-neutral rounded my-2 ml-1">{badge}</div>}  
         </h2>
-        <p class="pb-1 text-1xl">{description}</p>
+        <p class="pb-2 text-1xl leading-[1.3] opacity-90">{description}</p>
         <div class="text-sm opacity-70 float-left">{displayDate}</div>
         <div class="card-actions justify-end leading-[1.2]">
           {
             tags && tags.map((tag) => (
-            <a href={`${tag_url}${tag}`}><span class="badge badge-outline opacity-70 hover:bg-gray-500">{tag}</span></a>
+            <a href={`${tag_url}${tag.toLowerCase()}`}><span class="badge badge-outline opacity-70 hover:bg-gray-500">{tag}</span></a>
             ))
           }
         </div>
