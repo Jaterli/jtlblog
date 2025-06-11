@@ -36,11 +36,13 @@ const format_endDate = dayjs(endDate).format("DD/MM/YYYY")
       }
 
       <article class="grow w-full md:p-0">
-        <h2 class="text-xl leading-[1.2] pb-1">{title}
+        <h2 class="text-xl leading-[1.2] pb-2">{title}
           {badge && <div class="badge badge-neutral rounded my-2 ml-1">{badge}</div>}  
         </h2>        
-        <p class="pb-2 text-1xl leading-[1.3] opacity-90">{description}</p>
-        <p class="pt-2 text-sm opacity-70">{format_startDate} - {format_endDate}</p>        
+        <p class="pb-2 text-1xl leading-[1.3] opacity-90">{description}
+          <span class="text-xs opacity-70 italic ml-1"> [{format_startDate} - {format_endDate}]</span>
+        </p>
+        <!-- <p class="pt-2 text-sm opacity-70">{format_startDate} - {format_endDate}</p>         -->
       </article>
     </div>
   </a>

@@ -25,8 +25,8 @@ import { Image } from "astro:assets";
     <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
       {heroImage && <Image width={750} height={422} format="webp" src={heroImage} alt={title} class="w-full mb-6" />}
       <h1 class="title my-2 text-4xl font-semibold">{title}</h1>
-      {pubDate && <time>{displayDate}</time>}
-      <br />
+      
+      <div class="mb-4">
       {badge && <div class="badge badge-neutral rounded my-2">{badge}</div>}
       {
         tags &&
@@ -36,6 +36,8 @@ import { Image } from "astro:assets";
             </span>
           ))
       }
+      </div>
+      {pubDate && <time class="italic opacity-70">{displayDate}</time>}
       <div class="divider my-2"></div>
       <slot />
       <div class="divider my-2"></div>

@@ -29,16 +29,12 @@ const format_endDate = dayjs(endDate).format("DD/MM/YYYY")
           <Image width={750} height={422} format="webp" src={heroImage} alt={title} class="w-full mb-6" />
         )
       }
-      <div class="">
-        <h1 class="title my-2 text-4xl font-semibold">
-          {title}
-          {badge && <div class="badge badge-neutral rounded my-2 hover:bg-gray-500">{badge}</div>}
-        </h1>
-        <div class="flex place-content-between items-center">
-          <div class="grow md:grow-0">
-            <span class="text-md mr-1"> {format_startDate} - {format_endDate}</span>
-          </div>
-        </div>
+      <h1 class="title my-2 text-4xl font-semibold">
+        {title}
+        {badge && <div class="badge badge-neutral rounded my-2 hover:bg-gray-500">{badge}</div>}
+      </h1>
+      <div>
+        <span class="text-md italic opacity-70"> {format_startDate} - {format_endDate}</span>
       </div>
       <div class="divider my-2"></div>
       <slot />

@@ -15,9 +15,17 @@
   font-size: 0.9em;
 }
 
-/* .prose-lg{
-  line-height: ;
-} */
+@media (max-width: 640px) {
+  .prose-lg {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .prose-lg ul {
+    padding-left: 15px;
+    font-size: 0.95em;
+  }
+}
 
 .prose :where(h1){
   font-weight:700;
