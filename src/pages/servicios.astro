@@ -5,48 +5,72 @@ const description="Construyo soluciones web eficientes con Django y React, optim
 ---
 
 <BaseLayout title={title} description={description} ogType="article" sideBarActiveItemID="servicios">
-    <article class="max-w-3xl mx-auto prose prose-lg">
-        <h1 class="text-center text-4xl mb-6">Servicios Profesionales de Desarrollo Web y Web3</h1>
-    
-        <div class="text-center">
-            Optimiza tu proyecto con soluciones tecnológicas eficientes, escalables y seguras. Ofrezco servicios especializados en desarrollo backend, frontend, blockchain y seguridad aplicada. Desde la creación de APIs robustas hasta sistemas de autenticación descentralizados y auditoría de contratos inteligentes, te ayudo a construir proyectos fiables y resistentes a amenazas.
-        </div>
-        
-        <hr />
-    
-        <h2 class="text-2xl font-semibold mb-4">Desarrollo Backend y API Seguras</h2>
-        <ul>
-            <li><strong>Desarrollo de aplicaciones web con Django y Django Rest Framework</strong> – Sistemas robustos con autenticación JWT, OAuth2 y gestión de usuarios avanzada.</li>
-            <li><strong>Implementación de APIs REST/GraphQL seguras</strong> – Con protección contra ataques comunes (SQLi, XSS, CSRF) y rate limiting.</li>
-            <li><strong>Sistemas de autenticación Web3</strong> – Integración de login con wallets (MetaMask, WalletConnect) y verificación criptográfica de firmas.</li>
-        </ul>
-    
-        <h2 class="text-2xl font-semibold mb-4">Seguridad Aplicada</h2>
-        <ul>
-            <li><strong>Arquitecturas JWT seguras</strong> – Implementación de tokens con rotación, revocación y almacenamiento seguro (HttpOnly cookies).</li>
-            <li><strong>Sistemas anti-fraude para pagos blockchain</strong> – Listener de transacciones, validación on-chain y recuperación de fallos.</li>
-            <li><strong>Auditoría de vulnerabilidades en DApps</strong> – Análisis de riesgos en frontend y smart contracts (reentrancy, oracle manipulation).</li>
-        </ul>
-    
-        <h2 class="text-2xl font-semibold mb-4">Desarrollo Frontend Seguro</h2>
-        <ul>
-            <li><strong>Aplicaciones React/TypeScript con hardening</strong> – Protección contra XSS, sanitización de datos y gestión segura de tokens.</li>
-            <li><strong>Integración de Astro con medidas de seguridad</strong> – CSP headers, sanitización de Markdown y componentes aislados.</li>
-        </ul>
-    
-        <h2 class="text-2xl font-semibold mb-4">Blockchain y Smart Contracts</h2>
-        <ul>
-            <li><strong>Contratos inteligentes auditados en Solidity</strong> – Con patrones de seguridad como Checks-Effects-Interactions y protección contra front-running.</li>
-            <li><strong>Marketplaces con mecanismos de pago seguros</strong> – Sistemas de escrow, multi-firmas y listeners para confirmación de transacciones.</li>
-            <li><strong>Autenticación descentralizada</strong> – Implementación de EIP-4361 (Sign-In with Ethereum) y gestión de nonces.</li>
-        </ul>
-    
-        <h2 class="text-2xl font-semibold mb-4">Gestión y Despliegue Seguro</h2>
-        <ul>
-            <li><strong>Configuración de entornos con hardening</strong> – Docker seguros, secrets management y políticas de IAM estrictas.</li>
-            <li><strong>Despliegue con medidas de protección</strong> – WAF, rate limiting y monitoreo de anomalías.</li>
-        </ul>
-    
-    </article>
+  <article class="max-w-3xl mx-auto prose prose-lg">
+    <h1 class="text-center text-4xl mb-6">Servicios Profesionales de Desarrollo Web y Web3</h1>
 
+    <div class="text-center mb-8">
+      Optimiza tu proyecto con soluciones tecnológicas eficientes, escalables y seguras. Ofrezco servicios especializados en desarrollo backend, frontend, blockchain y seguridad aplicada. Desde la creación de APIs robustas hasta sistemas de autenticación descentralizados y auditoría de contratos inteligentes, te ayudo a construir proyectos fiables y resistentes a amenazas.
+    </div>
+
+    <hr class="my-6"/>
+
+    <!-- Sección reutilizable con estilos -->
+    <section class="space-y-6">
+      <details class="p-4 bg-base-200 rounded-xl shadow-sm" open>
+        <summary class="text-xl font-semibold cursor-pointer">Desarrollo Backend y API Seguras</summary>
+        <ul class="mt-3 list-disc list-inside">
+          <li><strong>Aplicaciones con Django y DRF</strong> – Autenticación JWT, OAuth2 y gestión de usuarios avanzada.</li>
+          <li><strong>APIs REST/GraphQL seguras</strong> – Protección ante ataques comunes (SQLi, XSS, CSRF) y limitación de uso.</li>
+          <li><strong>Login Web3 con wallets</strong> – MetaMask, WalletConnect y verificación de firmas.</li>
+        </ul>
+      </details>
+
+      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
+        <summary class="text-xl font-semibold cursor-pointer">Seguridad Aplicada</summary>
+        <ul class="mt-3 list-disc list-inside">
+          <li><strong>Arquitecturas JWT seguras</strong> – Tokens rotativos, revocación y cookies HttpOnly.</li>
+          <li><strong>Anti-fraude en blockchain</strong> – Validación on-chain, listeners y control de fallos.</li>
+          <li><strong>Auditorías en DApps</strong> – Riesgos en frontend y contratos (reentrancy, oracles, etc).</li>
+        </ul>
+      </details>
+
+      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
+        <summary class="text-xl font-semibold cursor-pointer">Desarrollo Frontend Seguro</summary>
+        <ul class="mt-3 list-disc list-inside">
+          <li><strong>React + TypeScript con hardening</strong> – XSS, sanitización y manejo seguro de tokens.</li>
+          <li><strong>Astro seguro</strong> – Encabezados CSP, Markdown seguro y componentes aislados.</li>
+        </ul>
+      </details>
+
+      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
+        <summary class="text-xl font-semibold cursor-pointer">Blockchain y Smart Contracts</summary>
+        <ul class="mt-3 list-disc list-inside">
+          <li><strong>Contratos seguros en Solidity</strong> – Checks-Effects-Interactions y protección contra front-running.</li>
+          <li><strong>Marketplaces con pagos confiables</strong> – Escrow, multifirmas y validación de pagos.</li>
+          <li><strong>Autenticación descentralizada</strong> – Estándar EIP-4361 (Sign-In with Ethereum).</li>
+        </ul>
+      </details>
+
+      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
+        <summary class="text-xl font-semibold cursor-pointer">Gestión y Despliegue Seguro</summary>
+        <ul class="mt-3 list-disc list-inside">
+          <li><strong>Entornos seguros con Docker</strong> – Gestión de secretos e IAM estricta.</li>
+          <li><strong>Protección en producción</strong> – WAF, limitación de tráfico y monitorización de amenazas.</li>
+        </ul>
+      </details>
+
+      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
+        <summary class="text-xl font-semibold cursor-pointer">WordPress Profesional para Empresas</summary>
+        <ul class="mt-3 list-disc list-inside">
+          <li><strong>Diseño moderno y adaptable</strong> – Web responsive y fácil de navegar desde móviles o escritorio.</li>
+          <li><strong>Velocidad y SEO</strong> – Optimización de rendimiento y posicionamiento.</li>
+          <li><strong>Seguridad reforzada</strong> – Protección contra ataques comunes y backups periódicos.</li>
+          <li><strong>Formularios y RGPD</strong> – Formularios de contacto seguros y cumplimiento legal.</li>
+          <li><strong>Multilingüe</strong> – Posibilidad de traducir la web a varios idiomas (con coste adicional).</li>
+          <li><strong>Blog integrado</strong> – Publica artículos, gestiona categorías y habilita comentarios.</li>
+          <li><strong>Mantenimiento y soporte</strong> – Servicio opcional de actualizaciones y gestión técnica.</li>
+        </ul>
+      </details>
+    </section>
+  </article>
 </BaseLayout>
