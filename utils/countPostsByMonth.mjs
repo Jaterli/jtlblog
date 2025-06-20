@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync, writeFileSync, statSync } from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
+import { existsSync, mkdirSync } from 'fs';
 
 const baseDir = "src/content";
 const dirs = ['blog', 'projects'];
