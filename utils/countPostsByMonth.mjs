@@ -80,6 +80,11 @@ function processPosts(directory) {
 dirs.forEach(dir => processPosts(dir));
 
 const outputPath = join(saveDir, 'postsByMonth.json');
+
+if (!existsSync(saveDir)) {
+  mkdirSync(saveDir, { recursive: true });
+}
+
 writeFileSync(outputPath, JSON.stringify(postsByMonth, null, 2), 'utf8');
 
 console.log('Conteo de publicaciones por mes:', postsByMonth);
