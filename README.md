@@ -1,6 +1,6 @@
 # Jaterli Blog | Plantilla de Sitio Web de Portafolio Personal
 
-![Jaterli Blog | Personal Porfolio Website](public/assets/images/others/Screenshot%20jtlblog.webp)
+![Jaterli Blog | Personal Porfolio Website](public/images/others/Screenshot%20jtlblog.webp)
 
 
 ## Instalación

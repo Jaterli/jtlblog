@@ -3,7 +3,7 @@ draft: false
 title: "Renovando una web antigua con WordPress"
 description: "Aunque en mi máster de desarrollo full stack ya había cursado un módulo sobre WordPress, aún no había realizado el proyecto final. Esta oportunidad me vino como anillo al dedo."
 pubDate: "2025-06-19"
-heroImage: "/assets/images/blog/blog.wordpress.jpg"
+heroImage: "/images/blog/blog.wordpress.jpg"
 category: "Blog"
 tags: [WordPress, PHP]
 ---

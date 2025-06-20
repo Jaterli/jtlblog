@@ -3,7 +3,7 @@ draft: false
 title: "Escucha de eventos en la blockchain con Django: confirmación automática de pagos con Web3"
 description: "Mecanismo que nos permite detectar de forma automática cuándo se ha registrado una transacción de forma exitosa en la Blockchain."
 pubDate: "2025-04-11"
-heroImage: "/assets/images/blog/blog.blockchain.png"
+heroImage: "/images/blog/blog.blockchain.png"
 category: "Máster en Desarrollo BlockChain"
 tags: [Cyberseguridad, Django, Python, Web3, Blockchain, Automatización]
 ---

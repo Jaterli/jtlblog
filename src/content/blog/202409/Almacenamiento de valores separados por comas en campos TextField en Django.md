@@ -3,7 +3,7 @@ draft: false
 title: "Almacenamiento de valores separados por comas en campos TextField en Django"
 description: "Aquí os dejo una explicación del enfoque qué le dí a una aplicación Django para gestionar listas de valores en campos `TextField` en Django."
 pubDate: "2024-09-26"
-heroImage: "/assets/images/blog/blog.django.jpg"
+heroImage: "/images/blog/blog.django.jpg"
 category: "Tutoriales"
 tags: [desarrolladores, Django]
 ---

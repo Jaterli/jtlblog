@@ -30,10 +30,10 @@ import { Image } from "astro:assets";
       {badge && <div class="badge badge-neutral rounded my-2">{badge}</div>}
       {
         tags &&
-        tags.map((tag) => (
-            <span class="badge badge-outline ml-2 no-underline hover:bg-gray-500">
+          tags.map((tag) => (
+            <a href={`/proyectos/tag/${tag.toLowerCase()}`} class="badge badge-outline mr-2 no-underline hover:bg-gray-500">
               {tag}
-            </span>
+            </a>            
           ))
       }
       </div>

@@ -1,9 +1,9 @@
 ---
 draft: false
-title: "🐍 Problema con ModuleNotFoundError: No module named 'django_extensions' en Django"
+title: "Problema con ModuleNotFoundError: No module named 'django_extensions' en Django"
 description: "Cómo conseguí solucionar este error de forma rápida y sencilla."
 pubDate: "2025-04-08"
-heroImage: "/assets/images/blog/blog.error.jpg"
+heroImage: "/images/blog/blog.error.jpg"
 category: "Solución de errores"
 tags: [progreso, Django, Python]
 ---
@@ -15,7 +15,7 @@ Al trabajar con Django y añadir `django-extensions` a `INSTALLED_APPS`, puede s
 ModuleNotFoundError: No module named 'django_extensions'
 ```
 
-### 🔍 ¿Cuál es la causa?
+### ¿Cuál es la causa?
 
 Este error generalmente significa que **`django-extensions` no está instalado en el entorno de Python** que está ejecutando tu proyecto Django.
 
@@ -27,7 +27,7 @@ Esto suele pasar cuando:
 
 ---
 
-### ✅ Soluciones posibles
+### Soluciones posibles
 
 #### 1. Instalar usando `python -m pip install`
 
@@ -62,7 +62,7 @@ Esto ocurre porque el comando `pytest` puede no estar vinculado al entorno virtu
 
 ---
 
-### 🧠 Recomendaciones
+### Recomendaciones
 
 - Usa siempre `python -m pip`, `python -m pytest` y `python manage.py` para evitar conflictos de entornos.
 - Comprueba qué Python estás usando con:

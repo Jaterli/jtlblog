@@ -3,7 +3,7 @@ draft: false
 title: "Rust como parte de mi aprendizaje"
 description: "Al poco de comenzar a estudiar Rust, me di cuenta de su importancia y me surgió la motivación de profundizar en él."
 pubDate: "2024-09-21"
-heroImage: "/assets/images/blog/blog.rust.jpg"
+heroImage: "/images/blog/blog.rust.jpg"
 category: "Máster en Desarrollo Blockchain"
 tags: [blog, Rust]
 ---

@@ -1,15 +1,11 @@
-import { readdirSync, readFileSync, writeFileSync } from 'fs';
+import { readdirSync, readFileSync, writeFileSync, statSync } from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 
-// Directorios donde se encuentran los archivos Markdown
 const baseDir = "src/content";
-const dirs = ['blog', 'proyectos']; // se pueden añadir más
-
-// Directorio donde se guardará el archivo con los datos
+const dirs = ['blog', 'projects'];
 const saveDir = "public/data";
 
-// Objeto para almacenar el conteo de publicaciones por mes, separado por directorio
 const postsByMonth = {};
 
 // Inicializa el objeto postsByMonth con claves para cada directorio
@@ -17,43 +13,73 @@ dirs.forEach(dir => {
   postsByMonth[dir] = {};
 });
 
-// Función para procesar los archivos en un directorio dado
 function processPosts(directory) {
   const dirPath = join(baseDir, directory);
-  const files = readdirSync(dirPath);
 
-  files.forEach(file => {
-    // Verifica si el archivo tiene extensión .md o .mdx
-    if (file.endsWith('.md') || file.endsWith('.mdx')) {
-      try {
-        const filePath = join(dirPath, file);
-        const fileContents = readFileSync(filePath, 'utf8');
+  // Si es 'blog', procesamos subdirectorios por año/mes
+  if (directory === 'blog') {
+    const years = readdirSync(dirPath).filter(name =>
+      statSync(join(dirPath, name)).isDirectory()
+    );
 
-        // Extrae el frontmatter con gray-matter
-        const { data } = matter(fileContents);
+    years.forEach(year => {
+      const yearPath = join(dirPath, year);
+      const months = readdirSync(yearPath).filter(name =>
+        statSync(join(yearPath, name)).isDirectory()
+      );
 
-        // Verifica si tiene la variable pubDate
-        if (data.pubDate) {
-          const pubDate = new Date(data.pubDate);
-          const yearMonth = `${pubDate.getFullYear()}-${String(pubDate.getMonth() + 1).padStart(2, '0')}`;
+      months.forEach(month => {
+        const monthPath = join(yearPath, month);
+        const files = readdirSync(monthPath);
 
-          // Incrementa el contador para ese mes en el directorio correspondiente
-          postsByMonth[directory][yearMonth] = (postsByMonth[directory][yearMonth] || 0) + 1;
+        files.forEach(file => {
+          if (file.endsWith('.md') || file.endsWith('.mdx')) {
+            try {
+              const filePath = join(monthPath, file);
+              const fileContents = readFileSync(filePath, 'utf8');
+              const { data } = matter(fileContents);
+
+              if (data.pubDate) {
+                const pubDate = new Date(data.pubDate);
+                const yearMonth = `${pubDate.getFullYear()}-${String(pubDate.getMonth() + 1).padStart(2, '0')}`;
+
+                postsByMonth[directory][yearMonth] = (postsByMonth[directory][yearMonth] || 0) + 1;
+              }
+            } catch (error) {
+              console.error(`Error procesando el archivo ${file} en ${directory}/${year}/${month}:`, error);
+            }
+          }
+        });
+      });
+    });
+  } else {
+    // Estructura plana para otros directorios
+    const files = readdirSync(dirPath);
+
+    files.forEach(file => {
+      if (file.endsWith('.md') || file.endsWith('.mdx')) {
+        try {
+          const filePath = join(dirPath, file);
+          const fileContents = readFileSync(filePath, 'utf8');
+          const { data } = matter(fileContents);
+
+          if (data.pubDate) {
+            const pubDate = new Date(data.pubDate);
+            const yearMonth = `${pubDate.getFullYear()}-${String(pubDate.getMonth() + 1).padStart(2, '0')}`;
+
+            postsByMonth[directory][yearMonth] = (postsByMonth[directory][yearMonth] || 0) + 1;
+          }
+        } catch (error) {
+          console.error(`Error procesando el archivo ${file} en ${directory}:`, error);
         }
-      } catch (error) {
-        console.error(`Error procesando el archivo ${file} en ${directory}:`, error);
       }
-    }
-  });
+    });
+  }
 }
 
-// Procesa los archivos en todos los directorios
 dirs.forEach(dir => processPosts(dir));
 
-// Define la ruta del archivo donde se almacenan los datos
 const outputPath = join(saveDir, 'postsByMonth.json');
-
-// Convierte el objeto en JSON y escribe el archivo
 writeFileSync(outputPath, JSON.stringify(postsByMonth, null, 2), 'utf8');
 
 console.log('Conteo de publicaciones por mes:', postsByMonth);

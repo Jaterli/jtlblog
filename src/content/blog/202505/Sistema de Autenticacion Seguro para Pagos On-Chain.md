@@ -3,7 +3,7 @@ draft: false
 title: "Sistema de Autenticación Seguro para Pagos On-Chain"
 description: "Este sistema combina la seguridad de las firmas criptográficas con la flexibilidad de los JWT, ofreciendo una experiencia sin fricciones mientras garantizo la máxima protección para los usuarios."
 pubDate: "2025-05-12"
-heroImage: "/assets/images/blog/blog.cyber-security.jpg"
+heroImage: "/images/blog/blog.cyber-security.jpg"
 category: "Tutoriales"
 tags: [Seguridad, Cyberseguridad, Blockchain, JWT, Django, React]
 ---

@@ -3,7 +3,7 @@ draft: false
 title: "Evolución del Listener de Pagos Blockchain"
 description: "Sistema de seguridad mejorado que asegura que ningún pago se pierda, incluso si el usuario abandona la página antes de que la transacción se confirme en la blockchain."
 pubDate: "2025-05-12"
-heroImage: "/assets/images/blog/blog.blockchain-actualizado.png"
+heroImage: "/images/blog/blog.blockchain-actualizado.png"
 category: "Tutoriales"
 tags: [Cyberseguridad, Blockchain, Web3, Django, Python, SmartContracts, Automatización, Actualización]
 ---

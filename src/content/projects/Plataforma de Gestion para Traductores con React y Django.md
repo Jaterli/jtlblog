@@ -2,9 +2,9 @@
 title: "Gestión de Traductores y Consultas Personalizadas."
 description: "Plataforma en Django + React que servirá como área privada para traductores"
 pubDate: "2025-02-17"
-heroImage: "/assets/images/proyectos/React+Django+SQLite.png"
+heroImage: "/images/proyectos/React+Django+SQLite.png"
 badge: "Finalizado"
-tags: ["Python", "React", "Django"]
+tags: [Python, React, Django]
 ---
 
 Esta aplicación, desarrollada con **Django** en el backend y **React + TypeScript** en el frontend, es una herramienta diseñada para gestionar perfiles de traductores profesionales y permitir a los administradores realizar consultas personalizadas sobre la base de datos. Su arquitectura modular, escalabilidad y facilidad de personalización la convierten en una solución ideal para empresas que buscan optimizar la gestión de profesionales.

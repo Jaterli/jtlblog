@@ -2,9 +2,9 @@
 title: "Plataforma de Gestión para Traductores."
 description: "Plataforma de gestión para traductores (PHP + MySQL)."
 pubDate: "2024-09-20"
-heroImage: "/assets/images/proyectos/projects.php+mysql.png"
+heroImage: "/images/proyectos/projects.php+mysql.png"
 badge: "Finalizado"
-tags: ["PHP", "MySQL"]
+tags: [PHP, MySQL]
 ---
 
 

@@ -3,7 +3,7 @@ draft: false
 title: "Cómo Iniciar un Blog para Desarrolladores Web y No Morir en el Intento"
 description: "Consejos que te pueden ayudar a arracar con éxito tu blog para compartir tus conocimientos como desarrollador web."
 pubDate: "2024-08-22"
-heroImage: "/assets/images/blog/blog.blog.jpg"
+heroImage: "/images/blog/blog.blog.jpg"
 category: "Tutoriales"
 tags: [blog, desarrolladores, Tips]
 ---

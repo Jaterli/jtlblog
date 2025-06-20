@@ -2,9 +2,9 @@
 title: "Sistema de Pago con Criptomonedas."
 description: "Sistema de pago basado en Ethereum y USDT/USDC, que permita a las empresas aceptar pagos en criptomonedas de manera sencilla."
 pubDate: "2025-03-05"
-heroImage: "/assets/images/proyectos/projects.pending.jpg"
+heroImage: "/images/proyectos/projects.pending.jpg"
 badge: "En curso"
-tags: ["Wagmi", "Chakra UI", "React", "Django", "Python", "Typescript"]
+tags: [Wagmi, Chakra UI, React, Django, Python, Typescript]
 ---
 
 

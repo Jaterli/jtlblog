@@ -3,7 +3,7 @@ draft: false
 title: "Certificado de Git y GitHub superado con éxito"
 description: "Hoy he obtenido el certificado de Git y GitHub a través de Conquer Blocks, como parte del máster en Desarrollo Web Fullstack que estoy cursando actualmente."
 pubDate: "2025-04-15"
-heroImage: "/assets/images/blog/blog.GitHub.webp"
+heroImage: "/images/blog/blog.GitHub.webp"
 category: "Tutoriales"
 tags: [Git, GitHub]
 ---

@@ -2,9 +2,9 @@
 title: "GitHub Action automatizar flujos de trabajo."
 description: "Cómo implementé un sistema automatizado que actualiza diariamente una gráfica mostrando el número de posts y proyectos publicados mensualmente en mi blog."
 pubDate: "2024-09-18"
-heroImage: "/assets/images/proyectos/projects.github-actions.jpg"
+heroImage: "/images/proyectos/projects.github-actions.jpg"
 badge: "Finalizado"
-tags: ["GitHub Actions", "Python", "Node.js"]
+tags: [GitHub, Python, Node.js]
 ---
 
 ## Automatización de Gráficas en un Blog con GitHub Actions

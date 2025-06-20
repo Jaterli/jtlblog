@@ -3,7 +3,7 @@ draft: false
 title: "Mi secreto para ser rápido y eficiente: IA y aprovechamiento de código existente"
 description: "Aprendo, creo y avanzo más rápido gracias a la inteligencia artificial y al trabajo de otros desarrolladores."
 pubDate: "2025-03-14"
-heroImage: "/assets/images/blog/blog.ia-source-code.jpg"
+heroImage: "/images/blog/blog.ia-source-code.jpg"
 category: "Máster en Desarrollo Full Stack"
 tags: [progreso, IA]
 ---

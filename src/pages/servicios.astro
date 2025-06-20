@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 const title = "Desarrollador Full Stack | Especialista en Django, React y Blockchain";
-const description="Construyo soluciones web eficientes con Django y React, optimizando rendimiento y seguridad. Desarrollo API, marketplaces y contratos inteligentes en Solidity";
+const description = "Construyo soluciones web eficientes con Django y React, optimizando rendimiento y seguridad. Desarrollo API, marketplaces y contratos inteligentes en Solidity.";
 ---
 
 <BaseLayout title={title} description={description} ogType="article" sideBarActiveItemID="servicios">
@@ -9,66 +9,73 @@ const description="Construyo soluciones web eficientes con Django y React, optim
     <h1 class="text-center text-4xl mb-6">Servicios Profesionales de Desarrollo Web y Web3</h1>
 
     <div class="text-center mb-8">
-      Optimiza tu proyecto con soluciones tecnológicas eficientes, escalables y seguras. Ofrezco servicios especializados en desarrollo backend, frontend, blockchain y seguridad aplicada. Desde la creación de APIs robustas hasta sistemas de autenticación descentralizados y auditoría de contratos inteligentes, te ayudo a construir proyectos fiables y resistentes a amenazas.
+      Transformo tus ideas en soluciones digitales potentes, seguras y escalables. Desde plataformas web hasta aplicaciones blockchain, te acompaño en cada fase del desarrollo, integrando buenas prácticas de arquitectura, seguridad y experiencia de usuario.
     </div>
 
-    <hr class="my-6"/>
+    <hr class="my-6" />
 
-    <!-- Sección reutilizable con estilos -->
     <section class="space-y-6">
       <details class="p-4 bg-base-200 rounded-xl shadow-sm" open>
-        <summary class="text-xl font-semibold cursor-pointer">Desarrollo Backend y API Seguras</summary>
+        <summary class="text-xl font-semibold cursor-pointer">Desarrollo Backend y APIs Seguras</summary>
         <ul class="mt-3 list-disc list-inside">
-          <li><strong>Aplicaciones con Django y DRF</strong> – Autenticación JWT, OAuth2 y gestión de usuarios avanzada.</li>
-          <li><strong>APIs REST/GraphQL seguras</strong> – Protección ante ataques comunes (SQLi, XSS, CSRF) y limitación de uso.</li>
-          <li><strong>Login Web3 con wallets</strong> – MetaMask, WalletConnect y verificación de firmas.</li>
+          <li><strong>Aplicaciones robustas con Django y DRF</strong> – Backend completo con autenticación avanzada, permisos personalizados y gestión eficiente de datos.</li>
+          <li><strong>APIs REST y GraphQL seguras</strong> – Diseñadas para ser rápidas y resistentes a ataques comunes (SQLi, XSS, CSRF, etc.).</li>
+          <li><strong>Integración Web3</strong> – Autenticación con MetaMask, WalletConnect y validación de firma digital para acceso seguro.</li>
         </ul>
       </details>
 
       <details class="p-4 bg-base-200 rounded-xl shadow-sm">
-        <summary class="text-xl font-semibold cursor-pointer">Seguridad Aplicada</summary>
+        <summary class="text-xl font-semibold cursor-pointer">Desarrollo Frontend Seguro y Escalable</summary>
         <ul class="mt-3 list-disc list-inside">
-          <li><strong>Arquitecturas JWT seguras</strong> – Tokens rotativos, revocación y cookies HttpOnly.</li>
-          <li><strong>Anti-fraude en blockchain</strong> – Validación on-chain, listeners y control de fallos.</li>
-          <li><strong>Auditorías en DApps</strong> – Riesgos en frontend y contratos (reentrancy, oracles, etc).</li>
+          <li><strong>Interfaces modernas con React y TypeScript</strong> – Diseño adaptable (responsive), enfoque en accesibilidad y protección contra vulnerabilidades en el cliente.</li>
+          <li><strong>Aplicaciones estáticas con Astro</strong> – Sitios ultra rápidos, seguros por diseño y fácilmente integrables con CMS o APIs.</li>
         </ul>
       </details>
 
       <details class="p-4 bg-base-200 rounded-xl shadow-sm">
-        <summary class="text-xl font-semibold cursor-pointer">Desarrollo Frontend Seguro</summary>
+        <summary class="text-xl font-semibold cursor-pointer">Blockchain y Contratos Inteligentes</summary>
         <ul class="mt-3 list-disc list-inside">
-          <li><strong>React + TypeScript con hardening</strong> – XSS, sanitización y manejo seguro de tokens.</li>
-          <li><strong>Astro seguro</strong> – Encabezados CSP, Markdown seguro y componentes aislados.</li>
+          <li><strong>Desarrollo de smart contracts seguros</strong> – Contratos en Solidity con patrones recomendados y pruebas rigurosas (tests y simulaciones).</li>
+          <li><strong>Marketplaces Web3 y pagos confiables</strong> – Diseño de plataformas descentralizadas con gestión de pagos, escrow y validación en cadena.</li>
+          <li><strong>Autenticación descentralizada</strong> – Implementación del estándar EIP-4361 ("Sign-In with Ethereum") para login seguro sin contraseñas.</li>
         </ul>
       </details>
 
       <details class="p-4 bg-base-200 rounded-xl shadow-sm">
-        <summary class="text-xl font-semibold cursor-pointer">Blockchain y Smart Contracts</summary>
+        <summary class="text-xl font-semibold cursor-pointer">Seguridad Aplicada en Todo el Ciclo</summary>
         <ul class="mt-3 list-disc list-inside">
-          <li><strong>Contratos seguros en Solidity</strong> – Checks-Effects-Interactions y protección contra front-running.</li>
-          <li><strong>Marketplaces con pagos confiables</strong> – Escrow, multifirmas y validación de pagos.</li>
-          <li><strong>Autenticación descentralizada</strong> – Estándar EIP-4361 (Sign-In with Ethereum).</li>
+          <li><strong>JWT y sesiones seguras</strong> – Tokens rotativos, control de revocación, sesiones persistentes sin comprometer la seguridad.</li>
+          <li><strong>Anti-fraude en Web3</strong> – Validación de eventos on-chain, detección de actividad sospechosa y alertas.</li>
+          <li><strong>Auditoría técnica de DApps</strong> – Análisis de vulnerabilidades en frontend, contratos y arquitectura general.</li>
         </ul>
       </details>
 
       <details class="p-4 bg-base-200 rounded-xl shadow-sm">
-        <summary class="text-xl font-semibold cursor-pointer">Gestión y Despliegue Seguro</summary>
+        <summary class="text-xl font-semibold cursor-pointer">Despliegue y Gestión en Producción</summary>
         <ul class="mt-3 list-disc list-inside">
-          <li><strong>Entornos seguros con Docker</strong> – Gestión de secretos e IAM estricta.</li>
-          <li><strong>Protección en producción</strong> – WAF, limitación de tráfico y monitorización de amenazas.</li>
+          <li><strong>Entornos Dockerizados</strong> – Configuración eficiente, segura y fácil de replicar en servidores locales o cloud.</li>
+          <li><strong>Seguridad en producción</strong> – WAF, HTTPS, headers seguros, rate limiting y detección de amenazas.</li>
+          <li><strong>CI/CD y monitoreo</strong> – Integración continua, despliegue automatizado y seguimiento del rendimiento.</li>
         </ul>
       </details>
 
       <details class="p-4 bg-base-200 rounded-xl shadow-sm">
         <summary class="text-xl font-semibold cursor-pointer">WordPress Profesional para Empresas</summary>
         <ul class="mt-3 list-disc list-inside">
-          <li><strong>Diseño moderno y adaptable</strong> – Web responsive y fácil de navegar desde móviles o escritorio.</li>
-          <li><strong>Velocidad y SEO</strong> – Optimización de rendimiento y posicionamiento.</li>
-          <li><strong>Seguridad reforzada</strong> – Protección contra ataques comunes y backups periódicos.</li>
-          <li><strong>Formularios y RGPD</strong> – Formularios de contacto seguros y cumplimiento legal.</li>
-          <li><strong>Multilingüe</strong> – Posibilidad de traducir la web a varios idiomas (con coste adicional).</li>
-          <li><strong>Blog integrado</strong> – Publica artículos, gestiona categorías y habilita comentarios.</li>
-          <li><strong>Mantenimiento y soporte</strong> – Servicio opcional de actualizaciones y gestión técnica.</li>
+          <li><strong>Diseño moderno y adaptable</strong> – Sitios rápidos, visualmente atractivos y optimizados para móvil y escritorio.</li>
+          <li><strong>SEO y rendimiento</strong> – Carga optimizada, arquitectura limpia y seguimiento mediante herramientas como Google Search Console.</li>
+          <li><strong>Seguridad reforzada</strong> – Plugins seleccionados, backups automáticos y protección contra malware y spam.</li>
+          <li><strong>Formularios RGPD y multilingüe</strong> – Conformidad legal, accesibilidad y posibilidad de sitio multilingüe.</li>
+          <li><strong>Blog profesional y mantenimiento</strong> – Espacio editorial gestionable y soporte técnico opcional.</li>
+        </ul>
+      </details>
+
+      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
+        <summary class="text-xl font-semibold cursor-pointer">Consultoría Técnica y Formación</summary>
+        <ul class="mt-3 list-disc list-inside">
+          <li><strong>Mentoría para equipos de desarrollo</strong> – Asesoría en buenas prácticas de arquitectura, testing, seguridad y patrones de diseño.</li>
+          <li><strong>Formación técnica</strong> – Sesiones personalizadas sobre Django, React, Web3, seguridad, despliegue y más.</li>
+          <li><strong>Auditoría de código</strong> – Revisión detallada de código base y sugerencias para mejorar escalabilidad y seguridad.</li>
         </ul>
       </details>
     </section>

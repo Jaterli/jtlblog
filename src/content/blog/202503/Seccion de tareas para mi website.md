@@ -3,7 +3,7 @@ draft: false
 title: "Sección de Tareas para mi website"
 description: "Me permite organizar y visualizar mis metas, además de ser una fuente de motivación personal y una forma de inspirar a quienes visitan mi sitio."
 pubDate: "2025-03-13"
-heroImage: "/assets/images/blog/blog.tasks.jpg"
+heroImage: "/images/blog/blog.tasks.jpg"
 category: "Máster en Desarrollo Full Stack"
 tags: [progreso]
 ---

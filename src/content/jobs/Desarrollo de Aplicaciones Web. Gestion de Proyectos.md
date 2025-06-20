@@ -4,7 +4,7 @@ description: "Desarrollador de Aplicaciones Web y Gestor de Proyectos en una emp
 startDate: "01-06-2004"
 endDate: "2024-03-30"
 pubDate: "2024-08-28"
-heroImage: "/assets/images/jobs/jobs-translations.png"
+heroImage: "/images/jobs/jobs-translations.png"
 ---
 
 **Empresa:** Advance Translations SL.  

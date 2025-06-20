@@ -2,9 +2,9 @@
 title: "Creación de gráfica de barras con Streamlit."
 description: "Obtención de datos desde una API y visualización mediante una gráfica de barras apiladas."
 pubDate: "2024-09-18"
-heroImage: "/assets/images/proyectos/projects.streamlit.webp"
+heroImage: "/images/proyectos/projects.streamlit.webp"
 badge: "Finalizado"
-tags: ["Python", "Streamlit"]
+tags: [Python, Streamlit]
 ---
 
 

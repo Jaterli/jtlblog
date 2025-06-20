@@ -3,7 +3,7 @@ draft: false
 title: "Integración de Chakra UI v3.13 con Temas Claro y Oscuro"
 description: "integrar Chakra UI v3.13 con temas claro y oscuro en tu aplicación React de manera sencilla y eficiente, utilizando los componentes y hooks generados por el CLI de Chakra UI."
 pubDate: "2025-03-20"
-heroImage: "/assets/images/blog/blog.tutorial.jpg"
+heroImage: "/images/blog/blog.tutorial.jpg"
 category: "Tutoriales"
 tags: [Tutorial, React, Chakra UI]
 ---
