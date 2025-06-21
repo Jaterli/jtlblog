@@ -2,12 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 .time-line-container>div:last-child .education__time>.education__line {
   display: none;
 }
 
 .prose-lg :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)){
   line-height: 1.4;
+}
+
+.prose-lg :where(hr):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  margin: 2rem  0;
 }
 
 .prose :where(blockquote):not(:where([class~="not-prose"], [class~="not-prose"] *)){
