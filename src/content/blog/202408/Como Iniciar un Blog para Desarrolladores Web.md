@@ -5,7 +5,7 @@ description: "Consejos que te pueden ayudar a arracar con éxito tu blog para co
 pubDate: "2024-08-22"
 heroImage: "/images/blog/blog.blog.jpg"
 category: "Tutoriales"
-tags: [blog, desarrolladores, Tips]
+tags: [blog, Astro, Tips]
 ---
 
 

@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+a.customlink {
+  text-decoration: underline;
+}
 
 .time-line-container>div:last-child .education__time>.education__line {
   display: none;
@@ -33,41 +35,49 @@
   }
 }
 
-.prose :where(h1){
+.prose :where(h1), h1{
   font-weight:700;
 }
 
-.prose :where(h2){
+.prose :where(h2), h2{
   font-weight: 600;
-}
-
-h1{
-  font-weight: 700;
-  line-height: 3.6rem !important;
-}
-
-h2{
-  font-weight: 2rem;
-  font-weight: 600;
-}
-
-h3{
-  font-size: 1.4rem !important;
 }
 
 .hero-content{
   @apply px-0;
 }
+@layer base {
+  @media (min-width: 640px){
+    h1{
+      line-height: 3.6rem !important;
+    }
+
+    h2{
+      font-weight: 2rem;
+      line-height: 2rem !important;
+    }
+
+    h3{
+      font-size: 1.4rem !important;
+      line-height: 1.8rem !important;
+    }
+  }
+}
 
 @layer base {
   @media (max-width: 640px) { /* Se aplica en móviles (sm y menores) */
-    .text-3xl {
+    
+    .text-4xl, h1 {
+      font-size: 1.6rem !important;
+      line-height: 2.2rem !important;
+    }    
+    .text-3xl, h2 {
       font-size: 1.5rem !important;
       line-height: 2rem !important;
     }
-    .text-4xl {
-      font-size: 1.8rem !important;
-      line-height: 2.2rem !important;
+    .text-2xl, h3 {
+      font-size: 1.3rem !important;
+      line-height: 1.8rem !important;
     }
   }
 }

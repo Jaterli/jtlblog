@@ -52,5 +52,5 @@ Gracias a mi bagaje previo desarrollando plataformas web propias, el proceso con
 
 ---
 
-Si estás pensando en renovar tu web o necesitas una solución moderna, segura y autogestionable para tu proyecto digital, no dudes en <a class="link" href="/contacto/">escribirme</a>. Estaré encantado de ayudarte a llevarlo al siguiente nivel.
+Si estás pensando en renovar tu web o necesitas una solución moderna, segura y autogestionable para tu proyecto digital, no dudes en <a class="customlink" href="/contacto/">escribirme</a>. Estaré encantado de ayudarte a llevarlo al siguiente nivel.
 

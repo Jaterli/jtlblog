@@ -8,23 +8,22 @@ import { Icon } from "astro-icon/components";
 
   <article class="max-w-3xl mx-auto prose prose-lg">
     <h1 class="text-center text-4xl mb-6">Contacto</h1>
-      <div class="text-lg">
+      <div class="sm:text-lg text-sm">
         <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
           <div>            
-            <p class="text-lg leading-relaxed mt-0">
-              Puedes preguntarme cualquier cosa relacionada con mi blog, mis conocimientos o notificarme de errores o posibles mejoras,
+            <p class="leading-relaxed mt-0">
+              Puedes preguntarme cualquier cosa relacionada con mi blog, mis conocimientos, servicios o notificarme de errores o posibles mejoras,
               estaré encantado de responderrte.
             </p>
             <div class="mt-5">
               <div class="flex items-center mt-2 space-x-2">
-                <Icon class="w-4 h-4" name="uil:map-marker" />
-                <span class="px-1">Madrid, España</span>
+                <Icon class="w-4 h-4" name="uil:map-marker" /><span>Madrid, España</span>
               </div>
               <div class="flex items-center mt-2 space-x-2">
-                <Icon class="w-4 h-4" name="uil:envelope" /><img src="/images/others/mi-email.png" class="max-w-[168px] my-0 rounded-md" alt="Email" />
+                <Icon class="w-4 h-4" name="uil:envelope" /><span data-nosearch="admin@jaterli.com"></span> 
               </div>
               <div class="flex items-center mt-2 space-x-2">
-                <Icon class="w-4 h-4" name="uil:phone" /><img src="/images/others/mi-tlf.png" class="max-w-[145px] my-0 rounded-md" alt="Teléfono" />
+                <Icon class="w-4 h-4" name="uil:phone" /><span data-nosearch="+34 659 602 588"></span>                 
               </div>
             </div>
           </div>
@@ -36,3 +35,16 @@ import { Icon } from "astro-icon/components";
 
     </article>
 </BaseLayout>
+---
+<script lang="ts">
+// Seleccionar todos los elementos que tengan el atributo data-nosearch
+const elements = document.querySelectorAll('[data-nosearch]');
+
+elements.forEach((element) => {
+    const replacementText = element.getAttribute('data-nosearch');
+    
+    if (replacementText) {
+        element.textContent = replacementText;
+    }
+});
+</script>
