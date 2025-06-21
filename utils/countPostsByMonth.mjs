@@ -4,81 +4,80 @@ import matter from 'gray-matter';
 import { existsSync, mkdirSync } from 'fs';
 
 const baseDir = "src/content";
-const dirs = ['blog', 'projects'];
+const dirs = ['projects']; // 'blog' lo tratamos aparte por su estructura especial
 const saveDir = "public/data";
 
+// Inicializa el objeto de conteo
 const postsByMonth = {};
-
-// Inicializa el objeto postsByMonth con claves para cada directorio
 dirs.forEach(dir => {
   postsByMonth[dir] = {};
 });
+postsByMonth['blog'] = {};
 
-function processPosts(directory) {
+// Función para procesar directorios normales como 'projects'
+function processFlatDirectory(directory) {
   const dirPath = join(baseDir, directory);
+  const files = readdirSync(dirPath);
 
-  // Si es 'blog', procesamos subdirectorios por año/mes
-  if (directory === 'blog') {
-    const years = readdirSync(dirPath).filter(name =>
-      statSync(join(dirPath, name)).isDirectory()
-    );
+  files.forEach(file => {
+    if (file.endsWith('.md') || file.endsWith('.mdx')) {
+      try {
+        const filePath = join(dirPath, file);
+        const fileContents = readFileSync(filePath, 'utf8');
+        const { data } = matter(fileContents);
 
-    years.forEach(year => {
-      const yearPath = join(dirPath, year);
-      const months = readdirSync(yearPath).filter(name =>
-        statSync(join(yearPath, name)).isDirectory()
-      );
+        if (data.pubDate) {
+          const pubDate = new Date(data.pubDate);
+          const yearMonth = `${pubDate.getFullYear()}-${String(pubDate.getMonth() + 1).padStart(2, '0')}`;
+          postsByMonth[directory][yearMonth] = (postsByMonth[directory][yearMonth] || 0) + 1;
+        }
+      } catch (error) {
+        console.error(`Error procesando archivo ${file} en ${directory}:`, error);
+      }
+    }
+  });
+}
 
-      months.forEach(month => {
-        const monthPath = join(yearPath, month);
-        const files = readdirSync(monthPath);
+// Función especial para procesar 'blog' con subdirectorios por mes
+function processBlogDirectory() {
+  const blogDir = join(baseDir, 'blog');
+  const subDirs = readdirSync(blogDir).filter(name => {
+    const fullPath = join(blogDir, name);
+    return statSync(fullPath).isDirectory();
+  });
 
-        files.forEach(file => {
-          if (file.endsWith('.md') || file.endsWith('.mdx')) {
-            try {
-              const filePath = join(monthPath, file);
-              const fileContents = readFileSync(filePath, 'utf8');
-              const { data } = matter(fileContents);
+  subDirs.forEach(subDir => {
+    const yearMonthRaw = subDir;
+    if (!/^\d{6}$/.test(yearMonthRaw)) {
+      console.warn(`Subdirectorio ignorado (formato incorrecto): ${subDir}`);
+      return;
+    }
 
-              if (data.pubDate) {
-                const pubDate = new Date(data.pubDate);
-                const yearMonth = `${pubDate.getFullYear()}-${String(pubDate.getMonth() + 1).padStart(2, '0')}`;
-
-                postsByMonth[directory][yearMonth] = (postsByMonth[directory][yearMonth] || 0) + 1;
-              }
-            } catch (error) {
-              console.error(`Error procesando el archivo ${file} en ${directory}/${year}/${month}:`, error);
-            }
-          }
-        });
-      });
-    });
-  } else {
-    // Estructura plana para otros directorios
-    const files = readdirSync(dirPath);
+    const yearMonth = `${yearMonthRaw.slice(0, 4)}-${yearMonthRaw.slice(4)}`;
+    const fullSubDirPath = join(blogDir, subDir);
+    const files = readdirSync(fullSubDirPath);
 
     files.forEach(file => {
       if (file.endsWith('.md') || file.endsWith('.mdx')) {
         try {
-          const filePath = join(dirPath, file);
+          const filePath = join(fullSubDirPath, file);
           const fileContents = readFileSync(filePath, 'utf8');
           const { data } = matter(fileContents);
 
           if (data.pubDate) {
-            const pubDate = new Date(data.pubDate);
-            const yearMonth = `${pubDate.getFullYear()}-${String(pubDate.getMonth() + 1).padStart(2, '0')}`;
-
-            postsByMonth[directory][yearMonth] = (postsByMonth[directory][yearMonth] || 0) + 1;
+            postsByMonth['blog'][yearMonth] = (postsByMonth['blog'][yearMonth] || 0) + 1;
           }
         } catch (error) {
-          console.error(`Error procesando el archivo ${file} en ${directory}:`, error);
+          console.error(`Error procesando archivo ${file} en blog/${subDir}:`, error);
         }
       }
     });
-  }
+  });
 }
 
-dirs.forEach(dir => processPosts(dir));
+// Ejecuta el procesamiento
+dirs.forEach(dir => processFlatDirectory(dir));
+processBlogDirectory();
 
 const outputPath = join(saveDir, 'postsByMonth.json');
 
