@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 import createSlug from "../lib/createSlug"
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const projects = (await getCollection("proyectos")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const last_posts = posts.slice(0, 3);
 const last_projects = projects.slice(0, 3);
@@ -16,7 +16,7 @@ const last_projects = projects.slice(0, 3);
 
     <p class="sm:text-4xl text-3xl mb-4">Bienvenid@ a mi blog personal 👋</p>
     <p class="sm:text-lg text-base mb-6">
-      Este espacio está dedicado a compartir los conocimientos que voy adquiriendo en mis estudios de desarrollo full stack y blockchain. Aquí encontrarás proyectos que voy construyendo, artículos sobre temas de actualidad en tecnología y soluciones a problemas comunes en desarrollo web y blockchain.       
+      Este espacio está dedicado a compartir los conocimientos que voy adquiriendo en mis estudios de desarrollo full stack y blockchain: proyectos que voy construyendo, artículos sobre temas de actualidad en tecnología y soluciones a problemas comunes en desarrollo web y blockchain.       
     </p>
 
     <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -25,7 +25,7 @@ const last_projects = projects.slice(0, 3);
           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
           <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
         </svg>
-        Ver mis proyectos
+        Ver proyectos
       </a>
       <a href="contacto" class="bg-white text-blue-900 font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-200 transition duration-300 flex items-center justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
@@ -38,7 +38,7 @@ const last_projects = projects.slice(0, 3);
 
   <!-- Publicación destacada -->
   <article class="max-w-3xl mt-12">
-    <h2 class="text-3xl font-bold mb-4">🚀 En lo que estoy trabajando ahora: <br />una app de pagos onchain con Web3 y React</h2>
+    <h2 class="text-3xl font-bold mb-4">En lo que estoy trabajando ahora: <br />una app de pagos onchain con Web3 y React</h2>
     <p class="mb-4">
       Últimamente he estado completamente sumergido en el desarrollo de una aplicación que une dos mundos que me apasionan: las interfaces modernas con React y el ecosistema blockchain. Se trata de una plataforma de compras <strong>onchain</strong> que permite a los usuarios realizar pagos con tokens como <code>USDT</code>, <code>USDC</code>, <code>ETH</code> o <code>LINK</code> directamente desde su wallet.
     </p>
@@ -48,7 +48,7 @@ const last_projects = projects.slice(0, 3);
     <p class="mb-4">Estoy utilizando tecnologías como:</p>
     <ul class="list-disc list-inside mb-4">
       <li><strong>React</strong> y <strong>Chakra UI</strong> para el frontend.</li>
-      <li><strong>wagmi</strong> para la integración con wallets y contratos inteligentes.</li>
+      <li><strong>Wagmi</strong> para la integración con wallets y contratos inteligentes.</li>
       <li><strong>Django</strong> como backend y API, con una base de datos relacional para registrar transacciones y carritos.</li>
       <li><strong>Smart Contracts en Solidity</strong> desplegados en testnet (por ahora).</li>
     </ul>
