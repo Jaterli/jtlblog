@@ -110,13 +110,13 @@
     },
     {
       "description": "Proyecto realizado",
-      "details": "Gestión de Traductores y Consultas Personalizadas con React y Django.",
+      "details": "Gestión de Traductores y Consultas Personalizadas con React y Django",
       "startDay": "2024-11-10",
       "endDay": "2025-02-17"
     },
     {
       "description": "Post para el blog",
-      "details": "Almacenamiento de valores separados por comas en campos TextField en Django.",
+      "details": "Almacenamiento de valores separados por comas en campos TextField en Django",
       "startDay": "2024-09-26",
       "endDay": "2024-09-26"
     },
