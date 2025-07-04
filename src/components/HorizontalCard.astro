@@ -37,21 +37,24 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
         </p>
         <!-- <div class="text-sm opacity-70 float-left">{displayDate}</div> -->
 
-        <!-- <div class="card-actions">
+        <!-- <div class="flex flex-wrap gap-x-2 text-sm">
           {
             tags && tags.map((tag) => (
-              <span class="badge badge-outline opacity-70 hover:bg-gray-500">{tag}</span>
+              <a class="hover:underline text-blue-500" href={`${tag_url}${tag.toLowerCase()}`}>#{tag}</a>          
             ))
           }
         </div> -->
-
-        <div class="flex flex-wrap gap-x-2 text-sm">
-          {
-            tags && tags.map((tag) => (
-              <span class="hover:underline text-blue-500">#{tag}</span>          
+        <div>
+        {
+          tags &&
+            tags.map((tag) => (
+              <a href={`/blog/tag/${tag.toLowerCase()}`} class="badge badge-outline mr-2 opacity-70 no-underline hover:bg-gray-500">
+                {tag}
+              </a>
             ))
-          }
+        }
         </div>
+
       </article>
     </div>
   </a>
