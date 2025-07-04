@@ -1,12 +1,11 @@
 ---
 title: "Comercio Electrónico con Pagos Blockchain"
-description: "Marketplace con sistema de pago basado en Ethereum y USDT/USDC, que permita a las empresas aceptar pagos en criptomonedas de manera sencilla."
-pubDate: "2025-03-05"
+description: "He desarrollado EasyCryptoBuy, una plataforma de comercio electrónico con integración nativa de pagos en blockchain."
+pubDate: "2025-07-04"
 heroImage: "/images/proyectos/projects.easycryptobuy.jpg"
 badge: "Finalizado"
-tags: [Web3, Wagmi, SmartContract, Blockchain, Tokens ERC20, React, Django, Chakra UI, Python, Typescript]
+tags: [Web3, Wagmi, SmartContracts, Blockchain, Metamask, Tokens ERC20, React, Django, Chakra UI, Python, Typescript]
 ---
-
 ## Visión general
 
 He desarrollado esta plataforma de **comercio electrónico con pagos blockchain**, que he llamado ***EasyCryptoBuy***, como uno más de mis proyectos de mi Máster en Desarrollo Full Stack y Blockchain, donde he aplicado los conocimientos adquiridos en ambas disciplinas para crear una solución funcional, segura y escalable.
@@ -17,10 +16,6 @@ El objetivo principal ha sido demostrar cómo la tecnología blockchain puede in
 - **Seguridad mejorada** (autenticación mediante firma criptográfica)
 - **Flexibilidad en métodos de pago** (soporte para ETH, USDT, USDC y otros tokens ERC-20)
 
-La plataforma consta de dos partes principales:
-
-1. **Frontend para clientes**: Interfaz intuitiva para explorar productos, gestionar carritos y realizar pagos con criptomonedas.
-2. **Panel de administración**: Herramientas completas para gestión de productos, ventas y clientes.
 
 ## Tecnologías Principales
 
@@ -29,10 +24,78 @@ La plataforma consta de dos partes principales:
 - **Blockchain**: Smart Contracts en Solidity (Ethereum), listeners de eventos
 - **Seguridad**: JWT, firma criptográfica, rate limiting
 
+
+## Arquitectura Técnica
+
+### Configuración Clave del Backend
+
+El backend utiliza Django REST Framework con una configuración optimizada para seguridad y rendimiento:
+
+- CORS restringido solo a dominios autorizados
+- Autenticación JWT con tokens de corta y larga duración
+- Rate limiting para protección contra ataques
+
+Ejemplo de configuración:
+
+```python
+# Configuración de seguridad y conexiones
+CORS_ALLOWED_ORIGINS = [
+    # Url's permitidas
+    "http://localhost:5173", # localhost para las pruebas en local
+    "http://127.0.0.1:5173", # localhost para las pruebas en local
+    "https://sepolia.drpc.org"
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+}
+```
+
+
+### Integración Blockchain
+
+En el frontend, la configuración de Wagmi permite operar tanto en red principal como en testnet (Sepolia), e integrarse con diversas wallets como MetaMask.
+
+```typescript
+export const config = createConfig({
+  chains: [mainnet, sepolia],
+  connectors: [metaMask()], // Se puede integrar con múltiples wallets
+  transports: {
+    [mainnet.id]: http(),
+    [sepolia.id]: http('https://ethereum-sepolia-rpc.publicnode.com')
+  }
+});
+```
+
+**Ventajas**:
+- Soporte simultáneo para mainnet y testnet (Sepolia).
+- Conexión flexible a diferentes proveedores RPC
+- Soporte para múltiples wallets.
+
+
 ## Parte Cliente: Experiencia de Usuario
 
-### Dashboard Principal
+EasyCryptoBuy ofrece una interfaz moderna e intuitiva que permite a los usuarios explorar productos, gestionar su carrito y realizar pagos seguros en blockchain.
+
+### Dashboard del Cliente
 El dashboard ofrece una visión completa del estado de la cuenta:
+
+**Características clave**:
+- Estado de conexión de la wallet en tiempo real
+- Acceso rápido a las principales funcionalidades
+- Visualización de transacciones recientes
+- Gestión de perfil y datos personales
+
 
 ```tsx
 <DashboardLayout>
@@ -58,13 +121,6 @@ El dashboard ofrece una visión completa del estado de la cuenta:
 </DashboardLayout>
 ```
 
-**Características clave**:
-- Estado de conexión de la wallet en tiempo real
-- Acceso rápido a las principales funcionalidades
-- Visualización de transacciones recientes
-- Gestión del perfil de usuario
-
-
 **📸 Captura del Dashboar del cliente:**  
 [![Captura del Dashboar del cliente](/projects/easycryptobuy/easycryptobuy_clientes-dashboard.png)](/projects/easycryptobuy/easycryptobuy_clientes-dashboard.png)
 
@@ -73,6 +129,10 @@ El dashboard ofrece una visión completa del estado de la cuenta:
 
 ### Catálogo de Productos
 Interfaz intuitiva para explorar y seleccionar productos:
+- Exploración de productos con imágenes y descripciones.
+- Añadir productos al carrito con control de stock en tiempo real.
+- Filtrado y búsqueda de productos (integración pendiente)
+
 
 ```tsx
 <ProductGrid>
@@ -87,12 +147,6 @@ Interfaz intuitiva para explorar y seleccionar productos:
 </ProductGrid>
 ```
 
-**Funcionalidades**:
-- Control de stock en tiempo real
-- Agregar productos al carrito con cantidad variable
-- Filtrado y búsqueda de productos (integración pendiente)
-
-
 **📸 Captura del catálogo de productos (las imágenes son aleatorias):**
 [![Captura del catálogo de productos](/projects/easycryptobuy/easycryptobuy_clientes-productos.png)](/projects/easycryptobuy/easycryptobuy_clientes-productos.png)
 
@@ -101,6 +155,10 @@ Interfaz intuitiva para explorar y seleccionar productos:
 
 ### Carrito de Compras
 Sistema completo de gestión del carrito:
+- Persistencia entre sesiones
+- Cálculo automático de totales
+- Posibilidad de vaciar el carrito o eliminar productos
+
 
 ```python
 @api_view(["POST"])
@@ -122,12 +180,6 @@ def save_cart(request):
         return Response({"error": "User not found"}, status=404)
 ```
 
-**Procesos clave**:
-- Persistencia del carrito entre sesiones
-- Validación de stock en tiempo real
-- Cálculo automático de totales
-- Opción para vaciar el carrito o eliminar items individuales
-
 
 **📸 Captura del carrito:**
 [![Captura del carrito](/projects/easycryptobuy/easycryptobuy_clientes-carrito.png)](/projects/easycryptobuy/easycryptobuy_clientes-carrito.png)
@@ -137,6 +189,11 @@ def save_cart(request):
 
 ### Proceso de Pago
 Flujo seguro para completar transacciones:
+1. Selección del token de pago (ETH, USDT, USDC, LINK).
+2. Firma criptográfica de la transacción desde la wallet.
+3. Confirmación on-chain y actualización inmediata en el sistema.
+
+Smart contract de ejemplo:
 
 ```solidity
 // Smart Contract para pagos
@@ -161,13 +218,6 @@ contract PaymentProcessor {
 }
 ```
 
-**Etapas del pago**:
-1. Selección de token de pago (ETH, USDT, USDC, LINK)
-2. Firma de wallet para autenticación
-3. Confirmación de transacción en blockchain
-4. Actualización de estado en tiempo real
-
-
 **📸 Captura del formulario de pago:**
 [![Captura del formulario de pago](/projects/easycryptobuy/easycryptobuy_clientes-pagar.png)](/projects/easycryptobuy/easycryptobuy_clientes-pagar.png)   
 **📸 Captura del proceso de pago:**
@@ -177,8 +227,17 @@ contract PaymentProcessor {
 
 ## Parte Administrativa: Gestión Empresarial
 
+Herramientas completas para gestión de productos, ventas y clientes.
+
 ### Dashboard Analítico
-Vista general del rendimiento del negocio:
+Panel para monitorizar el rendimiento del negocio en tiempo real:
+- Ingresos totales
+- Usuarios activos
+- Valor de inventario
+- Gráfica de transacciones por período
+- Productos más vendidos
+- Últimas transacciones
+
 
 ```python
 @api_view(["GET"])
@@ -201,14 +260,6 @@ def company_dashboard(request):
     })
 ```
 
-**Métricas clave**:
-- Ingresos totales
-- Usuarios activos
-- Valor de inventario
-- Gráfica de transacciones por período
-- Productos más vendidos
-- Últimas transacciones
-
 **📸 Captura del Dashboard de la parte de administración:**
 [![Captura del Dashboard de la parte de administración](/projects/easycryptobuy/easycryptobuy_empresa-dashboard.png)](/projects/easycryptobuy/easycryptobuy_empresa-dashboard.png)
 
@@ -216,6 +267,10 @@ def company_dashboard(request):
 
 ### Gestión de Productos
 CRUD completo para el catálogo:
+- Creación, edición y eliminación de productos
+- Control de inventario
+- Categorización y organización (integración pendiente)
+
 
 ```tsx
 <ProductAdminTable
@@ -225,11 +280,6 @@ CRUD completo para el catálogo:
   onCreate={handleCreateProduct}
 />
 ```
-
-**Funcionalidades**:
-- Creación y edición de productos
-- Control de inventario
-- Categorización y organización (integración pendiente)
 
 
 **📸 Captura del listado de productos:**
@@ -241,6 +291,10 @@ CRUD completo para el catálogo:
 
 ### Gestión de Ventas
 Sistema completo de seguimiento de pedidos:
+- Filtrado avanzado por cliente/fecha
+- Actualización de estados de envío
+- Vista detallada de cada transacción
+- Generación de facturas en PDF
 
 ```python
 @api_view(['PATCH'])
@@ -257,11 +311,6 @@ def update_order_item_status(request, order_item_id):
     return Response({'message': 'Estado actualizado'})
 ```
 
-**Capacidades**:
-- Filtrado avanzado por cliente/fecha
-- Actualización de estados de envío
-- Vista detallada de cada transacción
-- Generación de facturas PDF
 
 **📸 Captura del listado de ventas:**
 [![Captura del listado de ventas](/projects/easycryptobuy/easycryptobuy_empresa-ventas.png)](/projects/easycryptobuy/easycryptobuy_empresa-ventas.png)    
@@ -273,6 +322,10 @@ def update_order_item_status(request, order_item_id):
 
 ### Gestión de Clientes
 Herramientas para administración de usuarios cliente:
+- Historial completo de compras
+- Métricas de actividad
+- Datos de contacto
+- Transacciones pendientes/confirmadas
 
 ```tsx
 <ClientManagement 
@@ -281,12 +334,6 @@ Herramientas para administración de usuarios cliente:
   stats={clientStats}
 />
 ```
-
-**Información disponible**:
-- Historial completo de compras
-- Métricas de actividad
-- Datos de contacto
-- Transacciones pendientes/confirmadas
 
 **📸 Captura de la administración de clientes:**
 [![Captura de la administración clientes](/projects/easycryptobuy/easycryptobuy_empresa-clientes.png)](/projects/easycryptobuy/easycryptobuy_empresa-clientes.png)    
@@ -298,6 +345,8 @@ Herramientas para administración de usuarios cliente:
 ## Seguridad Integral
 
 ### Autenticación y Autorización
+
+Ejemplo de código: 
 ```python
 @ratelimit(key='user', rate='5/m')
 @api_view(['GET'])
@@ -310,8 +359,8 @@ def get_wallet_nonce(request, wallet_address):
 **Protecciones**:
 - Firma criptográfica para verificación de identidad
 - Nonces de un solo uso con expiración
-- Rate limiting para prevenir ataques
-- JWT con refresh tokens
+- Rate limiting para evitar ataques de fuerza bruta
+- JWT con tokens refresh para mantener sesiones seguras
 
 
 **📸 Captura de la petición de firma:**
@@ -320,6 +369,8 @@ def get_wallet_nonce(request, wallet_address):
 ---
 
 ### Protección de Transacciones
+
+Ejemplo de código: 
 ```python
 def verify_transaction(tx_hash):
     receipt = w3.eth.get_transaction_receipt(tx_hash)
@@ -338,6 +389,8 @@ def verify_transaction(tx_hash):
 - Hash únicos para cada transacción
 
 ### Seguridad en Frontend
+
+Ejemplo de código: 
 ```tsx
 const PaymentForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -365,6 +418,8 @@ const PaymentForm = () => {
 ## Procesos Automatizados
 
 ### Listener de Blockchain
+
+Ejemplo de código: 
 ```python
 def handle_event(event):
     tx_hash = event['transactionHash'].hex()
@@ -381,11 +436,13 @@ while True:
 ```
 
 **Funcionalidad**:
-- Escucha continua de eventos
-- Actualización automática de estados
-- Procesamiento de órdenes asociadas
+- Monitorea en tiempo real los eventos del smart contract
+- Actualización automática de estados de las transacciones
+
 
 ### Mantenimiento del Sistema
+
+Ejemplo de código: 
 ```python
 @periodic_task(run_every=crontab(hour=3, minute=30))
 def cleanup_abandoned_carts():
@@ -398,7 +455,7 @@ def cleanup_abandoned_carts():
 ```
 
 **Tareas programadas**:
-- Limpieza de carritos abandonados
+- Limpieza periódica de carritos abandonados
 - Actualización de estados
 - Backup de datos críticos
 

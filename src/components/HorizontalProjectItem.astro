@@ -12,7 +12,6 @@ const {
   tags
 } = Astro.props;
 const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
-const tag_url = '/proyectos/tag/'
 ---
 
 <div class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
@@ -33,18 +32,18 @@ const tag_url = '/proyectos/tag/'
       }
 
       <article class="grow w-full md:p-0">
-        <h2 class="text-xl pb-2">{title}
+        <h2 class="text-xl">{title}
           {badge && <div class="badge badge-neutral rounded my-2 ml-1">{badge}</div>}  
         </h2>
-        <p class="pb-2 opacity-90">
+        <p class="pb-1 opacity-90">
           <span class="text-1xl mr-1">{description}</span>
           <span class="text-xs opacity-70 italic"> [{displayDate}]</span>
         </p>
         <!-- <div class="text-sm opacity-70 float-left">{displayDate}</div> -->
-        <div class="card-actions justify-end leading-[1.2]">
+        <div class="flex flex-wrap gap-x-2 text-sm">
           {
             tags && tags.map((tag) => (
-            <a href={`${tag_url}${tag.toLowerCase()}`}><span class="badge badge-outline opacity-70 hover:bg-gray-500">{tag}</span></a>
+              <span class="hover:underline text-blue-500">#{tag}</span>          
             ))
           }
         </div>

@@ -19,6 +19,12 @@
       "endDay": ""
     },     
     {
+      "description": "Comercio Electrónico con Pagos Blockchain",
+      "details": "Uno más de mis proyectos de mi Máster en Desarrollo Full Stack y Blockchain, donde he aplicado los conocimientos adquiridos en ambas disciplinas para crear una solución funcional, segura y escalable.",
+      "startDay": "2025-03-05",
+      "endDay": "2025-07-01"
+    },     
+    {
       "description": "Estudio y presupuesto para renovar una web con Wordpress",
       "details": "Esbozo de un par de páginas y un formularo en Wordpress y presupuesto para renovación de web corporativa.",
       "startDay": "2025-06-16",
@@ -59,13 +65,7 @@
       "details": "Problema con ModuleNotFoundError: No module named 'django_extensions' en Django.",
       "startDay": "2025-04-08",
       "endDay": "2025-04-08"
-    },     
-    {
-      "description": "Sistema de Pago con Criptomonedas",
-      "details": "Integración de Chakra UI v3.13 con Temas Claro y Oscuro.",
-      "startDay": "2025-03-20",
-      "endDay": "2025-03-19"
-    },      
+    },          
     {
       "description": "Post para el blog",
       "details": "Integración de Chakra UI v3.13 con Temas Claro y Oscuro.",
@@ -79,7 +79,7 @@
       "endDay": "2025-01-18"
     },    
     {
-      "description": "Sistema de Pago con Criptomonedas",
+      "description": "Comercio Electrónico con Pagos Blockchain",
       "details": "Implementación de la librería Chakra UI y firma de mensaje",
       "startDay": "2025-01-17",
       "endDay": "2025-01-17"
@@ -95,13 +95,7 @@
       "details": "Sección de tareas incoporada en este website",
       "startDay": "2025-03-14",
       "endDay": "2025-03-14"
-    },           
-    {
-      "description": "Sistema de Pago con Criptomonedas",
-      "details": "Plataforma de pagos basada en blockchain, permitiendo a las empresas aceptar pagos en ETH, USDT y USDC de manera segura y sencilla.",
-      "startDay": "2025-03-05",
-      "endDay": "2025-05-05"
-    },    
+    },            
     {
       "description": "Página de tareas para mi website.",
       "details": "Página de tareas realizadas y pendientes que me servirán como motivación personal.",
