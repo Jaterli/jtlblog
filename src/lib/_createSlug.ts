@@ -12,13 +12,13 @@ export default function (title: string, staticSlug: string) {
       .trim()
       // output lowercase
       .toLowerCase()
-      // replace spaces
+      // remove accents and diacritics (including tildes from vowels)
       .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-      // remplazar acentos
+      // replace spaces with hyphens
       .replace(/\s+/g, '-')
-      // remove special characters
+      // remove special characters (keep only letters, numbers and hyphens)
       .replace(/[^\w-]/g, '')
-      // remove leading & trailing separtors
+      // remove leading & trailing separators
       .replace(/^-+|-+$/g, '')
   )
 }

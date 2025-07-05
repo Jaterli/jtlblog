@@ -2,11 +2,12 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import JobItemLayout from "@layouts/JobLayout.astro";
 import type { JobSchema } from "src/content/config";
+import generateSlug from "src/lib/generateUrlSlug";
 
 export async function getStaticPaths() {
   const itemEntries = await getCollection("jobs");
   return itemEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: generateSlug(entry.slug) },
     props: { entry },
   }));
 }

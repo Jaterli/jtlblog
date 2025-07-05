@@ -1,5 +1,5 @@
 ---
-title: "GitHub Action automatizar flujos de trabajo."
+title: "GitHub Action automatizar flujos de trabajo"
 description: "Cómo implementé un sistema automatizado que actualiza diariamente una gráfica mostrando el número de posts y proyectos publicados mensualmente en mi blog."
 pubDate: "2024-09-18"
 heroImage: "/images/proyectos/projects.github-actions.jpg"

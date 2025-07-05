@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import HorizontalJobpItem from "../../components/HorizontalJobItem.astro";
 import { getCollection } from "astro:content";
+import generateSlug from "src/lib/generateUrlSlug";
 
 export async function getStaticPaths({ paginate }) {
   const items = await getCollection("jobs");
@@ -52,17 +53,17 @@ const { page } = Astro.props as { page: Page };
       </div>
     ) : (
       <ul>
-        {page.data.map((item) => (
+        {page.data.map((entry) => (
           <>
           <HorizontalJobpItem
-              title={item.data.title}
-              description={item.data.description}
-              heroImage={item.data.heroImage}
-              startDate={item.data.startDate}
-              endDate={item.data.endDate}
-              badge={item.data.badge}
-              details={item.data.details}
-              url={"/jobs/entry/" +  item.slug} // crea el slug basado en el nombre del fichero md
+              title={entry.data.title}
+              description={entry.data.description}
+              heroImage={entry.data.heroImage}
+              startDate={entry.data.startDate}
+              endDate={entry.data.endDate}
+              badge={entry.data.badge}
+              details={entry.data.details}
+              url={"/jobs/entry/" + generateSlug(entry.slug)} // crea el slug basado en el nombre del fichero md
             />
             <div class="divider my-0" />
           </>

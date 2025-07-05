@@ -1,14 +1,7 @@
-import type { CollectionEntry } from "astro:content";
-import createSlug from "./createSlug";
+import generateSlug from "./generateUrlSlug";
 
-export function getPostUrl(entry: CollectionEntry<"blog">): string {
-  const [dateFolder, originalSlug] = entry.slug.split("/");
-  const finalSlug = createSlug(entry.data.title, originalSlug); // opcional, si quieres "slugificar"
+export function getPostUrl(file:string): string {
+  const [dateFolder, originalSlug] = file.split("/");
+  const finalSlug = generateSlug(originalSlug); // opcional, si quieres "slugificar"
   return `/blog/posts/${dateFolder}/${finalSlug}`;
-}
-
-
-export function getProjectUrl(entry: CollectionEntry<"project">): string {
-  const finalSlug = createSlug(entry.data.title, entry.slug);
-  return `/proyectos/entry/${finalSlug}`;
 }

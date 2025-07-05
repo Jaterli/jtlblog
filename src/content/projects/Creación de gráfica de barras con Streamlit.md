@@ -1,5 +1,5 @@
 ---
-title: "Creación de gráfica de barras con Streamlit."
+title: "Creación de gráfica de barras con Streamlit"
 description: "Obtención de datos desde una API y visualización mediante una gráfica de barras apiladas."
 pubDate: "2024-09-18"
 heroImage: "/images/proyectos/projects.streamlit.webp"

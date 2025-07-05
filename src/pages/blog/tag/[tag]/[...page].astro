@@ -59,7 +59,7 @@ const params = Astro.params;
               badge={post.data.badge}
               pubDate={post.data.pubDate}
               tags={post.data.tags}
-              url={getPostUrl(post)} 
+              url={getPostUrl(post.slug)} 
               target="_self"
             />
             <div class="divider my-0" />

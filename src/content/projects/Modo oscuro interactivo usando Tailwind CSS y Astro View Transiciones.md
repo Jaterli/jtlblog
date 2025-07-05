@@ -1,5 +1,5 @@
 ---
-title: "Tema claro/oscuro interactivo con Tailwind CSS + daisyui + Astro View Transicions."
+title: "Tema claro/oscuro interactivo con Tailwind CSS + daisyui + Astro View Transicions"
 description: "Funcionalidad para cambiar entre modo oscuro y modo claro utilizando Astro junto con Tailwind CSS y la librería daisyui."
 pubDate: "2024-09-12"
 heroImage: "/images/proyectos/projects.theme-controller.png"

@@ -1,5 +1,5 @@
 ---
-title: "Desarrollo de Aplicaciones Web. Gestión de Proyectos."
+title: "Desarrollo de Aplicaciones Web. Gestión de Proyectos"
 description: "Desarrollador de Aplicaciones Web y Gestor de Proyectos en una empresa de traducciones."
 startDate: "01-06-2004"
 endDate: "2024-03-30"
