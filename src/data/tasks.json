@@ -19,6 +19,18 @@
       "endDay": ""
     },     
     {
+      "description": "Evaluación TypeScript superada",
+      "details": "He superado la prueba de evaluación en TypeScript y he optenido la certificación.",
+      "startDay": "2025-07-06",
+      "endDay": "2025-07-06"
+    },   
+    {
+      "description": "Evaluación Javascript superada",
+      "details": "He superado la prueba de evaluación en Javascript y he optenido la certificación.",
+      "startDay": "2025-07-05",
+      "endDay": "2025-07-05"
+    },   
+    {
       "description": "Comercio Electrónico con Pagos Blockchain",
       "details": "Uno más de mis proyectos de mi Máster en Desarrollo Full Stack y Blockchain, donde he aplicado los conocimientos adquiridos en ambas disciplinas para crear una solución funcional, segura y escalable.",
       "startDay": "2025-03-05",

@@ -5,7 +5,7 @@ description: "Acabo de superar con éxito el examen de evaluación para obtener 
 pubDate: "2025-07-05"
 heroImage: "/images/blog/blog.academic_degree.jpg"
 category: "Blog"
-tags: [Certificado]
+tags: [Certificado, Javascript]
 ---
 
 📅 05 de julio de 2025
