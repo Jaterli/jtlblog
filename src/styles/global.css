@@ -4,6 +4,7 @@
 
 a.customlink {
   text-decoration: underline;
+  opacity: 0.8;
 }
 
 .time-line-container>div:last-child .education__time>.education__line {
@@ -41,6 +42,7 @@ a.customlink {
 
 .prose :where(h2), h2{
   font-weight: 600;
+  padding: 10px 0px;
 }
 
 .hero-content{
@@ -53,8 +55,8 @@ a.customlink {
     }
 
     h2{
-      font-weight: 2rem;
-      line-height: 2rem !important;
+      font-size: 2rem;
+      line-height: 2.2rem !important;
     }
 
     h3{

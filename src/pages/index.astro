@@ -18,7 +18,7 @@ const last_projects = projects.slice(0, 3);
 
     <p class="sm:text-4xl text-3xl mb-4">Bienvenid@ a mi blog personal 👋</p>
     <p class="sm:text-lg text-base mb-6">
-      Este espacio está dedicado a compartir los conocimientos que voy adquiriendo en mis estudios de desarrollo full stack y blockchain: proyectos que voy construyendo, artículos sobre temas de actualidad en tecnología y soluciones a problemas comunes en desarrollo web y blockchain.       
+      Este espacio está dedicado a compartir los conocimientos adquiridos en mis estudios de desarrollo full stack y blockchain: proyectos que voy construyendo, artículos sobre temas de actualidad en tecnología y soluciones a problemas comunes en desarrollo web y blockchain.       
     </p>
 
     <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -40,34 +40,18 @@ const last_projects = projects.slice(0, 3);
 
   <!-- Publicación destacada -->
   <article class="max-w-3xl mt-12">
-    <h2 class="text-3xl font-bold mb-4">EasyCryptoBuy: <br />Ecommerce con pagos blockchain</h2>
+    <h2 class="text-3xl w-full font-bold mb-5 mt-12">¿Cón qué estoy ahora?</h2>
+    <h3 class="text-2xl mb-4">Aprendiendo WordPress y nuevos retos profesionales</h3>
     <p class="mb-4">
-      Últimamente he estado completamente sumergido en el desarrollo de una aplicación que une dos mundos que me apasionan: las interfaces modernas con React y el ecosistema blockchain. Se trata de una plataforma de compras <strong>onchain</strong> que permite a los usuarios realizar pagos con tokens como <code>USDT</code>, <code>USDC</code>, <code>ETH</code> o <code>LINK</code> directamente desde su wallet.
+      Actualmente estoy profundizando en el módulo de WordPress del máster de desarrollo full stack que estoy cursando. Hace unas semanas, una empresa para la que trabajé me contactó para renovar la web que en su día desarrollé con una aplicación propia que creé para la edición de sitios web. Esta vez, he recomendado realizar la renovación con WordPress (<a href="blog/posts/202506/renovando-una-web-antigua-con-wordpress/" class="customlink">enlace al proyecto</a>), ya que es una herramienta muy completa para crear y gestionar webs, y cuenta con actualizaciones constantes, lo que evita el problema de falta de mantenimiento que tenía mi aplicación.
     </p>
-    <p class="mb-4">
-      El núcleo de la app gira en torno a ofrecer una experiencia de compra Web3 fluida, segura y eficiente, donde los usuarios pueden conectar su wallet, seleccionar productos de un catálogo, y finalizar el pago directamente en la blockchain. Todo el proceso incluye validaciones de stock, firma de mensajes para autenticación, emisión y verificación de eventos en smart contracts, y una gestión robusta del carrito y las transacciones.
-    </p>
-    <p class="mb-4">Estoy utilizando tecnologías como:</p>
-    <ul class="list-disc list-inside mb-4">
-      <li><strong>React</strong> y <strong>Chakra UI</strong> para el frontend.</li>
-      <li><strong>Wagmi</strong> para la integración con wallets y contratos inteligentes.</li>
-      <li><strong>Django</strong> como backend y API, con una base de datos relacional para registrar transacciones y carritos.</li>
-      <li><strong>Smart Contracts en Solidity</strong> desplegados en testnet (por ahora).</li>
-    </ul>
-    <p class="mb-4">
-      Uno de los principales desafíos ha sido gestionar correctamente los estados asincrónicos entre la interfaz de usuario, la blockchain y el backend. Esto incluye casos como cuando un usuario inicia un pago pero abandona la página antes de que la transacción se confirme. Para ello, he diseñado una estrategia que registra la transacción anticipadamente en el backend y luego la actualiza con el <em>hash</em> real de blockchain una vez que se emite el evento correspondiente desde el contrato inteligente.
-    </p>
-    <p class="mb-4">
-      Además, estoy trabajando en mejorar la experiencia de autenticación del usuario con su wallet mediante firma de mensajes, <abbr title="JSON Web Tokens">JWT</abbr> y control de sesión con <em>refresh tokens</em>.
-    </p>
-    <p>
-      Es un proyecto ambicioso, pero extremadamente enriquecedor. Estoy aprendiendo muchísimo sobre seguridad, validación criptográfica, sincronización con eventos onchain y la importancia de manejar cada caso límite. Poco a poco, esta app se va consolidando como un producto sólido y preparado para un entorno de producción Web3.
+    <p  class="mb-4">La renovación de esta web comenzará en septiembre, y aprovechando que mi máster incluye este módulo, mi propósito durante este verano es finalizar el módulo de WordPress, certificarme en ello y además presentar el proyecto de fin de módulo, que consiste en desarrollar una web completa. Estoy dedicando estos días a aprender todo lo posible sobre esta versátil plataforma, con muchas ganas de aplicar mis conocimientos en proyectos reales.     
     </p>
   </article>
 
   <div class="divider my-0 pt-4" />
 
-  <div class="text-3xl w-full font-bold mb-5 mt-12">Últimos posts</div>
+  <h2 class="text-3xl w-full font-bold mb-5 mt-12">Últimos posts</h2>
   {
     last_posts.map((post) => (
       <>
@@ -86,9 +70,7 @@ const last_projects = projects.slice(0, 3);
     ))
   }
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Últimos proyectos &#60;/&#62;</div>
-  </div>
+  <h2 class="text-3xl w-full font-bold mb-5 mt-10">Últimos proyectos &#60;/&#62;</h2>
   {
     last_projects.map((project) => (
       <>
