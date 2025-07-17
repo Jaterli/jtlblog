@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 import createSlug from "../lib/_createSlug"
 import { getPostUrl } from "src/lib/getPostUrl";
 import generateSlug from "src/lib/generateUrlSlug";
+import HorizontalProjectItem from "@components/HorizontalProjectItem.astro";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -74,7 +75,7 @@ const last_projects = projects.slice(0, 3);
   {
     last_projects.map((project) => (
       <>
-        <HorizontalCard
+        <HorizontalProjectItem
           title={project.data.title}
           heroImage={project.data.heroImage}
           description={project.data.description}
