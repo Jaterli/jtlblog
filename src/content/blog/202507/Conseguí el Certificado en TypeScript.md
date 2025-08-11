@@ -21,4 +21,4 @@ Si bien considero que los proyectos prácticos tienen un valor superior a los t�
 Dicho esto, estoy muy contento de sumar un nuevo título a mi recorrido académico dentro del máster de desarrollo Full Stack, y de seguir reforzando mis bases con herramientas que realmente marcan la diferencia en el desarrollo profesional.
 
 
-![Certificado](/certifications/Certificado-en-TypeScript.png)
+![Certificado en Typescript](/certifications/Certificado-en-TypeScript.png)

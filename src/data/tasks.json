@@ -19,6 +19,24 @@
       "endDay": ""
     },     
     {
+      "description": "Proyecto de fin de módulo de Wordpress",
+      "details": "Se trata de la renovación con Wordpress de una web corporativa.",
+      "startDay": "2025-08-11",
+      "endDay": "2025-08-11"
+    },    
+    {
+      "description": "Evaluación CSS Avanzado superada",
+      "details": "He superado la prueba de evaluación en CSS Avanzado y he optenido la certificación.",
+      "startDay": "2025-08-11",
+      "endDay": "2025-08-11"
+    },       
+    {
+      "description": "Evaluación Linux y la Terminal de Linux superada",
+      "details": "He superado la prueba de evaluación en Linux y la Terminal de Linux y he optenido la certificación.",
+      "startDay": "2025-08-11",
+      "endDay": "2025-08-11"
+    },       
+    {
       "description": "Evaluación TypeScript superada",
       "details": "He superado la prueba de evaluación en TypeScript y he optenido la certificación.",
       "startDay": "2025-07-06",
