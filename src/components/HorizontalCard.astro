@@ -28,10 +28,10 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
       }
       
       <article class="grow w-full md:p-0">
-        <h2 class="text-xl py-0">{title}
-          {badge && <div class="badge badge-neutral rounded my-2 ml-1">{badge}</div>}  
+        <h2 class="text-xl">{title}
+          {badge && <div class="badge badge-neutral rounded ml-1">{badge}</div>}  
         </h2>
-        <p class="pb-1 opacity-90">
+        <p class="sm:py-1 py-3 opacity-90">
           <span class="text-1xl mr-1">{description}</span>
           <span class="text-xs opacity-70 italic"> [{displayDate}]</span>
         </p>

@@ -7,11 +7,6 @@ a.customlink {
   opacity: 0.8;
 }
 
-p {
-  margin-top: 12px;
-  margin-bottom: 12px;
-}
-
 .time-line-container>div:last-child .education__time>.education__line {
   display: none;
 }
@@ -58,12 +53,12 @@ p {
   @media (min-width: 640px){ /* Se aplica en pantallas superiores a 640px */
     .text-4xl, .prose :where(h1), h1{
       font-size: 3rem;
-      line-height: 3.6rem;
+      line-height: 3.4rem;
     }
 
     .text-3xl, .prose :where(h2), h2 {
       font-size: 2.2rem;
-      line-height: 2.4rem;
+      line-height: 2.6rem;
     }
 
     .text-2xl, h3{
@@ -78,15 +73,15 @@ p {
     
     .text-4xl, .prose :where(h1), h1 {
       font-size: 2.2rem;
-      line-height: 2.4rem;
+      line-height: 2.6rem;
     }    
     .text-3xl, .prose :where(h2), h2 {
       font-size: 1.8rem;
-      line-height: 2rem;
+      line-height: 2.2rem;
     }
     .text-2xl, h3 {
       font-size: 1.4rem;
-      line-height: 1.7rem;
+      line-height: 1.8rem;
     }
   }
 }
