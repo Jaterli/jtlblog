@@ -2,13 +2,13 @@
 draft: false
 title: "Conseguí el Certificado en Wordpress"
 description: "Estoy muy contento de compartir que he completado con éxito el módulo de WordPress impartido por Academia Conquer Blocks, obteniendo mi certificación oficial."
-pubDate: "2025-08-11"
+pubDate: "2025-08-12"
 heroImage: "/images/blog/blog.academic_degree.jpg"
 category: "Blog"
-tags: [Certificado, Linux]
+tags: [Certificado, Wordpress]
 ---
 
-📅 11 de agosto de 2025
+📅 12 de agosto de 2025
 
 
 Estoy muy contento de compartir que he completado con éxito el módulo de **WordPress** impartido por **Academia Conquer Blocks**, obteniendo mi certificación oficial.  
