@@ -42,19 +42,20 @@ a.customlink {
 
 .prose :where(h2), h2{
   font-weight: 600;
-  padding: 10px 0px;
+  /* padding: 10px 0px; */
 }
 
 .hero-content{
   @apply px-0;
 }
+
 @layer base {
-  @media (min-width: 640px){
-    .text-4xl, h1{
+  @media (min-width: 640px){ /* Se aplica en pantallas superiores a 640px */
+    .text-4xl, .prose :where(h1), h1{
       line-height: 3.6rem;
     }
 
-    .text-3xl, h2 {
+    .text-3xl, .prose :where(h2), h2 {
       font-size: 2rem;
       line-height: 2.2rem;
     }
@@ -69,11 +70,11 @@ a.customlink {
 @layer base {
   @media (max-width: 640px) { /* Se aplica en móviles (sm y menores) */
     
-    .text-4xl, h1 {
+    .text-4xl, .prose :where(h1), h1 {
       font-size: 1.6rem;
       line-height: 2.2rem;
     }    
-    .text-3xl, h2 {
+    .text-3xl, .prose :where(h2), h2 {
       font-size: 1.5rem;
       line-height: 2rem;
     }

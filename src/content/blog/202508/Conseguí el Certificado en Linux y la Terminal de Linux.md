@@ -2,13 +2,13 @@
 draft: false
 title: "Conseguí el Certificado en Linux y la Terminal de Linux"
 description: "Acabo de superar con éxito el examen de evaluación para obtener el certificado de Linux y la Terminal de Linux impartido por la academia Conquer Blocks."
-pubDate: "2025-08-11"
+pubDate: "2025-08-10"
 heroImage: "/images/blog/blog.academic_degree.jpg"
 category: "Blog"
 tags: [Certificado, Linux]
 ---
 
-📅 11 de agosto de 2025
+📅 10 de agosto de 2025
 
 Acabo de superar con éxito el examen de evaluación para obtener el certificado de **Linux y la Terminal de Linux** impartido por la academia **Conquer Blocks**. Este módulo forma parte del máster en Desarrollo Full Stack.
 

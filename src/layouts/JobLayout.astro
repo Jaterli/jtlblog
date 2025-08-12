@@ -29,8 +29,7 @@ const format_endDate = dayjs(endDate).format("DD/MM/YYYY")
           <Image width={750} height={422} src={heroImage} alt={title} class="w-full mb-6" />
         )
       }
-      <h1 class="title my-2 text-4xl font-semibold">
-        {title}
+      <h1 class="title my-2 sm:text-4xl text-2xl">{title}
         {badge && <div class="badge badge-neutral rounded my-2 hover:bg-gray-500">{badge}</div>}
       </h1>
       <div>
