@@ -50,18 +50,18 @@ a.customlink {
 }
 @layer base {
   @media (min-width: 640px){
-    h1{
-      line-height: 3.6rem !important;
+    .text-4xl, h1{
+      line-height: 3.6rem;
     }
 
-    h2{
+    .text-3xl, h2 {
       font-size: 2rem;
-      line-height: 2.2rem !important;
+      line-height: 2.2rem;
     }
 
-    h3{
-      font-size: 1.4rem !important;
-      line-height: 1.8rem !important;
+    .text-2xl, h3{
+      font-size: 1.4rem;
+      line-height: 1.8rem;
     }
   }
 }
@@ -70,16 +70,16 @@ a.customlink {
   @media (max-width: 640px) { /* Se aplica en móviles (sm y menores) */
     
     .text-4xl, h1 {
-      font-size: 1.6rem !important;
-      line-height: 2.2rem !important;
+      font-size: 1.6rem;
+      line-height: 2.2rem;
     }    
     .text-3xl, h2 {
-      font-size: 1.5rem !important;
-      line-height: 2rem !important;
+      font-size: 1.5rem;
+      line-height: 2rem;
     }
     .text-2xl, h3 {
-      font-size: 1.3rem !important;
-      line-height: 1.8rem !important;
+      font-size: 1.3rem;
+      line-height: 1.8rem;
     }
   }
 }
