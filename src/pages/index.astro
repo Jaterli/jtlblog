@@ -17,7 +17,7 @@ const last_projects = projects.slice(0, 3);
 <BaseLayout sideBarActiveItemID="home">
   <div class="bg-base-200 rounded-xl shadow-sm py-8 sm:py-12 px-4 sm:px-6 text-base text-center">
 
-    <h1 class="sm:text-4xl text-3xl mb-4 font-semibold">Bienvenid@ a mi blog personal 👋</h1>
+    <h1 class="sm:font-semibold font-normal mb-4">Bienvenid@ a mi blog personal 👋</h1>
     <p class="sm:text-lg text-base mb-6">
       Este espacio está dedicado a compartir los conocimientos adquiridos en mis estudios de desarrollo full stack y blockchain: proyectos que voy construyendo, artículos sobre temas de actualidad en tecnología y soluciones a problemas comunes en desarrollo web y blockchain.       
     </p>
@@ -41,8 +41,8 @@ const last_projects = projects.slice(0, 3);
 
   <!-- Publicación destacada -->
   <article class="max-w-3xl mt-12">
-    <h2 class="text-3xl w-full font-bold mb-5 mt-12">¿Cón qué estoy ahora?</h2>
-    <h3 class="text-2xl mb-4">Mi próximo reto es el de completar los módulos pendientes de HTML y CSS</h3>
+    <h2 class="w-full font-bold mb-5 mt-12">¿Cón qué estoy ahora?</h2>
+    <h3 class="mb-4">Mi próximo reto es el de completar los módulos pendientes de HTML y CSS</h3>
 
     <p>Tras finalizar con éxito mi <a href="/proyectos/entry/proyecto-final-de-modulo--desarrollo-de-web-corporativa-en-wordpress" title="proyecto final de módulo de WordPress" class="customlink">proyecto final de módulo de WordPress</a>, mi siguiente objetivo dentro del máster en Desarrollo Full Stack impartido por Academia Conquer Blocks es ponerme al día con los módulos que tengo pendientes, concretamente HTML y CSS.</p>
 
@@ -54,7 +54,7 @@ const last_projects = projects.slice(0, 3);
 
   <div class="divider my-0 pt-4" />
 
-  <h2 class="text-3xl w-full font-bold mb-5 mt-12">Últimos posts</h2>
+  <h2 class="w-full font-bold mb-5 mt-12">Últimos posts</h2>
   {
     last_posts.map((post) => (
       <>
@@ -73,7 +73,7 @@ const last_projects = projects.slice(0, 3);
     ))
   }
 
-  <h2 class="text-3xl w-full font-bold mb-5 mt-10">Últimos proyectos &#60;/&#62;</h2>
+  <h2 class="w-full font-bold mb-5 mt-10">Últimos proyectos &#60;/&#62;</h2>
   {
     last_projects.map((project) => (
       <>

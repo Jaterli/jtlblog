@@ -7,6 +7,11 @@ a.customlink {
   opacity: 0.8;
 }
 
+p {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
 .time-line-container>div:last-child .education__time>.education__line {
   display: none;
 }
@@ -40,7 +45,7 @@ a.customlink {
   font-weight:700;
 }
 
-.prose :where(h2), h2{
+.prose :where(h2), h2, .prose :where(h3), h3{
   font-weight: 600;
   /* padding: 10px 0px; */
 }
@@ -52,17 +57,18 @@ a.customlink {
 @layer base {
   @media (min-width: 640px){ /* Se aplica en pantallas superiores a 640px */
     .text-4xl, .prose :where(h1), h1{
+      font-size: 3rem;
       line-height: 3.6rem;
     }
 
     .text-3xl, .prose :where(h2), h2 {
-      font-size: 2rem;
-      line-height: 2.2rem;
+      font-size: 2.2rem;
+      line-height: 2.4rem;
     }
 
     .text-2xl, h3{
-      font-size: 1.4rem;
-      line-height: 1.8rem;
+      font-size: 1.6rem;
+      line-height: 2rem;
     }
   }
 }
@@ -71,16 +77,16 @@ a.customlink {
   @media (max-width: 640px) { /* Se aplica en móviles (sm y menores) */
     
     .text-4xl, .prose :where(h1), h1 {
-      font-size: 1.6rem;
-      line-height: 2.2rem;
+      font-size: 2.2rem;
+      line-height: 2.4rem;
     }    
     .text-3xl, .prose :where(h2), h2 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       line-height: 2rem;
     }
     .text-2xl, h3 {
-      font-size: 1.3rem;
-      line-height: 1.8rem;
+      font-size: 1.4rem;
+      line-height: 1.7rem;
     }
   }
 }
