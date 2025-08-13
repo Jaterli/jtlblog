@@ -19,10 +19,22 @@
       "endDay": ""
     },     
     {
+      "description": "Evaluación HTML superada",
+      "details": "Acabo de superar la prueba de evaluación en HTML y he optenido la certificación.",
+      "startDay": "2025-08-13",
+      "endDay": "2025-08-13"
+    },  
+    {
+      "description": "Evaluación Wordpress superada",
+      "details": "He superado la prueba de evaluación de Wordpress y he optenido la certificación.",
+      "startDay": "2025-08-12",
+      "endDay": "2025-08-12"
+    },          
+    {
       "description": "Proyecto de fin de módulo de Wordpress",
       "details": "Se trata de la renovación con Wordpress de una web corporativa.",
       "startDay": "2025-08-11",
-      "endDay": "2025-08-11"
+      "endDay": "2025-07-04"
     },    
     {
       "description": "Evaluación CSS Avanzado superada",

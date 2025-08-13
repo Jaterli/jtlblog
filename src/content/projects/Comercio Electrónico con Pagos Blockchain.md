@@ -121,11 +121,9 @@ El dashboard ofrece una visión completa del estado de la cuenta:
 </DashboardLayout>
 ```
 
-**📸 Captura del Dashboar del cliente:**  
-[![Captura del Dashboar del cliente](/projects/easycryptobuy/easycryptobuy_clientes-dashboard.png)](/projects/easycryptobuy/easycryptobuy_clientes-dashboard.png)
+📸 [Captura del Dashboard del cliente](/projects/easycryptobuy/easycryptobuy_clientes-dashboard.png)
 
 ---
-
 
 ### Catálogo de Productos
 Interfaz intuitiva para explorar y seleccionar productos:
@@ -147,11 +145,9 @@ Interfaz intuitiva para explorar y seleccionar productos:
 </ProductGrid>
 ```
 
-**📸 Captura del catálogo de productos (las imágenes son aleatorias):**
-[![Captura del catálogo de productos](/projects/easycryptobuy/easycryptobuy_clientes-productos.png)](/projects/easycryptobuy/easycryptobuy_clientes-productos.png)
+📸 [Captura del catálogo de productos (las imágenes del catálogo son aleatorias)](/projects/easycryptobuy/easycryptobuy_clientes-productos.png)
 
 ---
-
 
 ### Carrito de Compras
 Sistema completo de gestión del carrito:
@@ -180,12 +176,9 @@ def save_cart(request):
         return Response({"error": "User not found"}, status=404)
 ```
 
-
-**📸 Captura del carrito:**
-[![Captura del carrito](/projects/easycryptobuy/easycryptobuy_clientes-carrito.png)](/projects/easycryptobuy/easycryptobuy_clientes-carrito.png)
+📸 [Captura del carrito](/projects/easycryptobuy/easycryptobuy_clientes-carrito.png)
 
 ---
-
 
 ### Proceso de Pago
 Flujo seguro para completar transacciones:
@@ -218,10 +211,8 @@ contract PaymentProcessor {
 }
 ```
 
-**📸 Captura del formulario de pago:**
-[![Captura del formulario de pago](/projects/easycryptobuy/easycryptobuy_clientes-pagar.png)](/projects/easycryptobuy/easycryptobuy_clientes-pagar.png)   
-**📸 Captura del proceso de pago:**
-[![Captura del proceso de pago](/projects/easycryptobuy/easycryptobuy_clientes-pago_proceso.png)](/projects/easycryptobuy/easycryptobuy_clientes-pago_proceso.png)
+📸 [Captura del formulario de pago](/projects/easycryptobuy/easycryptobuy_clientes-pagar.png)  
+📸 [Captura del proceso de pago](/projects/easycryptobuy/easycryptobuy_clientes-pago_proceso.png)
 
 ---
 
@@ -260,8 +251,7 @@ def company_dashboard(request):
     })
 ```
 
-**📸 Captura del Dashboard de la parte de administración:**
-[![Captura del Dashboard de la parte de administración](/projects/easycryptobuy/easycryptobuy_empresa-dashboard.png)](/projects/easycryptobuy/easycryptobuy_empresa-dashboard.png)
+📸 [Captura del Dashboard de la parte de administración](/projects/easycryptobuy/easycryptobuy_empresa-dashboard.png)
 
 ---
 
@@ -282,10 +272,8 @@ CRUD completo para el catálogo:
 ```
 
 
-**📸 Captura del listado de productos:**
-[![Captura del listado de productos](/projects/easycryptobuy/easycryptobuy_empresa-productos.png)](/projects/easycryptobuy/easycryptobuy_empresa-productos.png)    
-**📸 Captura de la edición de un producto:**
-[![Captura de la edición de un producto](/projects/easycryptobuy/easycryptobuy_empresa-productos_edit.png)](/projects/easycryptobuy/easycryptobuy_empresa-productos_edit.png)
+📸 [Captura del listado de productos](/projects/easycryptobuy/easycryptobuy_empresa-productos.png)  
+📸 [Captura de la edición de un producto](/projects/easycryptobuy/easycryptobuy_empresa-productos_edit.png)
 
 ---
 
@@ -312,13 +300,10 @@ def update_order_item_status(request, order_item_id):
 ```
 
 
-**📸 Captura del listado de ventas:**
-[![Captura del listado de ventas](/projects/easycryptobuy/easycryptobuy_empresa-ventas.png)](/projects/easycryptobuy/easycryptobuy_empresa-ventas.png)    
-**📸 Captura del detalle de venta:**
-[![Captura del detalle de venta](/projects/easycryptobuy/easycryptobuy_empresa-venta_detalle.png)](/projects/easycryptobuy/easycryptobuy_empresa-venta_detalle.png)
+📸 [Captura del listado de ventas](/projects/easycryptobuy/easycryptobuy_empresa-ventas.png)  
+📸 [Captura del detalle de venta](/projects/easycryptobuy/easycryptobuy_empresa-venta_detalle.png)
 
 ---
-
 
 ### Gestión de Clientes
 Herramientas para administración de usuarios cliente:
@@ -335,10 +320,8 @@ Herramientas para administración de usuarios cliente:
 />
 ```
 
-**📸 Captura de la administración de clientes:**
-[![Captura de la administración clientes](/projects/easycryptobuy/easycryptobuy_empresa-clientes.png)](/projects/easycryptobuy/easycryptobuy_empresa-clientes.png)    
-**📸 Captura del detalle de cliente:**
-[![Captura del detalle de cliente](/projects/easycryptobuy/easycryptobuy_empresa_cliente_detalle.png)](/projects/easycryptobuy/easycryptobuy_empresa_cliente_detalle.png)
+📸 [Captura de la administración de clientes](/projects/easycryptobuy/easycryptobuy_empresa-clientes.png)  
+📸 [Captura del detalle de cliente](/projects/easycryptobuy/easycryptobuy_empresa_cliente_detalle.png)
 
 ---
 
@@ -363,8 +346,7 @@ def get_wallet_nonce(request, wallet_address):
 - JWT con tokens refresh para mantener sesiones seguras
 
 
-**📸 Captura de la petición de firma:**
-[![Captura de la petición de firma](/projects/easycryptobuy/easycryptobuy_clientes-firma_requerida.png)](/projects/easycryptobuy/easycryptobuy_clientes-firma_requerida.png)
+📸 [Captura de la petición de firma](/projects/easycryptobuy/easycryptobuy_clientes-firma_requerida.png)
 
 ---
 
@@ -480,6 +462,8 @@ El proyecto demuestra mi capacidad para:
 - Proporciona transparencia mediante blockchain
 - Optimiza procesos administrativos
 
+
+---
 
 **¿Interesado en una solución similar para tu negocio?**   
 ¡Estoy disponible para adaptar este proyecto o desarrollar una plataforma a medida con las funcionalidades que necesites!
