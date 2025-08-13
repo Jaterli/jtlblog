@@ -14,20 +14,23 @@ Esta aplicación, desarrollada con **Django** en el backend y **React + TypeScri
 ## Características Destacadas
 
 ### 1. **Gestión Completa de Perfiles de Traductores**
-La aplicación permite a los traductores profesionales registrarse y gestionar sus perfiles de manera eficiente. Las funcionalidades incluyen:
+La aplicación permite a los traductores profesionales registrarse y gestionar sus perfiles de manera eficiente. Este área fue desarrollado íntegramente con Django, incluyendo tanto el backend como el renderizado de templates.   
+
+Las funcionalidades incluyen:
 - **Datos personales**: Nombre, dirección, teléfono, etc.
 - **Perfil profesional**: Formación, experiencia, combinaciones de idiomas, etc.
 - **Documentación**: Posibilidad de adjuntar un currículum y una nota de voz.
 - **Actualización y baja**: Los traductores pueden actualizar sus datos o darse de baja en cualquier momento.
 
+
 **Capturas de pantalla:**
-- **Dashboard**: <img src="\projects\translator_management\Screenshot-Dashboard.png" />
-- **Registro y perfil de traductor**: <img src="\projects\translator_management\Screenshot-Registro.png" />
-- **Datos personales**: <img src="\projects\translator_management\Screenshot-Datos personales.png" />
-- **Edición de datos personales**: <img src="\projects\translator_management\Screenshot-Editando datos personales.png" />
-- **Combinaciones de idiomas**: <img src="\projects\translator_management\Screenshot-Combinaciones de idiomas.png" />
-- **Edición de combinaciones de idiomas**: <img src="\projects\translator_management\Screenshot-Editando combinaciones.png" />
-- **Documentación (currículum y nota de voz)**: <img src="\projects\translator_management\Screenshot-Currículum y Nota de Voz.png" />
+- 📸 [Dashboard](/projects/translator_management/Screenshot-Dashboard.png)
+- 📸 [Registro y perfil de traductor](/projects/translator_management/Screenshot-Registro.png)
+- 📸 [Datos personales](/projects/translator_management/Screenshot-Datos%20personales.png)
+- 📸 [Edición de datos personales](/projects/translator_management/Screenshot-Editando%20datos%20personales.png)
+- 📸 [Combinaciones de idiomas](/projects/translator_management/Screenshot-Combinaciones%20de%20idiomas.png)
+- 📸 [Edición de combinaciones de idiomas](/projects/translator_management/Screenshot-Editando%20combinaciones.png)
+- 📸 [Documentación (currículum y nota de voz)](/projects/translator_management/Screenshot-Curr%C3%ADculum%20y%20Nota%20de%20Voz.png)
 
 ---
 
@@ -39,10 +42,10 @@ Los administradores tienen acceso a herramientas avanzadas para realizar consult
 - **Visualización detallada**: Acceso al perfil completo de cada traductor, incluyendo documentos adjuntos.
 
 **Capturas de pantalla:**
-- **Crear consulta**: <img src="\projects\translator_management\Screenshot-Admin-crear-consulta.png" />
-- **Listado de consultas**: <img src="\projects\translator_management\Screenshot-Admin-Consultas.png" />
-- **Resultados de consulta**: <img src="\projects\translator_management\Screenshot-Admin-Consulta-resultados.png" />
-- **Detalle de traductor**: <img src="\projects\translator_management\Screenshot-Admin-detalle-traductor.png" />
+- 📸 [Crear consulta](/projects/translator_management/Screenshot-Admin-crear-consulta.png)
+- 📸 [Listado de consultas](/projects/translator_management/Screenshot-Admin-Consultas.png)
+- 📸 [Resultados de consulta](/projects/translator_management/Screenshot-Admin-Consulta-resultados.png)
+- 📸 [Detalle de traductor](/projects/translator_management/Screenshot-Admin-detalle-traductor.png)
 
 ---
 
@@ -51,7 +54,7 @@ Los administradores tienen acceso a herramientas avanzadas para realizar consult
 - **Protección de datos**: Las contraseñas se almacenan de forma segura utilizando técnicas de hashing.
 
 **Captura de pantalla:**
-- **Login de administradores**: <img src="\projects\translator_management\Screenshot-Admin-login.png" />
+- 📸 [Login de administradores](/projects/translator_management/Screenshot-Admin-login.png)
 
 ---
 
@@ -59,9 +62,9 @@ Los administradores tienen acceso a herramientas avanzadas para realizar consult
 La aplicación está diseñada para ser **totalmente responsive**, lo que garantiza una experiencia de usuario óptima en cualquier dispositivo (escritorio, tablet o móvil).
 
 **Capturas de pantalla:**
-- **Dashboard (versión móvil)**: <img src="\projects\translator_management\Screenshot-Dashboard-mv.png" />
-- **Combinaciones de idiomas (versión móvil)**: <img src="\projects\translator_management\Screenshot-Combinaciones de idiomas-mv.png" />
-- **Edición de combinaciones de idiomas (versión móvil)**: <img src="\projects\translator_management\Screenshot-Editando combinaciones-mv.png" />
+- 📸 [Dashboard (versión móvil)](/projects/translator_management/Screenshot-Dashboard-mv.png)
+- 📸 [Combinaciones de idiomas (versión móvil)](/projects/translator_management/Screenshot-Combinaciones%20de%20idiomas-mv.png)
+- 📸 [Edición de combinaciones de idiomas (versión móvil)](/projects/translator_management/Screenshot-Editando%20combinaciones-mv.png)
 
 ---
 
@@ -72,6 +75,7 @@ La aplicación está diseñada para ser **totalmente responsive**, lo que garant
 - **Modelos**: Estructuras de datos para traductores, perfiles profesionales, combinaciones de idiomas y consultas.
 - **Vistas y API**: Endpoints para gestionar traductores y consultas personalizadas.
 - **Autenticación JWT**: Implementación de tokens para asegurar el acceso a las funcionalidades de administración.
+- **Templates Django**: Renderizado completo del área de traductores utilizando el sistema de templates de Django.
 
 ### Frontend (React + TypeScript)
 - **React**: Biblioteca de JavaScript para construir interfaces de usuario interactivas.
