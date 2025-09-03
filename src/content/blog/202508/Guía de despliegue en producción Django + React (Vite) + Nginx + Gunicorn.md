@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "Guía de despliegue en producción: Django + React (Vite) + Nginx + Gunicorn."
+title: "Despliegue en producción: Django + React + Nginx + Gunicorn"
 description: "Cómo montar en producción una aplicación con Django (backend) y React (frontend con Vite), servida con Nginx y Gunicorn, en un servidor Linux."
 pubDate: "2025-08-22"
 heroImage: "/images/blog/blog.tutorial.jpg"

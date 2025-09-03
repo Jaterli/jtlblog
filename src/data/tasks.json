@@ -19,6 +19,18 @@
       "endDay": ""
     },     
     {
+      "description": "Evaluación ReactJS superada",
+      "details": "Acabo de superar la prueba de evaluación en REACTJS y he optenido la certificación.",
+      "startDay": "2025-09-03",
+      "endDay": "2025-09-03"
+    },     
+    {
+      "description": "Despliegue de proyectos en Droplet",
+      "details": "Creación de droplet en Digitalocean y despliegue de los proyectos EasyCryptoBuy y Translators Management.",
+      "startDay": "2025-09-03",
+      "endDay": "2025-08-25"
+    },      
+    {
       "description": "Evaluación HTML superada",
       "details": "Acabo de superar la prueba de evaluación en HTML y he optenido la certificación.",
       "startDay": "2025-08-13",

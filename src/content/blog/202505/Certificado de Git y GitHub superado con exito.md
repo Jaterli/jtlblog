@@ -26,6 +26,6 @@ Aunque pueda parecer que un test de 25 preguntas resuelto en poco más de 10 min
 En definitiva, **la práctica ha sido clave**. Git y GitHub han estado muy presentes en todos los proyectos que he desarrollado hasta ahora y lo siguen estando en los que tengo en marcha. Esta certificación no solo valida mis conocimientos, sino que también refuerza mi compromiso con las buenas prácticas en el desarrollo profesional.
 
 
-![Certificado](/certifications/Certificado-en-Git-y-Github.png)
+![Certificado](/certifications/Certificado-de-Git-y-Github.png)
 
 Si lo deseas, puedes ver mi repositorio personal de GitHub haciendo clic [aquí](https://github.com/Jaterli/)

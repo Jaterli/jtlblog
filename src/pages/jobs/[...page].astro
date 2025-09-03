@@ -40,10 +40,11 @@ const { page } = Astro.props as { page: Page };
 
 
 <BaseLayout title="Jobs" sideBarActiveItemID="trabajos">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-semibold">Trabajos</div>
-    <div>Pág(s). {page.currentPage} de {page.lastPage}</div>
-  </div>
+  
+  <h1>Experiencia Profesional</h1>
+  <h2 class="w-full font-semibold mt-4">Trayectoria Laboral en Desarrollo Web y Gestión de Proyectos en general</h2>
+  
+  <div class="mt-8 mb-3">Pág(s). {page.currentPage} de {page.lastPage}</div>
 
   {
     page.data.length === 0 ? (

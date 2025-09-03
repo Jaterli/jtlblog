@@ -10,7 +10,7 @@ module.exports = {
 			fontSize: {
 				//lg: '3rem', // Adds a new `font-display` class
 				//sm: '0.6rem',    // Extra small
-				'4xl': ['2.8rem', { lineHeight: '3rem' }],	
+				'4xl': ['2.8rem', { lineHeight: '3.2rem' }],	
 				'3xl': ['2.4rem', { lineHeight: '2.6rem' }],
 				'2xl': ['2rem', { lineHeight: '2.2rem' }],
 				'xl': ['1.6rem', { lineHeight: '2rem' }],				

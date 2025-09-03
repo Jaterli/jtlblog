@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "Conseguí el Certificado en Wordpress"
+title: "Conseguí el Certificado de Wordpress"
 description: "Estoy muy contento de compartir que he completado con éxito el módulo de WordPress impartido por Academia Conquer Blocks, obteniendo mi certificación oficial."
 pubDate: "2025-08-12"
 heroImage: "/images/blog/blog.academic_degree.jpg"
@@ -22,4 +22,4 @@ El resultado fue tan satisfactorio que el profesor destacó mi trabajo como **"e
 Este certificado valida mis habilidades en WordPress, pero sobre todo refuerza mi capacidad para **desarrollar webs funcionales, bien estructuradas y centradas en la experiencia de usuario**.  
 
 
-![Certificado de Wordpress](/certifications/Certificado-en-Wordpress.png)
+![Certificado de Wordpress](/certifications/Certificado-de-Wordpress.png)

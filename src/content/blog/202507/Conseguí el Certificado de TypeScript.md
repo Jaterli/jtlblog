@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "Conseguí el Certificado en TypeScript"
+title: "Conseguí el Certificado de TypeScript"
 description: "Ayer obtuve el certificado de JavaScript Avanzado a través de la Academia Conquer Blocks, y hoy he superado con éxito la evaluación de TypeScript."
 pubDate: "2025-07-06"
 heroImage: "/images/blog/blog.academic_degree.jpg"
@@ -21,4 +21,4 @@ Si bien considero que los proyectos prácticos tienen un valor superior a los t�
 Dicho esto, estoy muy contento de sumar un nuevo título a mi recorrido académico dentro del máster de desarrollo Full Stack, y de seguir reforzando mis bases con herramientas que realmente marcan la diferencia en el desarrollo profesional.
 
 
-![Certificado en Typescript](/certifications/Certificado-en-TypeScript.png)
+![Certificado de Typescript](/certifications/Certificado-de-TypeScript.png)

@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "Conseguí el Certificado en Linux y la Terminal de Linux"
+title: "Conseguí el Certificado de Linux y la Terminal de Linux"
 description: "Acabo de superar con éxito el examen de evaluación para obtener el certificado de Linux y la Terminal de Linux impartido por la academia Conquer Blocks."
 pubDate: "2025-08-10"
 heroImage: "/images/blog/blog.academic_degree.jpg"
@@ -14,4 +14,4 @@ Acabo de superar con éxito el examen de evaluación para obtener el certificado
 
 Este curso me ha permitido fortalecer mis habilidades en administración de sistemas, manejo avanzado de la línea de comandos y gestión eficiente de entornos Linux, herramientas clave para cualquier desarrollador full stack.
 
-![Certificado de Linux y la Terminal de Linux](/certifications/Certificado-en-Linux-y-la-Terminal.-Linux.png)
+![Certificado de Linux y la Terminal de Linux](/certifications/Certificado-de-Linux-y-la-Terminal.-Linux.png)

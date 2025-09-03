@@ -37,7 +37,7 @@ a.customlink {
 }
 
 .prose :where(h1), h1{
-  font-weight:700;
+  font-weight: 700;
 }
 
 .prose :where(h2), h2, .prose :where(h3), h3{
@@ -52,8 +52,8 @@ a.customlink {
 @layer base {
   @media (min-width: 640px){ /* Se aplica en pantallas superiores a 640px */
     .text-4xl, .prose :where(h1), h1{
-      font-size: 3rem;
-      line-height: 3.4rem;
+      font-size: 2.8rem;
+      line-height: 3.2rem;
     }
 
     .text-3xl, .prose :where(h2), h2 {
