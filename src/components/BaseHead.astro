@@ -31,3 +31,49 @@ const { title, description, image = '/images/others/Screenshot-jtlblog.webp', og
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jaime TL",
+  "alternateName": "Jaterli",
+  "url": "https://jaterli.com",
+  "image": "http://jaterli.com/images/others/profile-photo.webp",
+  "jobTitle": "Desarrollador Full Stack y Blochchain (Web3)",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance"
+  },
+  "alumniOf": [
+    {
+      "@type": "EducationalOrganization",
+      "name": "Máster en Desarrollo Full Stack"
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "Máster en Desarrollo Blockchain"
+    }
+  ],
+  "knowsAbout": [
+    "Django",
+    "React",
+    "Python",
+    "JavaScript",
+    "TypeScript",
+    "Solidity",
+    "Rust",
+    "Web3",
+    "Blockchain",
+    "Smart Contracts",
+    "Full Stack Development",
+	"WordPress",
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/jaterli",
+    "https://github.com/Jaterli"
+  ],
+  "description": "Desarrollador Full Stack especializado en Django, React y Web3. Más de 10 años de experiencia creando soluciones web dinámicas, seguras y escalables."
+}
+</script>

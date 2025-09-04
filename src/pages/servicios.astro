@@ -1,15 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const title = "Servicios Profesionales de Desarrollo Web y Web3";
-const description = "Construyo soluciones web eficientes con Django y React, optimizando rendimiento y seguridad. Desarrollo API, marketplaces y contratos inteligentes en Solidity.";
+const title = "Servicios Profesionales de Desarrollo Web, Web3 y SEO Técnico";
+const description = "Construyo soluciones web eficientes con Django y React, optimizando rendimiento, seguridad y SEO. Desarrollo API, marketplaces, contratos inteligentes en Solidity y estrategias de posicionamiento en buscadores.";
 ---
 
 <BaseLayout title={title} description={description} ogType="article" sideBarActiveItemID="servicios">
   <article class="prose prose-lg">
-    <h1 class="text-center mb-6">Servicios Profesionales de Desarrollo Web y Web3</h1>
+    <h1 class="text-center mb-6">Servicios Profesionales de Desarrollo Web, Web3 y SEO</h1>
 
     <div class="text-center mb-8">
-      Transformo tus ideas en soluciones digitales potentes, seguras y escalables. Desde plataformas web hasta aplicaciones blockchain, te acompaño en cada fase del desarrollo, integrando buenas prácticas de arquitectura, seguridad y experiencia de usuario.
+      Transformo tus ideas en soluciones digitales potentes, seguras y escalables. Desde plataformas web hasta aplicaciones blockchain y optimización SEO, te acompaño en cada fase del desarrollo, integrando buenas prácticas de arquitectura, seguridad, experiencia de usuario y visibilidad en buscadores.
     </div>
 
     <hr class="my-6" />
@@ -51,6 +51,16 @@ const description = "Construyo soluciones web eficientes con Django y React, opt
       </details>
 
       <details class="p-4 bg-base-200 rounded-xl shadow-sm">
+        <summary class="text-xl font-semibold cursor-pointer">SEO Técnico y Estrategias de Posicionamiento</summary>
+        <ul class="mt-3 list-disc">
+          <li><strong>SEO Técnico</strong> – Optimización de velocidad de carga, arquitectura limpia, indexación eficiente y configuración de metadatos.</li>
+          <li><strong>SEO On-Page</strong> – Contenido optimizado con palabras clave estratégicas, jerarquía de encabezados clara y datos estructurados con JSON-LD.</li>
+          <li><strong>SEO proyectos innovadores</strong> – Adaptación de estrategias de posicionamiento para plataformas digitales, aplicaciones emergentes y tecnologías en crecimiento.</li>
+          <li><strong>Analítica y seguimiento</strong> – Integración con Google Search Console, Analytics y dashboards personalizados.</li>
+        </ul>
+      </details>
+
+      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
         <summary class="text-xl font-semibold cursor-pointer">Despliegue y Gestión en Producción</summary>
         <ul class="mt-3 list-disc">
           <li><strong>Entornos Dockerizados</strong> – Configuración eficiente, segura y fácil de replicar en servidores locales o cloud.</li>
@@ -74,10 +84,30 @@ const description = "Construyo soluciones web eficientes con Django y React, opt
         <summary class="text-xl font-semibold cursor-pointer">Consultoría Técnica y Formación</summary>
         <ul class="mt-3 list-disc">
           <li><strong>Mentoría para equipos de desarrollo</strong> – Asesoría en buenas prácticas de arquitectura, testing, seguridad y patrones de diseño.</li>
-          <li><strong>Formación técnica</strong> – Sesiones personalizadas sobre Django, React, Web3, seguridad, despliegue y más.</li>
+          <li><strong>Formación técnica</strong> – Sesiones personalizadas sobre Django, React, Web3, seguridad, despliegue, SEO y más.</li>
           <li><strong>Auditoría de código</strong> – Revisión detallada de código base y sugerencias para mejorar escalabilidad y seguridad.</li>
         </ul>
       </details>
     </section>
   </article>
+
+  <!-- JSON-LD para SEO local de servicios -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Desarrollo Web, Web3 y SEO Técnico",
+    "provider": {
+      "@type": "Person",
+      "name": "Jaime TL",
+      "url": "https://tusitio.com"
+    },
+    "description": "Servicios profesionales de desarrollo web con Django, React, blockchain y optimización SEO.",
+    "areaServed": "España",
+    "availableChannel": {
+      "@type": "ServiceChannel",
+      "serviceUrl": "https://tusitio.com/servicios"
+    }
+  }
+  </script>
 </BaseLayout>

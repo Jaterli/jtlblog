@@ -6,6 +6,33 @@ heroImage: "/images/proyectos/projects.easycryptobuy.jpg"
 badge: "Finalizado"
 tags: [Web3, Wagmi, SmartContracts, Blockchain, Metamask, Tokens ERC20, React, Django, Chakra UI, Python, Typescript]
 ---
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "EasyCryptoBuy",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Plataforma de comercio electrónico con integración nativa de pagos en blockchain (ETH, USDT, USDC, LINK). Desarrollada con React, Django y Solidity.",
+  "image": "https://jaterli.com/images/proyectos/projects.easycryptobuy.jpg",
+  "url": "https://https://jaterli.com/proyectos/entry/comercio-electronico-con-pagos-blockchain/",
+  "creator": {
+    "@type": "Person",
+    "name": "Jaime TL"
+  },
+  "programmingLanguage": ["TypeScript", "Python", "Solidity"],
+  "featureList": [
+    "Pagos con ETH y tokens ERC-20",
+    "Gestión de carritos y pedidos",
+    "Autenticación mediante firma criptográfica",
+    "Dashboard analítico para empresas",
+    "Gestión de clientes y ventas"
+  ]
+}
+</script>
+
 ## Visión general
 
 He desarrollado esta plataforma de **comercio electrónico con pagos blockchain**, que he llamado ***EasyCryptoBuy***, como uno más de mis proyectos de mi Máster en Desarrollo Full Stack y Blockchain, donde he aplicado los conocimientos adquiridos en ambas disciplinas para crear una solución funcional, segura y escalable.
