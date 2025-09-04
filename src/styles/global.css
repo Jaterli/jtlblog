@@ -48,7 +48,66 @@ a.customlink {
 }
 
 
+.text-4xl, .prose-lg :where(h1), h1 {
+  font-size: 2.5rem !important;
+  line-height: 2.9rem !important;
+}
 
+.text-3xl, .prose-lg :where(h2), h2 {
+  font-size: 2rem !important;
+  line-height: 2.4rem !important;
+}
+
+.text-2xl, h3 {
+  font-size: 1.5rem !important;
+  line-height: 1.9rem !important;
+}
+
+.text-xl, h4 {
+  font-size: 1.2rem !important;
+  line-height: 1.6rem !important;
+}  
+
+
+/* Estilos para móviles (max-width: 640px) */
+@media (max-width: 640px) {
+  .prose-lg {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .prose-lg ul {
+    font-size: 1rem;
+  }
+  
+  .text-4xl, .prose-lg :where(h1), h1 {
+    font-size: 2.2rem !important;
+    line-height: 2.6rem !important;
+  }    
+  .text-3xl, .prose-lg :where(h2), h2 {
+    font-size: 1.8rem !important;
+    line-height: 2.2rem !important;
+  }
+  .text-2xl, h3 {
+    font-size: 1.4rem !important;
+    line-height: 1.8rem !important;
+  }
+  .text-xl, h4 {
+    font-size: 1.2rem !important;
+    line-height: 1.6rem !important;
+  }  
+}
+
+/* Estilos para tablets (641px a 1024px) */
+/* @media (min-width: 641px) and (max-width: 1024px) {
+  .prose-lg :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)){
+    line-height: 1.5;
+  }
+  
+  .prose-lg :where(hr):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    margin: 1.8rem 0;
+  }
+  
   .text-4xl, .prose-lg :where(h1), h1 {
     font-size: 2.5rem !important;
     line-height: 2.9rem !important;
@@ -67,4 +126,39 @@ a.customlink {
   .text-xl, h4 {
     font-size: 1.2rem !important;
     line-height: 1.6rem !important;
-  }  
+  } 
+} */
+
+/* Estilos para escritorio (min-width: 1025px) */
+/* @media (min-width: 1025px) {
+  .prose-lg :where(pre):not(:where([class~="not-prose"], [class~="not-prose"] *)){
+    line-height: 1.4;
+  }
+
+  .prose-lg :where(hr):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    margin: 2rem 0;
+  }
+} */
+
+/* Estilos para pantallas grandes (min-width: 640px) */
+/* @media (min-width: 640px) {
+  .text-4xl, .prose-lg :where(h1), h1{
+    font-size: 2.8rem !important;
+    line-height: 3.2rem !important;
+  }
+
+  .text-3xl, .prose-lg :where(h2), h2 {
+    font-size: 2.2rem !important;
+    line-height: 2.6rem !important;
+  }
+
+  .text-2xl, h3 {
+    font-size: 1.6rem !important;
+    line-height: 2rem !important;
+  }
+  
+  .text-xl, h4 {
+    font-size: 1.4rem !important;
+    line-height: 1.8rem !important;
+  }
+} */

@@ -37,29 +37,30 @@ const isTaskPending = (endDay: string | null): boolean => {
         const isPending = isTaskPending(task.endDay);
         return (
           <li class="p-4 bg-base-200">
-            <div class="flex items-center gap-2">
-              {isPending ? (
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 min-w-[25px] text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 min-w-[25px] text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              )}
-              <p class={`text-xl ${isPending ? 'text-red-600' : 'text-green-600'}`}>
-                {task.description}
-              </p>
-            </div>
-            {task.details && <p class="mt-2 italic opacity-85">{task.details}</p>}
-            <p class="text-sm mt-2 opacity-75">
+            <p class={`text-xl ${isPending ? 'text-red-600' : 'text-green-600'}`}>
+            {isPending ? (
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block align-sub text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block align-sub text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            )}
+            
+              {task.description}
+            </p>
+            {task.details && <p class="mt-2 opacity-85">{task.details}</p>}
+            <p class="text-sm mt-2 opacity-75">📅 
+              <span class="italic">
               {task.startDay
                 ? task.endDay
                   ? task.startDay === task.endDay
-                    ? `Completado el ${new Date(task.startDay).toLocaleDateString("es-ES")}`
+                    ? `Finalizado el ${new Date(task.startDay).toLocaleDateString("es-ES")}`
                     : `Desde el ${new Date(task.startDay).toLocaleDateString("es-ES")} hasta el ${new Date(task.endDay).toLocaleDateString("es-ES")}`
                   : `Iniciado el ${new Date(task.startDay).toLocaleDateString("es-ES")}`
                 : "Sin iniciar"}
+              </span>
             </p>
           </li>
         );
