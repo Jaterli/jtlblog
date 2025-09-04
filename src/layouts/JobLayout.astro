@@ -22,22 +22,20 @@ const format_endDate = dayjs(endDate).format("DD/MM/YYYY")
 ---
 
 <BaseLayout title={title} description={description} image={heroImage}>
-  <main class="md:flex md:justify-center">
-    <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
-      {
-        heroImage && (
-          <Image width={750} height={422} src={heroImage} alt={title} class="w-full mb-6" />
-        )
-      }
-      <h1 class="title my-2 sm:text-4xl text-2xl">{title}
-        {badge && <div class="badge badge-neutral rounded my-2 hover:bg-gray-500">{badge}</div>}
-      </h1>
-      <div>
-        <span class="text-md italic opacity-70"> {format_startDate} - {format_endDate}</span>
-      </div>
-      <div class="divider my-2"></div>
-      <slot />
-      <div class="divider my-2"></div>
-    </article>
-  </main>
+  <article class="prose prose-lg prose-img:mx-auto">
+    {
+      heroImage && (
+        <Image width={750} height={422} src={heroImage} alt={title} class="w-full mb-6" />
+      )
+    }
+    <h1 class="title my-2">{title}
+      {badge && <div class="badge badge-neutral rounded my-2 hover:bg-gray-500">{badge}</div>}
+    </h1>
+    <div>
+      <span class="text-md italic opacity-70"> {format_startDate} - {format_endDate}</span>
+    </div>
+    <div class="divider my-2"></div>
+    <slot />
+    <div class="divider my-2"></div>
+  </article>
 </BaseLayout>
