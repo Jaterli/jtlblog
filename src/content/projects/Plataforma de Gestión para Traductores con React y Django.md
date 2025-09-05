@@ -109,3 +109,28 @@ Esta aplicación es un ejemplo de mi capacidad para desarrollar soluciones web c
 Actualmente, me encuentro inmerso en mi formación como estudiante de un máster en desarrollo full-stack, y esta aplicación ha sido desarrollada como parte de mi portafolio personal para demostrar mis habilidades y conocimientos en este campo. Aunque ya he logrado crear una solución funcional y robusta, sigo en un proceso constante de aprendizaje y mejora. Esto significa que, a medida que avanzo en mi formación, mis futuras aplicaciones serán aún más completas, innovadoras y optimizadas.
 
 Mi objetivo es seguir creciendo como desarrollador, ampliando mi experiencia y enfrentándome a nuevos desafíos técnicos. Si estás interesado en conocer más sobre este proyecto o en colaborar en el desarrollo de soluciones similares, no dudes en contactarme. Estoy disponible para discutir cómo puedo aportar valor a tu equipo con mis habilidades como desarrollador full-stack, y estoy emocionado por la posibilidad de contribuir a proyectos que impulsen mi crecimiento profesional.
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Gestión de Traductores y Consultas Personalizadas",
+  "description": "Plataforma en Django + React que permite a traductores gestionar sus perfiles y a administradores realizar consultas personalizadas.",
+  "operatingSystem": "Web",
+  "applicationCategory": "BusinessApplication",
+  "creator": {
+    "@type": "Person",
+    "name": "Jaime TL",
+    "url": "https://www.jaterli.com"
+  },
+  "image": "https://www.jaterli.com/images/proyectos/React+Django+SQLite.png",
+  "datePublished": "2025-02-17",
+  "inLanguage": "es",
+  "keywords": ["Django", "React", "Python", "Gestión de traductores", "Consultas personalizadas"],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://jaterli.com/proyectos/entry/plataforma-de-gestion-para-traductores-con-react-y-django/"
+  }
+}
+</script>

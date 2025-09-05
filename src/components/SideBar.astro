@@ -7,22 +7,31 @@ const { sideBarActiveItemID } = Astro.props;
 
 <div class="drawer-side z-40">
   <label for="my-drawer" class="drawer-overlay"></label>
-  <aside class="px-2 pt-2 h-auto min-h-full w-[19rem] bg-base-200 text-base-content flex flex-col">
+  <aside class="relative px-2 pt-2 h-auto min-h-full w-[19rem] bg-base-200 text-base-content flex flex-col">
+    <!-- Botón de cerrar (solo móvil) -->
+    <label for="my-drawer" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 lg:hidden"> ✕ </label>
+
     <div class="w-fit mt-5 mb-6">
       <a href="/">
         <div class="transition ease-in-out hover:scale-[102%] block m-auto">
           <div class="flex items-center gap-3.5 flex-shrink-0 pl-8">
-            <Image class="mask mask-circle" format="webp" width={60} height={60} src="/images/others/profile-photo.webp" alt="Profile image" />
-          
+            <Image
+              class="mask mask-circle"
+              format="webp"
+              width={60}
+              height={60}
+              src="/images/others/profile-photo.webp"
+              alt="Profile image"
+            />
             <div class="text-profile">
-              <p class="text-sm font-medium">Jaime TL</p>
-              <p class="text-xs font-medium">UI Designer - Developer</p>
-            </div>          
-          
+              <p>Jaime TL</p>
+              <p class="text-sm">UI Designer - Developer</p>
+            </div>
           </div>
         </div>
       </a>
-    </div>   
+    </div>
+
     <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
     <SideBarFooter />
   </aside>
