@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "Renovando una web antigua con WordPress"
+title: "Renovación de una web antigua con WordPress"
 description: "Aunque en mi máster de desarrollo full stack ya había cursado un módulo sobre WordPress, aún no había realizado el proyecto final. Esta oportunidad me vino como anillo al dedo."
 pubDate: "2025-06-19"
 heroImage: "/images/blog/blog.wordpress.jpg"
@@ -9,7 +9,7 @@ tags: [WordPress, PHP]
 ---
 
 
-Recientemente, una empresa con la que trabajé en el pasado me contactó para renovar su sitio web. La versión actual estaba desarrollada con una **aplicación personalizada que yo mismo programé desde cero hace varios años**. Fue una plataforma bastante completa y flexible, que permitía —entre muchas otras cosas— **incrustar módulos de código, personalizar plantillas y estilos, arrastrar y soltar elementos o realizar acciones múltiples**, en la línea de lo que hoy permite WordPress salvando las distancias.
+Recientemente, una empresa con la que trabajé en el pasado me contactó para hacer la renovación de su antiguo sitio web. La versión actual estaba desarrollada con una **aplicación personalizada que yo mismo programé desde cero hace varios años**. Fue una plataforma bastante completa y flexible, que permitía —entre muchas otras cosas— **incrustar módulos de código, personalizar plantillas y estilos, arrastrar y soltar elementos o realizar acciones múltiples**, en la línea de lo que hoy permite WordPress salvando las distancias.
 
 Aunque en su momento funcionó muy bien y facilitó el desarrollo de sitios bastante complejos, con el paso del tiempo quedó **sin soporte, sin mantenimiento y con dificultades para adaptarse a nuevas necesidades**. Por eso, tras revisar los objetivos actuales del negocio, propuse una solución basada en **WordPress**, una plataforma **moderna, autoeditable y con un ecosistema muy sólido** de plugins, temas y soporte comunitario. La propuesta fue bien recibida, y preparé un presupuesto para poner en marcha la renovación.
 

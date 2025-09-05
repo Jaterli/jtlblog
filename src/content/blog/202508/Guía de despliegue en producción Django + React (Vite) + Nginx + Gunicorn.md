@@ -98,6 +98,8 @@ Si funciona, crear servicio systemd:
 sudo nano /etc/systemd/system/gunicorn.service
 ```
 
+> Se puede sustituir gunicorn.service por nombre_proyecto.service
+
 Contenido:
 
 ```ini
