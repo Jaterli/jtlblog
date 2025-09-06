@@ -41,7 +41,7 @@ module.exports = {
 			{			
 			'dark':{
 				...require("daisyui/src/theming/themes")["dark"],
-				"base-content" : "#d4d4d4ff", // font color
+				"base-content" : "#eeeeeeff", // font color
 				".badge-neutral": {
 						"background-color": "#ffffff",
 						"color": "#000000",

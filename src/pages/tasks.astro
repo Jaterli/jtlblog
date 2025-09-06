@@ -37,7 +37,7 @@ const isTaskPending = (endDay: string | null): boolean => {
         const isPending = isTaskPending(task.endDay);
         return (
           <li class="p-4 bg-base-200">
-            <p class={`text-xl ${isPending ? 'text-red-600' : 'text-green-600'}`}>
+            <h3 class={`text-xl ${isPending ? 'text-red-600' : 'text-green-600'}`}>
             {isPending ? (
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block align-sub text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -49,7 +49,7 @@ const isTaskPending = (endDay: string | null): boolean => {
             )}
             
               {task.description}
-            </p>
+            </h3>
             {task.details && <p class="mt-2 opacity-85">{task.details}</p>}
             <p class="text-sm mt-2 opacity-75">📅 
               <span class="italic">
