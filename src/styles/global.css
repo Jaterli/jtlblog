@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-size: 18px;
+}
+
 /* Estilos base (sin media queries) */
 a.customlink {
   text-decoration: underline;
