@@ -6,10 +6,9 @@ pubDate: "2025-08-22"
 heroImage: "/images/blog/blog.tutorial.jpg"
 category: "Blog"
 tags: [Tutorial, Linux, GitHub, Despliegue]
----
+--------------------------------------------
 
-
-Este tutorial explica cómo montar en producción una aplicación con **Django (backend)** y **React (frontend con Vite)**, servida con **Nginx** y **Gunicorn**, en un servidor Linux (ej. Ubuntu en un VPS o droplet).
+He creado este tutorial para explicar cómo montar en producción una aplicación con **Django (backend)** y **React (frontend con Vite)**, servida con **Nginx** y **Gunicorn**, en un servidor Linux (ej. Ubuntu en un VPS o droplet).
 
 ---
 
@@ -27,6 +26,8 @@ Instalar dependencias:
 sudo apt install python3 python3-venv python3-pip git nginx curl -y
 ```
 
+💡 *Esto asegura que tienes Python, Git, Nginx y todas las herramientas necesarias para correr Django y React en el servidor.*
+
 ---
 
 ## 2️⃣ Clonar el proyecto
@@ -38,6 +39,8 @@ cd ~
 git clone https://github.com/tu-usuario/tu-repo.git nombre_proyecto
 cd nombre_proyecto
 ```
+
+💡 *Así tendrás en el servidor el mismo código que trabajas en tu ordenador.*
 
 ---
 
@@ -69,6 +72,8 @@ python manage.py migrate
 python manage.py collectstatic --noinput
 ```
 
+💡 *`collectstatic` copia todos los archivos estáticos de tus apps (CSS, JS, imágenes) en la carpeta `staticfiles/`, que será servida por Nginx. En desarrollo no se nota, pero en producción es clave.*
+
 Configurar **settings.py** para producción:
 
 ```python
@@ -92,15 +97,17 @@ Probar Gunicorn:
 gunicorn config.wsgi:application --bind 127.0.0.1:8000
 ```
 
+💡 *Gunicorn es el servidor de aplicaciones que ejecuta tu código Django. Nginx no ejecuta Python, solo pasa las peticiones a Gunicorn.*
+
 Si funciona, crear servicio systemd:
 
 ```bash
-sudo nano /etc/systemd/system/gunicorn.service
+sudo nano /etc/systemd/system/nombre_proyecto.service
 ```
 
-> Se puede sustituir gunicorn.service por nombre_proyecto.service
+> **Nota:** por defecto podría llamarse `gunicorn.service`, pero si tienes varios proyectos en el mismo servidor conviene diferenciar. Ejemplo: `translator_management.service`, `blog.service`, etc.
 
-Contenido:
+Contenido de ejemplo:
 
 ```ini
 [Unit]
@@ -121,10 +128,12 @@ Recargar y habilitar:
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable gunicorn
-sudo systemctl start gunicorn
-sudo systemctl status gunicorn
+sudo systemctl enable nombre_proyecto
+sudo systemctl start nombre_proyecto
+sudo systemctl status nombre_proyecto
 ```
+
+💡 *Con `systemctl` tu proyecto se mantiene corriendo en segundo plano y se reinicia automáticamente si se cae o si reinicias el servidor.*
 
 ---
 
@@ -149,6 +158,8 @@ yarn build
 ```
 
 Esto genera la carpeta `dist/`.
+
+💡 *En producción no ejecutas React como servidor de desarrollo. Lo que haces es compilarlo a HTML, JS y CSS estáticos que servirá Nginx.*
 
 ---
 
@@ -202,6 +213,8 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 
+💡 *Nginx actúa como “puerta de entrada”: redirige peticiones a Gunicorn cuando van al backend (`/api/` o `/admin/`), y sirve directamente los archivos estáticos de Django y React.*
+
 ---
 
 ## 7️⃣ Certificado SSL con Let’s Encrypt
@@ -218,6 +231,8 @@ Configurar HTTPS:
 sudo certbot --nginx -d tu-dominio.com
 ```
 
+💡 *Let’s Encrypt emite certificados SSL gratuitos y Certbot se encarga de renovarlos automáticamente.*
+
 ---
 
 ## 8️⃣ Flujo de Deploy
@@ -232,7 +247,7 @@ git pull origin main
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py collectstatic --noinput
-sudo systemctl restart gunicorn
+sudo systemctl restart nombre_proyecto
 
 # Frontend
 cd ~/nombre_proyecto/react-frontend
@@ -245,6 +260,69 @@ sudo systemctl reload nginx
 
 ---
 
+## 9️⃣ Aplicar cambios y sincronizar con GitHub
+
+Cuando hagas cambios en tu proyecto, el flujo depende de **dónde hiciste los cambios**:
+
+* **Si los cambios fueron en local (tu ordenador):**
+
+  1. Confirma y sube los cambios a GitHub:
+
+     ```bash
+     git add .
+     git commit -m "Actualización"
+     git push origin main
+     ```
+  2. En el servidor de producción, actualiza el repo:
+
+     ```bash
+     cd ~/nombre_proyecto
+     git pull origin main
+     ```
+
+* **Si los cambios fueron directamente en el servidor de producción:**
+
+  1. Confirma los cambios en el servidor:
+
+     ```bash
+     git add .
+     git commit -m "Hotfix en producción"
+     git push origin main
+     ```
+  2. En tu ordenador, ejecuta un `git pull origin main` para sincronizar tu copia local.
+
+💡 *Así nunca pierdes cambios y mantienes tu código sincronizado entre local, servidor y GitHub.*
+
+---
+
+### Regenerar estáticos y reiniciar servicio (cuando cambias Django)
+
+Después de actualizar el código:
+
+```bash
+# 1. Parar servicio
+sudo systemctl stop nombre_proyecto
+
+# 2. Limpiar staticfiles
+cd /home/usuario/nombre_proyecto/django-backend
+rm -rf staticfiles/
+
+# 3. Regenerar staticfiles
+source env/bin/activate
+python manage.py collectstatic --noinput --clear
+
+# 4. Recargar demonio y reiniciar servicio
+sudo systemctl daemon-reload
+sudo systemctl start nombre_proyecto
+
+# 5. Verificar
+sudo systemctl status nombre_proyecto
+```
+
+💡 *Este paso asegura que los cambios en CSS, JS o imágenes se sirvan correctamente y no se mezclen con archivos antiguos.*
+
+---
+
 ## ✅ Conclusión
 
 Con esta configuración:
@@ -253,4 +331,5 @@ Con esta configuración:
 * **Nginx** actúa como proxy inverso, sirviendo tanto el backend como el frontend.
 * **React** se sirve desde `dist/` como SPA.
 * **Certbot** garantiza HTTPS.
+* Con **GitHub + systemd** tienes un flujo claro para desplegar y mantener actualizado tu proyecto.
 

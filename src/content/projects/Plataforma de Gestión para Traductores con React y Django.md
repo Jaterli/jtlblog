@@ -2,7 +2,7 @@
 title: "Gestión de Traductores y Consultas Personalizadas"
 description: "Plataforma en Django + React que servirá como área privada para traductores"
 pubDate: "2025-02-17"
-heroImage: "/images/proyectos/React+Django+SQLite.png"
+heroImage: "/images/proyectos/projects.React-Django-SQLite.png"
 badge: "Finalizado"
 tags: [Python, React, Django]
 ---
@@ -124,7 +124,7 @@ Mi objetivo es seguir creciendo como desarrollador, ampliando mi experiencia y e
     "name": "Jaime TL",
     "url": "https://www.jaterli.com"
   },
-  "image": "https://www.jaterli.com/images/proyectos/React+Django+SQLite.png",
+  "image": "https://www.jaterli.com/images/proyectos/projects.React-Django-SQLite.png",
   "datePublished": "2025-02-17",
   "inLanguage": "es",
   "keywords": ["Django", "React", "Python", "Gestión de traductores", "Consultas personalizadas"],
