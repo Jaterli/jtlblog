@@ -1,26 +1,101 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SideBar from "../components/SideBar.astro";
 import { ClientRouter } from 'astro:transitions';
 import ThemeToggle from "@components/ThemeToggle.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from "../types/config";
+import '../styles/global.css';
 
 const {
-  image,
   title = SITE_TITLE,
   description = SITE_DESCRIPTION,
-  includeSidebar = true,
-  sideBarActiveItemID,
+  image,
   ogType,
+  jsonLd,
+  includeSidebar = true,
+  sideBarActiveItemID,  
 } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
-    <BaseHead title={title} description={description} image={image}, ogType={ogType} />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/png" href="/images/others/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/images/others/logo-jtl.png">
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`https://www.jaterli.com${image}`} />
+    <!-- <meta property="og:image" content={new URL(image, Astro.url)} /> -->
+
+    <!-- JSON-LD específico (Markdown) -->
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+
+    <!-- JSON-LD global -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://jaterli.com/about/",
+      "name": "Jaime TL",
+      "alternateName": "Jaterli",
+      "url": "https://jaterli.com",
+      "image": "https://jaterli.com/images/others/profile-photo.webp",
+      "jobTitle": "Desarrollador Full Stack y Blockchain (Web3)",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance"
+      },
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "Ciclo Formativo de Grado Superior en Administración de Sistemas Informáticos en Red"
+        },        
+        {
+          "@type": "EducationalOrganization",
+          "name": "Máster en Desarrollo Full Stack"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "Máster en Desarrollo Blockchain"
+        }
+      ],
+      "knowsAbout": [
+        "Django",
+        "React",
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "Solidity",
+        "Rust",
+        "Web3",
+        "Blockchain",
+        "Smart Contracts",
+        "Full Stack Development",
+        "WordPress"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/jaterli",
+        "https://github.com/Jaterli"
+      ],
+      "description": "Desarrollador Full Stack especializado en Django, React y Web3. Más de 10 años de experiencia creando soluciones web dinámicas, seguras y escalables."
+    }
+    </script>
+
     {TRANSITION_API && <ClientRouter />}
   </head>
   <body>
@@ -30,8 +105,8 @@ const {
        
         <!-- Modo claro / modo oscuro button -->
         <ThemeToggle /> 
-
-        <Header title={SITE_TITLE} />
+        <!-- Header, solo se renderiza con el menú hamburguesa -->
+        <Header />
         
         <div class="mx-auto sm:p-6 sm:pt-10 p-3 lg:max-w-[1000px] max-w-[100vw]">
           <main transition:animate="slide">           

@@ -1,15 +1,4 @@
 import { z, defineCollection } from "astro:content";
-const blogSchema = z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    heroImage: z.string().optional(),
-    badge: z.string().optional(),
-    tags: z.array(z.string()).refine(items => new Set(items).size === items.length, {
-    message: 'tags must be unique',
-    }).optional(),
-});
-
 const jobSchema = z.object({
     title: z.string(),
     description: z.string(),
@@ -26,21 +15,34 @@ const projectSchema = z.object({
     pubDate: z.coerce.date(),
     badge: z.string().optional(),
     heroImage: z.string().optional(),
+    jsonLd: z.record(z.any()).optional(),
     tags: z.array(z.string()).refine(items => new Set(items).size === items.length, {
         message: 'tags must be unique',
     }).optional(),
 });
 
-export type BlogSchema = z.infer<typeof blogSchema>;
+const blogSchema = z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    heroImage: z.string().optional(),
+    jsonLd: z.record(z.any()).optional(),
+    badge: z.string().optional(),
+    tags: z.array(z.string()).refine(items => new Set(items).size === items.length, {
+    message: 'tags must be unique',
+    }).optional(),
+});
+
 export type JobSchema = z.infer<typeof jobSchema>;
 export type ProjectSchema = z.infer<typeof projectSchema>;
+export type BlogSchema = z.infer<typeof blogSchema>;
 
-const blogCollection = defineCollection({ schema: blogSchema });
 const jobCollection = defineCollection({ schema: jobSchema });
 const projectCollection = defineCollection({ schema: projectSchema });
+const blogCollection = defineCollection({ schema: blogSchema });
 
 export const collections = {
-    'blog': blogCollection,
     'jobs': jobCollection,
-    'projects': projectCollection
+    'projects': projectCollection,
+    'blog': blogCollection    
 }

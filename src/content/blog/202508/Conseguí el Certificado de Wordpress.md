@@ -6,6 +6,29 @@ pubDate: "2025-08-12"
 heroImage: "/images/blog/blog.academic_degree.jpg"
 category: "Blog"
 tags: [Certificado, Wordpress]
+jsonLd:
+  "@context": "https://schema.org"
+  "@type": "EducationalOccupationalCredential"
+  name: "Certificado de WordPress"
+  description: "Certificación obtenida tras completar con éxito el módulo de WordPress impartido por Academia Conquer Blocks, incluyendo examen teórico y proyecto práctico de web corporativa."
+  educationalLevel: "Intermedio"
+  dateIssued: "2025-08-12"
+  recognizedBy:
+    "@type": "Organization"
+    name: "Academia Conquer Blocks"
+    url: "https://conquerblocks.com"
+  credentialCategory: "Certificación profesional"
+  image: "https://jaterli.com/certifications/Certificado-de-Wordpress.png"
+  subjectOf:
+    "@type": "BlogPosting"
+    headline: "Conseguí el Certificado de WordPress"
+    url: "https://jaterli.com/blog/consegui-el-certificado-de-wordpress/"
+    datePublished: "2025-08-12"
+    author:
+      "@type": "Person"
+      name: "Jaime TL"
+      url: "https://jaterli.com"
+
 ---
 
 📅 12 de agosto de 2025

@@ -5,6 +5,29 @@ pubDate: "2025-07-04"
 heroImage: "/images/proyectos/projects.easycryptobuy.jpg"
 badge: "Finalizado"
 tags: [Web3, Wagmi, SmartContracts, Blockchain, Metamask, Tokens ERC20, React, Django, Chakra UI, Python, Typescript]
+jsonLd:
+  "@context": "https://schema.org"
+  "@type": "SoftwareApplication"
+  name: "EasyCryptoBuy"
+  applicationCategory: "BusinessApplication"
+  operatingSystem: "Web"
+  description: "Plataforma de comercio electrónico con integración nativa de pagos en blockchain (ETH, USDT, USDC, LINK). Desarrollada con React, Django y Solidity."
+  image: "https://jaterli.com/images/proyectos/projects.easycryptobuy.jpg"
+  url: "https://jaterli.com/proyectos/entry/comercio-electronico-con-pagos-blockchain/"
+  creator:
+    "@type": "Person"
+    name: "Jaime TL"
+  programmingLanguage:
+    - "TypeScript"
+    - "Python"
+    - "Solidity"
+  featureList:
+    - "Pagos con ETH y tokens ERC-20"
+    - "Gestión de carritos y pedidos"
+    - "Autenticación mediante firma criptográfica"
+    - "Dashboard analítico para empresas"
+    - "Gestión de clientes y ventas"
+
 ---
 
 ## Visión general
@@ -468,30 +491,3 @@ El proyecto demuestra mi capacidad para:
 
 **¿Interesado en una solución similar para tu negocio?**   
 ¡Estoy disponible para adaptar este proyecto o desarrollar una plataforma a medida con las funcionalidades que necesites!
-
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "EasyCryptoBuy",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "description": "Plataforma de comercio electrónico con integración nativa de pagos en blockchain (ETH, USDT, USDC, LINK). Desarrollada con React, Django y Solidity.",
-  "image": "https://jaterli.com/images/proyectos/projects.easycryptobuy.jpg",
-  "url": "https://https://jaterli.com/proyectos/entry/comercio-electronico-con-pagos-blockchain/",
-  "creator": {
-    "@type": "Person",
-    "name": "Jaime TL"
-  },
-  "programmingLanguage": ["TypeScript", "Python", "Solidity"],
-  "featureList": [
-    "Pagos con ETH y tokens ERC-20",
-    "Gestión de carritos y pedidos",
-    "Autenticación mediante firma criptográfica",
-    "Dashboard analítico para empresas",
-    "Gestión de clientes y ventas"
-  ]
-}
-</script>

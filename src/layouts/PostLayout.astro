@@ -6,11 +6,11 @@ import { Image } from "astro:assets";
 
 export interface Props extends BlogSchema {}
 
-const { title, description, pubDate, heroImage, badge, tags = [] } = Astro.props;
+const { title, description, pubDate, heroImage, jsonLd, badge, tags = [] } = Astro.props;
 const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
 ---
 
-<BaseLayout title={title} description={description} image={heroImage}, ogType="article">
+<BaseLayout title={title} description={description} image={heroImage}, ogType="article", jsonLd={jsonLd}>
   <article class="prose prose-lg prose-img:mx-auto">
     {heroImage && <Image width={750} height={422} src={heroImage} alt={title} class="w-full mb-6" />}
     <h1 class="title my-2">{title}</h1>

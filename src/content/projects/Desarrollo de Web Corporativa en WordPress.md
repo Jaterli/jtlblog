@@ -5,7 +5,32 @@ pubDate: "2025-08-11"
 heroImage: "/images/proyectos/projects.wordpress.jpg"
 badge: "Finalizado"
 tags: [Wordpress]
-
+jsonLd:
+  "@context": "https://schema.org"
+  "@type": "Service"
+  serviceType: "Diseño y desarrollo de sitios web en WordPress"
+  provider: 
+    "@type": "Person"
+    name: "Jaime TL"
+    url: "https://www.jaterli.com"
+    sameAs: 
+      - "https://www.linkedin.com/in/jaterli/"
+      - "https://github.com/jaterli"
+  description: "Diseño y desarrollo de páginas web profesionales, optimizadas y adaptadas a cada negocio, utilizando WordPress."
+  areaServed: 
+    "@type": "Place"
+    name: "España"
+  offers: 
+    "@type": "Offer"
+    url: "https://www.jaterli.com/contacto/"
+    priceCurrency: "EUR"
+    price: "990"
+    availability: "InStock"
+  image: "https://www.jaterli.com/images/proyectos/projects.wordpress.jpg"
+  mainEntityOfPage: 
+    "@type": "WebPage"
+    "@id": "https://jaterli.com/proyectos/entry/proyecto-final-de-modulo--desarrollo-de-web-corporativa-en-wordpress/"
+  
 ---
 
 
@@ -44,39 +69,3 @@ Una vez desarrollada por completo, el enlace será:
 **¿Quieres una web profesional, optimizada y adaptada a tu negocio?**   
 Diseño y desarrollo sitios web con **WordPress** que combinan funcionalidad, estética y buen posicionamiento.
 📩 **[Contáctame y hablemos de tu proyecto](/contacto/)**
-
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Diseño y desarrollo de sitios web en WordPress",
-  "provider": {
-    "@type": "Person",
-    "name": "Jaime TL",
-    "url": "https://www.jaterli.com",
-    "sameAs": [
-      "https://www.linkedin.com/in/jaterli/",
-      "https://github.com/jaterli"
-    ]
-  },
-  "description": "Diseño y desarrollo de páginas web profesionales, optimizadas y adaptadas a cada negocio, utilizando WordPress.",
-  "areaServed": {
-    "@type": "Place",
-    "name": "España"
-  },
-  "offers": {
-    "@type": "Offer",
-    "url": "https://www.tu-jaterli.com/contacto/",
-    "priceCurrency": "EUR",
-    "price": "A consultar",
-    "availability": "https://schema.org/InStock"
-  },
-  "image": "https://www.jaterli.com/images/proyectos/projects.wordpress.jpg",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://jaterli.com/proyectos/entry/proyecto-final-de-modulo--desarrollo-de-web-corporativa-en-wordpress/"
-  }
-}
-</script>

@@ -10,6 +10,7 @@ const {
   title,
   description,
   heroImage,
+  jsonLd,
   badge,
   pubDate,
   tags
@@ -20,7 +21,7 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
 import { Image } from "astro:assets";
 ---
 
-<BaseLayout title={title} description={description} image={heroImage}, ogType="article">
+<BaseLayout title={title} description={description} image={heroImage}, ogType="article", jsonLd={jsonLd}>
   <article class="prose prose-lg prose-img:mx-auto">
     {heroImage && <Image width={750} height={422} src={heroImage} alt={title} class="w-full mb-6" />}
     <h1 class="title my-2">{title}</h1>

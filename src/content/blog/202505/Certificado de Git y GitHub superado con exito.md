@@ -6,6 +6,29 @@ pubDate: "2025-04-15"
 heroImage: "/images/blog/blog.GitHub.webp"
 category: "Tutoriales"
 tags: [Git, GitHub]
+jsonLd:
+  "@context": "https://schema.org"
+  "@type": "EducationalOccupationalCredential"
+  name: "Certificado de Git y GitHub"
+  description: "Certificación obtenida tras superar con éxito la evaluación de Git y GitHub impartida por Conquer Blocks."
+  educationalLevel: "Intermedio"
+  dateIssued: "2025-04-15"
+  recognizedBy:
+    "@type": "Organization"
+    name: "Conquer Blocks"
+    url: "https://conquerblocks.com"
+  credentialCategory: "Certificación profesional"
+  image: "https://jaterli.com/certifications/Certificado-de-Git-y-Github.png"
+  subjectOf:
+    "@type": "BlogPosting"
+    headline: "Certificado de Git y GitHub superado con éxito"
+    url: "https://jaterli.com/blog/certificado-de-git-y-github-superado-con-exito/"
+    datePublished: "2025-04-15"
+    author:
+      "@type": "Person"
+      name: "Jaime TL"
+      url: "https://jaterli.com"
+
 ---
 
 
