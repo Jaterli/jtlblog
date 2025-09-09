@@ -48,39 +48,66 @@ const {
     <!-- JSON-LD global -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
+      "@context": "https://schema.org/",
       "@type": "Person",
-      "@id": "https://jaterli.com/about/",
+      "@id": "https://jaterli.com",
       "name": "Jaime TL",
       "alternateName": "Jaterli",
-      "url": "https://jaterli.com",
+      "nationality": "spanish",
+      "url": "https://jaterli.com/about/",
       "image": "https://jaterli.com/images/others/profile-photo.webp",
       "jobTitle": "Desarrollador Full Stack y Blockchain (Web3)",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Freelance"
-      },
-      "alumniOf": [
+      "worksFor": [
         {
-          "@type": "EducationalOrganization",
-          "name": "Ciclo Formativo de Grado Superior en Administración de Sistemas Informáticos en Red"
-        },        
+          "@type": "Organization",
+          "name": "Freelance"
+        }
+      ],
+      "hasCredential": [
         {
-          "@type": "EducationalOrganization",
-          "name": "Máster en Desarrollo Full Stack"
+          "@type": "EducationalOccupationalCredential",
+          "name": "Ciclo Formativo de Grado Superior en Administración de Sistemas Informáticos en Red",
+          "educationalLevel": "Higher National Diploma",
+          "credentialCategory": "degree",
+          "recognizedBy": {
+            "@type": "EducationalOrganization",
+            "name": "IES Rey Fernando VI",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "San Fernando de Henares",
+              "addressRegion": "Madrid",
+              "addressCountry": "ES"
+            }
+          }
         },
         {
-          "@type": "EducationalOrganization",
-          "name": "Máster en Desarrollo Blockchain"
+          "@type": "EducationalOccupationalCredential",
+          "name": "Máster en Desarrollo Full Stack",
+          "educationalLevel": "Master",
+          "credentialCategory": "degree",
+          "recognizedBy": {
+            "@type": "EducationalOrganization",
+            "name": "Academia Conquer Blocks"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Máster en Desarrollo Blockchain",
+          "educationalLevel": "Master",
+          "credentialCategory": "degree",
+          "recognizedBy": {
+            "@type": "EducationalOrganization",
+            "name": "Academia Conquer Blocks"
+          }
         }
       ],
       "knowsAbout": [
         "Django",
-        "React",
+        "React", 
         "Python",
         "JavaScript",
         "TypeScript",
-        "Solidity",
+        "Solidity", 
         "Rust",
         "Web3",
         "Blockchain",
