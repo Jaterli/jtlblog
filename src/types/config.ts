@@ -1,7 +1,7 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = 'Portfolio personal de Jaime TL';
+export const SITE_TITLE = 'Blog y portfolio personal - Jaime TL';
 export const SITE_DESCRIPTION = 'Apasionado del Diseño y Desarrollo Web.';
 export const GENERATE_SLUG_FROM_TITLE = false
 export const TRANSITION_API = true

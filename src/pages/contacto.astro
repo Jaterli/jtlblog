@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Contactform from "@components/Contactform.astro";
+const title = "Contacto | Jaime TL";
+const description = "Puedes preguntarme cualquier cosa relacionada con mi blog, mis conocimientos, servicios o notificarme de errores o posibles mejoras.";
+const image="/images/others/profile-photo.webp";
 ---
 
-<BaseLayout sideBarActiveItemID="contacto">
+<BaseLayout title={title} description={description} image={image} sideBarActiveItemID="contacto">
 
   <article class="prose prose-lg">
     <h1 class="text-center mb-6">Contacto</h1>

@@ -2,6 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import tasksData from "../data/tasks.json";
 
+const title = "Mis tareas";
+const description = "Lista de tareas personales relacionadas con mi aprendizaje y desarrollo profesional en el ámbito del desarrollo web y blockchain.";
+
 interface Task {
   description: string;
   details?: string;
@@ -21,7 +24,7 @@ const isTaskPending = (endDay: string | null): boolean => {
 };
 ---
 
-<BaseLayout title="Mis tareas" sideBarActiveItemID="tareas">
+<BaseLayout title={title} description={description} sideBarActiveItemID="tareas">
   <article class="max-w-3xl mx-auto prose prose-lg">
     <h1 class="text-4xl text-center">Mis tareas</h1>
     <p class="text-center">

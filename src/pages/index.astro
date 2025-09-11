@@ -6,20 +6,25 @@ import { getPostUrl } from "src/lib/getPostUrl";
 import generateSlug from "src/lib/generateUrlSlug";
 import HorizontalProjectItem from "@components/HorizontalProjectItem.astro";
 
+const title = "Bienvenid@ a mi blog personal";
+const description = "Espacio está dedicado a compartir los conocimientos adquiridos en mis estudios de desarrollo full stack y blockchain";
+const image="/images/others/profile-photo.webp";
+
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
 const last_posts = posts.slice(0, 3);
 const last_projects = projects.slice(0, 3);
 ---
 
-<BaseLayout title="Bienvenid@ a mi blog personal" sideBarActiveItemID="home">
+<BaseLayout title={title} description={description} image={image} sideBarActiveItemID="home">
   <div class="bg-base-200 rounded-xl shadow-sm py-8 sm:py-12 px-4 sm:px-6 text-base text-center">
 
-    <h1 class="sm:font-semibold font-normal mb-4">Bienvenid@ a mi blog personal 👋</h1>
-    <p class="mb-6 text-lg">
-      Este espacio está dedicado a compartir los conocimientos adquiridos en mis estudios de desarrollo full stack y blockchain: proyectos que voy construyendo, artículos sobre temas de actualidad en tecnología y soluciones a problemas comunes en desarrollo web y blockchain.       
-    </p>
+    <article>
+      <h1 class="sm:font-semibold font-normal mb-4">Bienvenid@ a mi blog personal 👋</h1>
+      <p class="mb-6 text-lg">
+        Este espacio está dedicado a compartir los conocimientos adquiridos en mis estudios de desarrollo full stack y blockchain: proyectos que voy construyendo, artículos sobre temas de actualidad en tecnología y soluciones a problemas comunes en desarrollo web y blockchain.       
+      </p>
+    </article>
 
     <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
       <a href="proyectos" class="bg-white text-blue-900 font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-200 transition duration-300 flex items-center justify-center">
