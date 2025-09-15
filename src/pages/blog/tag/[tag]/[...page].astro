@@ -38,10 +38,14 @@ const params = Astro.params;
 ---
 
 <BaseLayout title={"Blog - " + params.tag} sideBarActiveItemID="blog">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Blog - {params.tag}</div>
-    <div>Pág(s). {page.currentPage} de {page.lastPage}</div>
-  </div>
+
+  <article class="prose prose-lg">
+    <h1>Blog de Desarrollo Web y Blockchain</h1>
+    <h2 class="mt-2">Etiqueta: {params.tag.toUpperCase()}</h2>
+    <p>En este blog comparto mis experiencias en desarrollo web y blockchain, junto con tutoriales prácticos y soluciones técnicas pensadas para programadores que buscan aprender, mejorar sus proyectos y mantenerse al día con las últimas tecnologías</p>
+  </article>
+  <div class="mt-8 mb-3">Pág(s). {page.currentPage} de {page.lastPage}</div>
+  
   {
     page.data.length === 0 ? (
       <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">

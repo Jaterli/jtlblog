@@ -6,8 +6,8 @@ import { getPostUrl } from "src/lib/getPostUrl";
 import generateSlug from "src/lib/generateUrlSlug";
 import HorizontalProjectItem from "@components/HorizontalProjectItem.astro";
 
-const title = "Bienvenid@ a mi blog personal";
-const description = "Espacio está dedicado a compartir los conocimientos adquiridos en mis estudios de desarrollo full stack y blockchain";
+const title = "Bienvenid@ a mi espacio personal";
+const description = "Espacio dedicado a compartir los conocimientos adquiridos en mis estudios de desarrollo full stack y blockchain";
 const image="/images/others/profile-photo.webp";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -20,7 +20,7 @@ const last_projects = projects.slice(0, 3);
   <div class="bg-base-200 rounded-xl shadow-sm py-8 sm:py-12 px-4 sm:px-6 text-base text-center">
 
     <article>
-      <h1 class="sm:font-semibold font-normal mb-4">Bienvenid@ a mi blog personal 👋</h1>
+      <h1 class="sm:font-semibold font-normal mb-4">Bienvenid@ a espacio personal 👋</h1>
       <p class="mb-6 text-lg">
         Este espacio está dedicado a compartir los conocimientos adquiridos en mis estudios de desarrollo full stack y blockchain: proyectos que voy construyendo, artículos sobre temas de actualidad en tecnología y soluciones a problemas comunes en desarrollo web y blockchain.       
       </p>
@@ -44,19 +44,23 @@ const last_projects = projects.slice(0, 3);
   </div>
 
   <!-- Publicación destacada -->
-  <article class="mt-12 prose prose-lg">
-    <h2 class="w-full font-bold mb-5 mt-12">¿Cón qué estoy ahora?</h2>
-    <h3 class="mb-4">Mi próximo reto es el de completar los módulos pendientes de HTML y CSS</h3>
+  <article class="mt-12">
+    <h2 class="w-full font-bold mb-5 mt-12">¿Con qué estoy ahora?</h2>
+    <h3 class="mb-4">Mi próximo reto es dominar Angular y desarrollar un proyecto final totalmente funcional</h3>
+    <div class="prose prose-lg">
+      <p><em>📅 Desde septiembre de 2025, hasta finales de diciembre de 2025</em></p>
 
-    <p>Tras finalizar con éxito mi <a href="/proyectos/entry/proyecto-final-de-modulo--desarrollo-de-web-corporativa-en-wordpress" title="proyecto final de módulo de WordPress" class="customlink">proyecto final de módulo de WordPress</a>, mi siguiente objetivo dentro del máster en Desarrollo Full Stack impartido por Academia Conquer Blocks es ponerme al día con los módulos que tengo pendientes, concretamente HTML y CSS.</p>
+      <p>Ha llegado el momento de abordar el <strong>módulo de Angular</strong>, lo que será un paso importante dentro de mi formación como desarrollador Web Full Stack, ya que Angular es uno de los frameworks más potentes y utilizados en el desarrollo frontend moderno.</p>
 
-    <p>Son lenguajes que manejo con soltura desde hace tiempo, tanto que en su momento decidí avanzar directamente a módulos más complejos. Sin embargo, la Academia exige — de forma totalmente comprensible — que también complete los tests y proyectos prácticos de estos módulos para poder otorgarme el título final de Máster.</p>
+      <p>El plan es claro: seguir todas las clases impartidas por el gran <strong>Alan Buscaglia</strong>, aprovechando su experiencia y enfoque práctico, para comprender a fondo la arquitectura de Angular, sus componentes, servicios y buenas prácticas.</p>
 
-    <p>Ahora es momento de retomar esas bases, no solo para cumplir con los requisitos académicos, sino también para reforzar y perfeccionar las habilidades que todo desarrollador debe dominar.</p>
+      <p>El objetivo final de este módulo será la realización de un <strong>proyecto completo y totalmente funcional</strong>, que me sirva como carta de presentación de mis habilidades y como base sólida para futuros desarrollos en el mundo real.</p>
 
+      <p>Este nuevo reto no solo representa un requisito académico, sino también una gran oportunidad para crecer como desarrollador y ampliar mi stack tecnológico con una herramienta de primer nivel.</p>
+    </div>
   </article>
 
-  <div class="divider my-0 pt-4" />
+  <div class="divider mt-0 pt-8" />
 
   <h2 class="w-full font-bold mb-5 mt-12">Últimos posts</h2>
   {
@@ -100,7 +104,7 @@ const last_projects = projects.slice(0, 3);
 
   <div class="mb-14 text-center">
     <div class="text-2xl w-full font-bold mb-5 mt-10">N.º publicaciones por Mes</div>
-    <img src="https://raw.githubusercontent.com/Jaterli/fastAPI/main/grap.png" title="Nº posts por Mes" alt="Nº posts por Mes" class="grap" />    
+    <img src="https://raw.githubusercontent.com/Jaterli/fastAPI/main/grap.png" title="N.º posts por Mes" alt="N.º posts por Mes" class="grap" />    
     <div class="mt-4">Gráfica desarrollada con <a class="customlink" href="/proyectos/entry/creacion-de-grafica-de-barras-con-streamlit">Streamlit</a></div>
   </div>
 </BaseLayout>
