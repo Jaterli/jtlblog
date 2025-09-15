@@ -8,7 +8,7 @@ category: "Tutoriales"
 tags: [Cyberseguridad, Blockchain, Web3, Django, Python, SmartContracts, Automatización, Actualización]
 ---
 
-En el desarrollo de mi [marketplace con pagos en criptomonedas](/proyectos/entry/sistema-de-pago-con-criptomonedas/ "marketplace con pagos en criptomonedas"), uno de los mayores retos ha sido garantizar que **ningún pago se pierda**, incluso si el usuario abandona la página antes de que la transacción se confirme en la blockchain. La solución: un **listener de eventos mejorado** que actúa como guardián en segundo plano, asegurando que todas las transacciones se registren correctamente.
+En el desarrollo de mi [marketplace con pagos en criptomonedas](/proyectos/entry/comercio-electronico-con-pagos-blockchain/ "marketplace con pagos en criptomonedas"), uno de los mayores retos ha sido garantizar que **ningún pago se pierda**, incluso si el usuario abandona la página antes de que la transacción se confirme en la blockchain. La solución: un **listener de eventos mejorado** que actúa como guardián en segundo plano, asegurando que todas las transacciones se registren correctamente.
 
 ## El Problema con el Enfoque Anterior
 
