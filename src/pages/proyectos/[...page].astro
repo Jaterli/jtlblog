@@ -43,8 +43,10 @@ const { page } = Astro.props as { page: Page };
 <BaseLayout title="Proyectos de Programación" description="Portfolio de mis proyectos de programación, donde aplico mis conocimientos en desarrollo web, creación de APIs y aplicaciones blockchain." sideBarActiveItemID="proyectos">
 
   <article class="prose prose-lg">
-    <h1>Proyectos de Programación</h1>
-    <p>En este portfolio encontrarás una selección de mis proyectos de programación, donde aplico mis conocimientos en desarrollo web, creación de APIs y aplicaciones blockchain. Cada trabajo refleja mi evolución como desarrollador full stack y mi capacidad para diseñar soluciones prácticas, escalables e innovadoras</p>
+    <h1>Portfolio de Proyectos de Programación</h1>
+    <h2 class="mt-0">Desarrollo Web, APIs y Aplicaciones Blockchain</h2>
+
+    <p>En este portfolio encontrarás una selección de mis proyectos de programación, donde aplico mis conocimientos en desarrollo web, creación de APIs y aplicaciones blockchain. Cada trabajo refleja mi evolución como desarrollador full stack y mi capacidad para diseñar soluciones prácticas, escalables e innovadoras.</p>
   </article>
   
   <div class="mt-8 mb-3">Pág(s). {page.currentPage} de {page.lastPage}</div>
@@ -56,7 +58,7 @@ const { page } = Astro.props as { page: Page };
         <p>No hay proyectos publicados en este momento.</p>
       </div>
     ) : (
-      <div>
+      <section>
         {page.data.map((entry) => (
           <>
           <HorizontalProjectItem
@@ -72,7 +74,7 @@ const { page } = Astro.props as { page: Page };
             <div class="divider my-0" />
           </>
         ))}
-      </div>
+      </section>
     )
   }
 

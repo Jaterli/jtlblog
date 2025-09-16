@@ -2,8 +2,8 @@
 import { Image } from "astro:assets";
 import dayjs from "dayjs";
 
-const { title, heroImage, description, badge, pubDate, tags, url, target = "_blank" } = Astro.props;
-const tag_url = '/blog/tag/' //url.split("/").slice(0, -1).join("/") + "/tag";
+const { title, heroImage, description, badge, pubDate, tags, url} = Astro.props;
+//const tag_url = '/blog/tag/' //url.split("/").slice(0, -1).join("/") + "/tag";
 const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
 
 ---
@@ -11,23 +11,26 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
 <div
   class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]"
 >
-  <a href={url} target={target}>
     <div class="hero-content flex-col md:flex-row">
       {
         heroImage && (
           <div class="w-full md:w-[13rem] aspect-video rounded-lg overflow-hidden">
-          <Image
-            src={heroImage}
-            width={750}
-            height={500}
-            alt={title}
-            class="w-full h-full object-cover"
-          />
+            <a href={url}>
+              <Image
+                src={heroImage}
+                width={750}
+                height={500}
+                alt={title}
+                class="w-full h-full object-cover"
+              />
+            </a>
           </div>
         )
       }
       
       <article class="grow w-full md:p-0">
+        <a href={url}>
+
         <h3>{title}
           {badge && <div class="badge badge-neutral rounded ml-1">{badge}</div>}  
         </h3>
@@ -35,15 +38,7 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
           <span class="mr-1">{description}</span>
           <span class="text-xs opacity-70 italic"> [{displayDate}]</span>
         </p>
-        <!-- <div class="text-sm opacity-70 float-left">{displayDate}</div> -->
-
-        <!-- <div class="flex flex-wrap gap-x-2 text-sm">
-          {
-            tags && tags.map((tag) => (
-              <a class="hover:underline text-blue-500" href={`${tag_url}${tag.toLowerCase()}`}>#{tag}</a>          
-            ))
-          }
-        </div> -->
+        </a>
         <div>
         {
           tags &&
@@ -57,5 +52,4 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
 
       </article>
     </div>
-  </a>
 </div>

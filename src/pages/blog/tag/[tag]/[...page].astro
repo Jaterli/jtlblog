@@ -40,8 +40,10 @@ const params = Astro.params;
 <BaseLayout title={"Blog - " + params.tag} sideBarActiveItemID="blog">
 
   <article class="prose prose-lg">
-    <h1>Blog de Desarrollo Web y Blockchain - {params.tag.toUpperCase()}</h1>
-    <p>En este blog comparto mis experiencias en desarrollo web y blockchain, junto con tutoriales prácticos y soluciones técnicas pensadas para programadores que buscan aprender, mejorar sus proyectos y mantenerse al día con las últimas tecnologías</p>
+
+    <h1>Blog de Desarrollo Web y Blockchain</h1>
+    <h2 class="mt-0">Etiqueta: {params.tag.toUpperCase()}</h2>
+    <p>En este blog comparto mis experiencias en desarrollo web y blockchain, junto con tutoriales prácticos y soluciones técnicas pensadas para programadores que buscan aprender, mejorar sus proyectos y mantenerse al día con las últimas tecnologías.</p>
   </article>
   <div class="mt-8 mb-3">Pág(s). {page.currentPage} de {page.lastPage}</div>
   
@@ -52,7 +54,7 @@ const params = Astro.params;
         <p>Todavía no se han publicado proyectos.</p>
       </div>
     ) : (
-      <ul>
+      <section>
         {page.data.map((post) => (
           <>
             <HorizontalCard
@@ -68,7 +70,7 @@ const params = Astro.params;
             <div class="divider my-0" />
           </>
         ))}
-      </ul>
+      </section>
     )
   }
   <div class="flex justify-between">

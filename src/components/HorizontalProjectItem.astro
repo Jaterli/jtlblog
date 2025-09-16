@@ -15,23 +15,26 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
 ---
 
 <div class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
-  <a href={url}>
-    <div class="hero-content flex-col md:flex-row">
-      {
-        heroImage && (
-          <div class="w-full md:w-[13rem] aspect-video rounded-lg overflow-hidden">
-          <Image
-            src={heroImage}
-            width={750}
-            height={500}
-            alt={title}
-            class="w-full h-full object-cover"
-          />
-          </div>
-        )
-      }
+  
+  <div class="hero-content flex-col md:flex-row">
+    {
+      heroImage && (
+        <div class="w-full md:w-[13rem] aspect-video rounded-lg overflow-hidden">
+          <a href={url}>
+            <Image
+              src={heroImage}
+              width={750}
+              height={500}
+              alt={title}
+              class="w-full h-full object-cover"
+            />
+          </a>
+        </div>
+      )
+    }
 
-      <article class="grow w-full md:p-0">
+    <article class="grow w-full md:p-0">
+      <a href={url}>
         <h3 class="mr-1">{title}
           {badge && <div class="badge badge-neutral rounded">{badge}</div>}  
         </h3>
@@ -39,26 +42,18 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
           <span class="mr-1">{description}</span>
           <span class="text-xs opacity-70 italic"> [{displayDate}]</span>
         </p>
-        <!-- <div class="text-sm opacity-70 float-left">{displayDate}</div> -->
-        <!-- <div class="flex flex-wrap gap-x-2 text-sm">
-          {
-            tags && tags.map((tag) => (
-              <span class="hover:underline text-blue-500">#{tag}</span>          
-            ))
-          }
-        </div> -->
-        <div>
-        {
-          tags &&
-            tags.map((tag) => (
-              <a href={`/proyectos/tag/${tag.toLowerCase()}`} class="badge badge-outline mr-2 opacity-70 no-underline hover:bg-gray-500">
-                {tag}
-              </a>
-            ))
-        }
-        </div>
+      </a>
+      <div>
+      {
+        tags &&
+          tags.map((tag) => (
+            <a href={`/proyectos/tag/${tag.toLowerCase()}`} class="badge badge-outline mr-2 opacity-70 no-underline hover:bg-gray-500">
+              {tag}
+            </a>
+          ))
+      }
+      </div>
 
-      </article>
-    </div>
-  </a>
+    </article>
+  </div>
 </div>
