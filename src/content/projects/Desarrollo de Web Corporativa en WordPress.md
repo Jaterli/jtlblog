@@ -29,7 +29,7 @@ jsonLd:
   image: "https://www.jaterli.com/images/proyectos/projects.wordpress.jpg"
   mainEntityOfPage: 
     "@type": "WebPage"
-    "@id": "https://jaterli.com/proyectos/entry/proyecto-final-de-modulo--desarrollo-de-web-corporativa-en-wordpress/"
+    "@id": "https://jaterli.com/proyectos/entry/desarrollo-de-web-corporativa-en-wordpress/"
   
 ---
 
