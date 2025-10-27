@@ -53,7 +53,7 @@ Esto significa que el proyecto seguirá evolucionando, se convertirá en una web
 
 **Capturas de pantalla de algunas páginas:**
 
-* 📸 [Index](/projects/final-translations/Screenshot-index.webp)
+* 📸 [Home](/projects/final-translations/Screenshot-index.webp)
 * 📸 [Nosotros](/projects/final-translations/Screenshot-nosotros.webp)
 * 📸 [Servicios](/projects/final-translations/Screenshot-servicios.webp)
 * 📸 [Contacto](/projects/final-translations/Screenshot-contacto.webp)
