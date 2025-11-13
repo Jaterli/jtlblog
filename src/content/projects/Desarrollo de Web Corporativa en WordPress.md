@@ -5,8 +5,7 @@ pubDate: "2025-08-11"
 heroImage: "/images/proyectos/projects.wordpress.jpg"
 badge: "Finalizado"
 tags: [Wordpress]
-jsonLd: |
-  {
+jsonLd: 
     "@context": "https://schema.org"
     "@type": "Service"
     serviceType: "Diseño y desarrollo de sitios web en WordPress"
@@ -31,7 +30,6 @@ jsonLd: |
     mainEntityOfPage: 
       "@type": "WebPage"
       "@id": "https://jaterli.com/proyectos/entry/desarrollo-de-web-corporativa-en-wordpress/"
-  }
 ---
 
 

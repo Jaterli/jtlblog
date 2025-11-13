@@ -6,30 +6,37 @@ pubDate: "2025-04-15"
 heroImage: "/images/blog/blog.GitHub.webp"
 category: "Tutoriales"
 tags: [Git, GitHub]
-jsonLd: |
-  {
-    "@context": "https://schema.org"
-    "@type": "EducationalOccupationalCredential"
-    name: "Certificado de Git y GitHub"
-    description: "Certificación obtenida tras superar con éxito la evaluación de Git y GitHub impartida por Conquer Blocks."
-    educationalLevel: "Intermedio"
-    dateIssued: "2025-04-15"
-    recognizedBy:
-      "@type": "Organization"
-      name: "Conquer Blocks"
-      url: "https://conquerblocks.com"
-    credentialCategory: "Certificación profesional"
-    image: "https://jaterli.com/certifications/Certificado-de-Git-y-Github.png"
-    subjectOf:
-      "@type": "BlogPosting"
-      headline: "Certificado de Git y GitHub superado con éxito"
-      url: "https://jaterli.com/blog/certificado-de-git-y-github-superado-con-exito/"
-      datePublished: "2025-04-15"
-      author:
-        "@type": "Person"
-        name: "Jaime TL"
-        url: "https://jaterli.com"
-  }
+jsonLd:
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Certificado de Git y GitHub",
+        "description": "Certificación en Git y GitHub de Conquer Blocks",
+        "dateIssued": "2025-04-15",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Conquer Blocks"
+        },
+        "image": "https://jaterli.com/certifications/Certificado-de-Git-y-Github.png"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Certificado de Git y GitHub superado con éxito",
+        "description": "Hoy he obtenido el certificado de Git y GitHub a través de Conquer Blocks, como parte del máster en Desarrollo Web Fullstack que estoy cursando actualmente.",
+        "datePublished": "2025-04-15T00:00:00+01:00",
+        "image": "https://jaterli.com/images/blog/blog.GitHub.webp",
+        "author": {
+          "@type": "Person",
+          "name": "Jaime TL",
+          "url": "https://jaterli.com"
+        },
+        "mainEntity": {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Certificado de Git y GitHub"
+        }
+      }
+    ]
 ---
 
 

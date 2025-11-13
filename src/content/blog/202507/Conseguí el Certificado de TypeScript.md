@@ -6,30 +6,37 @@ pubDate: "2025-07-06"
 heroImage: "/images/blog/blog.academic_degree.jpg"
 category: "Blog"
 tags: [Certificado, TypeScript]
-jsonLd: |
-  {
-    "@context": "https://schema.org"
-    "@type": "EducationalOccupationalCredential"
-    name: "Certificado de TypeScript"
-    description: "Certificación obtenida tras superar con éxito la evaluación del módulo de TypeScript impartido por Academia Conquer Blocks."
-    educationalLevel: "Intermedio-Avanzado"
-    dateIssued: "2025-07-06"
-    recognizedBy:
-      "@type": "Organization"
-      name: "Academia Conquer Blocks"
-      url: "https://conquerblocks.com"
-    credentialCategory: "Certificación profesional"
-    image: "https://jaterli.com/certifications/Certificado-de-TypeScript.png"
-    subjectOf:
-      "@type": "BlogPosting"
-      headline: "Conseguí el Certificado de TypeScript"
-      url: "https://jaterli.com/blog/consegui-el-certificado-de-typescript/"
-      datePublished: "2025-07-06"
-      author:
-        "@type": "Person"
-        name: "Jaime TL"
-        url: "https://jaterli.com"
-  }
+jsonLd: 
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Certificado de TypeScript",
+        "description": "Certificación en TypeScript de Academia Conquer Blocks",
+        "dateIssued": "2025-07-06",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Academia Conquer Blocks"
+        },
+        "image": "https://jaterli.com/certifications/Certificado-de-TypeScript.png"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Conseguí el Certificado de TypeScript",
+        "description": "Ayer obtuve el certificado de JavaScript Avanzado y hoy he superado con éxito la evaluación de TypeScript.",
+        "datePublished": "2025-07-06T00:00:00+01:00",
+        "image": "https://jaterli.com/images/blog/blog.academic_degree.jpg",
+        "author": {
+          "@type": "Person",
+          "name": "Jaime TL",
+          "url": "https://jaterli.com"
+        },
+        "mainEntity": {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Certificado de TypeScript"
+        }
+      }
+    ]
 ---
 
 📅 06 de julio de 2025

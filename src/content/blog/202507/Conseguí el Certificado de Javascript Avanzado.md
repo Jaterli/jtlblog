@@ -6,30 +6,38 @@ pubDate: "2025-07-05"
 heroImage: "/images/blog/blog.academic_degree.jpg"
 category: "Blog"
 tags: [Certificado, Javascript]
-jsonLd: |
-  {
-    "@context": "https://schema.org"
-    "@type": "EducationalOccupationalCredential"
-    name: "Certificado de JavaScript Avanzado"
-    description: "Certificación obtenida tras superar con éxito el examen de evaluación del módulo de JavaScript Avanzado impartido por Academia Conquer Blocks."
-    educationalLevel: "Avanzado"
-    dateIssued: "2025-07-05"
-    recognizedBy:
-      "@type": "Organization"
-      name: "Academia Conquer Blocks"
-      url: "https://conquerblocks.com"
-    credentialCategory: "Certificación profesional"
-    image: "https://jaterli.com/certifications/Certificado-de-Javascript-Avanzado.png"
-    subjectOf:
-      "@type": "BlogPosting"
-      headline: "Conseguí el Certificado de Javascript Avanzado"
-      url: "https://jaterli.com/blog/consegui-el-certificado-de-javascript-avanzado/"
-      datePublished: "2025-07-05"
-      author:
-        "@type": "Person"
-        name: "Jaime TL"
-        url: "https://jaterli.com"
-  }
+jsonLd: 
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Certificado de JavaScript Avanzado",
+        "description": "Certificación en JavaScript Avanzado de Academia Conquer Blocks",
+        "dateIssued": "2025-07-05",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Academia Conquer Blocks"
+        },
+        "image": "https://jaterli.com/certifications/Certificado-de-Javascript-Avanzado.png"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Conseguí el Certificado de Javascript Avanzado",
+        "description": "Acabo de superar con éxito el examen de evaluación para obtener el certificado de JavaScript Avanzado impartido por la academia Conquer Blocks.",
+        "datePublished": "2025-07-05T00:00:00+01:00",
+        "image": "https://jaterli.com/images/blog/blog.academic_degree.jpg",
+        "author": {
+          "@type": "Person",
+          "name": "Jaime TL",
+          "url": "https://jaterli.com"
+        },
+        "mainEntity": {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Certificado de JavaScript Avanzado"
+        }
+      }
+    ]
+
 ---
 
 📅 05 de julio de 2025

@@ -6,30 +6,37 @@ pubDate: "2025-08-12"
 heroImage: "/images/blog/blog.academic_degree.jpg"
 category: "Blog"
 tags: [Certificado, Wordpress]
-jsonLd: |
-  {
-    "@context": "https://schema.org"
-    "@type": "EducationalOccupationalCredential"
-    name: "Certificado de WordPress"
-    description: "Certificación obtenida tras completar con éxito el módulo de WordPress impartido por Academia Conquer Blocks, incluyendo examen teórico y proyecto práctico de web corporativa."
-    educationalLevel: "Intermedio"
-    dateIssued: "2025-08-12"
-    recognizedBy:
-      "@type": "Organization"
-      name: "Academia Conquer Blocks"
-      url: "https://conquerblocks.com"
-    credentialCategory: "Certificación profesional"
-    image: "https://jaterli.com/certifications/Certificado-de-Wordpress.png"
-    subjectOf:
-      "@type": "BlogPosting"
-      headline: "Conseguí el Certificado de WordPress"
-      url: "https://jaterli.com/blog/consegui-el-certificado-de-wordpress/"
-      datePublished: "2025-08-12"
-      author:
-        "@type": "Person"
-        name: "Jaime TL"
-        url: "https://jaterli.com"
-  }
+jsonLd: 
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Certificado de WordPress",
+        "description": "Certificación en WordPress de Academia Conquer Blocks",
+        "dateIssued": "2025-08-12",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Academia Conquer Blocks"
+        },
+        "image": "https://jaterli.com/certifications/Certificado-de-Wordpress.png"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Conseguí el Certificado de WordPress",
+        "description": "He completado con éxito el módulo de WordPress impartido por Academia Conquer Blocks, obteniendo mi certificación oficial.",
+        "datePublished": "2025-08-12T00:00:00+01:00",
+        "image": "https://jaterli.com/images/blog/blog.academic_degree.jpg",
+        "author": {
+          "@type": "Person",
+          "name": "Jaime TL",
+          "url": "https://jaterli.com"
+        },
+        "mainEntity": {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Certificado de WordPress"
+        }
+      }
+    ]
 ---
 
 📅 12 de agosto de 2025

@@ -5,8 +5,7 @@ pubDate: "2025-07-04"
 heroImage: "/images/proyectos/projects.easycryptobuy.jpg"
 badge: "Finalizado"
 tags: [Web3, Wagmi, SmartContracts, Blockchain, Metamask, Tokens ERC20, React, Django, Chakra UI, Python, Typescript]
-jsonLd: |
-  {
+jsonLd:
     "@context": "https://schema.org",
     "@graph": [
       {
@@ -35,7 +34,7 @@ jsonLd: |
         "@type": "BlogPosting",
         "headline": "Comercio Electrónico con Pagos Blockchain",
         "description": "Desarrollo de EasyCryptoBuy - Plataforma e-commerce con pagos blockchain",
-        "datePublished": "2025-07-04",
+        "datePublished": "025-07-04T00:00:00+01:00",
         "author": {
           "@type": "Person", 
           "name": "Jaime TL"
@@ -43,7 +42,6 @@ jsonLd: |
         "image": "https://jaterli.com/images/proyectos/projects.easycryptobuy.jpg"
       }
     ]
-  }
 ---
 
 ## Visión general

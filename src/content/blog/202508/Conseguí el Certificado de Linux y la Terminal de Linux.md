@@ -6,30 +6,37 @@ pubDate: "2025-08-10"
 heroImage: "/images/blog/blog.academic_degree.jpg"
 category: "Blog"
 tags: [Certificado, Linux]
-jsonLd: |
-  {
-    "@context": "https://schema.org"
-    "@type": "EducationalOccupationalCredential"
-    name: "Certificado de Linux y la Terminal de Linux"
-    description: "Certificación obtenida tras superar con éxito el examen de Linux y la Terminal de Linux impartido por Academia Conquer Blocks, dentro del máster de Desarrollo Full Stack."
-    educationalLevel: "Intermedio"
-    dateIssued: "2025-08-10"
-    recognizedBy:
-      "@type": "Organization"
-      name: "Academia Conquer Blocks"
-      url: "https://conquerblocks.com"
-    credentialCategory: "Certificación profesional"
-    image: "https://jaterli.com/certifications/Certificado-de-Linux-y-la-Terminal.-Linux.png"
-    subjectOf:
-      "@type": "BlogPosting"
-      headline: "Conseguí el Certificado de Linux y la Terminal de Linux"
-      url: "https://jaterli.com/blog/consegui-el-certificado-de-linux-y-la-terminal-de-linux/"
-      datePublished: "2025-08-10"
-      author:
-        "@type": "Person"
-        name: "Jaime TL"
-        url: "https://jaterli.com"
-  }
+jsonLd: 
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Certificado de Linux y la Terminal de Linux",
+        "description": "Certificación en Linux y Terminal de Linux de Academia Conquer Blocks",
+        "dateIssued": "2025-08-10",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Academia Conquer Blocks"
+        },
+        "image": "https://jaterli.com/certifications/Certificado-de-Linux-y-la-Terminal.-Linux.png"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Conseguí el Certificado de Linux y la Terminal de Linux",
+        "description": "Acabo de superar con éxito el examen de evaluación para obtener el certificado de Linux y la Terminal de Linux.",
+        "datePublished": "2025-08-10T00:00:00+01:00",
+        "image": "https://jaterli.com/images/blog/blog.academic_degree.jpg",
+        "author": {
+          "@type": "Person",
+          "name": "Jaime TL",
+          "url": "https://jaterli.com"
+        },
+        "mainEntity": {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Certificado de Linux y la Terminal de Linux"
+        }
+      }
+    ]
 ---
 
 📅 10 de agosto de 2025
