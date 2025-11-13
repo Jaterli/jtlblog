@@ -5,7 +5,8 @@ pubDate: "2025-02-17"
 heroImage: "/images/proyectos/projects.React-Django-SQLite.png"
 badge: "Finalizado"
 tags: [Python, React, Django]
-jsonLd:
+jsonLd: |
+  {
   "@context": "https://schema.org"
   "@type": "SoftwareApplication"
   name: "Gestión de Traductores y Consultas Personalizadas"
@@ -23,6 +24,7 @@ jsonLd:
   mainEntityOfPage:
     "@type": "WebPage"
     "@id": "https://jaterli.com/proyectos/entry/plataforma-de-gestion-para-traductores-con-react-y-django/"
+  }
 ---
 
 Esta aplicación, desarrollada con **Django** en el backend y **React + TypeScript** en el frontend, es una herramienta diseñada para gestionar perfiles de traductores profesionales y permitir a los administradores realizar consultas personalizadas sobre la base de datos. Su arquitectura modular, escalabilidad y facilidad de personalización la convierten en una solución ideal para empresas que buscan optimizar la gestión de profesionales.
@@ -128,3 +130,8 @@ Actualmente, me encuentro inmerso en mi formación como estudiante de un máster
 
 Mi objetivo es seguir creciendo como desarrollador, ampliando mi experiencia y enfrentándome a nuevos desafíos técnicos. Si estás interesado en conocer más sobre este proyecto o en colaborar en el desarrollo de soluciones similares, no dudes en contactarme. Estoy disponible para discutir cómo puedo aportar valor a tu equipo con mis habilidades como desarrollador full-stack, y estoy emocionado por la posibilidad de contribuir a proyectos que impulsen mi crecimiento profesional.
 
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{{ jsonLd }}
+</script>

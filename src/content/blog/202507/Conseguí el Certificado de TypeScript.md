@@ -6,29 +6,30 @@ pubDate: "2025-07-06"
 heroImage: "/images/blog/blog.academic_degree.jpg"
 category: "Blog"
 tags: [Certificado, TypeScript]
-jsonLd:
-  "@context": "https://schema.org"
-  "@type": "EducationalOccupationalCredential"
-  name: "Certificado de TypeScript"
-  description: "Certificación obtenida tras superar con éxito la evaluación del módulo de TypeScript impartido por Academia Conquer Blocks."
-  educationalLevel: "Intermedio-Avanzado"
-  dateIssued: "2025-07-06"
-  recognizedBy:
-    "@type": "Organization"
-    name: "Academia Conquer Blocks"
-    url: "https://conquerblocks.com"
-  credentialCategory: "Certificación profesional"
-  image: "https://jaterli.com/certifications/Certificado-de-TypeScript.png"
-  subjectOf:
-    "@type": "BlogPosting"
-    headline: "Conseguí el Certificado de TypeScript"
-    url: "https://jaterli.com/blog/consegui-el-certificado-de-typescript/"
-    datePublished: "2025-07-06"
-    author:
-      "@type": "Person"
-      name: "Jaime TL"
-      url: "https://jaterli.com"
-
+jsonLd: |
+  {
+    "@context": "https://schema.org"
+    "@type": "EducationalOccupationalCredential"
+    name: "Certificado de TypeScript"
+    description: "Certificación obtenida tras superar con éxito la evaluación del módulo de TypeScript impartido por Academia Conquer Blocks."
+    educationalLevel: "Intermedio-Avanzado"
+    dateIssued: "2025-07-06"
+    recognizedBy:
+      "@type": "Organization"
+      name: "Academia Conquer Blocks"
+      url: "https://conquerblocks.com"
+    credentialCategory: "Certificación profesional"
+    image: "https://jaterli.com/certifications/Certificado-de-TypeScript.png"
+    subjectOf:
+      "@type": "BlogPosting"
+      headline: "Conseguí el Certificado de TypeScript"
+      url: "https://jaterli.com/blog/consegui-el-certificado-de-typescript/"
+      datePublished: "2025-07-06"
+      author:
+        "@type": "Person"
+        name: "Jaime TL"
+        url: "https://jaterli.com"
+  }
 ---
 
 📅 06 de julio de 2025
@@ -45,3 +46,9 @@ Dicho esto, estoy muy contento de sumar un nuevo título a mi recorrido académi
 
 
 ![Certificado de Typescript](/certifications/Certificado-de-TypeScript.png)
+
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{{ jsonLd }}
+</script>

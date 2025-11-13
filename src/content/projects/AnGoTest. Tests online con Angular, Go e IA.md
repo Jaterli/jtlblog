@@ -5,28 +5,31 @@ pubDate: "2025-09-19"
 heroImage: "/images/proyectos/projects.AnGoTest.webp"
 badge: "En progreso"
 tags: [Angular, Go, Gin, PostgreSQL, JWT, TypeScript, AI]
-jsonLd:
-  "@context": "https://schema.org"
-  "@type": "SoftwareApplication"
-  name: "AnGoTest"
-  applicationCategory: "EducationalApplication"
-  operatingSystem: "Web"
-  description: "Aplicación web de tests online desarrollada con Angular y Go como proyecto académico, con ranking de usuarios y generación de tests mediante IA."
-  image: "https://jaterli.com/images/proyectos/projects.AnGoTest.webp"
-  url: "https://jaterli.com/proyectos/entry/angotest-tests-online-con-angular-go-e-ia"
-  creator:
-    "@type": "Person"
-    name: "Jaime TL"
-  programmingLanguage:
-    - "TypeScript"
-    - "Go"
-    - "SQL"
-  featureList:
-    - "Registro y autenticación de usuarios con JWT"
-    - "Tests diarios con 10-20 preguntas"
-    - "Ranking global de usuarios"
-    - "Panel de administración para gestionar tests"
-    - "Integración opcional con IA para generar preguntas"
+jsonLd: |
+  {
+    "@context": "https://schema.org"
+    "@type": "SoftwareApplication"
+    name: "AnGoTest"
+    applicationCategory: "EducationalApplication"
+    operatingSystem: "Web"
+    description: "Aplicación web de tests online desarrollada con Angular y Go como proyecto académico, con ranking de usuarios y generación de tests mediante IA."
+    image: "https://jaterli.com/images/proyectos/projects.AnGoTest.webp"
+    url: "https://jaterli.com/proyectos/entry/angotest-tests-online-con-angular-go-e-ia"
+    creator:
+      "@type": "Person"
+      name: "Jaime TL"
+    programmingLanguage:
+      - "TypeScript"
+      - "Go"
+      - "SQL"
+    featureList:
+      - "Registro y autenticación de usuarios con JWT"
+      - "Tests diarios con 10-20 preguntas"
+      - "Ranking global de usuarios"
+      - "Panel de administración para gestionar tests"
+      - "Integración opcional con IA para generar preguntas"
+      ]
+  }    
 ---
 
 ## Visión general
@@ -167,3 +170,7 @@ Este proyecto me permitirá:
 4. Aprender a integrar **Inteligencia Artificial** en un flujo de aplicación real.
 5. Desarrollar un producto con un alto componente de **gamificación y utilidad educativa**.
 
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{{ jsonLd }}
+</script>
