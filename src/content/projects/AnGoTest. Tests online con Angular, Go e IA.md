@@ -6,19 +6,19 @@ heroImage: "/images/proyectos/projects.AnGoTest.webp"
 badge: "En progreso"
 tags: [Angular, Go, Gin, PostgreSQL, JWT, TypeScript, AI]
 jsonLd: 
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "AnGoTest",
-    "applicationCategory": "EducationalApplication",
-    "operatingSystem": "Web",
-    "description": "Aplicación web de tests online desarrollada con Angular y Go como proyecto académico, con ranking de usuarios y generación de tests mediante IA.",
-    "image": "https://jaterli.com/images/proyectos/projects.AnGoTest.webp",
-    "url": "https://jaterli.com/proyectos/entry/angotest-tests-online-con-angular-go-e-ia",
+    "@context": "https://schema.org"
+    "@type": "SoftwareApplication"
+    "name": "AnGoTest"
+    "applicationCategory": "EducationalApplication"
+    "operatingSystem": "Web"
+    "description": "Aplicación web de tests online desarrollada con Angular y Go como proyecto académico, con ranking de usuarios y generación de tests mediante IA."
+    "image": "https://jaterli.com/images/proyectos/projects.AnGoTest.webp"
+    "url": "https://jaterli.com/proyectos/entry/angotest-tests-online-con-angular-go-e-ia"
     "author": {
       "@type": "Person",
       "name": "Jaime TL"
     },
-    "datePublished": "2025-09-19",
+    "datePublished": "2025-09-19"
     "programmingLanguage": [
       "TypeScript",
       "Go",
