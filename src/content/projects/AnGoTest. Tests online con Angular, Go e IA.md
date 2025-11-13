@@ -5,8 +5,7 @@ pubDate: "2025-09-19"
 heroImage: "/images/proyectos/projects.AnGoTest.webp"
 badge: "En progreso"
 tags: [Angular, Go, Gin, PostgreSQL, JWT, TypeScript, AI]
-jsonLd: |
-  {
+jsonLd: 
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "AnGoTest",
@@ -32,7 +31,7 @@ jsonLd: |
       "Panel de administración para gestionar tests",
       "Integración opcional con IA para generar preguntas"
     ]
-  }    
+   
 ---
 
 ## Visión general
