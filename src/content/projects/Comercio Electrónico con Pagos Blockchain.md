@@ -6,7 +6,7 @@ heroImage: "/images/proyectos/projects.easycryptobuy.jpg"
 badge: "Finalizado"
 tags: [Web3, Wagmi, SmartContracts, Blockchain, Metamask, Tokens ERC20, React, Django, Chakra UI, Python, Typescript]
 jsonLd:
-    "@context": "https://schema.org",
+    "@context": "https://schema.org"
     "@graph": [
       {
         "@type": "WebApplication",
