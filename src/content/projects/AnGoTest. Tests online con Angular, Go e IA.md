@@ -17,13 +17,13 @@ jsonLd:
     "author": {
       "@type": "Person",
       "name": "Jaime TL"
-    },
+    }
     "datePublished": "2025-09-19"
     "programmingLanguage": [
       "TypeScript",
       "Go",
       "SQL"
-    ],
+    ]
     "featureList": [
       "Registro y autenticación de usuarios con JWT",
       "Tests diarios con 10-20 preguntas",
