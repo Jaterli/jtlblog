@@ -8,27 +8,38 @@ category: "Blog"
 tags: [Certificado, React]
 jsonLd: |
   {
-    "@context": "https://schema.org"
-    "@type": "EducationalOccupationalCredential"
-    name: "Certificado de ReactJS"
-    description: "Certificación obtenida tras completar con éxito el módulo de ReactJS impartido por Academia Conquer Blocks, dentro del máster de Desarrollo Full Stack."
-    educationalLevel: "Avanzado"
-    dateIssued: "2025-09-03"
-    recognizedBy:
-      "@type": "Organization"
-      name: "Academia Conquer Blocks"
-      url: "https://conquerblocks.com"
-    credentialCategory: "Certificación profesional"
-    image: "https://jaterli.com/certifications/Certificado-de-ReactJS.png"
-    subjectOf:
-      "@type": "BlogPosting"
-      headline: "Conseguí el Certificado de ReactJS"
-      url: "https://jaterli.com/blog/consegui-el-certificado-de-reactjs/"
-      datePublished: "2025-09-03"
-      author:
-        "@type": "Person"
-        name: "Jaime TL"
-        url: "https://jaterli.com"
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Certificado de ReactJS",
+        "description": "Certificación en ReactJS obtenida en Academia Conquer Blocks",
+        "educationalLevel": "Avanzado",
+        "dateIssued": "2025-09-03",
+        "credentialCategory": "Certification",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Academia Conquer Blocks",
+          "url": "https://conquerblocks.com"
+        },
+        "image": "https://jaterli.com/certifications/Certificado-de-ReactJS.png"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Conseguí el Certificado de ReactJS",
+        "description": "Estoy muy contento de compartir que he completado con éxito el módulo de ReactJS...",
+        "datePublished": "2025-09-03",
+        "author": {
+          "@type": "Person",
+          "name": "Jaime TL",
+          "url": "https://jaterli.com"
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://jaterli.com/blog/consegui-el-certificado-de-reactjs/"
+        }
+      }
+    ]
   }
 ---
 
