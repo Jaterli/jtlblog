@@ -7,7 +7,7 @@ heroImage: "/images/blog/blog.academic_degree.jpg"
 category: "Blog"
 tags: [Certificado, Javascript]
 jsonLd: 
-    "@context": "https://schema.org",
+    "@context": "https://schema.org"
     "@graph": [
       {
         "@type": "EducationalOccupationalCredential",

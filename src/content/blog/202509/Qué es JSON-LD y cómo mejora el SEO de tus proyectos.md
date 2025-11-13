@@ -53,7 +53,7 @@ Por ejemplo, para mi proyecto de Web3 llamado *EasyCryptoBuy*, que es una plataf
 
 ```json
 {
-  "@context": "https://schema.org",
+  "@context": "https://schema.org"
   "@type": "SoftwareApplication",
   "name": "EasyCryptoBuy",
   "description": "Plataforma de comercio electrónico con integración de pagos en blockchain.",

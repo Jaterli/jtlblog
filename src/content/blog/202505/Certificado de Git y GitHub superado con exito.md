@@ -7,7 +7,7 @@ heroImage: "/images/blog/blog.GitHub.webp"
 category: "Tutoriales"
 tags: [Git, GitHub]
 jsonLd:
-    "@context": "https://schema.org",
+    "@context": "https://schema.org"
     "@graph": [
       {
         "@type": "EducationalOccupationalCredential",
