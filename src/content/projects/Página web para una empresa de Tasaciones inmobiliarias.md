@@ -29,7 +29,7 @@ jsonLd:
   image: "https://www.jaterli.com/images/proyectos/projects.wordpress.jpg"
   mainEntityOfPage: 
     "@type": "WebPage"
-    "@id": "https://jaterli.com/proyectos/entry/desarrollo-de-web-corporativa-en-wordpress/"
+    "@id": "https://jaterli.com/proyectos/entry/pagina-web-para-una-empresa-de-tasaciones-inmobiliarias/"
   
 ---
 
@@ -44,16 +44,18 @@ El trabajo se ha centrado en:
 * Una **arquitectura de navegación intuitiva y orientada al usuario**
 * La **presentación visual de los servicios principales y complementarios**
 * Una **sección de contacto optimizada**, con llamadas a la acción claras y diseño limpio
-* Y la **integración de iconografía y FAQs** para mejorar la experiencia informativa
+* La **integración de iconografía y FAQs** para mejorar la experiencia informativa
+* La **implementación de efectos visuales de movimiento**, que aportan dinamismo y una experiencia más atractiva
 * Y una **optimización SEO integral**, para mejorar su visibilidad y posicionamiento en buscadores
 
 Adjunto a continuación algunas capturas de pantalla:
 
-* 📸 [Captura de la página “Home”](/projects/ataciara/ataciara-home.png)
-* 📸 [Captura de la sección “Servicios”](/projects/ataciara/ataciara-servicios.png)
-* 📸 [Captura de la página “Servicios complementarios”](/projects/ataciara/ataciara-servicios-complementarios.png)
-* 📸 [Captura de la página “Sobre nosotros”](/projects/ataciara/ataciara-sobre-nosotros.png)
-* 📸 [Captura de la página “Contacto”](/projects/ataciara/ataciara-contactar.png)
+* 📸 [Home](/projects/ataciara/ataciara-home.png)
+* 📸 [Servicios](/projects/ataciara/ataciara-servicios.png)
+* 📸 [Servicios complementarios](/projects/ataciara/ataciara-servicios-complementarios.png)
+* 📸 [Sobre nosotros](/projects/ataciara/ataciara-sobre-nosotros.png)
+* 📸 [Contacto](/projects/ataciara/ataciara-contactar.png)   
+
 
 El resultado es una web funcional, moderna y adaptada a las necesidades reales del cliente, pensada para **ofrecer una experiencia de navegación fluida** y **reforzar la imagen profesional de la marca**.
 

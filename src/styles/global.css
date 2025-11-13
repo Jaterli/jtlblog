@@ -25,10 +25,6 @@ a.customlink:hover {
   opacity: unset;
 }
 
-.badge {
-  align-items: self-end;
-}
-
 .time-line-container>div:last-child .education__time>.education__line {
   display: none;
 }
