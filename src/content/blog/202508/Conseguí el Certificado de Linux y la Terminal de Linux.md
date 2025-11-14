@@ -46,9 +46,3 @@ Acabo de superar con éxito el examen de evaluación para obtener el certificado
 Este curso me ha permitido fortalecer mis habilidades en administración de sistemas, manejo avanzado de la línea de comandos y gestión eficiente de entornos Linux, herramientas clave para cualquier desarrollador full stack.
 
 ![Certificado de Linux y la Terminal de Linux](/certifications/Certificado-de-Linux-y-la-Terminal.-Linux.png)
-
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{{ jsonLd }}
-</script>

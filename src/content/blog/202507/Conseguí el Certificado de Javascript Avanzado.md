@@ -50,9 +50,3 @@ Gracias a la experiencia acumulada tanto por el estudio del módulo como por su 
 
 
 ![Certificado de Javascript Avanzado](/certifications/Certificado-de-Javascript-Avanzado.png)
-
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{{ jsonLd }}
-</script>

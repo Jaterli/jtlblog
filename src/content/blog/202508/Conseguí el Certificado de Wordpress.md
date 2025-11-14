@@ -54,9 +54,3 @@ Este certificado valida mis habilidades en WordPress, pero sobre todo refuerza m
 
 
 ![Certificado de Wordpress](/certifications/Certificado-de-Wordpress.png)
-
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{{ jsonLd }}
-</script>

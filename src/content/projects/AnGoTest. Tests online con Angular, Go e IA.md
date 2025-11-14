@@ -171,8 +171,3 @@ Este proyecto me permitirá:
 3. Practicar el **diseño de bases de datos relacionales** con PostgreSQL.
 4. Aprender a integrar **Inteligencia Artificial** en un flujo de aplicación real.
 5. Desarrollar un producto con un alto componente de **gamificación y utilidad educativa**.
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{{ jsonLd }}
-</script>

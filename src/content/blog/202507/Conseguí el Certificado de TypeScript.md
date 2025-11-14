@@ -53,9 +53,3 @@ Dicho esto, estoy muy contento de sumar un nuevo título a mi recorrido académi
 
 
 ![Certificado de Typescript](/certifications/Certificado-de-TypeScript.png)
-
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{{ jsonLd }}
-</script>

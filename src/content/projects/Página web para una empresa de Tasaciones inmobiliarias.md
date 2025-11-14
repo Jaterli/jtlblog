@@ -66,8 +66,3 @@ Puedes ver el resultado final visitando 👉 **[ataciara.com](https://ataciara.c
 
 Diseño y desarrollo sitios web en WordPress que reflejan la esencia de tu marca, con **buen rendimiento, usabilidad y posicionamiento SEO.**
 📩 **[Contáctame y hablemos de tu proyecto](/contacto/)**
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{{ jsonLd }}
-</script>

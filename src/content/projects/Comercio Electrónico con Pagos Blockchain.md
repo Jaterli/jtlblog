@@ -505,9 +505,3 @@ El proyecto demuestra mi capacidad para:
 
 **¿Interesado en una solución similar para tu negocio?**   
 ¡Estoy disponible para adaptar este proyecto o desarrollar una plataforma a medida con las funcionalidades que necesites!
-
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{{ jsonLd }}
-</script>

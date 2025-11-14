@@ -127,9 +127,3 @@ Esta aplicación es un ejemplo de mi capacidad para desarrollar soluciones web c
 Actualmente, me encuentro inmerso en mi formación como estudiante de un máster en desarrollo full-stack, y esta aplicación ha sido desarrollada como parte de mi portafolio personal para demostrar mis habilidades y conocimientos en este campo. Aunque ya he logrado crear una solución funcional y robusta, sigo en un proceso constante de aprendizaje y mejora. Esto significa que, a medida que avanzo en mi formación, mis futuras aplicaciones serán aún más completas, innovadoras y optimizadas.
 
 Mi objetivo es seguir creciendo como desarrollador, ampliando mi experiencia y enfrentándome a nuevos desafíos técnicos. Si estás interesado en conocer más sobre este proyecto o en colaborar en el desarrollo de soluciones similares, no dudes en contactarme. Estoy disponible para discutir cómo puedo aportar valor a tu equipo con mis habilidades como desarrollador full-stack, y estoy emocionado por la posibilidad de contribuir a proyectos que impulsen mi crecimiento profesional.
-
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{{ jsonLd }}
-</script>

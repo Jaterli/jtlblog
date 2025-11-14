@@ -68,9 +68,3 @@ Una vez desarrollada por completo, el enlace será:
 **¿Quieres una web profesional, optimizada y adaptada a tu negocio?**   
 Diseño y desarrollo sitios web con **WordPress** que combinan funcionalidad, estética y buen posicionamiento.   
 📩 **[Contáctame y hablemos de tu proyecto](/contacto/)**
-
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{{ jsonLd }}
-</script>

@@ -60,9 +60,3 @@ En definitiva, **la práctica ha sido clave**. Git y GitHub han estado muy prese
 ![Certificado](/certifications/Certificado-de-Git-y-Github.png)
 
 Si lo deseas, puedes ver mi repositorio personal de GitHub haciendo clic [aquí](https://github.com/Jaterli/)
-
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{{ jsonLd }}
-</script>
