@@ -6,9 +6,8 @@ pubDate: "2025-09-03"
 heroImage: "/images/blog/blog.academic_degree.jpg"
 category: "Blog"
 tags: [Certificado, React]
-jsonLd: |
-  {
-    "@context": "https://schema.org",
+jsonLd: 
+    "@context": "https://schema.org"
     "@graph": [
       {
         "@type": "EducationalOccupationalCredential",
@@ -38,7 +37,6 @@ jsonLd: |
         }
       }
     ]
-  }
 ---
 
 📅 03 de septiembre de 2025
