@@ -49,8 +49,3 @@ Además de responder correctamente a todas las preguntas, he desarrollado varios
 
 ![Certificado de ReactJS](/certifications/Certificado-de-ReactJS.png)
 
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{{ jsonLd }}
-</script>
