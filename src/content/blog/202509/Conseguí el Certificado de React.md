@@ -8,7 +8,7 @@ category: "Blog"
 tags: [Certificado, React]
 jsonLd: |
   {
-    "@context": "https://schema.org"
+    "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "EducationalOccupationalCredential",
@@ -39,7 +39,7 @@ jsonLd: |
       }
     ]
   }
-  ---
+---
 
 📅 03 de septiembre de 2025
 
