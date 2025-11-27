@@ -7,36 +7,36 @@ heroImage: "/images/blog/blog.academic_degree.jpg"
 category: "Blog"
 tags: [Certificado, React]
 jsonLd: 
-    "@context": "https://schema.org"
-    "@graph": [
-      {
-        "@type": "EducationalOccupationalCredential",
-        "name": "Certificado de ReactJS",
-        "description": "Certificación en ReactJS de Academia Conquer Blocks",
-        "dateIssued": "2025-09-03",
-        "recognizedBy": {
-          "@type": "Organization",
-          "name": "Academia Conquer Blocks"
-        },
-        "image": "https://jaterli.com/certifications/Certificado-de-ReactJS.png"
+  "@context": "https://schema.org"
+  "@graph": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Certificado de ReactJS",
+      "description": "Certificación en ReactJS de Academia Conquer Blocks",
+      "dateIssued": "2025-09-03",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Academia Conquer Blocks"
       },
-      {
-        "@type": "BlogPosting",
-        "headline": "Conseguí el Certificado de ReactJS",
-        "description": "Estoy muy contento de compartir que he completado con éxito el módulo de ReactJS...",
-        "datePublished": "2025-09-03T00:00:00+01:00",  
-        "image": "https://jaterli.com/images/blog/blog.academic_degree.jpg",
-        "author": {
-          "@type": "Person",
-          "name": "Jaime TL",
-          "url": "https://jaterli.com"
-        },
-        "mainEntity": {
-          "@type": "EducationalOccupationalCredential",
-          "name": "Certificado de ReactJS"
-        }
+      "image": "https://jaterli.com/certifications/Certificado-de-ReactJS.png"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Conseguí el Certificado de ReactJS",
+      "description": "Estoy muy contento de compartir que he completado con éxito el módulo de ReactJS...",
+      "datePublished": "2025-09-03T00:00:00+01:00",  
+      "image": "https://jaterli.com/images/blog/blog.academic_degree.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Jaime TL",
+        "url": "https://jaterli.com"
+      },
+      "mainEntity": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Certificado de ReactJS"
       }
-    ]
+    }
+  ]
 ---
 
 📅 03 de septiembre de 2025

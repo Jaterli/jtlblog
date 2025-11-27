@@ -7,37 +7,37 @@ heroImage: "/images/blog/blog.ley-dac8-criptomonedas.webp"
 category: "Blog"
 tags: [Criptomonedas]
 jsonLd: 
-    "@context": "https://schema.org"
-    "@graph": [
-      {
-        "@type": "BlogPosting",
-        "headline": "Cómo la DAC8 Impacta a Usuarios de Cripto",
-        "description": "Guía práctica sobre cómo la nueva normativa fiscal DAC8 afecta a los usuarios de criptomonedas en la UE, con ejemplos concretos de exchanges y wallets frías.",
-        "datePublished": "2024-12-19T00:00:00+01:00",
-        "dateModified": "2024-12-19T00:00:00+01:00",
-        "image": "https://jaterli.com/images/blog/blog.ley-dac8-criptomonedas.webp",
-        "author": {
-          "@type": "Person",
-          "name": "Jaterli",
-          "url": "https://jaterli.com"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Jaterli",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://jaterli.com/images/Logo-jtl-domain.png"
-          }
-        },
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://tudominio.com/blog/dac8-criptomonedas-escenarios"
-        },
-        "articleSection": "Criptomonedas, Fiscalidad",
-        "keywords": "DAC8, criptomonedas, fiscalidad, UE, impuestos, Bitcoin, Ethereum, wallet fría, exchange",
-        "articleBody": "La DAC8 es la nueva directiva fiscal europea que afecta a los usuarios de criptomonedas. Analizamos 3 escenarios reales: uso de exchanges fuera de la UE, wallets frías y cierre de cuentas, explicando las obligaciones fiscales de cada caso."
-      }
-    ]
+  "@context": "https://schema.org"
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Cómo la DAC8 Impacta a Usuarios de Cripto",
+      "description": "Guía práctica sobre cómo la nueva normativa fiscal DAC8 afecta a los usuarios de criptomonedas en la UE, con ejemplos concretos de exchanges y wallets frías.",
+      "datePublished": "2025-11-27T00:00:00+01:00",
+      "dateModified": "2025-11-27T00:00:00+01:00",
+      "image": "https://jaterli.com/images/blog/blog.ley-dac8-criptomonedas.webp",
+      "author": {
+        "@type": "Person",
+        "name": "Jaterli",
+        "url": "https://jaterli.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Jaterli",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://jaterli.com/images/Logo-jtl-domain.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://jaterli.com/blog/posts/202511/como-la-dac8-impacta-a-usuarios-de-cripto/"
+      },
+      "articleSection": "Criptomonedas, Fiscalidad",
+      "keywords": "DAC8, criptomonedas, fiscalidad, UE, impuestos, Bitcoin, Ethereum, wallet fría, exchange",
+      "articleBody": "La DAC8 es la nueva directiva fiscal europea que afecta a los usuarios de criptomonedas. Analizamos 3 escenarios reales: uso de exchanges fuera de la UE, wallets frías y cierre de cuentas, explicando las obligaciones fiscales de cada caso."
+    }
+  ]
 ---
 
 La **DAC8** es la nueva directiva fiscal europea que está a la vuelta de la esquina (con aplicación desde 2026), y está generando muchas dudas entre los usuarios de criptomonedas. Su objetivo es claro: que las ganancias con criptoactivos se declaren y tributen correctamente, equiparando este sector al financiero tradicional.
