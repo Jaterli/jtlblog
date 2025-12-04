@@ -5,12 +5,12 @@ description: "Me permite organizar y visualizar mis metas, además de ser una fu
 pubDate: "2025-03-13"
 heroImage: "/images/blog/blog.tasks.jpg"
 category: "Máster en Desarrollo Full Stack"
-tags: [progreso]
+tags: [Progreso]
 ---
 
 En mi constante búsqueda por mejorar mi sitio web y compartir mi viaje de aprendizaje y crecimiento, he desarrollado una nueva sección dedicada a mis **tareas y objetivos**. Esta funcionalidad no solo me permite organizar y visualizar mis metas, sino que también sirve como una fuente de motivación personal y una forma de inspirar a quienes visitan mi sitio.
 
-### **¿Por qué una Sección de Tareas Diarias?**
+### ¿Por qué una Sección de Tareas Diarias?
 
 La idea detrás de esta sección surgió de la necesidad de tener un espacio donde pudiera ver de manera tangible mi progreso. A menudo, en el día a día, es fácil perder de vista los pequeños logros que, sumados, representan un avance significativo. Con esta herramienta, puedo:
 
@@ -18,7 +18,7 @@ La idea detrás de esta sección surgió de la necesidad de tener un espacio don
 - **Visualizar mi progreso:** Ver cuántas tareas he completado y cuántas están pendientes.
 - **Mantener la motivación:** Recordar que cada tarea completada es un paso más hacia mis metas.
 
-### **Cómo Funciona la Sección**
+### Cómo Funciona la Sección
 
 La sección de tareas está diseñada para ser simple pero efectiva. Aquí te explico cómo la he desarrollado:
 
@@ -34,7 +34,7 @@ La sección de tareas está diseñada para ser simple pero efectiva. Aquí te ex
 4. **Accesibilidad y Semántica:**  
    Me aseguré de que la sección fuera accesible y semánticamente correcta. Por ejemplo, las tareas se muestran en una lista (`<ul>`), y el botón "Ver más" incluye un `aria-label` para mejorar la experiencia de usuarios con lectores de pantalla.
 
-### **Tecnologías Utilizadas**
+### Tecnologías Utilizadas
 
 - **Astro:** Para la estructura del sitio y la renderización de componentes.
 - **Tailwind CSS:** Para los estilos y diseño responsive.
@@ -42,13 +42,13 @@ La sección de tareas está diseñada para ser simple pero efectiva. Aquí te ex
 - **JavaScript:** Para la lógica de carga dinámica de tareas.
 - **HTML Semántico:** Para garantizar que el contenido sea accesible y bien estructurado.
 
-### **Desafíos y Aprendizajes**
+### Desafíos y Aprendizajes
 
 Uno de los desafíos más interesantes fue implementar la carga dinámica de tareas. Tuve que asegurarme de que la experiencia del usuario fuera fluida, incluso cuando se cargan más tareas. También aprendí la importancia de manejar errores de manera adecuada, mostrando mensajes claros en la interfaz si algo falla.
 
 Otro aprendizaje clave fue la importancia de la **semántica y la accesibilidad**. Aunque a veces es tentador priorizar el diseño, asegurarse de que el contenido sea accesible para todos los usuarios es fundamental.
 
-### **Reflexión Final**
+### Reflexión Final
 
 Esta sección no solo es una herramienta útil para mí, sino también una forma de compartir mi proceso de crecimiento con quienes visitan mi sitio. Ver mi progreso de manera visual me motiva a seguir adelante, y espero que también inspire a otros a perseguir sus metas con determinación.
 

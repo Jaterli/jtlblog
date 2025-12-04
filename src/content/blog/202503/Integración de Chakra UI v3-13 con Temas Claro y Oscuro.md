@@ -8,20 +8,20 @@ category: "Tutoriales"
 tags: [Tutorial, React, Chakra UI]
 ---
 
-### **Introducción**
+### Introducción
 
 Al intentar implementar el modo claro y oscuro en una aplicación de React utilizando **Chakra UI**, me encontré con algunas complicaciones. La mayor parte de la documentación disponible estaba orientada a la **versión 2**, y al actualizar a la **versión 3.13**, noté que habían introducido cambios significativos en la forma de manejar los temas. Componentes como `ColorModeProvider`, `useColorMode`, `LightMode`, `DarkMode` y `useColorModeValue` ya no estaban disponibles, y en su lugar, Chakra UI ahora se integra con **`next-themes`** para gestionar los modos de color.
 
 Tras investigar y experimentar, logré dar con la solución adecuada para implementar el modo claro y oscuro en la versión 3.13. Con la iniciativa de ayudar a quienes se topen con el mismo problema, decidí redactar este pequeño tutorial. Aquí te guiaré paso a paso para integrar Chakra UI v3.13 con los temas claro y oscuro, destacando los cambios clave y proporcionando ejemplos prácticos para que puedas aplicarlo en tu proyecto sin complicaciones. ¡Vamos a ello! 😊
 
 
-### **Tutorial: Integración de Chakra UI v3.13 con Temas Claro y Oscuro**
+### Tutorial: Integración de Chakra UI v3.13 con Temas Claro y Oscuro
 
 En este tutorial, te guiaré paso a paso para integrar **Chakra UI v3.13** en una aplicación React, junto con la configuración de temas claro y oscuro utilizando **`next-themes`**. Además, destacaré los cambios importantes con respecto a versiones anteriores de Chakra UI.
 
 ---
 
-### **1. Cambios en Chakra UI v3.13**
+### 1. Cambios en Chakra UI v3.13
 
 En la versión 3.13 de Chakra UI, se han realizado cambios significativos en la implementación del modo de color (color mode). Aquí están los principales cambios:
 
@@ -39,7 +39,7 @@ En la versión 3.13 de Chakra UI, se han realizado cambios significativos en la 
 
 ---
 
-### **2. Requisitos previos**
+### 2. Requisitos previos
 
 Asegúrate de tener instalado lo siguiente:
 
@@ -49,7 +49,7 @@ Asegúrate de tener instalado lo siguiente:
 
 ---
 
-### **3. Instalación de dependencias**
+### 3. Instalación de dependencias
 
 Instala las dependencias necesarias:
 
@@ -62,9 +62,9 @@ npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion next-t
 
 ---
 
-### **4. Configuración de Chakra UI y `next-themes`**
+### 4. Configuración de Chakra UI y `next-themes`
 
-#### **Paso 1: Generar el snippet de color mode**
+#### Paso 1: Generar el snippet de color mode
 
 Ejecuta el siguiente comando para generar automáticamente los componentes y hooks necesarios para el modo de color:
 
@@ -78,7 +78,7 @@ Esto generará un archivo en `src/components/ui/color-mode` con los siguientes c
 - `useTheme`: Hook para acceder al tema actual y cambiarlo.
 - `useColorModeValue`: Hook para obtener valores dinámicos basados en el tema.
 
-#### **Paso 2: Configura `ChakraProvider` y `ThemeProvider`**
+#### Paso 2: Configura `ChakraProvider` y `ThemeProvider`
 
 En tu archivo de entrada principal (`main.tsx` o `index.tsx`), configura `ChakraProvider` y `ThemeProvider`:
 
@@ -104,9 +104,9 @@ root.render(
 
 ---
 
-### **5. Usar los componentes y hooks generados**
+### 5. Usar los componentes y hooks generados
 
-#### **Paso 1: Usar `ColorModeButton`**
+#### Paso 1: Usar `ColorModeButton`
 
 El componente `ColorModeButton` se genera automáticamente y puedes usarlo en tu aplicación para alternar entre los temas claro y oscuro.
 
@@ -135,7 +135,7 @@ function App() {
 }
 ```
 
-#### **Paso 2: Usar `useTheme`**
+#### Paso 2: Usar `useTheme`
 
 El hook `useTheme` reemplaza a `useColorMode` y te permite acceder al tema actual y cambiarlo.
 
@@ -156,7 +156,7 @@ function MyComponent() {
 }
 ```
 
-#### **Paso 3: Usar `useColorModeValue`**
+#### Paso 3: Usar `useColorModeValue`
 
 El hook `useColorModeValue` te permite definir valores dinámicos basados en el tema actual.
 
@@ -175,7 +175,7 @@ function MyComponent() {
 }
 ```
 
-#### **Paso 4: Forzar un tema específico**
+#### Paso 4: Forzar un tema específico
 
 En lugar de usar `LightMode` y `DarkMode`, ahora debes usar `className="light"` o `className="dark"` para forzar un tema específico.
 
@@ -205,7 +205,7 @@ function App() {
 
 ---
 
-### **6. Ejecutar la aplicación**
+### 6. Ejecutar la aplicación
 
 Finalmente, ejecuta tu aplicación:
 
@@ -215,7 +215,7 @@ npm run dev
 
 ---
 
-### **7. Resultado**
+### 7. Resultado
 
 - **Tema Claro**: Fondo blanco, texto oscuro, botones azules.
 - **Tema Oscuro**: Fondo oscuro, texto claro, botones azul oscuro.
@@ -223,7 +223,7 @@ npm run dev
 
 ---
 
-### **8. Consideraciones adicionales**
+### 8. Consideraciones adicionales
 
 - **Compatibilidad**: Asegúrate de que `next-themes` esté correctamente configurado para evitar problemas de hidratación en SSR (Server-Side Rendering).
 - **Personalización**: Puedes extender los temas de Chakra UI usando `extendTheme` si necesitas más personalización.

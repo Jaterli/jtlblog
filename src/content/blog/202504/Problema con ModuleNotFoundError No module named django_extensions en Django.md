@@ -5,7 +5,7 @@ description: "Cómo conseguí solucionar este error de forma rápida y sencilla.
 pubDate: "2025-04-08"
 heroImage: "/images/blog/blog.error.jpg"
 category: "Solución de errores"
-tags: [progreso, Django, Python]
+tags: [Progreso, Django, Python, Solución de Errores]
 ---
 
 

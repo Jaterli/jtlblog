@@ -5,7 +5,7 @@ description: "Configura el acceso SSH a GitHub para operar con tus repositorios 
 pubDate: "2025-08-22"
 heroImage: "/images/blog/blog.github+ssh.avif"
 category: "Blog"
-tags: [Tutorial, GitHub, Git]
+tags: [Tutoriales, GitHub, Git]
 ---
 
 Este tutorial te guiará paso a paso en el proceso de configurar acceso SSH a tus repositorios de GitHub, eliminando la necesidad de usar contraseñas o tokens de acceso personal con cada operación. Aprenderás a generar claves SSH seguras (incluyendo el moderno algoritmo Ed25519), configurar los permisos adecuados, agregar tu clave a GitHub y solucionar problemas comunes.

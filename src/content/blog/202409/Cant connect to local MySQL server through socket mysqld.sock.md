@@ -5,7 +5,7 @@ description: "Este documento recopila todas las posibles soluciones a este error
 pubDate: "2024-09-24"
 heroImage: "/images/blog/blog.error.jpg"
 category: "Solución de errores"
-tags: [blog, MySQL, Frameworks, Django]
+tags: [MySQL, Frameworks, Django]
 ---
 
 
@@ -32,7 +32,7 @@ Es al ejecutar el punto 4 donde generalmente puede aparecer el error de conexió
 
 Te recomiendo hacer las siguientes comprobaciones de forma ordenada y, después de cada una, ejecutar el comando `python manage.py migrate` dentro de tu entorno virtual para ver si se resuelve el error.
 
-### **1. Verificación del servicio MySQL**
+### 1. Verificación del servicio MySQL
 
 Verifica si el servicio MySQL está en ejecución. Si no está corriendo, intenta iniciarlo o reiniciarlo:
 
@@ -51,7 +51,7 @@ sudo systemctl restart mysql
 
 ---
 
-### **2. Cambiar `localhost` por `127.0.0.1` en la configuración de Django**
+### 2. Cambiar `localhost` por `127.0.0.1` en la configuración de Django
 
 Al configurar Django para usar MySQL, es recomendable especificar `127.0.0.1` en lugar de `localhost` en el archivo `settings.py`, ya que esto evita problemas relacionados con el socket.
 
@@ -70,7 +70,7 @@ DATABASES = {
 
 ---
 
-### **3. Desactivar el alias de Python**
+### 3. Desactivar el alias de Python
 
 A veces, un alias de Python puede sobrescribir el binario de Python en tu entorno virtual, lo que puede provocar conflictos al ejecutar comandos de Django. Desactiva el alias de Python:
 
@@ -86,7 +86,7 @@ which python
 
 ---
 
-### **4. Verificar el archivo de configuración `my.cnf` o `mysqld.cnf`**
+### 4. Verificar el archivo de configuración `my.cnf` o `mysqld.cnf`
 
 Asegúrate de que el archivo de configuración de MySQL tenga la configuración adecuada para el socket. Abre y revisa el archivo:
 
@@ -105,7 +105,7 @@ Verifica que el directorio exista y que sea accesible.
 
 ---
 
-### **5. Reparar los permisos del socket**
+### 5. Reparar los permisos del socket
 
 Asegúrate de que el socket tenga los permisos adecuados:
 
@@ -115,7 +115,7 @@ sudo chmod 777 /var/run/mysqld/mysqld.sock
 
 ---
 
-### **6. Crear el archivo de socket manualmente**
+### 6. Crear el archivo de socket manualmente
 
 Si el archivo del socket no existe, crea el directorio y ajusta los permisos correspondientes:
 
@@ -132,7 +132,7 @@ sudo systemctl restart mysql
 
 ---
 
-### **7. Reinstalar MySQL (si es necesario)**
+### 7. Reinstalar MySQL (si es necesario)
 
 Si ninguna de las soluciones anteriores funciona, puedes intentar reinstalar MySQL:
 
@@ -150,7 +150,7 @@ Si ninguna de las soluciones anteriores funciona, puedes intentar reinstalar MyS
 
 ---
 
-### **8. Comprobar los permisos del socket y directorios**
+### 8. Comprobar los permisos del socket y directorios
 
 Verifica que el directorio y el archivo del socket tengan los permisos correctos:
 
@@ -160,13 +160,13 @@ sudo chown mysql:mysql /var/run/mysqld/mysqld.sock
 
 ---
 
-### **9. Verificar que MySQL esté configurado para escuchar en el socket**
+### 9. Verificar que MySQL esté configurado para escuchar en el socket
 
 Asegúrate de que MySQL esté configurado para usar el socket `/var/run/mysqld/mysqld.sock`. Si no lo está, ajusta el archivo de configuración de MySQL.
 
 ---
 
-## **Conclusión**
+## Conclusión
 
 Después de probar múltiples soluciones, las que finalmente resolvieron mi problema de conexión con MySQL fueron:  
 **Desactivar el alias de Python** y **Cambiar `localhost` por `127.0.0.1` en la configuración de Django**.

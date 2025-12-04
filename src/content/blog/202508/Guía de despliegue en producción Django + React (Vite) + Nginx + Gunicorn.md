@@ -5,7 +5,7 @@ description: "Cómo montar en producción una aplicación con Django (backend) y
 pubDate: "2025-08-22"
 heroImage: "/images/blog/blog.tutorial.jpg"
 category: "Blog"
-tags: [Tutorial, Linux, GitHub, Despliegue]
+tags: [Tutoriales, Linux, GitHub, Despliegue]
 
 ---
 He creado este tutorial para explicar cómo montar en producción una aplicación con **Django (backend)** y **React (frontend con Vite)**, servida con **Nginx** y **Gunicorn**, en un servidor Linux (ej. Ubuntu en un VPS o droplet).

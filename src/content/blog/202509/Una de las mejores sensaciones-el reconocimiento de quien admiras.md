@@ -5,7 +5,7 @@ description: "Si quieres que tu web destaque en Google y otros motores de búsqu
 pubDate: "2025-09-05"
 heroImage: "/images/blog/blog.JSON-LD.webp"
 category: "Blog"
-tags: [Tutorial, SEO]
+tags: [Tutoriales, SEO]
 ---
 
 

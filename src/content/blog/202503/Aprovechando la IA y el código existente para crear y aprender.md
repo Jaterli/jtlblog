@@ -5,7 +5,7 @@ description: "Aprendo, creo y avanzo más rápido gracias a la inteligencia arti
 pubDate: "2025-03-14"
 heroImage: "/images/blog/blog.ia-source-code.jpg"
 category: "Máster en Desarrollo Full Stack"
-tags: [progreso, IA]
+tags: [Progreso, IA]
 ---
 
 

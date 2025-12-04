@@ -5,7 +5,7 @@ description: "La importancia de tener una mentalidad proactiva, compromiso y des
 pubDate: "2025-03-16"
 heroImage: "/images/blog/blog.crecimiento-empresarial.jpg"
 category: "Máster en Desarrollo Full Stack"
-tags: [progreso, motivación, colaboración]
+tags: [Progreso, Motivación, Colaboración]
 ---
 
 Además de ejecutar los proyectos asignados por la empresa o por cargos de rango superior, considero fundamental comprender en profundidad el funcionamiento de la organización dentro del ámbito en el que puedo aportar valor. Este conocimiento me permite identificar oportunidades para aplicar mis habilidades técnicas y experiencia en el desarrollo de aplicaciones informáticas, con el objetivo de impulsar el crecimiento y la eficiencia de la empresa.  

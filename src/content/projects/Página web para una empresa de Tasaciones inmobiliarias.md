@@ -32,7 +32,7 @@ jsonLd:
       "@id": "https://jaterli.com/proyectos/entry/pagina-web-para-una-empresa-de-tasaciones-inmobiliarias/"
 ---
 
-### **Nuevo proyecto web finalizado**
+### Nuevo proyecto web finalizado
 
 Presento la nueva página web de **Ataciara**, desarrollada íntegramente en **WordPress**, con un diseño claro, profesional y adaptado a la identidad de la empresa.
 
@@ -62,7 +62,7 @@ Puedes ver el resultado final visitando 👉 **[ataciara.com](https://ataciara.c
 
 ---
 
-### **¿Quieres una web profesional, optimizada y adaptada a tu negocio?**
+### ¿Quieres una web profesional, optimizada y adaptada a tu negocio?
 
 Diseño y desarrollo sitios web en WordPress que reflejan la esencia de tu marca, con **buen rendimiento, usabilidad y posicionamiento SEO.**
 📩 **[Contáctame y hablemos de tu proyecto](/contacto/)**
