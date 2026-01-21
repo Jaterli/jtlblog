@@ -89,7 +89,7 @@ Con el tiempo he aprendido a:
 
 ## Resultados: 173% de rentabilidad en menos de dos años
 
-Entre abril de 2024 y enero de 2025, mi cartera ha alcanzado un **incremento del 173% sobre el capital invertido**.
+Entre abril de 2024 y enero de 2026, mi cartera ha alcanzado un **incremento del 173% sobre el capital invertido**.
 
 A día de hoy, y con poco menos de dos años desde la apertura de mi cartera, considero que es un logro muy significativo, especialmente teniendo en cuenta mi nivel de experiencia.
 
@@ -115,7 +115,7 @@ Este camino me ha demostrado que **invertir es tanto un viaje financiero como pe
 
 ### 📈 Evolución de la cartera
 
-📸 [Gráfica de evolución de la cartera](/images/others/cartera-de-valores-2024-2025.png)
+📸 [Gráfica de evolución de la cartera](/images/others/cartera-de-valores-2024-2026.png)
 
 ---
 
