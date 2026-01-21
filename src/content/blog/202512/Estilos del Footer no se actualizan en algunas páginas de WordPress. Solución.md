@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "Wordpress: Los estilos del Footer no se actualizan en algunas páginas: Cómo lo Solucioné"
+title: "Los estilos del Footer no se actualizan en algunas páginas de Wordpress: Cómo lo Solucioné"
 description: "Mi experiencia resolviendo el problema de los estilos del footer que no se actualizaban en todas las páginas de WordPress, y las soluciones que pueden ayudarte."
 pubDate: "2025-12-04"
 heroImage: "/images/blog/blog.wordpress.jpg"
@@ -11,7 +11,7 @@ jsonLd:
   "@graph": [
     {
       "@type": "BlogPosting",
-      "headline": "Los estilos del Footer no se actualizan en Algunas Páginas de WordPress: Cómo lo Solucioné",
+      "headline": "Los estilos del Footer no se actualizan en algunas páginas de WordPress: Cómo lo Solucioné",
       "description": "Mi experiencia resolviendo el problema de CSS del footer que no se actualizaba en todas las páginas de WordPress, y las soluciones que pueden ayudarte.",
       "author": {
         "@type": "Person",
