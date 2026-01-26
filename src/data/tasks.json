@@ -13,11 +13,17 @@
       "endDay": ""
     }, 
     {
-      "description": "Sección de comentarios en la web",
-      "details": "Ya sea en cada entrada del blog o a nivel general. Sería necesario introducir un email.",
-      "startDay": "",
-      "endDay": ""
+      "description": "Fase final del proyecto AngoTest",
+      "details": "Ya queda nada para terminar este proyecto, al final será mucho más completo de lo planificado cuando lo empecé.",
+      "startDay": "2025-09-25",
+      "endDay": "2026-02-15"
     },     
+    {
+      "description": "Fase final de proyecto AngoTest",
+      "details": "He desarrollado una web para Ataciara, una empresa de tasaciones inmobiliarias.",
+      "startDay": "2025-10-13",
+      "endDay": "2025-10-27"
+    },          
     {
       "description": "Nueva página web con Wordpress",
       "details": "He desarrollado una web para Ataciara, una empresa de tasaciones inmobiliarias.",

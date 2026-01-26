@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "De localStorage a Cookies HttpOnly: Mejorando la Seguridad en Angotest"
+title: "De localStorage a Cookies HttpOnly"
 description: "Cómo migré de tokens en localStorage a cookies HttpOnly en mi aplicación Angular + Go, y por qué es crucial para aplicaciones educativas públicas."
 pubDate: "2026-01-22"
 heroImage: "/images/blog/blog.cyber-security.jpg"
