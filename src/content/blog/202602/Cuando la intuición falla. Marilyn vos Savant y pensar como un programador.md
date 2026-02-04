@@ -53,7 +53,7 @@ En los años 90 recibió una pregunta basada en el concurso televisivo *Let’s 
 
 La mayoría de la gente responde de inmediato:
 
-> “Da igual, ahora es 50/50”.
+> Da igual, ahora es 50/50.
 
 Marilyn respondió lo contrario:  
 **conviene cambiar**, porque hacerlo duplica las probabilidades de ganar.
@@ -197,7 +197,7 @@ SINO
       → Pedir autenticación
   SINO
     → Iniciar test como invitado
-````
+```
 
 No es corto.
 No es especialmente bonito.
@@ -230,8 +230,8 @@ es lo mismo que **aceptar una invitación sabiendo quién inició el test y cóm
 
 La intuición humana tiende a comprimir:
 
-> “Dos opciones → 50/50”
-> “Test completado → mostrar resultados”
+> Dos opciones → 50/50   
+> Test completado → mostrar resultados
 
 Pero el software no puede permitirse esa simplificación.
 
