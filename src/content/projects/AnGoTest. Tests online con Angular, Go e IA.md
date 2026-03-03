@@ -42,6 +42,40 @@ jsonLd:
 **AnGoTest** es un proyecto personal que nace con un doble objetivo: profundizar de forma práctica en tecnologías modernas como Angular y Go, y diseñar un producto real con potencial comercial. Más que una simple aplicación de tests, AnGoTest representa un ejercicio completo de arquitectura full-stack, pensado desde el inicio como una solución escalable, profesional y lista para ofrecerse a instituciones educativas, empresas o comunidades que necesiten una plataforma avanzada de evaluación online.
 
 
+<div class="flex flex-col items-center justify-center my-8 space-y-4">
+   
+  <div class="w-full max-w-3xl mx-auto mt-8">
+    <a href="https://www.youtube.com/watch?v=XZ-KDlTW6d8" target="_blank" class="block group">
+      <div class="relative overflow-hidden rounded-2xl shadow-2xl transition-transform duration-300 group-hover:scale-105">
+        <img src="https://img.youtube.com/vi/XZ-KDlTW6d8/maxresdefault.jpg" alt="Demo de AnGoTest - Experiencia de Usuario" class="w-full h-auto">
+        <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 group-hover:bg-opacity-50 transition-all duration-300">
+          <div class="flex items-center justify-center w-20 h-20 bg-red-600 rounded-full shadow-xl">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <p class="mt-4 text-xl font-semibold text-center text-gray-800 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+        👤 Ver demo: Experiencia de Usuario (Frontend + Flujo de Tests)
+      </p>
+    </a>
+  </div>
+   
+  <div class="w-full max-w-3xl mx-auto mt-4">
+    <div class="relative overflow-hidden rounded-2xl shadow-xl bg-gray-100 dark:bg-gray-800 p-8 text-center opacity-75">
+      <p class="text-xl font-medium text-gray-600 dark:text-gray-400">
+        🛠️ Demo del Panel de Administración
+      </p>
+      <p class="mt-2 text-gray-500 dark:text-gray-500">
+        (Próximamente disponible)
+      </p>
+    </div>
+  </div>
+</div>
+
+---   
+
 ### El Origen del Nombre
 El nombre **AnGoTest** no es casualidad, sino que refleja la esencia tecnológica y funcional del proyecto:
 - **An** - Hace referencia a **Angular**, el potente framework de frontend con el que está construida toda la interfaz de usuario.
@@ -49,13 +83,6 @@ El nombre **AnGoTest** no es casualidad, sino que refleja la esencia tecnológic
 - **Test** - Define su utilidad principal: la creación, gestión y realización de **tests educativos**.
 
 Esta combinación tecnológica no solo da nombre al proyecto, sino que representa su filosofía: unir lo mejor del desarrollo frontend moderno con la eficiencia y escalabilidad del backend en Go.
-
-
-- 👤 **Experiencia de Usuario (Frontend + Flujo de Tests):**  
-  [Ver demo en YouTube](https://www.youtube.com/watch?v=ttP1WObe4Ns)
-
-- 🛠️ **Panel de Administración (Dashboard + Gestión avanzada):**  
-  *(Demo próximamente disponible)*
 
 ---
 ## De la Idea a la Realidad: Un Producto Evolucionado
@@ -279,5 +306,13 @@ Este proyecto ha sido un viaje increíblemente enriquecedor que ha superado toda
 4.  **Construir una interfaz de usuario dinámica y reactiva** con las nuevas señales de Angular, mejorando el rendimiento y la experiencia de desarrollo.
 5.  **Integrar y controlar una API de Inteligencia Artificial**, creando un flujo de trabajo que no solo consume el servicio, sino que también gestiona el resultado, lo valida y lo integra en el modelo de datos existente.
 
-**AnGoTest** es, sin duda, el proyecto más completo que he realizado hasta la fecha. Representa no solo el dominio técnico de un stack moderno (Angular + Go), sino también la capacidad de **diseñar, planificar y ejecutar** un producto software con principios de arquitectura limpia, seguridad y escalabilidad. Estoy orgulloso de cómo cada pieza encaja para formar un producto funcional y con un alto valor educativo, y emocionado por las posibilidades de crecimiento que tiene por delante.
+**AnGoTest** es, uno de los proyectos más completos que he realizado hasta la fecha. Representa no solo el dominio técnico de un stack moderno (Angular + Go), sino también la capacidad de **diseñar, planificar y ejecutar** un producto software con principios de arquitectura limpia, seguridad y escalabilidad. Estoy orgulloso de cómo cada pieza encaja para formar un producto funcional y con un alto valor educativo, y emocionado por las posibilidades de crecimiento que tiene por delante.
 
+<div class="text-center">
+  <a href="https://angotest.com" target="_blank" class="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl">
+    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+    </svg>
+    Visitar AnGoTest
+  </a>
+</div> 

@@ -4,7 +4,7 @@ description: "Plataforma en Django + React que servirá como área privada para 
 pubDate: "2025-02-17"
 heroImage: "/images/proyectos/projects.React-Django-SQLite.png"
 badge: "Finalizado"
-tags: [Python, React, Django]
+tags: [Python, React, Django, "Bootstrap"]
 jsonLd: 
   "@context": "https://schema.org"
   "@type": "SoftwareApplication"
@@ -19,7 +19,7 @@ jsonLd:
   image: "https://www.jaterli.com/images/proyectos/React-Django-SQLite.png"
   datePublished: "2025-02-17"
   inLanguage: "es"
-  keywords: ["Django", "React", "Python", "Gestión de traductores", "Consultas personalizadas"]
+  keywords: ["Django", "React", "Python", "Bootstrap", "Gestión de traductores", "Consultas personalizadas"]
   mainEntityOfPage:
     "@type": "WebPage"
     "@id": "https://jaterli.com/proyectos/entry/plataforma-de-gestion-para-traductores-con-react-y-django/"
@@ -98,6 +98,7 @@ La aplicación está diseñada para ser **totalmente responsive**, lo que garant
 ### Frontend (React + TypeScript)
 - **React**: Biblioteca de JavaScript para construir interfaces de usuario interactivas.
 - **TypeScript**: Añade tipado estático para mejorar la calidad y mantenibilidad del código.
+- **Bootstrap**: Framework CSS para crear interfaces responsivas y modernas con componentes prediseñados y sistema de rejilla.
 - **Componentes modulares**: Interfaz dividida en componentes reutilizables para facilitar el mantenimiento y la escalabilidad.
 - **Llamadas a la API**: Servicios para interactuar con el backend de Django.
 

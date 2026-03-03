@@ -13,16 +13,16 @@
       "endDay": ""
     }, 
     {
-      "description": "Fase final del proyecto AngoTest",
-      "details": "Ya queda nada para terminar este proyecto, al final será mucho más completo de lo planificado cuando lo empecé.",
-      "startDay": "2025-09-25",
-      "endDay": "2026-02-15"
-    },     
+      "description": "Evaluación Angular superada",
+      "details": "Acabo de superar la prueba de evaluación en ANGULAR y he optenido la certificación.",
+      "startDay": "2026-03-02",
+      "endDay": "2026-03-02"
+    },      
     {
-      "description": "Fase final de proyecto AngoTest",
-      "details": "He desarrollado una web para Ataciara, una empresa de tasaciones inmobiliarias.",
-      "startDay": "2025-10-13",
-      "endDay": "2025-10-27"
+      "description": "AngoTest terminado y desplegado",
+      "details": "Proyecto completado, mucho más completo y robusto de lo proyectado inicialmente.",
+      "startDay": "2025-09-25",
+      "endDay": "2026-02-27"
     },          
     {
       "description": "Nueva página web con Wordpress",
