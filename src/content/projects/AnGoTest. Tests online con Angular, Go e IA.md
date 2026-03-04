@@ -62,16 +62,25 @@ jsonLd:
     </a>
   </div>
    
-  <div class="w-full max-w-3xl mx-auto mt-4">
-    <div class="relative overflow-hidden rounded-2xl shadow-xl bg-gray-100 dark:bg-gray-800 p-8 text-center opacity-75">
-      <p class="text-xl font-medium text-gray-600 dark:text-gray-400">
+
+  <div class="w-full max-w-3xl mx-auto mt-8">
+    <a href="https://youtu.be/E2Lk8xWsVjY" target="_blank" class="block group">
+      <div class="relative overflow-hidden rounded-2xl shadow-2xl transition-transform duration-300 group-hover:scale-105">
+        <img src="https://img.youtube.com/vi/E2Lk8xWsVjY/maxresdefault.jpg" alt="Demo de AnGoTest - Panel de Administración" class="w-full h-auto">
+        <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 group-hover:bg-opacity-50 transition-all duration-300">
+          <div class="flex items-center justify-center w-20 h-20 bg-red-600 rounded-full shadow-xl">
+            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <p class="mt-4 text-xl font-semibold text-center text-gray-800 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
         🛠️ Demo del Panel de Administración
       </p>
-      <p class="mt-2 text-gray-500 dark:text-gray-500">
-        (Próximamente disponible)
-      </p>
-    </div>
+    </a>
   </div>
+
 </div>
 
 ---   

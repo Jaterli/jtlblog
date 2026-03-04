@@ -4,7 +4,7 @@ description: "He desarrollado EasyCryptoBuy, una plataforma de comercio electró
 pubDate: "2025-07-04"
 heroImage: "/images/proyectos/projects.easycryptobuy.jpg"
 badge: "Finalizado"
-tags: [Web3, Wagmi, SmartContracts, Blockchain, Metamask, Tokens ERC20, React, Django, Chakra UI, Python, Typescript]
+tags: [Web3, Wagmi, SmartContracts, Blockchain, Metamask, Tokens ERC20, React, Django, PostgreSQL, Chakra UI, Python, Typescript]
 jsonLd:
     "@context": "https://schema.org"
     "@graph": [
