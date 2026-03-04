@@ -3,7 +3,6 @@ title: "Comercio Electrónico con Pagos Blockchain"
 description: "He desarrollado EasyCryptoBuy, una plataforma de comercio electrónico con integración nativa de pagos en blockchain."
 pubDate: "2025-07-04"
 heroImage: "/images/proyectos/projects.easycryptobuy.jpg"
-badge: "Finalizado"
 tags: [Web3, Wagmi, SmartContracts, Blockchain, Metamask, Tokens ERC20, React, Django, PostgreSQL, Chakra UI, Python, Typescript]
 jsonLd:
     "@context": "https://schema.org"

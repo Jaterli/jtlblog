@@ -3,7 +3,6 @@ title: "Token ERC-20 con Mint, Burn y un límite de suministro total"
 description: "Ejercicio sencillo de smart contract basado en el estándar ERC-20."
 pubDate: "2024-08-29"
 heroImage: "/images/proyectos/projects.Solidity-ERC20.png"
-badge: "Finalizado"
 tags: [Solidity]
 ---
 

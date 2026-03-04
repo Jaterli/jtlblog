@@ -3,7 +3,6 @@ title: "Desarrollo de Web Corporativa en WordPress"
 description: "Desarrollo de una web corporativa para una empresa de traducción e interpretación, superando los requisitos del módulo de WordPress del máster Full Stack."
 pubDate: "2025-08-11"
 heroImage: "/images/proyectos/projects.wordpress.jpg"
-badge: "Finalizado"
 tags: [Wordpress]
 jsonLd: 
     "@context": "https://schema.org"
