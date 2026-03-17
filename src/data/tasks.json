@@ -1,17 +1,17 @@
 {
-  "tasks": [  
-    {
-      "description": "Búsqueda de empleo",
-      "details": "Actualmente, me encuentro en búsqueda activa de oportunidades laborales mientras fortalezco mis conocimientos en desarrollo web a través de la creación y ejecución de proyectos prácticos.",
-      "startDay": "2025-01-01",
-      "endDay": ""
-    },      
+  "tasks": [       
     {
       "description": "Generación de Snippets para Redes Sociales con la api de ChatGPT",
       "details": "Generar hilos de Twitter a partir de un post, crear resúmenes atractivos para LinkedIn, proponer hashtags relevantes.",
       "startDay": "",
       "endDay": ""
     }, 
+    {
+      "description": "Tareas CSS Avanzado",
+      "details": "Desarrollo de 2 Header Hero con HTML, SCSS y JS Vanilla.",
+      "startDay": "2026-03-12",
+      "endDay": "2026-03-09"
+    },         
     {
       "description": "Evaluación Angular superada",
       "details": "Acabo de superar la prueba de evaluación en ANGULAR y he optenido la certificación.",
