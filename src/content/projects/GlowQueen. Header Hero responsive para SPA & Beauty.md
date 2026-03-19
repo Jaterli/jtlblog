@@ -15,7 +15,7 @@ jsonLd:
   "url": "https://jaterli.com/proyectos/entry/glowqueen-header-spa-css-avanzado"
   "author": {
     "@type": "Person",
-    "name": "Jaime TL"
+    "name": "Jaterli"
   }
   "datePublished": "2026-03-09"
   "programmingLanguage": [

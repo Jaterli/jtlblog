@@ -3,7 +3,7 @@ title: "GathSession: Header Hero responsive para Comunidades"
 description: "Desarrollo de un header-hero con menú hamburguesa, fiel al diseño Figma. Implementación de SASS, sistema de capas y diseño responsive."
 pubDate: "2026-03-17"
 heroImage: "/images/proyectos/projects.gathsessions.webp"
-tags: [HTML5, CSS3, SASS, Figma, JavaScript, Diseño Web, Responsive Design, CSS Grid, Flexbox, Menú Hamburguesa, Arquitectura CSS]
+tags: [HTML5, CSS3, SASS, Figma, JavaScript, Diseño Web, Responsive Design, CSS Grid, Flexbox, Menú Hamburguesa ]
 jsonLd:
   "@context": "https://schema.org"
   "@type": "SoftwareApplication"
@@ -15,7 +15,7 @@ jsonLd:
   "url": "https://jaterli.com/proyectos/entry/gathsession-header-comunidades-css-avanzado"
   "author": {
     "@type": "Person",
-    "name": "Jaime"
+    "name": "Jaterli"
   }
   "datePublished": "2026-03-17"
   "programmingLanguage": [

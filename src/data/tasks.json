@@ -7,7 +7,13 @@
       "endDay": ""
     }, 
     {
-      "description": "Tareas CSS Avanzado",
+      "description": "3ª Tarea CSS Avanzado",
+      "details": "Mini-site responsive con dos vistas.",
+      "startDay": "2026-03-18",
+      "endDay": "2026-03-19"
+    },      
+    {
+      "description": "1ª y 2ª Tarea de CSS Avanzado",
       "details": "Desarrollo de 2 Header Hero con HTML, SCSS y JS Vanilla.",
       "startDay": "2026-03-12",
       "endDay": "2026-03-09"
