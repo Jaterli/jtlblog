@@ -19,7 +19,8 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
   <div class="hero-content flex-col md:flex-row">
     {
       heroImage && (
-        <div class="relative w-full md:w-[13rem] aspect-video rounded-lg overflow-hidden">
+        <div class="relative w-full md:w-[13rem]">
+          <div class="aspect-video rounded-lg overflow-hidden">
             <a href={url}>
               <Image
                 src={heroImage}
@@ -29,6 +30,7 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
                 class="w-full h-full object-cover"
               />
             </a>
+          </div>
           {badge && (
             <div class="absolute inset-0 flex items-center justify-center">
               <div class="badge badge-neutral text-lg md:text-sm rounded -rotate-6">{badge}</div>
