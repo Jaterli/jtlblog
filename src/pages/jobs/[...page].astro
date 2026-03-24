@@ -64,7 +64,7 @@ const { page } = Astro.props as { page: Page };
               endDate={entry.data.endDate}
               badge={entry.data.badge}
               details={entry.data.details}
-              url={"/jobs/entry/" + generateSlug(entry.slug)} // crea el slug basado en el nombre del fichero md
+              url={"/jobs/entry/" + generateSlug(entry.id)} // crea el slug basado en el nombre del fichero md
             />
             <div class="divider my-0" />
           </>

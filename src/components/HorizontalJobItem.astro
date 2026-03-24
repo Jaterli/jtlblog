@@ -21,24 +21,30 @@ const format_endDate = dayjs(endDate).format("DD/MM/YYYY")
   <div class="hero-content flex-col md:flex-row">
     {
       heroImage && (
-        <div class="w-full md:w-[13rem] aspect-video rounded-lg overflow-hidden">
-          <a href={url}>
-            <Image
-              src={heroImage}
-              width={750}
-              height={500}
-              alt={title}
-              class="w-full h-full object-cover"
-            />
-          </a>
+        <div class="relative w-full md:w-[13rem]">
+          <div class="aspect-video rounded-lg overflow-hidden">
+            <a href={url}>
+              <Image
+                src={heroImage}
+                width={750}
+                height={500}
+                alt={title}
+                class="w-full h-full object-cover"
+              />
+            </a>
+          </div>
+          {badge && (
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="badge badge-neutral text-lg md:text-sm rounded -rotate-6">{badge}</div>
+            </div>
+          )}
         </div>
       )
     }
+    
     <article class="grow w-full md:p-0">
       <a href={url}>
-        <h3>{title}
-          {badge && <div class="badge badge-neutral rounded my-2 ml-1">{badge}</div>}  
-        </h3>   
+        <h3>{title}</h3>   
         <p class="pb-2 opacity-90">
           <span class="text-1xl mr-1">{description}</span>
           <span class="text-xs opacity-70 italic">[{format_startDate} - {format_endDate}]</span>

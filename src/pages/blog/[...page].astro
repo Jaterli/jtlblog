@@ -6,6 +6,7 @@ import { getPostUrl } from "../../lib/getPostUrl";
 
 export async function getStaticPaths({ paginate }) {
   const all_posts = await getCollection("blog");
+ 
   all_posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   return paginate(all_posts, { pageSize: 10 });
 }
@@ -37,7 +38,6 @@ interface Page<T = any> {
 const { page } = Astro.props as { page: Page };
 ---
 
-
 <BaseLayout title="Blog de Desarrollo Web y Blockchain" description="Experiencias en desarrollo web y blockchain, tutoriales prácticos, soluciones técnicas para programadores y más." sideBarActiveItemID="blog">
   
   <article class="prose prose-lg">
@@ -64,7 +64,7 @@ const { page } = Astro.props as { page: Page };
               badge={post.data.badge}
               pubDate={post.data.pubDate}
               tags={post.data.tags}
-              url={getPostUrl(post.slug)} // crea el link basado en el nombre del fichero md
+              url={getPostUrl(post.id)} 
               target="_self"
             />
             <div class="divider my-0" />

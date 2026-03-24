@@ -1,10 +1,10 @@
 ---
-import { type ProjectSchema } from "../content/config";
+import type { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 
-export interface Props extends ProjectSchema {}
+export type Props = CollectionEntry<"projects">["data"];
 
 const {
   title,
@@ -23,23 +23,36 @@ import { Image } from "astro:assets";
 
 <BaseLayout title={title} description={description} image={heroImage}, ogType="article", jsonLd={jsonLd}>
   <article class="prose prose-lg prose-img:mx-auto">
-    {heroImage && <Image width={750} height={422} src={heroImage} alt={title} class="w-full mb-6" />}
-    <h1 class="title my-2">{title}</h1>
-    
-    <div class="mb-4">
-    <!-- {badge && <div class="badge badge-neutral rounded mr-2">{badge}</div>} -->
-    {
-      tags &&
-        tags.map((tag) => (
-          <a href={`/proyectos/tag/${tag.toLowerCase()}`} class="badge badge-outline mr-2 no-underline hover:bg-gray-500">
-            {tag}
-          </a>            
-        ))
-    }
-    </div>
+    {heroImage && (
+      <div class="relative w-full mb-6">
+        <Image width={750} height={422} src={heroImage} alt={title} class="w-full" />
+        {badge && (
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="badge badge-neutral rounded -rotate-6 shadow-lg text-lg px-4 py-1">
+              {badge}
+            </div>
+          </div>
+        )}
+      </div>
+    )}
+    <h1 class="title">{title}</h1> 
+
     {pubDate && <time class="italic opacity-70">{displayDate}</time>}
     <div class="divider my-2"></div>
     <slot />
     <div class="divider my-2"></div>
   </article>
+
+  <section>
+    <div class="mb-4 flex flex-wrap gap-2">
+    {
+      tags &&
+        tags.map((tag) => (
+          <a href={`/proyectos/tag/${tag.toLowerCase()}`} class="badge badge-outline">
+            {tag}
+          </a>            
+        ))
+    }
+    </div>    
+  </section>
 </BaseLayout>

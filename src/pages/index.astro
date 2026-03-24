@@ -87,7 +87,7 @@ const last_projects = projects.slice(0, 3);
           badge={post.data.badge}
           pubDate={post.data.pubDate}
           tags={post.data.tags}
-          url={getPostUrl(post.slug)}
+          url={getPostUrl(post.id)}
           target="_self"
         />
         <div class="divider my-0" />
@@ -106,7 +106,7 @@ const last_projects = projects.slice(0, 3);
           badge={project.data.badge}
           pubDate={project.data.pubDate}
           tags={project.data.tags}
-          url={"/proyectos/entry/" + generateSlug(project.slug)}
+          url={"/proyectos/entry/" + generateSlug(project.id)}
           target="_self"
         />
         <div class="divider my-0" />

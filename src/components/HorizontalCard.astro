@@ -3,18 +3,17 @@ import { Image } from "astro:assets";
 import dayjs from "dayjs";
 
 const { title, heroImage, description, badge, pubDate, tags, url} = Astro.props;
-//const tag_url = '/blog/tag/' //url.split("/").slice(0, -1).join("/") + "/tag";
 const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
-
 ---
 
 <div
   class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]"
 >
-    <div class="hero-content flex-col md:flex-row">
-      {
-        heroImage && (
-          <div class="w-full md:w-[13rem] aspect-video rounded-lg overflow-hidden">
+  <div class="hero-content flex-col md:flex-row">
+    {
+      heroImage && (
+        <div class="relative w-full md:w-[13rem]">
+          <div class="aspect-video rounded-lg overflow-hidden">
             <a href={url}>
               <Image
                 src={heroImage}
@@ -25,31 +24,34 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
               />
             </a>
           </div>
-        )
-      }
-      
-      <article class="grow w-full md:p-0">
-        <a href={url}>
-
-        <h3>{title}
-          {badge && <div class="badge badge-neutral rounded ml-1">{badge}</div>}  
-        </h3>
-        <p class="sm:py-1 py-3 opacity-90">
-          <span class="mr-1">{description}</span>
-          <span class="text-xs opacity-70 italic"> [{displayDate}]</span>
-        </p>
-        </a>
-        <div>
-        {
-          tags &&
-            tags.map((tag) => (
-              <a href={`/blog/tag/${tag.toLowerCase()}`} class="badge badge-outline mr-2 opacity-70 no-underline hover:bg-gray-500">
-                {tag}
-              </a>
-            ))
-        }
+          {badge && (
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="badge badge-neutral text-lg md:text-sm rounded -rotate-6">{badge}</div>
+            </div>
+          )}
         </div>
+      )
+    }
+      
+    <article class="grow w-full md:p-0">
+      <a href={url}>
 
-      </article>
-    </div>
+      <h3>{title}</h3>
+      <p class="sm:py-1 py-3 opacity-90">
+        <span class="mr-1">{description}</span>
+        <span class="text-xs opacity-70 italic"> [{displayDate}]</span>
+      </p>
+      </a>
+      <div class="flex flex-wrap gap-2">
+      {
+        tags &&
+          tags.map((tag) => (
+            <a href={`/blog/tag/${tag.toLowerCase()}`} class="badge badge-outline">
+              {tag}
+            </a>
+          ))
+      }
+      </div>
+    </article>
+  </div>
 </div>

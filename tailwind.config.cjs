@@ -32,8 +32,9 @@ module.exports = {
 				...require("daisyui/src/theming/themes")["light"],
 				"base-content" : "#323232ff", // font color
 				".badge-neutral": {
-						"background-color": "#000000",
+						"background-color": "#000000ce",
 						"color": "#ffffff",
+						"border": "1px solid #ffffff",
 					},
 				"base-200": "rgb(235, 235, 235)",
 				}
@@ -43,8 +44,13 @@ module.exports = {
 				...require("daisyui/src/theming/themes")["dark"],
 				"base-content" : "#eeeeeeff", // font color
 				".badge-neutral": {
-						"background-color": "#ffffff",
+						"background-color": "#ffffffce",
 						"color": "#000000",
+						"border": "1px solid #000000",
+					},
+				".badge": {
+					"line-height": "inherit",
+					"height": "auto",
 					},
 				"base-200": "rgb(9, 17, 27)",
 				},				

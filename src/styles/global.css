@@ -25,6 +25,16 @@ a.customlink:hover {
   opacity: unset;
 }
 
+a.badge {
+  text-decoration: none;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+a.badge:hover {
+  background-color: #8b8b8b63;
+}
+
 .time-line-container>div:last-child .education__time>.education__line {
   display: none;
 }

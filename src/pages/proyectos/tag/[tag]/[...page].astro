@@ -64,7 +64,7 @@ const params = Astro.params;
               badge={entry.data.badge}
               pubDate={entry.data.pubDate}
               tags={entry.data.tags}
-              url={"/proyectos/entry/" + generateSlug(entry.slug)} // crea el slug basado en el nombre del fichero md
+              url={"/proyectos/entry/" + generateSlug(entry.id)} // crea el slug basado en el nombre del fichero md
               target="_self"
             />
             <div class="divider my-0" />

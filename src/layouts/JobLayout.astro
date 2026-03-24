@@ -1,9 +1,9 @@
 ---
-import { type JobSchema } from "../content/config";
+import type { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
 import dayjs from "dayjs";
 
-export interface Props extends JobSchema {}
+export type Props = CollectionEntry<"jobs">["data"];
 
 const {
   title,
@@ -18,19 +18,23 @@ import { Image } from "astro:assets";
 
 const format_startDate = dayjs(startDate).format("DD/MM/YYYY")
 const format_endDate = dayjs(endDate).format("DD/MM/YYYY")
-
 ---
 
 <BaseLayout title={title} description={description} image={heroImage}>
   <article class="prose prose-lg prose-img:mx-auto">
-    {
-      heroImage && (
-        <Image width={750} height={422} src={heroImage} alt={title} class="w-full mb-6" />
-      )
-    }
-    <h1 class="title my-2">{title}
-      {badge && <div class="badge badge-neutral rounded my-2 hover:bg-gray-500">{badge}</div>}
-    </h1>
+    {heroImage && (
+      <div class="relative w-full mb-6">
+        <Image width={750} height={422} src={heroImage} alt={title} class="w-full" />
+        {badge && (
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="badge badge-neutral rounded -rotate-6 shadow-lg text-lg px-4 py-1">
+              {badge}
+            </div>
+          </div>
+        )}
+      </div>
+    )}
+    <h1 class="title">{title}</h1>
     <div>
       <span class="text-md italic opacity-70"> {format_startDate} - {format_endDate}</span>
     </div>
