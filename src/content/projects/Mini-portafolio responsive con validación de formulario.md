@@ -1,5 +1,4 @@
 ---
-badge: "Finalizado"
 title: "Adam Keyes Mini-portfolio responsive con validación de formulario"
 description: "Desarrollo de un mini-portafolio personal con diseño mobile-first, grid de proyectos con efectos hover, sección de habilidades y formulario de contacto con validación visual en tiempo real."
 pubDate: "2026-03-23"
