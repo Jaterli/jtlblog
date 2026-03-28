@@ -1,38 +1,77 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, cupcake;
+}
+/* Configuración de temas con CSS nativo */
+@theme {
+  --font-size-4xl: 2.8rem;
+  --font-size-4xl--line-height: 3.2rem;
+  --font-size-3xl: 2.4rem;
+  --font-size-3xl--line-height: 2.6rem;
+  --font-size-2xl: 2rem;
+  --font-size-2xl--line-height: 2.2rem;
+  --font-size-xl: 1.6rem;
+  --font-size-xl--line-height: 2rem;
+  
+  /* Colores personalizados */
+  --color-customlink-light: rgb(31, 86, 187);
+  --color-customlink-dark: rgb(152, 195, 230);
+}
 
+/* Variables CSS para los temas (alternativa a daisyui) */
 :root, [data-theme="light"] {
-  --color-customlink: rgb(31, 86, 187);
+  --color-customlink: var(--color-customlink-light);
+  --color-base-content: #323232ff;
+  --color-base-200: rgb(235, 235, 235);
 }
 
 [data-theme="dark"] {
-  --color-customlink: rgb(152, 195, 230);
+  --color-customlink: var(--color-customlink-dark);
+  --color-base-content: #eeeeeeff;
+  --color-base-200: rgb(9, 17, 27);
 }
 
-/* body {
-  font-size: 18px;
-} */
-
-/* Estilos base para el enlace personalizado */
-a.customlink {
-  /* color: var(--color-customlink); */
-  text-decoration: underline;
-  opacity: 0.9;
+/* Aplicar colores base */
+body {
+  color: var(--color-base-content);
+  background-color: var(--color-base-200);
 }
 
-a.customlink:hover {
-  opacity: unset;
+/* Badge styles personalizados (reemplazando daisyui) */
+.badge-neutral {
+  background-color: #000000ce;
+  color: #ffffff;
+  border: 1px solid #ffffff;
 }
 
-a.badge {
+[data-theme="dark"] .badge-neutral {
+  background-color: #ffffffce;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+.badge {
+  line-height: inherit;
+  height: auto;
   text-decoration: none;
   font-size: 0.85rem;
   opacity: 0.7;
 }
 
-a.badge:hover {
+.badge:hover {
   background-color: #8b8b8b63;
+}
+
+/* Tus estilos personalizados existentes */
+a.customlink {
+  text-decoration: underline;
+  opacity: 0.9;
+  color: var(--color-customlink);
+}
+
+a.customlink:hover {
+  opacity: unset;
 }
 
 .time-line-container>div:last-child .education__time>.education__line {
@@ -43,34 +82,34 @@ a.badge:hover {
   max-width: 100%;
 }
 
-.prose :where(blockquote):not(:where([class~="not-prose"], [class~="not-prose"] *)){
+.prose :where(blockquote):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   color: inherit;
   font-size: 0.9em;
 }
 
-.prose :where(h1), h1{
+.prose :where(h1), h1 {
   font-weight: 700;
 }
 
-.prose :where(h2), h2, .prose :where(h3), h3{
+.prose :where(h2), h2, .prose :where(h3), h3 {
   font-weight: 600;
-  /* padding: 10px 0px; */
 }
 
-.hero-content{
-  @apply px-0;
+.hero-content {
+  padding-left: 0;
+  padding-right: 0;
 }
 
-.g-recaptcha .div{
+.g-recaptcha .div {
   max-width: 100%;
 }
-.g-recaptcha iframe{
+.g-recaptcha iframe {
   max-width: 100%;
 }
 
 .quote {
-  font-size: 2.5em; /* Ajusta el tamaño de las comillas */
-  vertical-align: middle; /* Alinea verticalmente con el texto */
+  font-size: 2.5em;
+  vertical-align: middle;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -82,7 +121,7 @@ a.badge:hover {
 .text-xl, h4 {
   font-size: 1.2rem;
   line-height: 1.6rem;
-}  
+}
 
 .text-2xl, h3 {
   font-size: 1.5rem;

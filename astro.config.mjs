@@ -1,14 +1,14 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import netlify from "@astrojs/netlify";
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://jaterli.com',
   //base: '/jtlblog',
-  integrations: [mdx(), tailwind(), icon(), sitemap({
+  integrations: [mdx(), icon(), sitemap({
     // Escluye las páginas que cumplan con la condición
       filter: (page) => !page.includes('/blog/tag/')
   }) ],
@@ -27,7 +27,7 @@ export default defineConfig({
           pollInterval: 1000
         }
       }
-    }
+    },
+    plugins: [tailwindcss()],
   }
-
 });
