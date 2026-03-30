@@ -12,7 +12,7 @@ En el desarrollo de mi [marketplace con pagos en criptomonedas](/proyectos/entry
 
 ## El Problema con el Enfoque Anterior
 
-Mi primer listener ([versión anterior](/blog/posts/202504/escuchar-eventos-de-la-blockchain-en-django-confirmacion-automática-de-pagos-con-web3/ "Mi primer listener")) presentaba varias limitaciones:
+Mi primer listener ([versión anterior](/blog/posts/2025/04/escuchar-eventos-de-la-blockchain-en-django-confirmacion-automática-de-pagos-con-web3/ "Mi primer listener")) presentaba varias limitaciones:
 
 1. **Dependencia crítica del hash de transacción**:  
    El sistema esperaba a recibir el `transactionHash` desde el frontend para registrar la transacción en la base de datos. Esto creaba una **ventana de vulnerabilidad**:

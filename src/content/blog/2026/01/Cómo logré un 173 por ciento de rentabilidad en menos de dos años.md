@@ -21,7 +21,7 @@ jsonLd:
       "image": "https://jaterli.com/images/blog/blog.inversiones.webp",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://jaterli.com/blog/posts/202601/como-logre-173-por-ciento-rentabilidad-inversion"
+        "@id": "https://jaterli.com/blog/posts/2026/01/como-logre-173-por-ciento-rentabilidad-inversion"
       }
     }
   ]

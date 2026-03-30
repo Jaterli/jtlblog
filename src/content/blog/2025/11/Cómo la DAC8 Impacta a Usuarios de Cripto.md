@@ -31,7 +31,7 @@ jsonLd:
       },
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://jaterli.com/blog/posts/202511/como-la-dac8-impacta-a-usuarios-de-cripto/"
+        "@id": "https://jaterli.com/blog/posts/2025/11/como-la-dac8-impacta-a-usuarios-de-cripto/"
       },
       "articleSection": "Criptomonedas, Fiscalidad",
       "keywords": "DAC8, criptomonedas, fiscalidad, UE, impuestos, Bitcoin, Ethereum, wallet fría, exchange",

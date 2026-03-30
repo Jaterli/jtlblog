@@ -21,7 +21,7 @@ jsonLd:
       "image": "https://jaterli.com/images/blog/blog.wordpress.webp",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://jaterli.com/blog/posts/202511/un-reconocimiento-que-me-impulsa-a-seguir-creciendo"
+        "@id": "https://jaterli.com/blog/posts/2025/11/un-reconocimiento-que-me-impulsa-a-seguir-creciendo"
       }
     }
   ]

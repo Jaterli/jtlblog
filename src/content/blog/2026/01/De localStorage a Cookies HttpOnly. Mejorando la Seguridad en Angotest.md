@@ -21,7 +21,7 @@ jsonLd:
       "image": "https://jaterli.com/images/blog/blog.cyber-security.jpg",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://jaterli.com/blog/posts/202501/mejorando-seguridad-angotest-cookies-httponly"
+        "@id": "https://jaterli.com/blog/posts/2025/01/mejorando-seguridad-angotest-cookies-httponly"
       }
     }
   ]

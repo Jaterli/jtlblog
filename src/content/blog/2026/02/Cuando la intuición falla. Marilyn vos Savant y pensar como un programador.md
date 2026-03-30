@@ -21,7 +21,7 @@ jsonLd:
       "image": "https://jaterli.com/images/blog/blog.monty-hall.webp",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://jaterli.com/blog/posts/202602/cuando-la-intuicion-falla-marilyn-vos-savant"
+        "@id": "https://jaterli.com/blog/posts/2026/02/cuando-la-intuicion-falla-marilyn-vos-savant"
       }
     }
   ]

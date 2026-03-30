@@ -8,7 +8,7 @@ category: "Máster en Desarrollo BlockChain"
 tags: [Cyberseguridad, Seguridad, Django, Python, Web3, Blockchain, Automatización]
 ---
 
-Antes de nada, quiero deciros que el desarrollo al que se refiere este post a sido actualizado a una versión que mejora su seguridad. Podéis ver el post haciendo clic [aquí](/blog/posts/202505/evolución-del-listener-de-pagos-blockchain "listener actualizado").
+Antes de nada, quiero deciros que el desarrollo al que se refiere este post a sido actualizado a una versión que mejora su seguridad. Podéis ver el post haciendo clic [aquí](/blog/posts/2025/05/evolución-del-listener-de-pagos-blockchain "listener actualizado").
 
 ---
 

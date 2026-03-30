@@ -12,7 +12,7 @@ jsonLd:
   "applicationCategory": "WebApplication"
   "operatingSystem": "Web"
   "description": "Mini-site de dos vistas para una galería de arte moderno con diseño mobile-first, responsive y navegación entre páginas."
-  "image": "https://tusitio.com/images/proyectos/projects.modern-art-gallery.webp"
+  "image": "https://jaterli.com/images/proyectos/projects.modern-art-gallery.webp"
   "url": "https://jaterli.github.io/CSS-entregable-3/"
   "author": {
     "@type": "Person",

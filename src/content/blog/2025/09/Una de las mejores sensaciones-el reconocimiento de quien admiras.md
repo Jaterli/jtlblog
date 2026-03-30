@@ -57,7 +57,7 @@ Por ejemplo, para mi proyecto de Web3 llamado *EasyCryptoBuy*, que es una plataf
   "@type": "SoftwareApplication",
   "name": "EasyCryptoBuy",
   "description": "Plataforma de comercio electrónico con integración de pagos en blockchain.",
-  "url": "https://tusitio.com/projects/easycryptobuy",
+  "url": "https://jaterli.com/projects/easycryptobuy",
   "creator": {
     "@type": "Person",
     "name": "Jaime TL"
@@ -87,7 +87,7 @@ JSON-LD se incluye dentro de la sección `<head>` de tu HTML, como un bloque `<s
     "@type": "SoftwareApplication",
     "name": "EasyCryptoBuy",
     "description": "Plataforma de comercio electrónico con integración de pagos en blockchain.",
-    "url": "https://tusitio.com/projects/easycryptobuy",
+    "url": "https://jaterli.com/projects/easycryptobuy",
     "creator": {
       "@type": "Person",
       "name": "Jaime TL"
