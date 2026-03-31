@@ -15,7 +15,7 @@ jsonLd:
         "operatingSystem": "Web",
         "browserRequirements": "Requires JavaScript",
         "permissions": "Ethereum wallet access",
-        "url": "https://jaterli.com/proyectos/entry/comercio-electronico-con-pagos-blockchain/",
+        "url": "https://jaterli.com/proyectos/entry/2025/comercio-electronico-con-pagos-blockchain/",
         "author": {
           "@type": "Person",
           "name": "Jaime TL"

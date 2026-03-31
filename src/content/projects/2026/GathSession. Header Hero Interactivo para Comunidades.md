@@ -12,7 +12,7 @@ jsonLd:
   "operatingSystem": "Web"
   "description": "Header hero responsive para una plataforma de comunidades, con menú hamburguesa, implementado con SASS y fidelidad total al diseño original de Figma."
   "image": "https://jaterli.com/images/proyectos/projects.gathsessions.webp" 
-  "url": "https://jaterli.com/proyectos/entry/gathsession-header-comunidades-css-avanzado"
+  "url": "https://jaterli.com/proyectos/entry/2026/gathsession-header-comunidades-css-avanzado"
   "author": {
     "@type": "Person",
     "name": "Jaterli"

@@ -28,7 +28,7 @@ jsonLd:
     image: "https://www.jaterli.com/images/proyectos/projects.wordpress.jpg"
     mainEntityOfPage: 
       "@type": "WebPage"
-      "@id": "https://jaterli.com/proyectos/entry/pagina-web-para-una-empresa-de-tasaciones-inmobiliarias/"
+      "@id": "https://jaterli.com/proyectos/entry/2025/pagina-web-para-una-empresa-de-tasaciones-inmobiliarias/"
 ---
 
 ### Nuevo proyecto web finalizado

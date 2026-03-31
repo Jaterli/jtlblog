@@ -21,7 +21,7 @@ jsonLd:
   keywords: ["Django", "React", "Python", "Bootstrap", "Gestión de traductores", "Consultas personalizadas"]
   mainEntityOfPage:
     "@type": "WebPage"
-    "@id": "https://jaterli.com/proyectos/entry/plataforma-de-gestion-para-traductores-con-react-y-django/"
+    "@id": "https://jaterli.com/proyectos/entry/2025/plataforma-de-gestion-para-traductores-con-react-y-django/"
 ---
 
 Esta aplicación, desarrollada con **Django** en el backend y **React + TypeScript** en el frontend, es una herramienta diseñada para gestionar perfiles de traductores profesionales y permitir a los administradores realizar consultas personalizadas sobre la base de datos. Su arquitectura modular, escalabilidad y facilidad de personalización la convierten en una solución ideal para empresas que buscan optimizar la gestión de profesionales.

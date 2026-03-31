@@ -9,7 +9,7 @@ tags: [Seguridad, Cyberseguridad, Blockchain, JWT, Django, React]
 ---
 
 
-En mi [marketplace con pagos blockchain](/proyectos/entry/sistema-de-pago-con-criptomonedas/ "marketplace con pagos blockchain"), he desarrollado un **sistema de autenticación descentralizado** que combina la seguridad de las firmas criptográficas con la flexibilidad de los JWT, ofreciendo una experiencia sin fricciones mientras garantizo la máxima protección para los usuarios. Este es el enfoque técnico:
+En mi [marketplace con pagos blockchain](/proyectos/entry/2025/sistema-de-pago-con-criptomonedas/ "marketplace con pagos blockchain"), he desarrollado un **sistema de autenticación descentralizado** que combina la seguridad de las firmas criptográficas con la flexibilidad de los JWT, ofreciendo una experiencia sin fricciones mientras garantizo la máxima protección para los usuarios. Este es el enfoque técnico:
 
 ## Arquitectura Clave
 

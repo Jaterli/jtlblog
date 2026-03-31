@@ -46,7 +46,7 @@ Estoy muy contento de compartir que he completado con éxito el módulo de **Wor
 
 El proceso incluyó dos grandes desafíos:  
 1️⃣ **Examen teórico (25 preguntas)**: Un test exigente que evaluaba conocimientos técnicos, configuración, seguridad, SEO y gestión avanzada de WordPress.  
-2️⃣ **Proyecto práctico**: El desarrollo de una web corporativa completa para *Final Translations* (como expliqué en detalle en [este post](/proyectos/entry/proyecto-final-de-modulo--desarrollo-de-web-corporativa-en-wordpress/)), donde apliqué diseño responsive con Elementor, optimización SEO, integración de plugins y una estructura profesional.  
+2️⃣ **Proyecto práctico**: El desarrollo de una web corporativa completa para *Final Translations* (como expliqué en detalle en [este post](/proyectos/entry/2025/proyecto-final-de-modulo--desarrollo-de-web-corporativa-en-wordpress/)), donde apliqué diseño responsive con Elementor, optimización SEO, integración de plugins y una estructura profesional.  
 
 El resultado fue tan satisfactorio que el profesor destacó mi trabajo como **"el mejor proyecto visto hasta ahora"**, y además se convertirá en un sitio real para el cliente.  
 

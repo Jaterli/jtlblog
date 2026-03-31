@@ -4,12 +4,17 @@ import ProjectItemLayout from "@layouts/ProjectLayout.astro";
 import generateSlug from "src/lib/generateUrlSlug";
 
 export async function getStaticPaths() {
-  const itemEntries = await getCollection("projects");
-  
-  return itemEntries.map((entry) => ({
-    params: { slug: generateSlug(entry.id) },
-    props: { entry },
-  }));
+  const postEntries = await getCollection("projects");
+
+  return postEntries.map((entry) => {
+    const [year, slugPart] = entry.id.split("/");
+    const slug = generateSlug(slugPart);
+
+    return {
+      params: { year, slug },
+      props: { entry },
+    };
+  });
 }
 
 interface Props {

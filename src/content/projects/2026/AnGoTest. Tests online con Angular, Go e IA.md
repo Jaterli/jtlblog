@@ -13,7 +13,7 @@ jsonLd:
   "operatingSystem": "Web"
   "description": "Plataforma full-stack de tests online con panel de administración avanzado, rankings de usuarios y generación de tests mediante IA, desarrollada con Angular y Go."
   "image": "https://jaterli.com/images/proyectos/projects.AnGoTest.webp"
-  "url": "https://jaterli.com/proyectos/entry/angotest-plataforma-tests-online-angular-go-ia"
+  "url": "https://jaterli.com/proyectos/entry/2026/angotest-plataforma-tests-online-angular-go-ia"
   "author": {
     "@type": "Person",
     "name": "Jaime TL"

@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
 import { getPostUrl } from "src/lib/getPostUrl";
-import generateSlug from "src/lib/generateUrlSlug";
+import { getProjectUrl } from "src/lib/getProjectUrl";
 import HorizontalProjectItem from "@components/HorizontalProjectItem.astro";
 
 const title = "Bienvenid@ a mi espacio personal";
@@ -58,7 +58,7 @@ const last_projects = projects.slice(0, 3);
 
       <p>Más allá de la implementación técnica, AnGoTest representa mi capacidad para diseñar, planificar y ejecutar un producto completo, desde la idea inicial hasta su despliegue final en servidor.</p>
 
-      <p><a href="/proyectos/entry/angotest-tests-online-con-angular-go-e-ia">Ver el proyecto &raquo;</a></p>
+      <p><a href="/proyectos/2026/angotest-tests-online-con-angular-go-e-ia">Ver el proyecto &raquo;</a></p>
 
       <h3 class="mt-8 mb-3">📍 Retomando el máster</h3>
 
@@ -106,7 +106,7 @@ const last_projects = projects.slice(0, 3);
           badge={project.data.badge}
           pubDate={project.data.pubDate}
           tags={project.data.tags}
-          url={"/proyectos/entry/" + generateSlug(project.id)}
+          url={getProjectUrl(project.id)}
           target="_self"
         />
         <div class="divider my-0" />
@@ -119,7 +119,7 @@ const last_projects = projects.slice(0, 3);
   <div class="mb-14 text-center">
     <div class="text-2xl w-full font-bold mb-5 mt-10">N.º publicaciones por Mes</div>
     <img src="https://raw.githubusercontent.com/Jaterli/fastAPI/main/grap.png" title="N.º posts por Mes" alt="N.º posts por Mes" class="grap" />    
-    <div class="mt-4">Gráfica desarrollada con <a class="customlink" href="/proyectos/entry/creacion-de-grafica-de-barras-con-streamlit">Streamlit</a></div>
+    <div class="mt-4">Gráfica desarrollada con <a class="customlink" href="/proyectos/entry/2024/creacion-de-grafica-de-barras-con-streamlit">Streamlit</a></div>
   </div>
 </BaseLayout>
 

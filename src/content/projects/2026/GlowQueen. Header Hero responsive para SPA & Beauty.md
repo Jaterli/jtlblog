@@ -12,7 +12,7 @@ jsonLd:
   "operatingSystem": "Web"
   "description": "Header hero profesional para un sitio web de SPA con menú sticky, dropdown y diseño responsive. Implementación avanzada con SASS y JavaScript vanilla."
   "image": "https://jaterli.com/images/proyectos/projects.glowqueen.webp"
-  "url": "https://jaterli.com/proyectos/entry/glowqueen-header-spa-css-avanzado"
+  "url": "https://jaterli.com/proyectos/entry/2026/glowqueen-header-spa-css-avanzado"
   "author": {
     "@type": "Person",
     "name": "Jaterli"

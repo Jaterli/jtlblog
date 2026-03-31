@@ -12,7 +12,7 @@ jsonLd:
   "operatingSystem": "Web"
   "description": "Sitio web de 12 páginas para academia de tecnologías emergentes con menú hamburguesa, formularios de registro y contacto, blog y catálogo de cursos."
   "image": "https://jaterli.com/images/proyectos/projects.conquer-blocks.webp"
-  "url": "https://jaterli.com/proyectos/entry/conquer-blocks-sitio-web-para-academia-de-tecnologia"
+  "url": "https://jaterli.com/proyectos/entry/2026/conquer-blocks-sitio-web-para-academia-de-tecnologia"
   "author": {
     "@type": "Person",
     "name": "Jaterli"

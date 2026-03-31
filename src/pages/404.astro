@@ -3,11 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="404: Not Found" includeSidebar={false}>
-  <div class="text-center">
-    <h1 class="text-9xl font-bold my-6">🏝</h1>
-    <div>&nbsp;</div>
-    <h1 class="text-9xl font-bold mt-10 mb-8">404</h1>
-    <h3 class="text-xl mb-6">La página a la que intenta acceder, no existe.</h3>
-    <a class="btn btn-accent mt-6" href="/">Home</a>
+  <div id="not-found" class="text-center">
+    <div class="not-found__icon">🏝</h1>    
+    <h1 class="font-bold mt-10 mb-8">404</h1>
+    <p class="text-xl mb-6">La página a la que intenta acceder, no existe.</p>
+    <a class="btn btn-accent" href="/">Home</a>
   </div>
 </BaseLayout>
