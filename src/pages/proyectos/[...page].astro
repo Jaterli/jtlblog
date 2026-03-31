@@ -8,31 +8,20 @@ export async function getStaticPaths({ paginate }) {
   const items = await getCollection("projects");
 
   items.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-  return paginate(items, { pageSize: 10 });
+  return paginate(items, { pageSize: 9 });
 }
 
 interface Page<T = any> {
-  /** resultado */
   data: T[];
-  /** metadatos */
-  /** el recuento del primer elemento de la página, a partir de 0 */
-  pubdate: number;
-  /** el recuento del último elemento de la página, a partir de 0 */
+  start: number;
   end: number;
-  /** el número total de resultados */
   total: number;
-  /** el número de la página actual, a partir de 1 */
   currentPage: number;
-  /** el número de elementos por página (predeterminado: 25) */
   size: number;
-  /** el número de la última página */
   lastPage: number;
   url: {
-    /** la url de la página actual */
     current: string;
-    /** la url de la página anterior (si hay alguna) */
     prev: string | undefined;
-    /** la url de la página siguiente (si hay alguna) */
     next: string | undefined;
   };
 }
@@ -44,11 +33,10 @@ const { page } = Astro.props as { page: Page };
   <article class="prose prose-lg">
     <h1>Portfolio de Proyectos de Programación</h1>
     <h2 class="mt-0">Desarrollo Web, APIs y Aplicaciones Blockchain</h2>
-
     <p>En este portfolio encontrarás una selección de mis proyectos de programación, donde aplico mis conocimientos en desarrollo web, creación de APIs y aplicaciones blockchain. Cada trabajo refleja mi evolución como desarrollador full stack y mi capacidad para diseñar soluciones prácticas, escalables e innovadoras.</p>
   </article>
   
-  <div class="mt-8 mb-3">Pág(s). {page.currentPage} de {page.lastPage}</div>
+  <div class="my-8">Pág(s). {page.currentPage} de {page.lastPage} (Mostrando {page.data.length} de {page.total} proyectos)</div>
 
   {
     page.data.length === 0 ? (
@@ -57,9 +45,8 @@ const { page } = Astro.props as { page: Page };
         <p>No hay proyectos publicados en este momento.</p>
       </div>
     ) : (
-      <section>
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {page.data.map((project) => (
-          <>
           <HorizontalProjectItem
               title={project.data.title}
               description={project.data.description}
@@ -70,8 +57,6 @@ const { page } = Astro.props as { page: Page };
               tags={project.data.tags}
               url={getProjectUrl(project.id)}
             />
-            <div class="divider my-0" />
-          </>
         ))}
       </section>
     )

@@ -17,40 +17,38 @@ const format_startDate = dayjs(startDate).format("DD/MM/YYYY")
 const format_endDate = dayjs(endDate).format("DD/MM/YYYY")
 ---
 
-<div class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]">
-  <div class="hero-content flex-col md:flex-row">
-    {
-      heroImage && (
-        <div class="relative w-full md:w-[13rem]">
-          <div class="aspect-video rounded-lg overflow-hidden">
-            <a href={url}>
-              <Image
-                src={heroImage}
-                width={750}
-                height={500}
-                alt={title}
-                class="w-full h-full object-cover"
-              />
-            </a>
-          </div>
-          {badge && (
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="badge badge-neutral font-bold text-lg md:text-sm rounded -rotate-6">{badge}</div>
-            </div>
-          )}
+<div class="hero-content flex-col transition ease-in-out h-full">
+  {
+    heroImage && (
+      <div class="relative w-full">
+        <div class="aspect-video overflow-hidden">
+          <a href={url}>
+            <Image
+              src={heroImage}
+              width={750}
+              height={500}
+              alt={title}
+              class="w-full h-full object-cover"
+            />
+          </a>
         </div>
-      )
-    }
-    
-    <article class="grow w-full md:p-0">
-      <a href={url}>
-        <h3>{title}</h3>   
-        <p class="pb-2 opacity-90">
-          <span class="text-1xl mr-1">{description}</span>
-          <span class="text-xs opacity-70 italic">[{format_startDate} - {format_endDate}]</span>
-        </p>
-        <!-- <p class="pt-2 text-sm opacity-70">{format_startDate} - {format_endDate}</p>         -->
-      </a>
-    </article>
-  </div>
+        {badge && (
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="badge badge-neutral font-bold text-xl rounded -rotate-6">{badge}</div>
+          </div>
+        )}
+      </div>
+    )
+  }
+  
+  <article class="grow w-full p-4">
+    <a href={url}>
+      <h3>{title}</h3>   
+      <p class="py-4 opacity-90">
+        <span class="mr-1">{description}</span>
+        <span class="text-xs opacity-70 italic">[{format_startDate} - {format_endDate}]</span>
+      </p>
+      <!-- <p class="pt-2 text-sm opacity-70">{format_startDate} - {format_endDate}</p>         -->
+    </a>
+  </article>
 </div>

@@ -28,9 +28,24 @@ export async function getStaticPaths({ paginate }) {
 
     return paginate(filtred_entries, {
       params: { tag },
-      pageSize: 10,
+      pageSize: 9,
     });
   });
+}
+
+interface Page<T = any> {
+  data: T[];
+  start: number;
+  end: number;
+  total: number;
+  currentPage: number;
+  size: number;
+  lastPage: number;
+  url: {
+    current: string;
+    prev: string | undefined;
+    next: string | undefined;
+  };
 }
 
 const { page } = Astro.props;
@@ -46,17 +61,17 @@ const params = Astro.params;
     <p>En este portfolio encontrarás una selección de mis proyectos de programación, donde aplico mis conocimientos en desarrollo web, creación de APIs y aplicaciones blockchain. Cada trabajo refleja mi evolución como desarrollador full stack y mi capacidad para diseñar soluciones prácticas, escalables e innovadoras.</p>
   </article>
 
-  <div class="mt-8 mb-3">Pág(s). {page.currentPage} de {page.lastPage}</div>
-  {
+  <div class="my-8">Pág(s). {page.currentPage} de {page.lastPage} (Mostrando {page.data.length} de {page.total} proyectos)</div>
+
+{
     page.data.length === 0 ? (
       <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
         <p class="font-bold">Lo siento!</p>
         <p>Todavía no se han publicado proyectos.</p>
       </div>
     ) : (
-      <section>
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {page.data.map((entry) => (
-          <>
             <HorizontalProjectItem
               title={entry.data.title}
               description={entry.data.description}
@@ -67,8 +82,6 @@ const params = Astro.params;
               url={"/proyectos/entry/" + generateSlug(entry.id)} // crea el slug basado en el nombre del fichero md
               target="_self"
             />
-            <div class="divider my-0" />
-          </>
         ))}
       </section>
     )

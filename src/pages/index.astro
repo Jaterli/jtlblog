@@ -76,10 +76,11 @@ const last_projects = projects.slice(0, 3);
 
   <div class="divider mt-0 pt-8" />
 
-  <h2 class="w-full font-bold mb-5 mt-12">Últimos posts</h2>
-  {
-    last_posts.map((post) => (
-      <>
+  <h2 class="w-full font-bold mb-8 mt-12">Últimos posts</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-10">
+    {
+      last_posts.map((post) => (
         <HorizontalCard
           title={post.data.title}
           heroImage={post.data.heroImage}
@@ -90,15 +91,15 @@ const last_projects = projects.slice(0, 3);
           url={getPostUrl(post.id)}
           target="_self"
         />
-        <div class="divider my-0" />
-      </>
-    ))
-  }
+      ))
+    }
+  </div>
 
-  <h2 class="w-full font-bold mb-5 mt-10">Últimos proyectos &#60;/&#62;</h2>
-  {
-    last_projects.map((project) => (
-      <>
+  <h2 class="w-full font-bold mb-8 mt-10">Últimos proyectos &#60;/&#62;</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-10">
+    {
+      last_projects.map((project) => (
         <HorizontalProjectItem
           title={project.data.title}
           heroImage={project.data.heroImage}
@@ -109,10 +110,9 @@ const last_projects = projects.slice(0, 3);
           url={getProjectUrl(project.id)}
           target="_self"
         />
-        <div class="divider my-0" />
-      </>
-    ))
-  }
+      ))
+    }
+  </div>
 
   <div>&nbsp;</div>
 

@@ -28,11 +28,25 @@ export async function getStaticPaths({ paginate }) {
 
     return paginate(filtred_posts, {
       params: { tag },
-      pageSize: 10,
+      pageSize: 9,
     });
   });
 }
 
+interface Page<T = any> {
+  data: T[];
+  start: number;
+  end: number;
+  total: number;
+  currentPage: number;
+  size: number;
+  lastPage: number;
+  url: {
+    current: string;
+    prev: string | undefined;
+    next: string | undefined;
+  };
+}
 const { page } = Astro.props;
 const params = Astro.params;
 ---
@@ -45,7 +59,8 @@ const params = Astro.params;
     <h2 class="mt-0">Etiqueta: {params.tag.toUpperCase()}</h2>
     <p>En este blog comparto mis experiencias en desarrollo web y blockchain, junto con tutoriales prácticos y soluciones técnicas pensadas para programadores que buscan aprender, mejorar sus proyectos y mantenerse al día con las últimas tecnologías.</p>
   </article>
-  <div class="mt-8 mb-3">Pág(s). {page.currentPage} de {page.lastPage}</div>
+  
+  <div class="my-8">Pág(s). {page.currentPage} de {page.lastPage} (Mostrando {page.data.length} de {page.total} posts)</div>
   
   {
     page.data.length === 0 ? (
@@ -54,21 +69,18 @@ const params = Astro.params;
         <p>Todavía no se han publicado proyectos.</p>
       </div>
     ) : (
-      <section>
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {page.data.map((post) => (
-          <>
-            <HorizontalCard
-              title={post.data.title}
-              heroImage={post.data.heroImage}
-              description={post.data.description}
-              badge={post.data.badge}
-              pubDate={post.data.pubDate}
-              tags={post.data.tags}
-              url={getPostUrl(post.id)} 
-              target="_self"
-            />
-            <div class="divider my-0" />
-          </>
+          <HorizontalCard
+            title={post.data.title}
+            heroImage={post.data.heroImage}
+            description={post.data.description}
+            badge={post.data.badge}
+            pubDate={post.data.pubDate}
+            tags={post.data.tags}
+            url={getPostUrl(post.id)} 
+            target="_self"
+          />
         ))}
       </section>
     )

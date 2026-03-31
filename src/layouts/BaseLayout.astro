@@ -123,11 +123,9 @@ const {
         <!-- Header, solo se renderiza con el menú hamburguesa -->
         <Header />
         
-        <div class="mx-auto sm:p-6 sm:pt-10 p-3 lg:max-w-[1000px] max-w-[100vw]">
-          <main transition:animate="slide">           
-            <slot />
-          </main>
-        </div>
+        <main class="mx-auto sm:p-6 sm:pt-10 p-3 lg:max-w-[1200px] max-w-[100vw]" transition:animate="slide">           
+          <slot />
+        </main>
         <Footer />
       </div>
       {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} />}

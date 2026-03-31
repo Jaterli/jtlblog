@@ -7,26 +7,24 @@ const { sideBarActiveItemID } = Astro.props;
 
 <div class="drawer-side z-40">
   <label for="my-drawer" class="drawer-overlay"></label>
-  <aside class="relative px-2 pt-2 h-auto min-h-full w-[19rem] bg-base-200 text-base-content flex flex-col">
+  <aside class="relative px-2 pt-2 h-auto min-h-full w-[16rem] xl:w-[19rem] bg-base-200 text-base-content flex flex-col">
     <!-- Botón de cerrar (solo móvil) -->
     <label for="my-drawer" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 lg:hidden"> ✕ </label>
 
-    <div class="w-fit mt-5 mb-6">
+    <div class="w-fit mt-5 mb-6 mx-auto">
       <a href="/">
-        <div class="transition ease-in-out hover:scale-[102%] block m-auto">
-          <div class="flex items-center gap-3.5 flex-shrink-0 pl-8">
-            <Image
-              class="mask mask-circle"
-              format="webp"
-              width={60}
-              height={60}
-              src="/images/others/profile-photo.webp"
-              alt="Personal photo"
-            />
-            <div class="text-profile">
-              <p>Jaime TL</p>
-              <p class="text-sm">Full Stack - Developer</p>
-            </div>
+        <div class="transition ease-in-out hover:scale-[102%] block m-auto flex items-center gap-3.5 flex-shrink-0">
+          <Image
+            class="mask mask-circle"
+            format="webp"
+            width={60}
+            height={60}
+            src="/images/others/profile-photo.webp"
+            alt="Personal photo"
+          />
+          <div class="text-profile">
+            <p>Jaime TL</p>
+            <p class="text-sm">Full Stack - Developer</p>
           </div>
         </div>
       </a>
