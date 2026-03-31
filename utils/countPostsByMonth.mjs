@@ -1,127 +1,112 @@
-import { readdirSync, readFileSync, writeFileSync, statSync } from 'fs';
+import { readdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
 import { existsSync, mkdirSync } from 'fs';
 
 const baseDir = "src/content";
-const dirs = ['projects']; // 'blog' lo tratamos aparte por su estructura especial
+const dirs = ['blog', 'projects'];
 const saveDir = "public/data";
 
-// Calcular fecha límite (últimos 2 años)
-const currentDate = new Date();
+// Calcular la fecha límite (hace 2 años)
 const twoYearsAgo = new Date();
-twoYearsAgo.setFullYear(currentDate.getFullYear() - 2);
+twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
 
 // Inicializa el objeto de conteo
 const postsByMonth = {};
 dirs.forEach(dir => {
   postsByMonth[dir] = {};
 });
-postsByMonth['blog'] = {};
 
-// Función para verificar si una fecha está dentro de los últimos 2 años
-function isWithinLastTwoYears(year, month) {
-  const postDate = new Date(year, month - 1, 1); // mes -1 porque en JS los meses van 0-11
-  return postDate >= twoYearsAgo;
-}
-
-// Función para procesar directorios normales como 'projects'
-function processFlatDirectory(directory) {
-  const dirPath = join(baseDir, directory);
-  const files = readdirSync(dirPath);
-
-  files.forEach(file => {
-    if (file.endsWith('.md') || file.endsWith('.mdx')) {
-      try {
-        const filePath = join(dirPath, file);
-        const fileContents = readFileSync(filePath, 'utf8');
-        const { data } = matter(fileContents);
-
-        if (data.pubDate) {
-          const pubDate = new Date(data.pubDate);
-          
-          // Filtrar solo archivos de los últimos 2 años
-          if (pubDate >= twoYearsAgo) {
-            const yearMonth = `${pubDate.getFullYear()}-${String(pubDate.getMonth() + 1).padStart(2, '0')}`;
-            postsByMonth[directory][yearMonth] = (postsByMonth[directory][yearMonth] || 0) + 1;
-          }
-        }
-      } catch (error) {
-        console.error(`Error procesando archivo ${file} en ${directory}:`, error);
-      }
-    }
-  });
-}
-
-// Función especial para procesar 'blog' con estructura /YYYY/MM/
-function processBlogDirectory() {
-  const blogDir = join(baseDir, 'blog');
+// Función recursiva para obtener todos los archivos .md y .mdx en un directorio
+function getAllMarkdownFiles(dirPath, baseDirPath = '') {
+  const files = [];
+  const entries = readdirSync(dirPath, { withFileTypes: true });
   
-  // Verificar si el directorio blog existe
-  if (!existsSync(blogDir)) {
-    console.warn(`Directorio blog no encontrado: ${blogDir}`);
+  for (const entry of entries) {
+    const fullPath = join(dirPath, entry.name);
+    const relativePath = baseDirPath ? join(baseDirPath, entry.name) : entry.name;
+    
+    if (entry.isDirectory()) {
+      // Recursivamente procesar subdirectorios
+      const subFiles = getAllMarkdownFiles(fullPath, relativePath);
+      files.push(...subFiles);
+    } else if (entry.isFile() && (entry.name.endsWith('.md') || entry.name.endsWith('.mdx'))) {
+      files.push({
+        path: fullPath,
+        relativePath: relativePath,
+        name: entry.name
+      });
+    }
+  }
+  
+  return files;
+}
+
+// Función para procesar un directorio recursivamente
+function processDirectoryRecursively(directory, category) {
+  const dirPath = join(baseDir, directory);
+  
+  // Verificar que el directorio existe
+  if (!existsSync(dirPath)) {
+    console.warn(`Directorio no encontrado: ${dirPath}`);
     return;
   }
   
-  // Leer años disponibles
-  const years = readdirSync(blogDir).filter(name => {
-    const fullPath = join(blogDir, name);
-    return statSync(fullPath).isDirectory() && /^\d{4}$/.test(name); // Validar formato YYYY
+  // Obtener todos los archivos markdown recursivamente
+  const markdownFiles = getAllMarkdownFiles(dirPath);
+  
+  let processedCount = 0;
+  let skippedCount = 0;
+  
+  markdownFiles.forEach(file => {
+    try {
+      const fileContents = readFileSync(file.path, 'utf8');
+      const { data } = matter(fileContents);
+      
+      if (data.pubDate) {
+        const pubDate = new Date(data.pubDate);
+        
+        // Validar que la fecha es válida
+        if (isNaN(pubDate.getTime())) {
+          console.warn(`Fecha inválida en ${file.relativePath}: ${data.pubDate}`);
+          return;
+        }
+        
+        // Filtrar solo archivos de los últimos 2 años
+        if (pubDate >= twoYearsAgo) {
+          const yearMonth = `${pubDate.getFullYear()}-${String(pubDate.getMonth() + 1).padStart(2, '0')}`;
+          postsByMonth[category][yearMonth] = (postsByMonth[category][yearMonth] || 0) + 1;
+          processedCount++;
+        } else {
+          skippedCount++;
+          console.log(`Archivo omitido (más de 2 años): ${file.relativePath} (${data.pubDate})`);
+        }
+      } else {
+        console.warn(`Archivo sin pubDate: ${file.relativePath}`);
+      }
+    } catch (error) {
+      console.error(`Error procesando archivo ${file.relativePath}:`, error.message);
+    }
   });
   
-  years.forEach(year => {
-    const yearPath = join(blogDir, year);
-    const yearInt = parseInt(year);
-    
-    // Leer meses disponibles dentro del año
-    const months = readdirSync(yearPath).filter(name => {
-      const fullPath = join(yearPath, name);
-      return statSync(fullPath).isDirectory() && /^\d{2}$/.test(name); // Validar formato MM
-    });
-    
-    months.forEach(month => {
-      const monthInt = parseInt(month);
-      
-      // Verificar si está dentro de los últimos 2 años
-      if (isWithinLastTwoYears(yearInt, monthInt)) {
-        const monthPath = join(yearPath, month);
-        const yearMonth = `${year}-${month}`;
-        
-        // Leer archivos dentro del mes
-        const files = readdirSync(monthPath);
-        
-        files.forEach(file => {
-          if (file.endsWith('.md') || file.endsWith('.mdx')) {
-            try {
-              const filePath = join(monthPath, file);
-              const fileContents = readFileSync(filePath, 'utf8');
-              const { data } = matter(fileContents);
-              
-              if (data.pubDate) {
-                postsByMonth['blog'][yearMonth] = (postsByMonth['blog'][yearMonth] || 0) + 1;
-              }
-            } catch (error) {
-              console.error(`Error procesando archivo ${file} en blog/${year}/${month}:`, error);
-            }
-          }
-        });
-      }
-    });
-  });
+  console.log(`Procesados ${processedCount} archivos en ${category} (${skippedCount} omitidos por antigüedad)`);
 }
 
-processBlogDirectory();
+// Ejecuta el procesamiento para cada directorio
+dirs.forEach(dir => {
+  console.log(`\nProcesando directorio: ${dir}`);
+  processDirectoryRecursively(dir, dir);
+});
 
-// Ejecuta el procesamiento para los directorios planos
-dirs.forEach(dir => processFlatDirectory(dir));
-
-const outputPath = join(saveDir, 'postsByMonth.json');
-
+// Crear directorio de salida si no existe
 if (!existsSync(saveDir)) {
   mkdirSync(saveDir, { recursive: true });
 }
 
+// Guardar el archivo
+const outputPath = join(saveDir, 'postsByMonth.json');
 writeFileSync(outputPath, JSON.stringify(postsByMonth, null, 2), 'utf8');
 
-console.log('Conteo de publicaciones por mes (últimos 2 años):', postsByMonth);
+console.log('\n=== Resumen ===');
+console.log('Conteo de publicaciones por mes:', postsByMonth);
 console.log(`Archivo guardado en: ${outputPath}`);
