@@ -87,8 +87,9 @@ a.customlink:hover {
   font-size: 0.9em;
 }
 
-.prose :where(h1), h1 {
+.prose :where(h1) {
   font-weight: 700;
+  text-wrap: balance;
 }
 
 .prose :where(h2), h2, .prose :where(h3), h3 {
