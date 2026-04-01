@@ -41,6 +41,15 @@ body {
   background-color: var(--color-base-200);
 }
 
+.grap { 
+  background-color: #ffffff;
+  margin: 0 auto;
+  border: 1px solid var(--color-base-content);
+  border-radius: 5px;
+  max-width: 100%;
+  padding: 6px;
+}
+
 /* Badge styles personalizados (reemplazando daisyui) */
 .badge-neutral {
   background-color: #000000ce;
@@ -149,6 +158,11 @@ a.customlink:hover {
 
 /* Tablets (768px y superiores) */
 @media (min-width: 768px) {
+
+  .grap { 
+    max-width: 600px;
+    padding: 20px;
+  }
 
   .prose-lg {
     font-size: 1.125rem;
