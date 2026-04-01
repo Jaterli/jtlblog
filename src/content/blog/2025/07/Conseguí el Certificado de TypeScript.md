@@ -39,8 +39,6 @@ jsonLd:
     ]
 ---
 
-📅 06 de julio de 2025
-
 Ayer obtuve el certificado de JavaScript Avanzado a través de la Academia Conquer Blocks, y **hoy he superado con éxito la evaluación de TypeScript**.
 
 TypeScript es como JavaScript pero con "superpoderes", es decir incorpora tipado estático y herramientas que hacen la vida más fácil cuando trabajas en proyectos grandes o complejos. Lo mejor es que **te avisa de errores antes de que ocurran**, **ayuda a mantener el código ordenado** y **hace que tus aplicaciones sean más robustas**. Por eso se ha vuelto tan popular entre los desarrolladores profesionales.

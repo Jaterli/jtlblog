@@ -1,18 +1,18 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark, cupcake;
 }
 /* Configuración de temas con CSS nativo */
 @theme {
-  --font-size-4xl: 2.8rem;
+  /* --font-size-4xl: 2.8rem;
   --font-size-4xl--line-height: 3.2rem;
   --font-size-3xl: 2.4rem;
   --font-size-3xl--line-height: 2.6rem;
   --font-size-2xl: 2rem;
   --font-size-2xl--line-height: 2.2rem;
   --font-size-xl: 1.6rem;
-  --font-size-xl--line-height: 2rem;
+  --font-size-xl--line-height: 2rem; */
 
   /* Colores personalizados */
   --color-customlink-light: rgb(31, 86, 187);
@@ -111,27 +111,11 @@ a.customlink:hover {
   scale: 1.02;
 }
 
-.hero-content h3 {
-  font-size: 1.2rem;
-  line-height: 1.5rem;
-}
-
-.hero-content p {
-  font-size: 0.9rem;
-  line-height: 1.3rem;
-}
-
 .g-recaptcha .div {
   max-width: 100%;
 }
 .g-recaptcha iframe {
   max-width: 100%;
-}
-
-.quote {
-  font-size: 2em;
-  vertical-align: middle;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .prose-lg {
@@ -140,17 +124,17 @@ a.customlink:hover {
 }
 
 .text-xl, h4 {
-  font-size: 1rem;
-  line-height: 1.4rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .text-2xl, h3 {
-  font-size: 1.25rem;
-  line-height: 1.6rem;
+  font-size: 1.4rem;
+  line-height: 1.75rem;
 }
 
 .text-3xl, .prose-lg :where(h2), h2 {
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   line-height: 2rem;
 }
 
@@ -159,37 +143,12 @@ a.customlink:hover {
   line-height: 2.4rem;
 }
 
-.not-found__icon {
-  font-size: 4rem;
-}
-
-.not-found h1 {
-  font-size: 4rem;
-}
-
-.not-found p {
-  font-size: 1rem;
-}
-
 /* ============================================ */
 /* MEDIA QUERIES - Versiones para pantallas más grandes */
 /* ============================================ */
 
 /* Tablets (768px y superiores) */
 @media (min-width: 768px) {
-  .hero-content h3 {
-    font-size: 1.4rem;
-    line-height: 1.75rem;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-    line-height: 1.4rem;
-  }
-
-  .quote {
-    font-size: 2.5em;
-  }
 
   .prose-lg {
     font-size: 1.125rem;
@@ -212,30 +171,14 @@ a.customlink:hover {
   }
 
   .text-4xl, .prose-lg :where(h1), h1 {
-    font-size: 2.5rem;
-    line-height: 2.9rem;
+    font-size: 3rem;
+    line-height: 3.5rem;
   }
 
-  .not-found__icon {
-    font-size: 6rem;
-  }
-
-  .not-found h1 {
-    font-size: 6rem;
-  }
-
-  .not-found p {
-    font-size: 1.25rem;
-  }
 }
 
 /* Desktop (1024px y superiores) - ajustes adicionales si son necesarios */
 @media (min-width: 1024px) {
-  /* Puedes agregar ajustes adicionales para desktop aquí si lo deseas */
-  .hero-content h3 {
-    font-size: 1.5rem;
-    line-height: 1.85rem;
-  }
 
   .hero-content p {
     font-size: 1.05rem;

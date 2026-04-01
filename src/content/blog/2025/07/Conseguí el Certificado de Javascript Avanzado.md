@@ -40,8 +40,6 @@ jsonLd:
 
 ---
 
-📅 05 de julio de 2025
-
 Acabo de superar con éxito el examen de evaluación para obtener el certificado de **JavaScript Avanzado** impartido por la academia **Conquer Blocks**. Este módulo forma parte del máster en Desarrollo Full Stack.
 
 Aunque ya contaba con experiencia previa en JavaScript y lo he aplicado en diversos proyectos, había pospuesto la evaluación de este módulo para centrarme en el desarrollo de proyectos de programación full stack más avanzados, con el objetivo de consolidar mis conocimientos.

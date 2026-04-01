@@ -39,8 +39,6 @@ jsonLd:
   ]
 ---
 
-📅 20 de septiembre de 2025
-
 Recientemente completé el módulo de **Angular** en la **Academia Conquer Blocks**, dentro de mi formación en Desarrollo Web Full Stack, obteniendo la certificación oficial. El curso abarcaba conceptos clave de Angular, incluyendo componentes standalone, servicios inyectables, rutas protegidas, gestión de estado con señales (`Signals`), formularios reactivos, consumo de APIs REST, modularización avanzada y buenas prácticas de arquitectura.
 
 Más allá de la teoría, consolidé mi aprendizaje mediante la creación de **AnGoTest**, una aplicación completa de tests online. Este proyecto me permitió aplicar de manera práctica todo lo aprendido: desde la gestión de componentes y rutas, hasta la integración con un backend en Go y la interacción con bases de datos PostgreSQL. Implementé funcionalidades avanzadas como: jerarquías temáticas de tests, seguimiento de progreso en tiempo real, rankings de usuarios, gestión de invitaciones y generación de tests mediante IA.

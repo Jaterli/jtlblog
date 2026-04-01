@@ -1,13 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
-import dayjs from "dayjs";
 import { Image } from "astro:assets";
 
 export type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, heroImage, jsonLd, badge, tags = [] } = Astro.props;
-const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
+const displayDate = new Date(pubDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
 <BaseLayout title={title} description={description} image={heroImage}, ogType="article", jsonLd={jsonLd}>
@@ -26,16 +25,16 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
     )}
     <h1 class="title">{title}</h1>
 
-    {pubDate && <time class="italic opacity-70">{displayDate}</time>}
+    {pubDate && <>📅 <time class="italic opacity-70">{displayDate}</time></>}
 
-    <div class="divider my-2"></div>     
+    <div class="divider mt-0 mb-2"></div>     
     <slot />
     <div class="divider my-2"></div>
 
   </article>
 
   <section>
-    <div class="mb-4 flex flex-wrap gap-2">
+    <div class="mt-4 flex flex-wrap gap-2">
     {
       tags &&
         tags.map((tag) => (

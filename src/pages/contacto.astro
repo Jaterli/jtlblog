@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Contactform from "@components/Contactform.astro";
+import { Icon } from "astro-icon/components";
 const title = "Contacto | Jaime TL";
 const description = "Puedes preguntarme cualquier cosa relacionada con mi blog, mis conocimientos, servicios o notificarme de errores o posibles mejoras.";
 const image="/images/others/profile-photo.webp";
@@ -8,47 +9,30 @@ const image="/images/others/profile-photo.webp";
 
 <BaseLayout title={title} description={description} image={image} sideBarActiveItemID="contacto">
 
-  <article class="prose prose-lg">
-    <h1 class="text-center mb-6">Contacto</h1>
-      <div>
-        <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl sm:mt-16">
-          <div>            
-            <p class="mt-0">
-              Puedes preguntarme cualquier cosa relacionada con mi blog, mis conocimientos, servicios o notificarme de errores o posibles mejoras,
-              estaré encantado de responderte.
-            </p>
-            <div class="mt-5">
-            <img src="/images/others/datos-contacto.png" class="m-0" />
-              <!-- <div class="flex items-center mt-2 space-x-2">
-                <Icon class="w-4 h-4" name="uil:map-marker" /><span>Madrid, España</span>
-              </div>
-              <div class="flex items-center mt-2 space-x-2">
-                <Icon class="w-4 h-4" name="uil:envelope" /><span>admin@jaterli.com</span> 
-              </div>
-              <div class="flex items-center mt-2 space-x-2">
-                <Icon class="w-4 h-4" name="uil:phone" /><span>+34 659 602 588</span>                 
-              </div> -->
+    <section class="grid md:grid-cols-2 gap-10 mx-auto lg:mt-16">
+      <article class="prose prose-lg">
 
-            </div>
+        <h1 class="mb-6">Contacto</h1>
+        <!-- <img src="../images/others/contactar.png" class="m-0" /> -->
+        <p class="mt-0">
+          Puedes preguntarme cualquier cosa relacionada con mi blog, mis conocimientos, servicios o notificarme de errores o posibles mejoras,
+          estaré encantado de responderte.
+        </p>
+        <div class="my-3">
+          <div class="flex items-center mt-2 space-x-4">
+            <Icon class="w-5 h-5" name="uil:map-marker" /><span>Madrid, España</span>
           </div>
-          <div>
-            <Contactform />
+          <div class="flex items-center mt-2 space-x-4">
+            <Icon class="w-5 h-5" name="uil:envelope" /><span>admin@jaterli.com</span> 
+          </div>
+          <div class="flex items-center mt-2 space-x-4">
+            <Icon class="w-5 h-5" name="uil:phone" /><span>+34 659 602 588</span>                 
           </div>
         </div>
+      </article>
+      <div class="p-0 md:pl-10"> 
+        <Contactform />
       </div>
+    </section>
 
-    </article>
 </BaseLayout>
----
-<!-- <script lang="ts">
-// Seleccionar todos los elementos que tengan el atributo data-nosearch
-const elements = document.querySelectorAll('[data-nosearch]');
-
-elements.forEach((element) => {
-    const replacementText = element.getAttribute('data-nosearch');
-    
-    if (replacementText) {
-        element.textContent = replacementText;
-    }
-});
-</script> -->

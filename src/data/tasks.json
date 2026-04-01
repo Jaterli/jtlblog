@@ -5,7 +5,13 @@
       "details": "Generar hilos de Twitter a partir de un post, crear resúmenes atractivos para LinkedIn, proponer hashtags relevantes.",
       "startDay": "",
       "endDay": ""
-    },    
+    },  
+    {
+      "description": "Acutalizando estilos de mi sitio web",
+      "details": "He dado otro toque la home, formulario de contacto y he incrementado el ancho a 1200px. Además he eliminado divs innecesarios.",
+      "startDay": "2026-04-01",
+      "endDay": "2026-03-30"
+    },       
     {
       "description": "Migrando de @astrojs/tailwind a Tailwind CSS 4 con DaisyUI en Astro 6",
       "details": "Migración de Astro en mi blog personal a la versión 6.0.8. y solucionar problemas de depenencias.",

@@ -40,8 +40,6 @@ jsonLd:
 ---
 
 
-📅 **15 de abril de 2025**
-
 Hoy he obtenido el **certificado de Git y GitHub** a través de **Conquer Blocks**, como parte del máster en **Desarrollo Web Fullstack** que estoy cursando actualmente.
 
 La evaluación consistía en un test de 25 preguntas tipo test, de las cuales he acertado 23, lo que equivale a un resultado satisfactorio y me ha permitido obtener la titulación oficial. El examen me ha llevado poco más de 10 minutos en total, ya que la mayoría de las preguntas las he podido responder con agilidad. Solo unas pocas han requerido algo más de reflexión.

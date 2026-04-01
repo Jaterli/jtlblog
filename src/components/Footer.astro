@@ -1,11 +1,13 @@
 ---
 const today = new Date();
 ---
-
-<footer class="footer footer-center block mb-5 pt-10">
-  <div><img class="drop-shadow-[0_0px_1px_rgba(255,255,255,0.5)] max-w-24" src="/images/others/logo-jtl.png" alt="Logotipo Footer - Jaterli" /></div>
+<footer class="footer footer-center mx-auto">
+  <div class="h-[180px]"></div> <!-- Espacio para el footer -->
+  <div class="absolute bottom-6"> 
+  <div><img class="max-w-24" src="/images/others/logo-jtl.png" alt="Logotipo Footer - Jaterli" /></div>
   <div class="opacity-75 mt-2">
     &copy; {today.getFullYear()} Jaime TL<br />
     Desarrollado con Astro y con amor ❤️
+  </div>
   </div>
 </footer>

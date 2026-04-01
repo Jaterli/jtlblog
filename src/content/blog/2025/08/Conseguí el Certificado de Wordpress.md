@@ -39,9 +39,6 @@ jsonLd:
     ]
 ---
 
-📅 12 de agosto de 2025
-
-
 Estoy muy contento de compartir que he completado con éxito el módulo de **WordPress** impartido por **Academia Conquer Blocks**, obteniendo mi certificación oficial.  
 
 El proceso incluyó dos grandes desafíos:  

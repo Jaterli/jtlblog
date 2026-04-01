@@ -2,17 +2,9 @@
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
 import dayjs from "dayjs";
-
 export type Props = CollectionEntry<"jobs">["data"];
 
-const {
-  title,
-  description,
-  startDate,
-  endDate,
-  heroImage,
-  badge,
-} = Astro.props;
+const { title, description, startDate, endDate, heroImage, badge } = Astro.props;
 
 import { Image } from "astro:assets";
 
