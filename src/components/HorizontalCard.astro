@@ -6,7 +6,7 @@ const { title, heroImage, description, badge, pubDate, tags, url} = Astro.props;
 const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
 ---
 
-<div class="hero-content flex-col transition ease-in-out h-full">
+<div class="header-card flex-col transition ease-in-out h-full">
   {
     heroImage && (
       <div class="relative w-full">
@@ -17,19 +17,18 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
               width={450}
               height={250}
               alt={title}
-              class="w-full h-full object-cover"
+              class="w-full h-full"
             />
           </a>
         </div>
-        {badge && (
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="badge badge-neutral font-bold text-xl rounded -rotate-6">{badge}</div>
-          </div>
-        )}
       </div>
     )
   }
-    
+
+  {badge && (
+    <div class="badge header-badge badge-neutral font-bold text-xl rounded -rotate-6">{badge}</div>
+  )}
+
   <article class="grow w-full p-4">
     <a href={url}>
 

@@ -112,6 +112,7 @@ a.customlink:hover {
 }
 
 .hero-post img {
+  max-width: 100%;
   box-shadow: 0px 4px 20px var(--color-shadow);
 }
 
@@ -137,16 +138,25 @@ a.customlink:hover {
   font-weight: 600;
 }
 
-.hero-content {
+.header-card {
   padding: 0;
   margin-bottom: 1rem;
   /* border: 1px solid var(--color-base-200); */
   box-shadow: 0px 1px 4px var(--color-shadow);
 }
 
-.hero-content:hover {
+.header-card:hover {
   box-shadow: 0px 4px 15px var(--color-shadow);
   scale: 1.02;
+}
+
+.header-card img {
+  background: repeating-linear-gradient(45deg,#b4b4b44d 0 20px,#0000 20px 40px);
+}
+
+.header-card .header-badge {
+  display: block;
+  margin: -30% auto 0 auto;
 }
 
 .g-recaptcha .div {
@@ -215,6 +225,10 @@ a.customlink:hover {
     line-height: 3rem;   
   }
 
+  .hero-post img {
+    max-width: 50%;
+  }
+ 
   .text-xl, h4 {
     font-size: 1.2rem;
     line-height: 1.6rem;
@@ -250,7 +264,7 @@ a.customlink:hover {
       transparent 40px);
   }
 
-  .hero-content p {
+  .header-card p {
     font-size: 1.05rem;
     line-height: 1.45rem;
   }

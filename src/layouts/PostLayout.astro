@@ -13,7 +13,7 @@ const displayDate = new Date(pubDate).toLocaleDateString('es-ES', { year: 'numer
   <article class="prose prose-lg prose-img:mx-auto">
     {heroImage && (
       <div class="hero-post">
-        <Image width={1400} src={heroImage} alt={title} class="w-full" />
+        <Image width={1400} src={heroImage} alt={title} class="w-full hover:scale-105 transition-transform duration-300" />
         {badge && (
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="badge badge-neutral rounded -rotate-6 shadow-lg font-bold text-lg sm:text-xl px-4 py-1">
@@ -29,6 +29,13 @@ const displayDate = new Date(pubDate).toLocaleDateString('es-ES', { year: 'numer
 
     <div class="divider mt-0 mb-2"></div>     
     <slot />
+
+    <div class="text-right pt-4">
+      <a href="javascript:history.back()" class="text-sm opacity-70 hover:opacity-100 transition-opacity duration-300">
+        ← Regresar
+      </a>
+    </div>
+
     <div class="divider my-2"></div>
 
   </article>
