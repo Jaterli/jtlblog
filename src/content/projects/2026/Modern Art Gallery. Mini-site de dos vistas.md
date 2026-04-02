@@ -1,7 +1,6 @@
 ---
 title: "Modern Art Gallery: Mini-site responsive con dos vistas"
 description: "Desarrollo de un mini-site de dos páginas para una galería de arte moderno. Implementación mobile-first con SASS, diseño responsive y navegación entre vistas."
-badge: "Finalizado"
 pubDate: "2026-03-19"
 heroImage: "/images/proyectos/projects.modern-art-gallery.webp"
 tags: [HTML5, CSS3, SASS, Figma, Responsive Design, Mobile First, CSS Grid ]
