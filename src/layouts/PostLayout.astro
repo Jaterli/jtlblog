@@ -12,7 +12,7 @@ const displayDate = new Date(pubDate).toLocaleDateString('es-ES', { year: 'numer
 <BaseLayout title={title} description={description} image={heroImage}, ogType="article", jsonLd={jsonLd}>
   <article class="prose prose-lg prose-img:mx-auto">
     {heroImage && (
-      <div class="relative w-full mb-6">
+      <div class="hero-post">
         <Image width={1400} src={heroImage} alt={title} class="w-full" />
         {badge && (
           <div class="absolute inset-0 flex items-center justify-center">
@@ -21,9 +21,9 @@ const displayDate = new Date(pubDate).toLocaleDateString('es-ES', { year: 'numer
             </div>
           </div>
         )}
+        <h1 class="title">{title}</h1>
       </div>
     )}
-    <h1 class="title">{title}</h1>
 
     {pubDate && <>📅 <time class="italic opacity-70">{displayDate}</time></>}
 

@@ -1,21 +1,20 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
-import dayjs from "dayjs";
+import { Image } from "astro:assets";
+
 export type Props = CollectionEntry<"jobs">["data"];
 
 const { title, description, startDate, endDate, heroImage, badge } = Astro.props;
+const format_startDate = new Date(startDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+const format_endDate = new Date(endDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
 
-import { Image } from "astro:assets";
-
-const format_startDate = dayjs(startDate).format("DD/MM/YYYY")
-const format_endDate = dayjs(endDate).format("DD/MM/YYYY")
 ---
 
 <BaseLayout title={title} description={description} image={heroImage}>
   <article class="prose prose-lg prose-img:mx-auto">
     {heroImage && (
-      <div class="relative w-full mb-6">
+      <div class="hero-post">
         <Image width={1400} src={heroImage} alt={title} class="w-full" />
         {badge && (
           <div class="absolute inset-0 flex items-center justify-center">
@@ -24,13 +23,15 @@ const format_endDate = dayjs(endDate).format("DD/MM/YYYY")
             </div>
           </div>
         )}
+        <h1 class="title">{title}</h1>
       </div>
     )}
-    <h1 class="title">{title}</h1>
-    <div>
-      <span class="text-md italic opacity-70"> {format_startDate} - {format_endDate}</span>
-    </div>
-    <div class="divider my-2"></div>
+
+    {format_startDate && format_endDate && (
+      <>📅 <time class="italic opacity-70">{format_startDate} - {format_endDate}</time></>
+    )}
+
+    <div class="divider mt-0 mb-2"></div>
     <slot />
     <div class="divider my-2"></div>
   </article>
