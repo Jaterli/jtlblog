@@ -3,7 +3,7 @@ title: "AnGoTest: Plataforma Completa de Tests Online con Angular, Go e IA"
 description: "Una aplicación full-stack de tests online con autenticación JWT, dashboard de administración avanzado, rankings detallados y generación de tests mediante inteligencia artificial (IA)."
 pubDate: "2026-02-27"
 heroImage: "/images/proyectos/projects.AnGoTest.webp"
-#badge: "Finalizado"
+badge: "DESTACADO"
 tags: [Angular, Go, Gin, PostgreSQL, JWT, Docker, TypeScript, AI, TailwindCSS, Full-Stack]
 jsonLd: 
   "@context": "https://schema.org"

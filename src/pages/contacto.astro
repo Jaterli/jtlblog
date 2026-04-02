@@ -26,7 +26,8 @@ const image="/images/others/profile-photo.webp";
             <Icon class="w-5 h-5" name="uil:envelope" /><span>admin@jaterli.com</span> 
           </div>
           <div class="flex items-center mt-2 space-x-4">
-            <Icon class="w-5 h-5" name="uil:phone" /><span>+34 659 602 588</span>                 
+            <Icon class="w-5 h-5" name="uil:phone" />
+            <span id="phone-display"></span>
           </div>
         </div>
       </article>
@@ -36,3 +37,12 @@ const image="/images/others/profile-photo.webp";
     </section>
 
 </BaseLayout>
+
+<script>
+  // El número se inserta solo con JavaScript
+  const phoneParts = ['+34', '659', '602', '588'];
+  const phoneDisplay = document.getElementById('phone-display');
+  if (phoneDisplay) {
+    phoneDisplay.textContent = phoneParts.join(' ');
+  }
+</script>

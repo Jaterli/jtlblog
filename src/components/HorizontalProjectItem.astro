@@ -33,12 +33,12 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
     )
   }
 
-  {badge && (
-    <div class="badge header-badge badge-neutral font-bold text-xl rounded -rotate-6">{badge}</div>
-  )}
   <article class="grow w-full p-4">
     <a href={url}>
-      <h3>{title}</h3>
+      <h3 class="inline">{title}</h3>
+      {badge && (
+        <div class="badge badge-neutral inline align-text-top">{badge}</div>
+      )}      
       <p class="py-4 opacity-90">
         <span class="mr-1">{description}</span>
         <span class="text-xs opacity-70 italic"> [{displayDate}]</span>

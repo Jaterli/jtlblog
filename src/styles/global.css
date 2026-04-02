@@ -65,15 +65,21 @@ body {
 
 /* Badge styles personalizados (reemplazando daisyui) */
 .badge-neutral {
-  background-color: #000000ce;
+  background-color: #000000;
+  opacity: 1;
   color: #ffffff;
   border: 1px solid #ffffff;
+  border-radius: 2px;
+  font-weight: 600;  
 }
 
 [data-theme="dark"] .badge-neutral {
-  background-color: #ffffffce;
+  background-color: #ffffff;
+  opacity: 1;
   color: #000000;
   border: 1px solid #000000;
+  border-radius: 2px;
+  font-weight: 600;   
 }
 
 .badge {
@@ -152,11 +158,6 @@ a.customlink:hover {
 .header-card img {
   background: repeating-linear-gradient(45deg,#b4b4b44d 0 20px,#0000 20px 40px);
   object-fit: contain;
-}
-
-.header-card .header-badge {
-  display: block;
-  margin: -30% auto 0 auto;
 }
 
 .g-recaptcha .div {

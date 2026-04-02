@@ -3,6 +3,7 @@ title: "Nueva página web para una empresa de Tasaciones inmobiliarias"
 description: "He desarrollado una web para Ataciara con el objetivo de reflejar de forma clara y profesional los servicios de valoración inmobiliaria y servicios complementarios que ofrece la empresa."
 pubDate: "2025-10-27"
 heroImage: "/images/proyectos/projects.wordpress.jpg"
+badge: "DESTACADO"
 tags: [Wordpress]
 jsonLd: 
     "@context": "https://schema.org"
