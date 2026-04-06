@@ -1,21 +1,17 @@
 ---
-import { type CollectionEntry, getCollection, render } from "astro:content";
+import { getCollection, render } from "astro:content";
 import JobItemLayout from "@layouts/JobLayout.astro";
-import generateSlug from "src/lib/generateUrlSlug";
+import generateSlug from "@lib/generateUrlSlug";
 
 export async function getStaticPaths() {
   const itemEntries = await getCollection("jobs");
-  return itemEntries.map((entry) => ({
+  return itemEntries.map((entry: any) => ({
     params: { slug: generateSlug(entry.id) },
     props: { entry },
   }));
 }
 
-interface Props {
-  entry: CollectionEntry<"jobs">;
-}
-
-const { entry } = Astro.props;
+const { entry } = Astro.props as { entry: any };
 const item = entry.data;
 const { Content } = await render(entry);
 ---

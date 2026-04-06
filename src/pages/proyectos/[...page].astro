@@ -2,30 +2,33 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import HorizontalProjectItem from "@components/HorizontalProjectItem.astro";
 import { getCollection } from "astro:content";
-import { getProjectUrl } from "src/lib/getProjectUrl";
+import { getProjectUrl } from "@lib/getProjectUrl";
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: { paginate: any }) {
   const items = await getCollection("projects");
 
-  items.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  items.sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   return paginate(items, { pageSize: 9 });
 }
 
-interface Page<T = any> {
-  data: T[];
-  start: number;
-  end: number;
-  total: number;
-  currentPage: number;
-  size: number;
-  lastPage: number;
-  url: {
-    current: string;
-    prev: string | undefined;
-    next: string | undefined;
+interface Props {
+  page: {
+    data: any[];
+    start: number;
+    end: number;
+    total: number;
+    currentPage: number;
+    size: number;
+    lastPage: number;
+    url: {
+      current: string;
+      prev: string | undefined;
+      next: string | undefined;
+    };
   };
 }
-const { page } = Astro.props as { page: Page };
+
+const { page } = Astro.props;
 ---
 
 <BaseLayout title="Proyectos de Programación" description="Portfolio de mis proyectos de programación, donde aplico mis conocimientos en desarrollo web, creación de APIs y aplicaciones blockchain." sideBarActiveItemID="proyectos">
@@ -42,7 +45,7 @@ const { page } = Astro.props as { page: Page };
     page.data.length === 0 ? (
       <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
         <p class="font-semibold">Lo siento!</p>
-        <p>No hay proyectos publicados en este momento.</p>
+        <p>No hay proyectos publicados en este momento.</p> 
       </div>
     ) : (
       <section class="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -2,16 +2,16 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import HorizontalProjectItem from "@components/HorizontalProjectItem.astro";
 import { getCollection } from "astro:content";
-import generateSlug from "src/lib/generateUrlSlug";
+import generateSlug from "@lib/generateUrlSlug";
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: { paginate: any }) {
   const all_entries = await getCollection("projects");
 
   // Paso 1: Extraer todos los tags y normalizarlos a minúsculas
   const all_tags = [
     ...new Set(
-      all_entries.flatMap((entry) => 
-        (entry.data.tags || []).map(tag => tag.toLowerCase()) // Convertir cada tag a minúsculas
+      all_entries.flatMap((entry: any) => 
+        (entry.data.tags || []).map((tag: string) => tag.toLowerCase()) // Convertir cada tag a minúsculas
       )
     )
   ];
@@ -19,12 +19,12 @@ export async function getStaticPaths({ paginate }) {
   // Paso 2: Generar las rutas paginadas
   return all_tags.flatMap((tag) => {
     const filtred_entries = all_entries
-      .filter((entry) => 
+      .filter((entry: any) => 
         (entry.data.tags || [])
-          .map(entryTag => entryTag.toLowerCase()) // Normalizar tags del entry a minúsculas
+          .map((entryTag: string) => entryTag.toLowerCase()) // Normalizar tags del entry a minúsculas
           .includes(tag) // Comparar con el tag en minúsculas
       )
-      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+      .sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
     return paginate(filtred_entries, {
       params: { tag },
@@ -33,25 +33,26 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 
-interface Page<T = any> {
-  data: T[];
-  start: number;
-  end: number;
-  total: number;
-  currentPage: number;
-  size: number;
-  lastPage: number;
-  url: {
-    current: string;
-    prev: string | undefined;
-    next: string | undefined;
+interface Props {
+  page: {
+    data: any[];
+    start: number;
+    end: number;
+    total: number;
+    currentPage: number;
+    size: number;
+    lastPage: number;
+    url: {
+      current: string;
+      prev: string | undefined;
+      next: string | undefined;
+    };
   };
 }
 
 const { page } = Astro.props;
 const params = Astro.params;
 ---
-
 
 <BaseLayout title={"Proyectos - " + params.tag} sideBarActiveItemID="proyectos">
   <article class="prose prose-lg">
@@ -71,7 +72,7 @@ const params = Astro.params;
       </div>
     ) : (
       <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {page.data.map((entry) => (
+        {page.data.map((entry: any) => (
             <HorizontalProjectItem
               title={entry.data.title}
               description={entry.data.description}

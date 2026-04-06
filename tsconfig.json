@@ -2,20 +2,14 @@
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "strictNullChecks": true,
-    "baseUrl": ".",
     "types": ["astro/client"],
-    "typeRoots": ["./node_modules/@types", "./src/types"],    
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
-      ],
-      "@scripts/*": [
-        "public/scripts/*"
-      ]           
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@scripts/*": ["./public/scripts/*"],
+      "@lib/*": ["./src/lib/*"],
     }
   },
-  "include": ["src/**/*", "public/js"]  
+  "include": ["src/**/*", "public/js"]
 }

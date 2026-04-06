@@ -39,7 +39,7 @@ const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
     <div class="flex flex-wrap gap-2">
     {
       tags &&
-        tags.map((tag) => (
+        tags.map((tag: string) => (
           <a href={`/blog/tag/${tag.toLowerCase()}`} class="badge badge-outline">
             {tag}
           </a>

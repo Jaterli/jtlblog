@@ -2,31 +2,33 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import HorizontalJobpItem from "../../components/HorizontalJobItem.astro";
 import { getCollection } from "astro:content";
-import generateSlug from "src/lib/generateUrlSlug";
+import generateSlug from "@lib/generateUrlSlug";
 
-export async function getStaticPaths({ paginate }) {
+export async function getStaticPaths({ paginate }: { paginate: any }) {
   const items = await getCollection("jobs");
-  items.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  items.sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   return paginate(items, { pageSize: 9 });
 }
 
-interface Page<T = any> {
-  data: T[];
-  start: number;
-  end: number;
-  total: number;
-  currentPage: number;
-  size: number;
-  lastPage: number;
-  url: {
-    current: string;
-    prev: string | undefined;
-    next: string | undefined;
+interface Props {
+  page: {
+    data: any[];
+    start: number;
+    end: number;
+    total: number;
+    currentPage: number;
+    size: number;
+    lastPage: number;
+    url: {
+      current: string;
+      prev: string | undefined;
+      next: string | undefined;
+    };
   };
 }
-const { page } = Astro.props as { page: Page };
----
 
+const { page } = Astro.props;
+---
 
 <BaseLayout title="Experiencia Profesional" description="Trayectoria Laboral en Desarrollo Web y Gestión de Proyectos en general" sideBarActiveItemID="trabajos">
   

@@ -7,10 +7,16 @@
       "endDay": ""
     },  
     {
+      "description": "JS Entrega de ejercicios 1",
+      "details": "9 ejercicios sencillos en JS como parte de los entregables del módulo de JavaScript del Máster en Desarrollo Web Full Stack.",
+      "startDay": "2026-04-02",
+      "endDay": "2026-03-08"
+    },      
+    {
       "description": "Acutalizando estilos de mi sitio web",
       "details": "He dado otro toque la home, formulario de contacto y he incrementado el ancho a 1200px. Además he eliminado divs innecesarios.",
-      "startDay": "2026-04-01",
-      "endDay": "2026-03-30"
+      "startDay": "2026-03-30",
+      "endDay": "2026-04-01"
     },       
     {
       "description": "Migrando de @astrojs/tailwind a Tailwind CSS 4 con DaisyUI en Astro 6",

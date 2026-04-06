@@ -1,5 +1,5 @@
 export default function generateSlug(url: string) {
-
+  if (!url) return '';
   return url
     .trim()                   // Eliminar espacios al inicio/final
     .toLowerCase()            // Convertir a minúsculas

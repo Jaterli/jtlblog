@@ -318,10 +318,8 @@ Este proyecto ha sido un viaje increíblemente enriquecedor que ha superado toda
 **AnGoTest** es, uno de los proyectos más completos que he realizado hasta la fecha. Representa no solo el dominio técnico de un stack moderno (Angular + Go), sino también la capacidad de **diseñar, planificar y ejecutar** un producto software con principios de arquitectura limpia, seguridad y escalabilidad. Estoy orgulloso de cómo cada pieza encaja para formar un producto funcional y con un alto valor educativo, y emocionado por las posibilidades de crecimiento que tiene por delante.
 
 <div class="text-center">
-  <a href="https://angotest.com" target="_blank" class="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl">
-    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-    </svg>
-    Visitar AnGoTest
+  <a href="https://angotest.com" target="_blank" class="btn btn-primary flex items-center w-fit mx-auto">
+    <svg class="w-5 h-5" fill="currentColor"> <use href="/assets/icons.svg#icon-web"></use> </svg>
+    <span>Visitar Angotest</span>
   </a>
 </div> 

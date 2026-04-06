@@ -1,12 +1,12 @@
 ---
-import { type CollectionEntry, getCollection, render } from "astro:content";
+import { getCollection, render } from "astro:content";
 import ProjectItemLayout from "@layouts/ProjectLayout.astro";
-import generateSlug from "src/lib/generateUrlSlug";
+import generateSlug from "@lib/generateUrlSlug";
 
 export async function getStaticPaths() {
   const postEntries = await getCollection("projects");
 
-  return postEntries.map((entry) => {
+  return postEntries.map((entry: any) => {
     const [year, slugPart] = entry.id.split("/");
     const slug = generateSlug(slugPart);
 
@@ -17,11 +17,7 @@ export async function getStaticPaths() {
   });
 }
 
-interface Props {
-  entry: CollectionEntry<"projects">;
-}
-
-const { entry } = Astro.props as Props;
+const { entry } = Astro.props as { entry: any };
 const item = entry.data;
 const { Content } = await render(entry);
 ---
