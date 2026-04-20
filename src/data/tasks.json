@@ -7,6 +7,12 @@
       "endDay": ""
     },  
     {
+      "description": "JS Entrega de ejercicios 2",
+      "details": "Rick and Morty Explorer: Aplicación web con JavaScript, API REST y LocalStorage.",
+      "startDay": "2026-04-02",
+      "endDay": "2026-03-08"
+    },     
+    {
       "description": "JS Entrega de ejercicios 1",
       "details": "9 ejercicios sencillos en JS como parte de los entregables del módulo de JavaScript del Máster en Desarrollo Web Full Stack.",
       "startDay": "2026-04-02",

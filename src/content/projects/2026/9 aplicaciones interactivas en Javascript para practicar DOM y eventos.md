@@ -2,7 +2,7 @@
 title: "9 aplicaciones interactivas en Javascript para practicar DOM y eventos"
 description: "Colección de 9 ejercicios prácticos de JavaScript: cambiador de color, contador de clics, lista dinámica, filtro en tiempo real, calculadora, temporizador, generador de contraseñas, contador de texto y lista de tareas con LocalStorage."
 pubDate: "2026-04-06"
-heroImage: "/images/proyectos/js-ejercicios1.png"
+heroImage: "/images/proyectos/projects.js-ejercicios1.png"
 tags: [JavaScript, DOM, Eventos, LocalStorage, CSS3, HTML5, Responsive, Mobile First]
 jsonLd:
   "@context": "https://schema.org"
@@ -11,7 +11,7 @@ jsonLd:
   "applicationCategory": "EducationalApplication"
   "operatingSystem": "Web"
   "description": "9 ejercicios prácticos de JavaScript que cubren manipulación del DOM, eventos, temporizadores, generación aleatoria, validación de formularios y persistencia con LocalStorage."
-  "image": "https://jaterli.com/images/proyectos/js-ejercicios1.png"
+  "image": "https://jaterli.com/images/proyectos/projects.js-ejercicios1.png"
   "url": "https://jaterli.com/proyectos/js-ejercicios"
   "author": {
     "@type": "Person",
@@ -222,7 +222,7 @@ Se han implementado buenas prácticas de accesibilidad:
 ## Enlaces
 
 <div class="btn-group">
-  <a href="https://jaterli.github.io/js-entrega-1/" target="_blank" class="flex items-center btn btn-neutral"> 
+  <a href="https://jaterli.github.io/JS-Entrega-de-ejercicios-1/" target="_blank" class="flex items-center btn btn-neutral"> 
     <svg class="w-5 h-5" fill="currentColor"> <use href="/assets/icons.svg#icon-web"></use> </svg>
     <span>Ver Proyecto en Vivo</span>
   </a>
