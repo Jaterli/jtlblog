@@ -67,7 +67,6 @@
 
 }
 
-
 /* Aplicar colores base */
 body {
   color: var(--color-base-content);
@@ -81,6 +80,12 @@ nav li{
 }
 nav li ::before, ::after{
     box-sizing: content-box;
+}
+
+code {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;  
 }
 
 .wave-header-simple {
@@ -217,6 +222,20 @@ a.customlink:hover {
   max-width: 100%;
 }
 
+.md-table {
+  max-width: 100%;
+  overflow: auto;
+}
+.md-table th, .md-table td {
+  line-height: 1.4;  
+}
+
+.md-table table {
+  max-width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+}
+
 @layer utilities {
   .text-lg, .prose-lg {
     font-size: 1.125rem;
@@ -241,6 +260,11 @@ a.customlink:hover {
   .text-4xl, .prose-lg :where(h1), h1 {
     font-size: 2rem;
     line-height: 2.4rem;
+  }
+
+  .prose-lg :where(table) {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
   }
 }
 
@@ -306,6 +330,12 @@ a.customlink:hover {
     font-size: 3rem;
     line-height: 3.5rem;
   }
+
+  .prose-lg :where(table) {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
 }
 
 /* Desktop (1024px y superiores) - ajustes adicionales si son necesarios */

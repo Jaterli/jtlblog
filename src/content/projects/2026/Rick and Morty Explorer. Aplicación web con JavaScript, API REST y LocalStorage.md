@@ -1,7 +1,7 @@
 ---
 title: "Rick and Morty Explorer: Aplicación web con JavaScript, API REST y LocalStorage"
 description: "Desarrollo completo de una SPA que consume la API de Rick and Morty con sistema de favoritos persistente, búsqueda en tiempo real, filtros combinados y vista detallada de personajes y episodios."
-pubDate: "2026-04-09"
+pubDate: "2026-04-12"
 heroImage: "/images/proyectos/projects.rickandmorty-explorer.webp"
 tags: [JavaScript, API REST, LocalStorage, CSS3, HTML5, Responsive]
 jsonLd:
@@ -17,7 +17,7 @@ jsonLd:
     "@type": "Person",
     "name": "Jaterli"
   }
-  "datePublished": "2026-04-09"
+  "datePublished": "2026-04-12"
   "programmingLanguage": [
     "HTML5",
     "CSS3",
@@ -237,6 +237,8 @@ class FavoritesManager {
 
 ## Responsive Design
 
+<div class="md-table">
+
 El proyecto implementa una estrategia mobile-first con breakpoints progresivos:
 
 | Breakpoint | Pantalla | Grid personajes | Layout |
@@ -244,6 +246,8 @@ El proyecto implementa una estrategia mobile-first con breakpoints progresivos:
 | Base | Móvil (<768px) | 1 columna | Navegación apilada |
 | 768px+ | Tablet | 2-3 columnas | Header horizontal |
 | 1024px+ | Desktop | 4 columnas | Filtros en paralelo |
+
+</div>
 
 ### Ejemplo de media queries:
 
