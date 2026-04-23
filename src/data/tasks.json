@@ -7,6 +7,12 @@
       "endDay": ""
     },  
     {
+      "description": "Migraciones de apps de JS Vanilla a React",
+      "details": "Como parte de los entregables del módulo de React del Máster en Desarrollo Web Full Stack.",
+      "startDay": "2026-04-10",
+      "endDay": "2026-04-23"
+    },       
+    {
       "description": "JS Entrega de ejercicios 2",
       "details": "Rick and Morty Explorer: Aplicación web con JavaScript, API REST y LocalStorage.",
       "startDay": "2026-04-02",
