@@ -7,11 +7,35 @@
       "endDay": ""
     },  
     {
+      "description": "Evaluación SCRUM",
+      "details": "He superado la prueba de evaluación en SCRUM y he optenido la certificación.",
+      "startDay": "2026-04-01",
+      "endDay": "2026-04-01"
+    }, 
+    {
+      "description": "Evaluación de Soft Skills",
+      "details": "He superado la prueba de evaluación en Soft Skills y he optenido la certificación.",
+      "startDay": "2026-04-01",
+      "endDay": "2026-04-01"
+    },         
+    {
+      "description": "Evaluación de VueJS",
+      "details": "He superado la prueba de evaluación en VueJS y he optenido la certificación.",
+      "startDay": "2026-04-01",
+      "endDay": "2026-04-01"
+    },     
+    {
+      "description": "Evaluación de SQL Avanzado",
+      "details": "He superado la prueba de evaluación en SQL Avanzado y he optenido la certificación.",
+      "startDay": "2026-04-23",
+      "endDay": "2026-04-23"
+    },     
+    {
       "description": "Migraciones de apps de JS Vanilla a React",
       "details": "Como parte de los entregables del módulo de React del Máster en Desarrollo Web Full Stack.",
       "startDay": "2026-04-10",
       "endDay": "2026-04-23"
-    },       
+    },          
     {
       "description": "JS Entrega de ejercicios 2",
       "details": "Rick and Morty Explorer: Aplicación web con JavaScript, API REST y LocalStorage.",
@@ -24,6 +48,18 @@
       "startDay": "2026-04-02",
       "endDay": "2026-03-08"
     },      
+    {
+      "description": "Evaluación de CSS Experto",
+      "details": "He superado la prueba de evaluación en CSS Experto y he optenido la certificación.",
+      "startDay": "2026-04-01",
+      "endDay": "2026-04-01"
+    },       
+    {
+      "description": "Evaluación SQL superada",
+      "details": "He superado la prueba de evaluación en SQL y he optenido la certificación.",
+      "startDay": "2026-04-01",
+      "endDay": "2026-04-01"
+    },   
     {
       "description": "Acutalizando estilos de mi sitio web",
       "details": "He dado otro toque la home, formulario de contacto y he incrementado el ancho a 1200px. Además he eliminado divs innecesarios.",
@@ -61,8 +97,8 @@
       "endDay": "2026-03-09"
     },         
     {
-      "description": "Evaluación Angular superada",
-      "details": "Acabo de superar la prueba de evaluación en ANGULAR y he optenido la certificación.",
+      "description": "Evaluación de Angular superada",
+      "details": "He superado la prueba de evaluación en ANGULAR y he optenido la certificación.",
       "startDay": "2026-03-02",
       "endDay": "2026-03-02"
     },      
@@ -79,8 +115,8 @@
       "endDay": "2025-10-27"
     },        
     {
-      "description": "Evaluación ReactJS superada",
-      "details": "Acabo de superar la prueba de evaluación en REACTJS y he optenido la certificación.",
+      "description": "Evaluación de ReactJS superada",
+      "details": "He superado la prueba de evaluación en REACTJS y he optenido la certificación.",
       "startDay": "2025-09-03",
       "endDay": "2025-09-03"
     },     
@@ -91,13 +127,13 @@
       "endDay": "2025-08-25"
     },      
     {
-      "description": "Evaluación HTML superada",
-      "details": "Acabo de superar la prueba de evaluación en HTML y he optenido la certificación.",
+      "description": "Evaluación de HTML superada",
+      "details": "He superado la prueba de evaluación en HTML y he optenido la certificación.",
       "startDay": "2025-08-13",
       "endDay": "2025-08-13"
     },  
     {
-      "description": "Evaluación Wordpress superada",
+      "description": "Evaluación de Wordpress superada",
       "details": "He superado la prueba de evaluación de Wordpress y he optenido la certificación.",
       "startDay": "2025-08-12",
       "endDay": "2025-08-12"
@@ -109,7 +145,7 @@
       "endDay": "2025-08-11"
     },    
     {
-      "description": "Evaluación CSS Avanzado superada",
+      "description": "Evaluación de CSS Avanzado superada",
       "details": "He superado la prueba de evaluación en CSS Avanzado y he optenido la certificación.",
       "startDay": "2025-08-11",
       "endDay": "2025-08-11"
@@ -121,13 +157,13 @@
       "endDay": "2025-08-11"
     },       
     {
-      "description": "Evaluación TypeScript superada",
+      "description": "Evaluación de TypeScript superada",
       "details": "He superado la prueba de evaluación en TypeScript y he optenido la certificación.",
       "startDay": "2025-07-06",
       "endDay": "2025-07-06"
     },   
     {
-      "description": "Evaluación Javascript superada",
+      "description": "Evaluación de Javascript superada",
       "details": "He superado la prueba de evaluación en Javascript y he optenido la certificación.",
       "startDay": "2025-07-05",
       "endDay": "2025-07-05"

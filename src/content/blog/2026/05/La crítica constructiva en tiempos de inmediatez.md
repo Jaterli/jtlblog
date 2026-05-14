@@ -5,7 +5,7 @@ description: "Reflexión sobre cómo la falta de escucha activa y la cultura de 
 pubDate: "2026-05-08"
 heroImage: "/images/blog/blog.critica-constructiva.webp"
 category: "Reflexión"
-tags: [Crítica Constructiva, Escucha Activa, Comunicación, Sociedad, Reflexión, Psicología Social, soft skills]
+tags: [Crítica Constructiva, Escucha Activa, Comunicación, Sociedad, Reflexión, Psicología Social, Soft Skills]
 jsonLd: 
   "@context": "https://schema.org"
   "@graph": [
