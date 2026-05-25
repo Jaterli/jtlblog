@@ -7,6 +7,12 @@
       "endDay": ""
     },  
     {
+      "description": "Actualización de EasyCryptoBuy",
+      "details": "añadí categorías, imágenes y búsqueda de productos; simplifiqué el carrito con localStorage; e hice el sistema de pagos y listener blockchain más resilientes y seguros.",
+      "startDay": "2026-05-18",
+      "endDay": "2026-05-25"
+    },     
+    {
       "description": "Evaluación SCRUM",
       "details": "He superado la prueba de evaluación en SCRUM y he optenido la certificación.",
       "startDay": "2026-04-01",
