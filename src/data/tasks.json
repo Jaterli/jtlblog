@@ -6,6 +6,12 @@
       "startDay": "",
       "endDay": ""
     },  
+        {
+      "description": "Actualización de Translators Management",
+      "details": "Añadí una landing page, mejore el Dashboard de adminitración, incluí una sistema de homologaciones de combinaciones y un sistema de búsquedas y filtrados en las vistas.",
+      "startDay": "2026-05-26",
+      "endDay": "2026-06-04"
+    },    
     {
       "description": "Actualización de EasyCryptoBuy",
       "details": "añadí categorías, imágenes y búsqueda de productos; simplifiqué el carrito con localStorage; e hice el sistema de pagos y listener blockchain más resilientes y seguros.",
