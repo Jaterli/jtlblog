@@ -21,7 +21,7 @@ jsonLd:
       "image": "https://jaterli.com/images/blog/blog.translator-management-v2.png",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://jaterli.com/blog/posts/2026/06/gestion-traductores-modernizacion-homologacion"
+        "@id": "https://jaterli.com/blog/posts/2026/06/translator-management-modernizacion-y-nuevas-funcionalidades/"
       }
     }
   ]
@@ -139,6 +139,8 @@ Esto es especialmente útil cuando exportas a Excel: puedes elegir exactamente q
 
 ## Resumen de todas las mejoras
 
+<div class="md-table">
+
 | **Área** | **Mejora** | **Impacto** |
 |----------|-----------|--------------|
 | Interfaz general | Modernización visual, títulos claros, estadísticas | UX mucho más agradable e informativa |
@@ -150,6 +152,7 @@ Esto es especialmente útil cuando exportas a Excel: puedes elegir exactamente q
 | Dashboard admin | Estadísticas y accesos directos | Mayor eficiencia para administradores |
 | Responsive | Ajustes adicionales en móvil | Experiencia óptima en todos los dispositivos |
 
+</div>
 ---
 
 ## Conclusión
