@@ -38,8 +38,6 @@ jsonLd:
   ]
 ---
 
-# AnGoTest: una plataforma de evaluación que combina Django, Angular e IA
-
 Este artículo es una inmersión profunda en **AnGoTest**, el proyecto que he desarrollado como trabajo final de mi máster en desarrollo web full-stack. Aquí explico el problema que resuelve, las tecnologías elegidas, la arquitectura, las funcionalidades clave, las medidas de seguridad y el despliegue en producción.
 
 ---
