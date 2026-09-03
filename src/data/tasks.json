@@ -7,6 +7,12 @@
       "endDay": ""
     }, 
     {
+      "description": "Entrega del proyecto de final de máster Angotest",
+      "details": "A la espera de que el tribunal revise la documentación, el código y el vídeo antes de agendar la reunión para la defensa.",
+      "startDay": "2026-09-03",
+      "endDay": "2026-09-03"    
+    },    
+    {
       "description": "Evaluación de Agent Harness",
       "details": "He superado la prueba de evaluación en Agent Harness y he optenido la certificación.",
       "startDay": "2026-06-18",
