@@ -2,7 +2,7 @@
 title: "AnGoTest: Plataforma Completa de Tests Online con Django, Angular e IA"
 description: "Una aplicación full-stack de tests online con autenticación JWT, dashboard de administración avanzado, rankings detallados y generación de tests mediante inteligencia artificial (IA)."
 pubDate: "2026-09-03"
-heroImage: "/images/proyectos/projects.AnGoTest.webp"
+heroImage: "/images/proyectos/projects.AnGoTest-proyecto-fin-master.webp"
 badge: "DESTACADO"
 tags: [Django, Django REST Framework, Angular, PostgreSQL, JWT, Docker, TypeScript, AI, TailwindCSS, Full-Stack]
 jsonLd: 
@@ -12,8 +12,8 @@ jsonLd:
   "applicationCategory": "EducationalApplication"
   "operatingSystem": "Web"
   "description": "Plataforma full-stack de tests online con panel de administración avanzado, rankings de usuarios y generación de tests mediante IA, desarrollada con Angular y Django."
-  "image": "https://jaterli.com/images/proyectos/projects.AnGoTest.webp"
-  "url": "https://jaterli.com/blog/angotest-detalles-tecnicos"
+  "image": "https://jaterli.com/images/proyectos/projects.AnGoTest-proyecto-fin-master.webp"
+  "url": "https://jaterli.com/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/"
   "author": {
     "@type": "Person",
     "name": "Jaime TL"
@@ -117,7 +117,6 @@ La plataforma está diseñada para educadores, estudiantes, autodidactas, empres
 | **Cron** | Tarea programada | Expiración diaria de resultados en progreso y copias de seguridad con `pg_dump`. |
 | **Variables de entorno** | `.env` | Secretos, credenciales, API keys y parámetros de entorno. |
 | **VPS / DigitalOcean** | - | Despliegue con Docker, CORS y cookies seguras (`Secure`). HTTPS con Let's Encrypt. |
-
 ---
 
 ## 4. Funcionalidades clave (casos de uso)

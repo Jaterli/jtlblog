@@ -45,6 +45,11 @@
 
 
 @layer utilities {
+
+  .btn {
+    color: var(--color-base-content);
+  }
+
   .btn-neutral {
     font-size: 1rem;
     --btn-bg: var(--bg-btn-neutral);

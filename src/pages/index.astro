@@ -6,6 +6,10 @@ import { getCollection } from "astro:content";
 import { getPostUrl } from "@lib/getPostUrl";
 import { getProjectUrl } from "@lib/getProjectUrl";
 
+// Importación de las tareas desde el JSON
+import tasksData from "../data/tasks.json";
+import { Icon } from "astro-icon/components";
+
 const title = "Bienvenid@ a mi espacio personal";
 const description = "Espacio dedicado a compartir los conocimientos adquiridos en mis estudios de desarrollo full stack y blockchain";
 const image="/images/others/profile-photo.webp";
@@ -14,6 +18,13 @@ const posts = (await getCollection("blog")).sort((a: any, b: any) => b.data.pubD
 const projects = (await getCollection("projects")).sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const last_posts = posts.slice(0, 3);
 const last_projects = projects.slice(0, 3);
+
+// Obtener las 3 tareas más recientes (ordenadas por startDay descendente)
+const tasks = tasksData.tasks;
+const lastTasks = tasks
+  .filter(task => task.startDay) // excluir tareas sin fecha de inicio
+  .sort((a, b) => new Date(b.startDay).getTime() - new Date(a.startDay).getTime())
+  .slice(0, 3);
 ---
 
 <BaseLayout title={title} description={description} image={image} sideBarActiveItemID="home">
@@ -73,8 +84,8 @@ const last_projects = projects.slice(0, 3);
 
   <div class="divider mt-0 pt-8" />
 
-  <h2 class="w-full font-bold mb-8 mt-12">Últimos posts ✍️</h2>
-  
+  <!-- Últimos posts -->
+  <h2 class="w-full font-bold mb-8 mt-18">Últimos posts <Icon name="mdi:blog-outline" class="inline-block align-text-bottom" /></h2>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-10">
     {
       last_posts.map((post: any) => (
@@ -92,8 +103,14 @@ const last_projects = projects.slice(0, 3);
     }
   </div>
 
-  <h2 class="w-full font-bold mb-8 mt-10">Últimos proyectos 💻</h2>
-  
+  <div class="text-center">
+    <a href="/blog/" class="customlink">
+      Ver todos los posts →
+    </a>
+  </div>
+
+  <!-- Últimos proyectos -->
+  <h2 class="w-full font-bold mb-8 mt-18">Últimos proyectos <Icon name="carbon:portfolio" class="inline-block align-text-bottom" /></h2>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-10">
     {
       last_projects.map((project: any) => (
@@ -111,12 +128,45 @@ const last_projects = projects.slice(0, 3);
     }
   </div>
 
+  <div class="text-center">
+    <a href="/proyectos/" class="customlink">
+      Ver todos los proyectos →
+    </a>
+  </div>
+
+
+  <!-- Últimas tareas -->
+  <h2 class="w-full font-bold mb-8 mt-18">Últimas tareas <Icon name="mdi:clipboard-list-outline" class="inline-block align-text-bottom" /></h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {
+      lastTasks.map((task) => {
+        const isPending = !task.endDay || new Date(task.endDay) > new Date();
+        return (
+          <div class="p-4 bg-base-200 rounded-lg shadow-sm">
+            <h3 class={`${isPending ? 'text-red-600' : 'text-green-600'}`}>
+              {isPending ? '⏱' : '✓'} {task.description}
+            </h3>
+            {task.details && <p class="mt-1 text-sm opacity-85">{task.details}</p>}
+            <p class="text-sm mt-2 opacity-75">
+              📅 {task.startDay ? new Date(task.startDay).toLocaleDateString('es-ES') : 'Sin fecha'}
+              {task.endDay && task.endDay !== task.startDay && ` → ${new Date(task.endDay).toLocaleDateString('es-ES')}`}
+            </p>
+          </div>
+        );
+      })
+    }
+  </div>
+  <div class="text-center mt-6">
+    <a href="/tasks/" class="customlink">
+      Ver todas las tareas →
+    </a>
+  </div>
+
   <div>&nbsp;</div>
 
-  <div class="mb-14 text-center">
-    <div class="text-2xl w-full font-bold mb-5 mt-10">N.º publicaciones por Mes</div>
+  <div class="mb-14 mt-18 text-center">
+    <div class="text-2xl w-full font-bold mb-5">N.º publicaciones por Mes</div>
     <img src="https://raw.githubusercontent.com/Jaterli/fastAPI/main/grap.png" title="N.º posts por Mes" alt="N.º posts por Mes" class="grap" />    
     <div class="mt-4">Gráfica desarrollada con <a class="customlink" href="/proyectos/entry/2024/creacion-de-grafica-de-barras-con-streamlit">Streamlit</a></div>
   </div>
 </BaseLayout>
-
