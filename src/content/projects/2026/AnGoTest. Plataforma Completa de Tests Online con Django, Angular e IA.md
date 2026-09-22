@@ -4,7 +4,7 @@ description: "Una aplicación full-stack de tests online con autenticación JWT,
 pubDate: "2026-09-03"
 heroImage: "/images/proyectos/projects.AnGoTest-proyecto-fin-master.webp"
 badge: "DESTACADO"
-tags: [Django, Django REST Framework, Angular, PostgreSQL, JWT, Docker, TypeScript, AI, TailwindCSS, Full-Stack]
+tags: [Django, Django REST Framework, Angular, PostgreSQL, JWT, Docker, TypeScript, AI, TailwindCSS, Cyberseguridad, Responsive design, Full-Stack]
 jsonLd: 
   "@context": "https://schema.org"
   "@type": "SoftwareApplication"
