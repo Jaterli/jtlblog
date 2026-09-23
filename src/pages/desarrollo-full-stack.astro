@@ -1,47 +1,193 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+
+// Metadata
 const title = "Máster en Desarrollo Full Stack | Mi Experiencia";
-const description = "Aprendí a dominar el desarrollo web completo, desde frontend y backend hasta DevOps y metodologías ágiles.";
-const image="/images/others/master-fullstack.webp";
+const description = "Mi experiencia y todo lo aprendido durante el Máster en Desarrollo Full Stack en Conquer Blocks: Frontend, Backend, DevOps, Seguridad y Metodologías Ágiles.";
+const image = "/images/others/master-fullstack.webp";
+
+// Datos de módulos/aprendizajes
+const learningModules = [
+  {
+    title: "Desarrollo Frontend",
+    icon: "mdi:monitor-dashboard",
+    description: "Creación de interfaces de usuario dinámicas, interactivas y totalmente responsivas.",
+    topics: ["HTML5 / CSS3", "JavaScript & TypeScript", "React", "Vue.js", "Angular"]
+  },
+  {
+    title: "Desarrollo Backend",
+    icon: "mdi:server",
+    description: "Construcción de APIs robustas, servicios RESTful y gestión de la lógica de servidor.",
+    topics: ["Node.js", "Django", "Spring Boot", "Bases de Datos SQL & NoSQL"]
+  },
+  {
+    title: "DevOps & Despliegue",
+    icon: "mdi:cloud-upload-outline",
+    description: "Administración de infraestructura, contenedorización y automatización de despliegues.",
+    topics: ["Docker", "Pipelines CI/CD", "Gestión de Servidores", "Cloud (AWS / Azure)"]
+  },
+  {
+    title: "Seguridad & Optimización",
+    icon: "mdi:shield-check-outline",
+    description: "Implementación de buenas prácticas para garantizar aplicaciones seguras y eficientes.",
+    topics: ["Autenticación & JWT", "Control de Accesos", "Optimización de Rendimiento", "Buenas Prácticas"]
+  },
+  {
+    title: "Metodologías Ágiles",
+    icon: "mdi:account-group-outline",
+    description: "Gestión de proyectos en equipo utilizando marcos de trabajo modernos y control de versiones.",
+    topics: ["Scrum", "Git & GitHub", "Flujos de Trabajo", "Herramientas de Colaboración"]
+  }
+];
+
+// Datos del impacto profesional
+const careerImpacts = [
+  "Construir aplicaciones web completas desde cero, integrando armónicamente el frontend y el backend.",
+  "Gestionar el ciclo de vida integral de un proyecto, desde el diseño inicial hasta su despliegue en producción.",
+  "Trabajar de forma ágil y coordinada en equipos multidisciplinares, manteniendo altos estándares de calidad."
+];
 ---
 
 <BaseLayout title={title} description={description} image={image} ogType="article" sideBarActiveItemID="fullstack-master">
 
-  <article>
+  {/* HERO */}
+  <section class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/80 p-6 sm:p-10 shadow-md mb-10">
+    <div class="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('/images/others/hero-pattern.svg')] bg-cover bg-center" aria-hidden="true"></div>
+    <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
 
-    <div class="flex justify-center mb-8">
-      <img src="/images/others/master-fullstack.webp" title="Máster en Desarrollo Full Stack" alt="Máster en Desarrollo Full Stack" class="w-auto object-cover">
-    </div>         
-
-    <h1 class="text-4xl text-center">Máster en Desarrollo Full Stack</h1>
-    <h2 class="text-3xl py-3 text-center">Mi experiencia y lo que aprendí 👨‍💻</h2>
-
-    <div class="py-2">
-      <div class="mx-auto max-w-4xl mt-4 prose prose-lg">
-        <p>Uno de los hitos más importantes en mi formación como desarrollador fue cursar el <strong>Máster en Desarrollo Full Stack</strong> de <strong>Conquer Blocks</strong>. Este programa me permitió adquirir las habilidades necesarias para construir aplicaciones web completas, desde el frontend hasta el backend, y gestionar su despliegue y mantenimiento.</p>
-
-        <p>Quiero compartir contigo lo que aprendí durante este máster y cómo ha impactado en mi carrera profesional:</p>
-
-        <h3 class="text-2xl font-bold mt-6">¿Qué aprendí en el máster?</h3>
-        <ul class="list-disc pl-6">
-          <li><strong>Desarrollo Frontend:</strong> Aprendí a crear interfaces de usuario dinámicas y responsivas utilizando tecnologías como HTML, CSS, JavaScript/TypeScript y frameworks como React, Vue y Angular.</li>
-          <li><strong>Desarrollo Backend:</strong> Adquirí experiencia en la construcción de APIs robustas y lógica de servidor con Node.js, Django y Spring Boot, integrando bases de datos SQL y NoSQL.</li>
-          <li><strong>DevOps y Despliegue:</strong> Aprendí a gestionar servidores, trabajar con contenedores (Docker), implementar pipelines de CI/CD y desplegar aplicaciones en la nube (AWS, Azure, etc.).</li>
-          <li><strong>Seguridad y Optimización:</strong> Me formé en buenas prácticas de seguridad, autenticación, autorización y técnicas de optimización para garantizar aplicaciones seguras y de alto rendimiento.</li>
-          <li><strong>Metodologías Ágiles:</strong> Apliqué metodologías como Scrum, utilicé Git para el control de versiones y trabajé con herramientas de colaboración para gestionar proyectos de manera eficiente.</li>
-        </ul>
-
-        <h3 class="text-2xl font-bold mt-6">¿Cómo ha impactado en mi carrera?</h3>
-        <p>Gracias a este máster, he podido ampliar mis habilidades técnicas y enfrentarme a proyectos más complejos y desafiantes. Ahora soy capaz de:</p>
-        <ul class="list-disc pl-6">
-          <li>Construir aplicaciones web completas desde cero, integrando tanto el frontend como el backend.</li>
-          <li>Gestionar el ciclo de vida completo de un proyecto, desde el desarrollo hasta el despliegue y mantenimiento en producción.</li>
-          <li>Trabajar en equipos ágiles, aplicando metodologías modernas para mejorar la colaboración y la eficiencia.</li>
-        </ul>
-
-        <p class="mt-6">El <strong>Máster en Desarrollo Full Stack</strong> de <strong>Conquer Blocks</strong> ha sido una experiencia transformadora en mi carrera. Si estás interesado en el desarrollo web o quieres conocer más sobre mi formación, no dudes en explorar mis proyectos o contactarme. ¡Estoy aquí para compartir lo que he aprendido!</p>
+    <div class="relative flex flex-col md:flex-row items-center gap-8 lg:gap-12">
+      <div class="relative shrink-0 w-full md:w-1/2 max-w-md">
+        <div class="rounded-xl overflow-hidden border-2 border-base-300 shadow-md bg-base-100">
+          <img src={image} title="Máster en Desarrollo Full Stack" alt="Máster en Desarrollo Full Stack" class="w-full h-auto object-cover" />
+        </div>
       </div>
-    </div>   
 
-  </article>
+      <div class="text-center md:text-left flex-1">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/10 text-xs font-semibold text-primary mb-3">
+          <Icon name="mdi:school-outline" class="w-4 h-4" />
+          Conquer Blocks (2022 - 2024)
+        </span>
+
+        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4 text-base-content">
+          Máster en <span class="text-primary">Desarrollo Full Stack</span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-base-content/80 leading-relaxed mb-6">
+          Uno de los hitos más importantes en mi formación. Este programa me permitió dominar la construcción de aplicaciones web completas, desde el frontend hasta el backend, junto con su despliegue e infraestructura.
+        </p>
+
+        <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+          <a href="/contacto/" class="btn btn-primary rounded-lg px-6 shadow-sm">
+            <Icon name="mdi:email-outline" class="w-5 h-5" />
+            Contactar
+          </a>
+          <a href="/about/" class="btn btn-outline rounded-lg bg-base-100 border-base-300">
+            <Icon name="mdi:account-outline" class="w-5 h-5" />
+            Ver Curriculum
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ¿QUÉ APRENDÍ EN EL MÁSTER? */}
+  <section class="mt-12">
+    <div class="flex items-center gap-3 mb-8">
+      <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+        <Icon name="mdi:book-open-page-variant-outline" class="w-6 h-6" />
+      </div>
+      <div>
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">¿Qué aprendí en el máster?</h2>
+        <p class="text-xs sm:text-sm text-base-content/70">Competencias y áreas clave desarrolladas durante la especialización</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {learningModules.map((module) => (
+        <div class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6 shadow-sm hover:border-primary/50 transition-colors flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2.5 mb-3">
+              <div class="p-2 rounded-lg bg-base-100 border border-base-300 text-primary">
+                <Icon name={module.icon} class="w-5 h-5" />
+              </div>
+              <h3 class="font-heading font-bold text-lg text-base-content">{module.title}</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-base-content/80 leading-relaxed mb-4">{module.description}</p>
+          </div>
+
+          <div class="pt-3 border-t border-base-300/80">
+            <div class="flex flex-wrap gap-1.5">
+              {module.topics.map((topic) => (
+                <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-base-100 border border-base-300 text-base-content/80 font-medium">
+                  {topic}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* IMPACTO EN MI CARRERA */}
+  <section class="mt-12 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+        <Icon name="mdi:trending-up" class="w-6 h-6" />
+      </div>
+      <div>
+        <h2 class="font-heading text-2xl font-bold text-base-content">Impacto en mi Carrera Profesional</h2>
+        <p class="text-xs sm:text-sm text-base-content/70">Evolución en la ejecución de proyectos y metodología de trabajo</p>
+      </div>
+    </div>
+
+    <p class="text-sm sm:text-base text-base-content/80 leading-relaxed mb-6">
+      Gracias a este máster, amplié de forma sustancial mis capacidades técnicas para afrontar proyectos de mayor alcance y complejidad con total solvencia. Actualmente soy capaz de:
+    </p>
+
+    <div class="bg-base-100 rounded-xl p-5 border border-base-300">
+      <ul class="space-y-3 text-sm text-base-content/80">
+        {careerImpacts.map((impact) => (
+          <li class="flex items-start gap-3">
+            <Icon name="mdi:check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+            <span>{impact}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  {/* CTA FINAL */}
+  <section class="mt-12 text-center rounded-2xl border-2 border-primary/30 bg-primary/10 p-4 sm:p-12 shadow-sm">
+    <h2 class="font-heading text-2xl sm:text-3xl font-bold mb-3 text-base-content">¿Quieres saber más sobre mi trabajo?</h2>
+    <p class="text-base sm:text-lg text-base-content/80 max-w-2xl mx-auto mb-6">
+      El <strong>Máster en Desarrollo Full Stack</strong> ha sido una experiencia transformadora. Te invito a explorar mis proyectos o ponerte en contacto conmigo para colaborar.
+    </p>
+
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="/proyectos/" class="btn btn-primary rounded-lg px-8 shadow-md inline-flex items-center gap-2">
+        <Icon name="mdi:folder-outline" class="w-5 h-5" />
+        Ver Proyectos
+      </a>
+      <a href="/contacto/" class="btn btn-outline rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2">
+        <Icon name="mdi:send-outline" class="w-5 h-5" />
+        Contactar Conmigo
+      </a>
+    </div>
+  </section>
+
+  {/* Structured Data JSON-LD */}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Máster en Desarrollo Full Stack",
+      "description": "Formación en desarrollo frontend, backend, DevOps y metodologías ágiles.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Conquer Blocks"
+      }
+    }
+  </script>
 </BaseLayout>

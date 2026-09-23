@@ -1,10 +1,12 @@
 ---
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SideBar from "../components/SideBar.astro";
 import { ClientRouter } from 'astro:transitions';
-import ThemeToggle from "@components/ThemeToggle.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from "../types/config";
+import "@fontsource-variable/space-grotesk";
+import "@fontsource-variable/inter";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
 import '../styles/global.css';
 
 const {
@@ -28,11 +30,6 @@ const {
     <link rel="icon" type="image/png" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/images/others/logo-jtl.png"> 
     
-    <!-- Google Fonts: Oswald -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">    
-
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
@@ -120,26 +117,17 @@ const {
     {TRANSITION_API && <ClientRouter />}
   </head>
   <body>
-    <div class="bg-base-100 drawer lg:drawer-open">
-      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content bg-base-100">
-       
-        <!-- Modo claro / modo oscuro button -->
-        <ThemeToggle /> 
-        <!-- Header, solo se renderiza con el menú hamburguesa -->
-        <Header />
-        
-        <main class="mx-auto p-3 sm:p-6 md:pt-3 lg:pt-6 lg:max-w-[1200px] max-w-[100vw]" transition:animate="slide">
-          
-
-        <div class="wave-header-simple">
-        </div>
-
-          <slot />
-        </main>
-        <Footer />
-      </div>
+    <div class="bg-base-100 min-h-screen flex flex-col">
       {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} />}
+
+      <main
+        class="mx-auto w-full px-2 py-4 sm:px-6 sm:py-8 lg:pt-8 lg:max-w-[1280px] flex-1"
+        transition:animate="slide"
+      >
+        <slot />
+      </main>
+
+      <Footer />
     </div>
   </body>
 </html>

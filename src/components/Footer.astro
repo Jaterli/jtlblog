@@ -1,13 +1,143 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const today = new Date();
+const year = today.getFullYear();
+
+const quickLinks = [
+  { label: "Home", href: "/" },
+  { label: "Proyectos", href: "/proyectos/" },
+  { label: "Blog", href: "/blog/" },
+  { label: "Servicios", href: "/servicios/" },
+  { label: "Sobre mí", href: "/about/" },
+  { label: "Contacto", href: "/contacto/" },
+];
+
+const socials = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/jaterli",
+    icon: "mdi:linkedin",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/Jaterli",
+    icon: "mdi:github",
+  },
+  {
+    label: "Telegram",
+    href: "https://t.me/jaterli",
+    icon: "mdi:telegram",
+  },
+  {
+    label: "Discord",
+    href: "https://discord.com/users/1042392132910055464",
+    icon: "mdi:discord",
+  }
+];
 ---
-<footer class="footer footer-center mx-auto">
-  <div class="h-[180px]"></div> <!-- Espacio para el footer -->
-  <div class="absolute bottom-6"> 
-  <div><img class="max-w-24" src="/images/others/logo-jtl.png" alt="Logotipo Footer - Jaterli" /></div>
-  <div class="opacity-75 mt-2">
-    &copy; {today.getFullYear()} Jaime TL<br />
-    Desarrollado con Astro y con amor ❤️
-  </div>
+
+<footer class="mt-16 border-t border-base-300/60 bg-base-200/40">
+  <div class="mx-auto max-w-[1280px] px-4 sm:px-6 py-14">
+
+    <!-- Grid principal -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr] gap-12">
+
+      <!-- Columna 1: Marca -->
+      <div class="space-y-5">
+        <a href="/" class="inline-flex items-center gap-3 group">
+          <img
+            class="h-12"
+            src="/images/others/logo-jtl.png"
+            alt="Logotipo de Jaime TL"
+          />
+          <div class="flex flex-col leading-tight">
+            <span class="font-heading text-lg font-semibold tracking-tight">
+              Jaime TL
+            </span>
+            <span class="text-xs uppercase tracking-[0.14em] text-base-content/50">
+              Full Stack · Developer
+            </span>
+          </div>
+        </a>
+
+        <p class="text-base text-base-content/70 leading-relaxed max-w-sm">
+          Desarrollo web full stack y blockchain. Más de 20 años construyendo
+          plataformas seguras, escalables y automatizadas.
+        </p>
+
+        <!-- Redes sociales -->
+        <div class="flex items-center gap-2.5 pt-2">
+          {socials.map((s) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={s.label}
+              title={s.label}
+              class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/60 bg-base-100 text-base-content/60 hover:text-primary hover:border-primary/40 transition-colors"
+            >
+              <Icon name={s.icon} class="w-5 h-5" />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Columna 2: Navegación -->
+      <div>
+        <h3 class="font-heading text-sm uppercase tracking-[0.15em] text-base-content/60 mb-5">
+          Navegación
+        </h3>
+        <ul class="space-y-3">
+          {quickLinks.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                class="text-base text-base-content/75 hover:text-primary transition-colors"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Columna 3: Contacto -->
+      <div>
+        <h3 class="font-heading text-sm uppercase tracking-[0.15em] text-base-content/60 mb-5">
+          Contacto
+        </h3>
+        <ul class="space-y-3 text-base text-base-content/75">
+          <li class="flex items-center gap-2.5">
+            <Icon name="mdi:email-outline" class="w-5 h-5 text-base-content/40 flex-shrink-0" />
+            <a href="mailto:admin@jaterli.com" class="hover:text-primary transition-colors">
+              admin@jaterli.com
+            </a>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <Icon name="mdi:map-marker-outline" class="w-5 h-5 text-base-content/40 flex-shrink-0" />
+            <span>Madrid, España</span>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <span class="relative flex w-5 h-5 items-center justify-center flex-shrink-0">
+              <span class="absolute w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            </span>
+            <span class="text-base-content/70">Disponible para proyectos</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Divisor -->
+    <div class="mt-12 pt-7 border-t border-base-300/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-base-content/55 text-center sm:text-left">
+        &copy; {year} Jaime TL · Todos los derechos reservados.
+      </p>
+      <p class="text-sm text-base-content/55 flex items-center gap-1.5">
+        Desarrollado con
+        <Icon name="mdi:heart" class="w-4 h-4 text-rose-500" />
+        usando Astro y Tailwind CSS
+      </p>
+    </div>
   </div>
 </footer>

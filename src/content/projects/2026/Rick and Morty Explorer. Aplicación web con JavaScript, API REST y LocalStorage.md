@@ -310,15 +310,16 @@ Este proyecto ha permitido consolidar los siguientes conceptos fundamentales:
 
 ## Enlaces
 
-<div class="btn-group">
-  <a href="https://jaterli.github.io/js-rick-and-morty-explorer/" target="_blank" class="flex items-center btn btn-neutral"> 
-    <svg class="w-5 h-5" fill="currentColor"> <use href="/assets/icons.svg#icon-web"></use> </svg>
-    <span>Ver Proyecto en Vivo</span>
-  </a>
-  <a href="https://github.com/Jaterli/js-rick-and-morty-explorer" target="_blank" class="flex items-center btn btn-primary"> 
-    <svg class="w-5 h-5" fill="currentColor"> <use href="/assets/icons.svg#icon-github"></use> </svg>
-    <span>Código en GitHub</span>
-  </a>
+<div class="not-prose my-6 flex flex-wrap items-center gap-3">
+
+<a href="https://jaterli.github.io/js-rick-and-morty-explorer/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+<svg class="w-5 h-5" fill="currentColor"> <use href="/assets/icons.svg#icon-web"></use> </svg>
+Ver Proyecto en Vivo</a>
+
+<a href="https://github.com/Jaterli/js-rick-and-morty-explorer" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+<svg class="w-5 h-5" fill="currentColor"> <use href="/assets/icons.svg#icon-github"></use> </svg>
+Código en GitHub</a>
+
 </div>
 
 ---

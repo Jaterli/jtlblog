@@ -1,36 +1,72 @@
 ---
-import SideBarFooter from "./SideBarFooter.astro";
-import { Image } from "astro:assets";
-import SideBarMenu from "./SideBarMenu.astro";
+import { Icon } from "astro-icon/components";
+import ThemeToggle from "@components/ThemeToggle.astro";
+import { SITE_TITLE } from "../types/config";
+
 const { sideBarActiveItemID } = Astro.props;
+
+const links = [
+  { id: "home", label: "Home", href: "/" },
+  { id: "proyectos", label: "Proyectos", href: "/proyectos/" },
+  { id: "blog", label: "Blog", href: "/blog/" },
+  { id: "servicios", label: "Servicios", href: "/servicios/" },
+  { id: "about", label: "Sobre mí", href: "/about/" },
+  { id: "contacto", label: "Contacto", href: "/contacto/" },
+];
 ---
 
-<div class="drawer-side z-40">
-  <label for="my-drawer" class="drawer-overlay"></label>
-  <aside class="relative px-2 pt-2 h-auto min-h-full w-[16rem] xl:w-[19rem] bg-base-200 text-base-content flex flex-col">
-    <!-- Botón de cerrar (solo móvil) -->
-    <label for="my-drawer" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 lg:hidden"> ✕ </label>
+<header class="sticky top-0 z-40 w-full bg-base-200/80 backdrop-blur-md border-b border-base-300/80 shadow-sm">
+  <div class="mx-auto max-w-[1280px] px-4 sm:px-6 h-20 grid grid-cols-[auto_1fr_auto] items-center gap-4">
+    
+    <!-- Izquierda: Marca -->
+    <a href="/" class="flex items-center gap-3 group">
+      <img src="/images/others/logo-jtl.png" alt="Jaime TL" class="h-11" />
+      <div class="hidden sm:flex flex-col leading-tight">
+        <span class="font-heading text-lg font-semibold tracking-tight">Jaime TL</span>
+        <span class="text-xs uppercase tracking-[0.12em] text-base-content/50">Full Stack · Developer</span>
+      </div>
+    </a>
 
-    <div class="w-fit mt-5 mb-6 mx-auto">
-      <a href="/">
-        <div class="transition ease-in-out hover:scale-[102%] block m-auto flex items-center gap-3.5 flex-shrink-0">
-          <Image
-            class="mask mask-circle"
-            format="webp"
-            width={60}
-            height={60}
-            src="/images/others/profile-photo.webp"
-            alt="Personal photo"
-          />
-          <div class="text-profile">
-            <p>Jaime TL</p>
-            <p class="text-sm">Full Stack - Developer</p>
-          </div>
+    <!-- Centro: Menú -->
+    <nav class="hidden lg:flex justify-center" aria-label="Navegación principal">
+      <ul class="flex items-center gap-1">
+        {links.map(({ id, label, href }) => (
+          <li>
+            <a
+              id={id}
+              href={href}
+              class={`nav-link relative px-4 py-2 text-base font-medium tracking-wide transition-colors duration-200 ${
+                sideBarActiveItemID === id
+                  ? "text-primary is-active"
+                  : "text-base-content/70 hover:text-base-content"
+              }`}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Derecha: ThemeToggle + Dropdown móvil -->
+    <div class="flex items-center gap-2 justify-end">
+      <ThemeToggle />
+      
+      <!-- Dropdown móvil -->
+      <div class="dropdown dropdown-end lg:hidden">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-sm" aria-label="Abrir menú">
+          <Icon name="mdi:menu" class="w-6 h-6" />
         </div>
-      </a>
+        <ul tabindex="0" class="menu menu-md dropdown-content mt-3 z-[50] p-2 shadow-lg border border-base-300/60 bg-base-100 rounded-xl w-56">
+          {links.map(({ id, label, href }) => (
+            <li>
+              <a href={href} class={sideBarActiveItemID === id ? "text-primary font-semibold" : ""}>
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
-
-    <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
-    <SideBarFooter />
-  </aside>
-</div>
+  </div>
+</header>

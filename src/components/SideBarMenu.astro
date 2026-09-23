@@ -1,21 +1,62 @@
 ---
-import { Icon } from "astro-icon/components";
-
 const { sideBarActiveItemID } = Astro.props;
-const activeClass = "bg-base-100"; // For primary color replace with `active` class
+
+const links = [
+  { id: "home",       label: "Home",       href: "/" },
+  { id: "proyectos",  label: "Proyectos",  href: "/proyectos/" },
+  { id: "blog",       label: "Blog",       href: "/blog/" },
+  { id: "servicios",  label: "Servicios",  href: "/servicios/" },
+  { id: "about",      label: "Sobre mí",   href: "/about/" },
+  { id: "contacto",   label: "Contacto",   href: "/contacto/" },
+];
 ---
-<nav>
-    <ul class="menu grow shrink menu-md overflow-y-auto">
-        <li><a class="py-2 text-base" id="home" href="/"><Icon name="mdi:home" class="inline-block align-text-bottom" /> Home</a></li>
-        <li><a class="py-2 text-base" id="proyectos" href="/proyectos/"><Icon name="carbon:portfolio" class="inline-block align-text-bottom" /> Proyectos</a></li>
-        <li><a class="py-2 text-base" id="blog" href="/blog/"><Icon name="mdi:blog-outline" class="inline-block align-text-bottom" /> Blog</a></li>
-        <li><a class="py-2 text-base" id="servicios" href="/servicios/"><Icon name="mdi:tools" class="inline-block align-text-bottom" /> Servicios</a></li>
-        <li><a class="py-2 text-base" id="about" href="/about/"><Icon name="mdi:about-circle-outline" class="inline-block align-text-bottom" /> Sobre mi</a></li>
-        <li><a class="py-2 text-base" id="cv" href="/cv/"><Icon name="academicons:cv-square" class="inline-block align-text-bottom" /> CV</a></li>
-        <li><a class="py-2 text-base" id="contacto" href="/contacto/"><Icon name="mdi:contact-outline" class="inline-block align-text-bottom" /> Contacto</a></li>
-    </ul>
+
+<nav aria-label="Navegación principal">
+  <ul class="flex items-center gap-1">
+    {links.map(({ id, label, href }) => (
+      <li>
+        <a
+          id={id}
+          href={href}
+          class="nav-link relative px-3 py-2 text-sm font-medium tracking-wide text-base-content/70 hover:text-base-content transition-colors duration-200"
+        >
+          {label}
+        </a>
+      </li>
+    ))}
+  </ul>
 </nav>
-<script define:vars={{ sideBarActiveItemID: sideBarActiveItemID, activeClass: activeClass }}>
-const activeItemElem = document.getElementById(sideBarActiveItemID);
-activeItemElem && activeItemElem.classList.add(activeClass);
+
+<style>
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.35rem;
+    height: 2px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Estado activo añadido por JS */
+  .nav-link.is-active {
+    color: var(--fallback-bc, oklch(var(--bc)));
+  }
+  .nav-link.is-active::after {
+    transform: scaleX(1);
+  }
+</style>
+
+<script define:vars={{ sideBarActiveItemID }}>
+  if (sideBarActiveItemID) {
+    const el = document.getElementById(sideBarActiveItemID);
+    if (el) el.classList.add("is-active");
+  }
 </script>

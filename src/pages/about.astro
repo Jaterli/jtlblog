@@ -1,69 +1,419 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const title = "Desarrollador Full Stack | Django, React y Blockchain";
-const description = "Desarrollador Full Stack y Blockchain. Construyo aplicaciones web, APIs y marketplaces con contratos inteligentes.";
-const image="/images/others/profile-photo.webp";
+import { Icon } from "astro-icon/components";
+
+// Metadata
+const title = "Sobre Mí & Curriculum Vitae | Jaime TL - Desarrollador Full Stack, IA & Blockchain";
+const description = "Perfil profesional y Curriculum Vitae de Jaime TL. Más de 20 años de experiencia en desarrollo de software, administración de sistemas, gestión de proyectos, Inteligencia Artificial y Blockchain.";
+const image = "/images/others/profile-photo.webp";
+
+// Datos
+const highlights = [
+  { icon: "mdi:clock-outline", title: "+20 Años de Experiencia", description: "Gestión de proyectos digitales, desarrollo de software a medida y administración de sistemas desde la raíz." },
+  { icon: "mdi:code-braces", title: "Desarrollo Full Stack & IA", description: "Especializado en arquitectura e implementación de aplicaciones web complejas, integrando APIs y modelos de IA." },
+  { icon: "mdi:ethereum", title: "Especialista Web3 & Blockchain", description: "Creación de contratos inteligentes seguros y aplicaciones descentralizadas de nueva generación." },
+  { icon: "mdi:server-network", title: "Sistemas & Producción", description: "Dominio integral del ciclo de vida del software: programación, infraestructura de servidores, DNS y despliegue." }
+];
+
+const experiences = [
+  {
+    role: "Desarrollador de Aplicaciones & Gestor de Proyectos",
+    company: "Advance Translations (Madrid)",
+    period: "2004 - 2024 (20 años)",
+    badge: "Experiencia Principal",
+    description: "Diseño, programación y mantenimiento integral de la infraestructura digital de la empresa, combinando desarrollo de software a medida y administración de sistemas.",
+    achievements: [
+      "Creación desde cero de una plataforma en PHP y MySQL para el registro, filtrado inteligente y gestión de perfiles de traductores profesionales.",
+      "Implementación de herramientas internas para la gestión de proyectos: coordinadores de tareas, editores de noticias y generadores de presupuestos.",
+      "Desarrollo de un sistema de encuestas de calidad online totalmente parametrizable.",
+      "Administración completa de servidores web, dominios, registros DNS, cuentas de correo y bases de datos en producción.",
+      "Gestión directa de proyectos de traducción con clientes y equipos multidisciplinares."
+    ],
+    techs: ["PHP", "MySQL", "JavaScript", "HTML/CSS", "Servidores Web", "DNS & Hosting", "Gestión de Proyectos"],
+    moreInfoUrl: "/jobs/entry/desarrollo-de-aplicaciones-web-gestion-de-proyectos/"
+  },
+  {
+    role: "Auxiliar de Expediciones y Logística",
+    company: "Andros Food (Madrid)",
+    period: "1999 - 2000",
+    badge: "Inicios Laborales",
+    description: "Gestión de preparación de pedidos y control de envíos para la distribución a grandes superficies, compaginado con la finalización del Bachillerato.",
+    achievements: [
+      "Organización y verificación de mercancía bajo estándares de tiempo strictly.",
+      "Desarrollo de habilidades de trabajo en equipo, responsabilidad y disciplina horaria."
+    ],
+    techs: ["Logística", "Gestión de Pedidos", "Trabajo en Equipo"]
+  }
+];
+
+const educationList = [
+  {
+    degree: "Máster en Desarrollo Web Full Stack",
+    institution: "Conquer Blocks (Modalidad Online)",
+    period: "2022 - 2024",
+    status: "Especialización Avanzada",
+    link: "/desarrollo-full-stack",
+    description: "Formación intensiva en arquitectura moderna de software, frameworks avanzados frontend/backend y buenas prácticas de programación.",
+    skills: ["Django", "React", "Astro", "Vue.js", "Angular", "Node.js", "Python", "TypeScript"]
+  },
+  {
+    degree: "Máster en Desarrollo Blockchain & Web3",
+    institution: "Conquer Blocks (Modalidad Online)",
+    period: "2022 - 2024",
+    status: "Especialización Web3",
+    link: "/desarrollo-blockchain",
+    description: "Especialización en creación de contratos inteligentes, aplicaciones descentralizadas (DApps) y seguridad on-chain.",
+    skills: ["Solidity (Ethereum)", "Rust (Solana/Polkadot)", "Smart Contracts", "Web3 Security"]
+  },
+  {
+    degree: "Técnico Superior en Admin. de Sistemas Informáticos",
+    institution: "IES Rey Fernando VI (San Fernando de Henares, Madrid)",
+    period: "2002 - 2004",
+    status: "Titulación Oficial",
+    link: "/cfgs-admin-sist-informaticos",
+    description: "Titulación reglada centrada en redes informáticas, administración de sistemas operativos, bases de datos y seguridad.",
+    skills: ["Sistemas Operativos", "Redes & Comunicaciones", "Bases de Datos", "Seguridad Informática"]
+  }
+];
+
+const skillCategories = [
+  { category: "Lenguajes de Programación", icon: "mdi:code-tags", skills: ["Python", "JavaScript", "TypeScript", "PHP", "Solidity", "SQL"] },
+  { category: "Desarrollo Backend & APIs", icon: "mdi:server", skills: ["Django", "Go (Golang)", "FastAPI", "Node.js", "APIs RESTful", "GraphQL"] },
+  { category: "Desarrollo Frontend & UI", icon: "mdi:monitor-dashboard", skills: ["React", "Angular", "Astro", "Vue.js", "TailwindCSS", "Bootstrap", "Chakra UI", "HTML5 / CSS3"] },
+  { category: "Blockchain & Web3", icon: "mdi:ethereum", skills: ["Smart Contracts", "Ethers.js", "Hardhat", "MetaMask", "EIP-4361 (SIWE)", "Tokens ERC-20 / ERC-721"] },
+  { category: "Bases de Datos & Sistemas", icon: "mdi:database", skills: ["PostgreSQL", "MySQL", "Django ORM", "Linux (Bash, Cron)", "Gestión de Servidores", "DNS / Hosting"] },
+  { category: "Herramientas, SEO & Diseño", icon: "mdi:wrench-outline", skills: ["Git & GitHub", "SEO Técnico (JSON-LD)", "Metodología Scrum", "Figma", "Photoshop", "Agentes de IA (MCP)"] }
+];
+
+const certifications = [
+  { name: "Título Oficial Técnico Superior ASI", url: "/certifications/Titulo-Certificado-Tecnico-Superior-Administracion-de-Sistemas-Informaticos.jpg" },
+  { name: "HTML5", url: "/certifications/Certificado-de-HTML.png" },
+  { name: "JavaScript Avanzado", url: "/certifications/Certificado-de-Javascript-Avanzado.png" },
+  { name: "TypeScript", url: "/certifications/Certificado-de-TypeScript.png" },
+  { name: "Python Avanzado", url: "/certifications/Certificado-de-Python-Avanzado.png" },
+  { name: "Git y GitHub", url: "/certifications/Certificado-de-Git-y-Github.png" },
+  { name: "Principios SOLID", url: "/certifications/Certificado-de-principios-SOLID.png" },
+  { name: "Linux y Terminal", url: "/certifications/Certificado-de-Linux-y-la-Terminal.-Linux.png" },
+  { name: "CSS Avanzado y Experto", url: "/certifications/Certificado-de-CSS-Avanzado.png" },
+  { name: "Bases de Datos SQL", url: "/certifications/Certificado-de-SQL.png" },
+  { name: "WordPress Profesional", url: "/certifications/Certificado-de-Wordpress.png" },
+  { name: "ReactJS", url: "/certifications/Certificado-de-ReactJS.png" },
+  { name: "Angular", url: "/certifications/Certificado-de-Angular.png" },
+  { name: "VueJS", url: "/certifications/Certificado-de-VueJS.png" },
+  { name: "Solidity Inicial", url: "/certifications/Certificado-de-Solidity-inicial.png" },
+  { name: "Metodologías Ágiles (Scrum)", url: "/certifications/Certificado-de-Metodologias-Agiles-Scrum.png" },
+  { name: "Soft Skills & Comunicación", url: "/certifications/Certificado-de-Soft-Skills.png" },
+  { name: "Agent Harness (Agentes CLI / IA)", url: "/certifications/Certificado-de-Agent-Harness.png" }
+];
 ---
 
-<BaseLayout title={title} description={description} image={image} ogType="article" sideBarActiveItemID="about">
-
-  <div class="flex justify-center">
-    <img src="/images/others/profile-photo.webp" title="Jaime TL" alt="Jaime TL" class="w-48 h-48 rounded-full" />
-  </div>   
-
-  <article class="prose prose-lg"> 
-
-    <h1 class="mt-8 mb-4 text-center">Desarrollador Full Stack y Blockchain</h1>
-
-    <h2>Mi experiencia profesional</h2>
-    <p>¡Hola! Soy Jaime, un desarrollador Full Stack y Blockchain con más de <strong>20 años de experiencia</strong> en gestión de proyectos y desarrollo de soluciones tecnológicas. Durante este tiempo, trabajé en una empresa de traducciones, donde además de coordinar proyectos de principio a fin, diseñé y programé una <strong>plataforma de gestión de traductores y consultas</strong>. También desarrollé una <strong>plataforma de encuestas online totalmente configurable</strong>, así como diversas <strong>herramientas internas</strong> (como un sistema de gestión de tareas <em>ToDo</em> y un editor de noticias). Asimismo, participé en la creación de <strong>webs corporativas</strong> para empresas vinculadas. Además del desarrollo, me encargué del <strong>despliegue en servidores</strong>, configurando <strong>hosting, dominios, DNS y servicios asociados</strong>, lo que me permitió gestionar el ciclo completo de las aplicaciones, desde la programación hasta su puesta en producción. </p>
-
-    
-    <h2>Mis inicios en la informática</h2>
-    <p>Mi pasión por la informática comenzó desde muy joven. A los <strong>13 años</strong> tuve mi primer ordenador personal y pronto empecé a experimentar con diferentes softwares y a ensamblar equipos, eligiendo cuidadosamente los componentes. Con el tiempo, desarrollé la habilidad de solucionar errores de software y problemas de sistema operativo, lo que me permitió ayudar a amigos y vecinos con sus computadoras, generando un ingreso extra y experiencia práctica desde la adolescencia.</p>
-    
-    <h2>Formación técnica especializada</h2>
-    <p>Decidí profesionalizar mis conocimientos cursando el <a href="/cfgs-admin-sist-informaticos" class="text-blue-500"><strong>Ciclo Formativo de Grado Superior en Administración de Sistemas Informáticos</strong></a><strong> (2002-2004)</strong>. Durante estos estudios adquirí una base sólida en administración de sistemas, redes, seguridad informática y bases de datos, lo que me permitió desarrollar una visión integral del funcionamiento de los sistemas informáticos.</p>
-    
-    <h2>Especialización actual</h2>
-    <p>Con los años confirmé que el <strong>desarrollo web</strong> era mi verdadera vocación. Decidí especializarme en <strong>desarrollo Full Stack</strong> y en <strong>tecnologías Blockchain</strong>. Actualmente estoy cursando dos másters que representan un nuevo impulso en mi carrera:</p>
-    
-    <h3>Máster en Desarrollo Full Stack</h3>
-    <ul>
-      <li><a href="/desarrollo-full-stack" class="text-blue-500"><strong>Máster en Desarrollo Full Stack</strong></a>: Con especialización en <strong>Django</strong>, <strong>React</strong>, <strong>Astro</strong>, <strong>VueJs</strong>, <strong>Node.js</strong>, <strong>Angular</strong>, <strong>Python</strong>, <strong>JavaScript</strong> y <strong>TypeScript</strong>. Este programa me ha permitido dominar el front-end y el back-end, desarrollando aplicaciones web completas, escalables y de alto rendimiento.</li>
-    </ul>
-    
-    <h3>Máster en Desarrollo Blockchain</h3>
-    <ul>
-      <li><a href="/desarrollo-blockchain" class="text-blue-500"><strong>Máster en Desarrollo Blockchain</strong></a>: Estoy profundizando en tecnologías descentralizadas, creando soluciones basadas en blockchain (web3) que transforman sectores enteros. Aprendo a programar contratos inteligentes en <strong>Solidity</strong> (Ethereum) y <strong>Rust</strong> (Solana, Polkadot), aplicando buenas prácticas para garantizar seguridad y escalabilidad.</li>
-    </ul>
+<BaseLayout title={title} description={description} image={image} ogType="profile" sideBarActiveItemID="about">
   
-    <h2>Enfoque y metodología de trabajo</h2>
-    <p>Mi experiencia incluye desde el desarrollo de <strong>aplicaciones web a medida</strong> hasta la gestión de sistemas completos (hosting, dominios, bases de datos). Tengo un enfoque fuerte en la <strong>automatización</strong> y la <strong>optimización de procesos</strong>, con el objetivo de entregar soluciones eficientes, seguras y sostenibles.</p>
-  
-    <h2>Blog personal y portfolio en Astro</h2>
-    <p>Como parte de uno de los módulos del <strong>Máster en Desarrollo Full Stack</strong>, he desarrollado este <strong>blog dinámico</strong> con <strong>Astro</strong>. La intención es utilizarlo como espacio para compartir mis <strong>aprendizajes</strong>, publicar artículos técnicos y mostrar mi <strong>portfolio de proyectos</strong>, integrando en un solo lugar mi evolución como desarrollador.</p>
- 
-    <h2>Filosofía profesional</h2>
-    <p><strong>Mi enfoque</strong> se centra en la eficiencia, la innovación y la formación continua. Mantenerme actualizado en <strong>Django</strong>, <strong>React</strong>, <strong>Blockchain</strong> y las tendencias del sector me permite afrontar nuevos desafíos con soluciones modernas y escalables.</p>
-  
-    <h2>Colaboración y contacto</h2>
-    <p>Si quieres colaborar en proyectos innovadores o discutir ideas, estaré encantado de conectar. ¡Explora mis creaciones y hablemos de cómo puedo ayudarte a materializar tus ideas!</p>
-     
-    <hr class="my-10" />
+  {/* HERO */}
+  <section class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/80 p-4 sm:p-10 shadow-md">
+    <div class="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('/images/others/hero-pattern.svg')] bg-cover bg-center" aria-hidden="true"></div>
+    <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
 
-    <p class="text-center">Puedes conocer más sobre mi trabajo en:</p>
+    <div class="relative flex flex-col md:flex-row items-center gap-8 lg:gap-12">
+      <div class="relative shrink-0">
+        <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-primary shadow-lg bg-base-100">
+          <img src={image} alt="Jaime TL" title="Jaime TL" class="w-full h-full object-cover" />
+        </div>
+        <span class="absolute bottom-2 right-2 w-5 h-5 rounded-full bg-emerald-500 border-2 border-base-100" title="Disponible para proyectos"></span>
+      </div>
 
-    <div class="flex justify-center space-x-4 mt-6">
-      <a href="https://www.linkedin.com/in/jaterli" target="_blank" class="flex items-center btn btn-primary"> 
-        <svg class="w-5 h-5" fill="currentColor"> <use href="/assets/icons.svg#icon-linkedin"></use> </svg>
-        <span>LinkedIn</span>
-      </a>
-      <a href="https://github.com/Jaterli" target="_blank" class="flex items-center btn btn-neutral"> 
-      <svg class="w-5 h-5" fill="currentColor"> <use href="/assets/icons.svg#icon-github"></use> </svg>
-        <span>GitHub</span>
-      </a>
+      <div class="text-center md:text-left flex-1">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/10 text-xs font-semibold text-primary mb-3">
+          <Icon name="mdi:account-badge-outline" class="w-4 h-4" />
+          Hola, soy Jaime TL
+        </span>
+
+        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4 text-base-content">
+          Desarrollador <span class="text-primary">Full Stack, IA</span> & Blockchain
+        </h1>
+
+        <p class="text-base sm:text-lg text-base-content/80 leading-relaxed mb-6">
+          Apasionado de la tecnología con más de <strong>20 años de experiencia</strong> transformando ideas en soluciones digitales reales. Acompaño a los proyectos desde la primera línea de código hasta su puesta en marcha en servidores de producción.
+        </p>
+
+        <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+          <a href="/contacto/" class="btn btn-primary rounded-lg px-6 shadow-sm">
+            <Icon name="mdi:email-outline" class="w-5 h-5" />
+            Contactar Conmigo
+          </a>
+          <a href="https://www.linkedin.com/in/jaterli" target="_blank" rel="noopener noreferrer" class="btn btn-outline rounded-lg bg-base-100 border-base-300">
+            <Icon name="mdi:linkedin" class="w-5 h-5 text-[#0A66C2]" />
+            LinkedIn / Descargar CV
+          </a>
+          <a href="https://github.com/Jaterli" target="_blank" rel="noopener noreferrer" class="btn btn-outline rounded-lg bg-base-100 border-base-300">
+            <Icon name="mdi:github" class="w-5 h-5" />
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* HIGHLIGHTS */}
+  <section class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    {highlights.map((item) => (
+      <div class="rounded-xl border-2 border-base-300 bg-base-200/90 p-5 shadow-xs hover:border-primary/50 transition-colors">
+        <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary mb-3">
+          <Icon name={item.icon} class="w-5 h-5" />
+        </div>
+        <h3 class="font-heading font-bold text-base text-base-content mb-1">{item.title}</h3>
+        <p class="text-xs sm:text-sm text-base-content/70 leading-relaxed">{item.description}</p>
+      </div>
+    ))}
+  </section>
+
+  {/* VOCACIÓN */}
+  <section class="mt-12 rounded-2xl border-2 border-base-300 bg-base-200/80 p-6 sm:p-8 shadow-sm">
+    <div class="flex items-center gap-3 mb-4">
+      <div class="p-2 rounded-lg bg-primary text-primary-content">
+        <Icon name="mdi:rocket-launch-outline" class="w-6 h-6" />
+      </div>
+      <h2 class="font-heading text-2xl font-bold text-base-content">Vocación Tecnológica</h2>
+    </div>
+    <p class="text-base-content/80 leading-relaxed text-sm sm:text-base">
+      Mi fascinación por la tecnología comenzó a los <strong>13 años</strong>, cuando tuve mi primer ordenador personal. Desde muy joven empecé a experimentar montando equipos componente a componente, diagnosticando fallos de software y resolviendo problemas en sistemas operativos. Esta curiosidad natural me permitió ayudar a amigos y vecinos desde la adolescencia, convirtiendo un pasatiempo en una sólida vocación profesional y un aprendizaje autodidacta continuo.
+    </p>
+  </section>
+
+  {/* EXPERIENCIA LABORAL */}
+  <section class="mt-12 space-y-6">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+        <Icon name="mdi:briefcase-outline" class="w-6 h-6" />
+      </div>
+      <div>
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Carrera Profesional & Experiencia</h2>
+        <p class="text-xs sm:text-sm text-base-content/70">Trayectoria en desarrollo de software, gestión de proyectos y administración técnica</p>
+      </div>
     </div>
 
-  </article>
+    {experiences.map((exp) => (
+      <article class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 hover:border-primary/60 transition-all shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+          <div>
+            <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-primary/10 text-primary border border-primary/20 inline-block mb-2 sm:mb-0">
+              {exp.badge}
+            </span>
+            <h3 class="font-heading text-xl font-bold text-base-content">{exp.role}</h3>
+            <p class="text-sm font-semibold text-base-content/70">{exp.company}</p>
+          </div>
+          <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-base-100 border border-base-300 text-base-content/80 shrink-0 self-start sm:self-center">
+            {exp.period}
+          </span>
+        </div>
+
+        <p class="text-sm sm:text-base text-base-content/80 leading-relaxed mb-4">{exp.description}</p>
+
+        <div class="bg-base-100/90 rounded-xl p-4 border border-base-300 mb-5">
+          <h4 class="text-xs uppercase tracking-wider text-base-content/60 font-bold mb-3">Logros y responsabilidades destacadas:</h4>
+          <ul class="space-y-2 text-xs sm:text-sm text-base-content/80">
+            {exp.achievements.map((item) => (
+              <li class="flex items-start gap-2.5">
+                <Icon name="mdi:check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-base-300/80">
+          <div class="flex flex-wrap gap-1.5">
+            {exp.techs.map((tech) => (
+              <span class="font-mono text-xs px-2 py-0.5 rounded bg-base-100 border border-base-300 text-base-content/80">{tech}</span>
+            ))}
+          </div>
+
+          {exp.moreInfoUrl && (
+            <a href={exp.moreInfoUrl} class="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline">
+              <span>Más detalles del puesto</span>
+              <Icon name="mdi:arrow-right" class="w-4 h-4" />
+            </a>
+          )}
+        </div>
+      </article>
+    ))}
+  </section>
+
+  {/* SKILLS */}
+  <section class="mt-12">
+    <div class="flex items-center gap-3 mb-8">
+      <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+        <Icon name="mdi:laptop" class="w-6 h-6" />
+      </div>
+      <div>
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Habilidades Técnicas (Skills)</h2>
+        <p class="text-xs sm:text-sm text-base-content/70">Stack tecnológico y competencias dominadas en la práctica diaria</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {skillCategories.map((cat) => (
+        <div class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6 shadow-sm hover:border-primary/50 transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <div class="p-2 rounded-lg bg-base-100 border border-base-300 text-primary">
+              <Icon name={cat.icon} class="w-5 h-5" />
+            </div>
+            <h3 class="font-heading font-bold text-base text-base-content">{cat.category}</h3>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5">
+            {cat.skills.map((skill) => (
+              <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-base-100 border border-base-300 text-base-content/80 font-medium">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* EDUCACIÓN */}
+  <section class="mt-12">
+    <div class="flex items-center gap-3 mb-8">
+      <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+        <Icon name="mdi:school-outline" class="w-6 h-6" />
+      </div>
+      <div>
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Educación & Formación Especializada</h2>
+        <p class="text-xs sm:text-sm text-base-content/70">Formación académica oficial y programas de máster de alta especialización</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {educationList.map((item) => (
+        <div class="flex flex-col justify-between rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6 hover:border-primary transition-all shadow-sm">
+          <div>
+            <span class="font-mono text-[11px] font-bold px-2.5 py-1 rounded-md bg-primary/10 text-primary border border-primary/20 inline-block mb-3">
+              {item.status}
+            </span>
+
+            <h3 class="font-heading text-lg font-bold text-base-content mb-1">
+              {item.link ? <a href={item.link} class="hover:text-primary transition-colors">{item.degree}</a> : item.degree}
+            </h3>
+
+            <p class="text-xs font-semibold text-base-content/60 mb-2">{item.institution}</p>
+            <p class="text-xs sm:text-sm text-base-content/80 leading-relaxed mb-4">{item.description}</p>
+          </div>
+
+          <div>
+            <div class="pt-3 border-t border-base-300/80 mb-3 font-mono text-xs text-base-content/70 font-semibold flex items-center gap-1">
+              <Icon name="mdi:calendar-month-outline" class="w-4 h-4 text-primary" />
+              {item.period}
+            </div>
+
+            <div class="flex flex-wrap gap-1">
+              {item.skills.map((skill) => (
+                <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-base-100 border border-base-300 text-base-content/80">{skill}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* CERTIFICACIONES */}
+  <section class="mt-12 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+        <Icon name="mdi:certificate-outline" class="w-6 h-6" />
+      </div>
+      <div>
+        <h2 class="font-heading text-xl sm:text-2xl font-bold text-base-content">Certificaciones & Diplomas Acreditados</h2>
+        <p class="text-xs sm:text-sm text-base-content/70">Acreditaciones de cursos, módulos especializados y titulaciones</p>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-2.5">
+      {certifications.map((cert) => (
+        <a href={cert.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-base-100 border border-base-300 hover:border-primary hover:text-primary text-xs sm:text-sm font-medium text-base-content/80 transition-all group">
+          <Icon name="mdi:file-certificate-outline" class="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
+          <span>{cert.name}</span>
+          <Icon name="mdi:open-in-new" class="w-3.5 h-3.5 text-base-content/40 group-hover:text-primary" />
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {/* FILOSOFÍA */}
+  <section class="mt-12 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm">
+    <div class="flex-col sm:flex-row items-center gap-3 mb-4">
+      <div class="p-2 rounded-lg bg-primary text-primary-content">
+        <Icon name="mdi:lightbulb-on-outline" class="w-6 h-6" />
+      </div>
+      <h2 class="font-heading text-xl sm:text-2xl font-bold text-base-content">Filosofía de Trabajo & Este Sitio Web</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm sm:text-base text-base-content/80">
+      <div class="bg-base-100 p-5 rounded-xl border border-base-300">
+        <h3 class="font-heading font-bold text-base text-base-content mb-2 flex items-center gap-2">
+          <Icon name="mdi:cogs" class="w-5 h-5 text-primary" />
+          Enfoque en la Eficiencia
+        </h3>
+        <p class="leading-relaxed text-xs sm:text-sm">
+          Mi objetivo principal es crear soluciones sencillas para el usuario pero potentes por dentro. Apuesto por la automatización de procesos, el código limpio y la formación continua para adaptarme siempre a las mejores prácticas del sector.
+        </p>
+      </div>
+
+      <div class="bg-base-100 p-5 rounded-xl border border-base-300">
+        <h3 class="font-heading font-bold text-base text-base-content mb-2 flex items-center gap-2">
+          <Icon name="mdi:laptop" class="w-5 h-5 text-primary" />
+          Cuaderno de Bitácora
+        </h3>
+        <p class="leading-relaxed text-xs sm:text-sm">
+          Este sitio está construido con <strong>Astro</strong> como parte de mi constante evolución práctica. Lo utilizo como plataforma para compartir conocimientos técnicos, tutoriales y exponer proyectos reales desarrollados día a día.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* CTA FINAL */}
+  <section class="mt-12 text-center rounded-2xl border-2 border-primary/30 bg-primary/10 p-4 sm:p-12 shadow-sm">
+    <h2 class="font-heading text-2xl sm:text-3xl font-bold mb-3 text-base-content">¿Construimos algo juntos?</h2>
+    <p class="text-base sm:text-lg text-base-content/80 max-w-2xl mx-auto mb-6">
+      Si buscas colaborar en un proyecto innovador, necesitas asesoramiento técnico o deseas descargar una copia completa de mi currículum en PDF, estaré encantado de conversar contigo.
+    </p>
+
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="/contacto/" class="btn btn-primary rounded-lg px-8 shadow-md inline-flex items-center gap-2">
+        <Icon name="mdi:send-outline" class="w-5 h-5" />
+        Enviar un Mensaje
+      </a>
+      <a href="https://www.linkedin.com/in/jaterli" target="_blank" rel="noopener noreferrer" class="btn btn-outline rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2">
+        <Icon name="mdi:linkedin" class="w-5 h-5 text-[#0A66C2]" />
+        Ver Perfil & Descargar CV en LinkedIn
+      </a>
+    </div>
+  </section>
+
+  {/* Structured Data JSON-LD */}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jaime TL",
+      "url": "https://jaterli.com",
+      "image": "https://jaterli.com/images/others/profile-photo.webp",
+      "jobTitle": "Desarrollador Full Stack, IA y Blockchain",
+      "sameAs": [
+        "https://www.linkedin.com/in/jaterli",
+        "https://github.com/Jaterli"
+      ],
+      "alumniOf": [
+        { "@type": "EducationalOrganization", "name": "IES Rey Fernando VI" },
+        { "@type": "EducationalOrganization", "name": "Conquer Blocks" }
+      ],
+      "knowsAbout": [
+        "Desarrollo Full Stack", "PHP", "Python", "Django", "React", 
+        "Astro", "Solidity", "Blockchain", "Smart Contracts", 
+        "Inteligencia Artificial", "Administración de Sistemas"
+      ]
+    }
+  </script>
 </BaseLayout>

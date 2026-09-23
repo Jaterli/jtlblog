@@ -1,12 +1,12 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import HorizontalProjectItem from "@components/HorizontalProjectItem.astro";
+import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 import { getProjectUrl } from "@lib/getProjectUrl";
 
 export async function getStaticPaths({ paginate }: { paginate: any }) {
   const items = await getCollection("projects");
-
   items.sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   return paginate(items, { pageSize: 9 });
 }
@@ -29,80 +29,308 @@ interface Props {
 }
 
 const { page } = Astro.props;
+const title = "Proyectos";
+const description =
+  "Portfolio de proyectos de programación: desarrollo web full stack, APIs, aplicaciones blockchain y automatización. Cada proyecto refleja mi evolución como desarrollador.";
+const image = "/images/others/profile-photo.webp";
+
+const currentPath = page.url.current.replace(/\/$/, "") || "/";
+const basePath = currentPath.replace(/\/\d+$/, "") || "/";
+
+const pageUrl = (n: number) => (n === 1 ? basePath : `${basePath}/${n}`);
+
+function getPageNumbers(current: number, last: number): (number | "...")[] {
+  if (last <= 7) return Array.from({ length: last }, (_, i) => i + 1);
+  const pages: (number | "...")[] = [1];
+  const start = Math.max(2, current - 1);
+  const end = Math.min(last - 1, current + 1);
+  if (start > 2) pages.push("...");
+  for (let i = start; i <= end; i++) pages.push(i);
+  if (end < last - 1) pages.push("...");
+  pages.push(last);
+  return pages;
+}
+
+const pageNumbers =
+  page.lastPage > 1 ? getPageNumbers(page.currentPage, page.lastPage) : [];
 ---
 
-<BaseLayout title="Proyectos de Programación" description="Portfolio de mis proyectos de programación, donde aplico mis conocimientos en desarrollo web, creación de APIs y aplicaciones blockchain." sideBarActiveItemID="proyectos">
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  sideBarActiveItemID="proyectos"
+>
+  <!-- ============================================================
+      CABECERA / HERO REVISADO (IMÁGENES ALINEADAS A LA DERECHA)
+  ============================================================ -->
+  <section
+    class="relative overflow-hidden rounded-2xl border border-base-300/60 bg-gradient-to-br from-base-100 via-base-200 to-base-100 px-6 sm:px-10 py-12 sm:py-14"
+  >
+    <!-- Fondo decorativo con patrón y brillo -->
+    <div
+      class="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('/images/others/hero-pattern.svg')] bg-cover bg-center"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl pointer-events-none"
+      aria-hidden="true"
+    ></div>
 
-  <article class="prose prose-lg">
-    <h1>Portfolio de Proyectos de Programación</h1>
-    <h2 class="mt-0">Desarrollo Web, APIs y Aplicaciones Blockchain</h2>
-    <p>En este portfolio encontrarás una selección de mis proyectos de programación, donde aplico mis conocimientos en desarrollo web, creación de APIs y aplicaciones blockchain. Cada trabajo refleja mi evolución como desarrollador full stack y mi capacidad para diseñar soluciones prácticas, escalables e innovadoras.</p>
-  </article>
-  
-  <div class="my-8">Pág(s). {page.currentPage} de {page.lastPage} (Mostrando {page.data.length} de {page.total} proyectos)</div>
+    <div class="relative flex flex-col md:flex-row items-center justify-between md:gap-12">
+      <!-- Columna Izquierda: Texto, Botones y Habilidades de Gancho -->
+      <div class="w-full md:basis-7/12 md:shrink-0 text-center md:text-left">
+        <span
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-base-100/90 bg-base-300/80 text-xs font-medium tracking-wide text-base-content/70 backdrop-blur mb-4"
+        >
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Portfolio & Casos de Estudio
+        </span>
 
+        <h1
+          class="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15] mb-4"
+        >
+          Proyectos en <span class="text-primary">Full Stack, IA y Web3</span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-base-content/70 leading-relaxed mb-6">
+          Desarrollo de plataformas escalables e interactivas combinando
+          <strong class="text-base-content">Django, Angular, React y Go</strong>.
+          Experiencia en integración de <strong class="text-base-content">Inteligencia Artificial (Groq)</strong>,
+          migración de arquitecturas backend, <strong class="text-base-content">Smart Contracts en Solidity</strong>
+          y despliegues containerizados con Docker.
+        </p>
+
+        <!-- Botones de Acción (CTA) -->
+        <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start mb-6">
+          <a
+            href="/contacto/"
+            class="btn btn-primary rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <Icon name="mdi:contact-outline" class="w-5 h-5" />
+            Contactar
+          </a>
+          <a
+            href="https://github.com/Jaterli"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline rounded-lg px-6 hover:bg-base-200 transition-colors"
+          >
+            <Icon name="mdi:github" class="w-5 h-5" />
+            Ver GitHub
+          </a>
+        </div>
+
+        <!-- Chips con Habilidades Clave -->
+        <div class="pt-4 border-t border-base-300/40">
+          <p class="text-xs uppercase tracking-[0.15em] text-base-content/50 mb-3">
+            Habilidades clave & Tech Stack
+          </p>
+          <ul class="flex flex-wrap gap-2 justify-center md:justify-start">
+            {
+              [
+                "Django & DRF",
+                "Angular (Signals)",
+                "React Hooks",
+                "Go (Golang)",
+                "Integración IA (Groq)",
+                "Solidity / Web3",
+                "Docker & Nginx",
+                "PostgreSQL",
+                "JWT & Ciberseguridad"
+              ].map((skill) => (
+                <li class="font-mono text-xs px-2.5 py-1 rounded-md bg-base-100/70 border border-base-300/60 text-base-content/80 hover:text-base-content hover:border-primary/40 transition-colors">
+                  {skill}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Abanico diagonal alineado a la derecha -->
+      <div
+        class="hidden md:block relative w-56 h-80 lg:w-64 lg:h-[22rem] flex-shrink-0 md:ml-auto mr-4 lg:mr-8"
+        aria-hidden="true"
+      >
+        <!-- Arriba-izquierda -->
+        <div
+          class="absolute top-1/2 right-4 w-48 lg:w-65 aspect-video overflow-hidden rounded-xl border border-base-300/60 shadow-lg"
+          style="transform: translateY(-60%) translate(-25%, -40%) rotate(-12deg); z-index: 1;"
+        >
+          <img
+            src="https://jaterli.com/images/proyectos/projects.easycryptobuy.jpg"
+            alt="Proyecto EasyCryptoBuy"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Centro (al frente) -->
+        <div
+          class="absolute top-1/2 right-4 w-48 lg:w-65 aspect-video overflow-hidden rounded-xl border border-base-300/60 shadow-xl"
+          style="transform: translateY(-50%) translate(-5%, -5%) rotate(-2deg) scale(1.05); z-index: 3;"
+        >
+          <img
+            src="https://jaterli.com/images/proyectos/projects.AnGoTest-proyecto-fin-master.webp"
+            alt="Proyecto AnGoTest"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+
+        </div>
+
+        <!-- Abajo-derecha -->
+        <div
+          class="absolute top-1/2 right-4 w-48 lg:w-65 aspect-video overflow-hidden rounded-xl border border-base-300/60 shadow-lg"
+          style="transform: translateY(-50%) translate(10%, 55%) rotate(10deg); z-index: 2;"
+        >
+          <img
+            src="https://jaterli.com/images/proyectos/projects.react-rickandmorty-explorer.webp"
+            alt="Proyecto Rick and Morty Explorer en React"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTADOR DE RESULTADOS
+  ============================================================ -->
+  {
+    page.total > 0 && (
+      <div class="mt-8 flex items-center justify-between text-sm text-base-content/60">
+        <p>
+          Mostrando <strong class="text-base-content">{page.data.length}</strong> de{" "}
+          <strong class="text-base-content">{page.total}</strong> proyectos
+        </p>
+        {page.lastPage > 1 && (
+          <p class="hidden sm:block">
+            Página <strong class="text-base-content">{page.currentPage}</strong> de{" "}
+            <strong class="text-base-content">{page.lastPage}</strong>
+          </p>
+        )}
+      </div>
+    )
+  }
+
+  <!-- ============================================================
+       GRID DE PROYECTOS
+  ============================================================ -->
   {
     page.data.length === 0 ? (
-      <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
-        <p class="font-semibold">Lo siento!</p>
-        <p>No hay proyectos publicados en este momento.</p> 
+      <div class="mt-8 rounded-xl border border-base-300/60 bg-base-200/40 p-8 text-center">
+        <Icon
+          name="carbon:portfolio"
+          class="w-10 h-10 mx-auto mb-3 text-base-content/30"
+        />
+        <h2 class="font-heading text-xl font-semibold mb-1">
+          Sin proyectos publicados
+        </h2>
+        <p class="text-base text-base-content/60">
+          Vuelve pronto: estoy trabajando en nuevos desarrollos.
+        </p>
       </div>
     ) : (
-      <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
         {page.data.map((project) => (
           <HorizontalProjectItem
-              title={project.data.title}
-              description={project.data.description}
-              pubDate={project.data.pubDate}
-              heroImage={project.data.heroImage}
-              badge={project.data.badge}
-              details={project.data.details}
-              tags={project.data.tags}
-              url={getProjectUrl(project.id)}
-            />
+            title={project.data.title}
+            description={project.data.description}
+            pubDate={project.data.pubDate}
+            heroImage={project.data.heroImage}
+            badge={project.data.badge}
+            details={project.data.details}
+            tags={project.data.tags}
+            url={getProjectUrl(project.id)}
+          />
         ))}
       </section>
     )
   }
 
-  <div class="flex justify-between">
-    {
-      page.url.prev ? (
-        <a href={page.url.prev} class="btn btn-ghost my-10 mx-5">
-          {" "}
-          <svg
-            class="h-6 w-6 fill-current md:h-8 md:w-8"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
-          </svg>{" "}
-          Proyectos más recientes
-        </a>
-      ) : (
-        <div />
-      )
-    }
-    {
-      page.url.next ? (
-        <a href={page.url.next} class="btn btn-ghost my-10 mx-5">
-          Proyectos más antiguos{" "}
-          <svg
-            class="h-6 w-6 fill-current md:h-8 md:w-8"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            {" "}
-            <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-          </svg>
-        </a>
-      ) : (
-        <div />
-      )
-    }
-  </div>
+  <!-- ============================================================
+      PAGINACIÓN NUMÉRICA
+  ============================================================ -->
+  {
+    page.lastPage > 1 && (
+      <nav
+        class="mt-12 pt-8 border-t border-base-300/60 flex justify-center"
+        aria-label="Paginación de proyectos"
+      >
+        <ul class="flex items-center gap-2 flex-wrap justify-center">
+          {/* Anterior */}
+          <li>
+            {page.url.prev ? (
+              <a
+                href={page.url.prev}
+                class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/60 bg-base-200/40 text-base-content/70 hover:bg-base-200 hover:border-primary/40 hover:text-primary transition-colors"
+                aria-label="Página anterior"
+              >
+                <Icon name="mdi:chevron-left" class="w-5 h-5" />
+              </a>
+            ) : (
+              <span
+                class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/40 bg-base-200/20 text-base-content/30 cursor-not-allowed"
+                aria-hidden="true"
+              >
+                <Icon name="mdi:chevron-left" class="w-5 h-5" />
+              </span>
+            )}
+          </li>
+
+          {/* Números */}
+          {pageNumbers.map((n) =>
+            n === "..." ? (
+              <li>
+                <span class="inline-flex items-center justify-center w-10 h-10 text-base-content/40 select-none">
+                  …
+                </span>
+              </li>
+            ) : n === page.currentPage ? (
+              <li>
+                <span
+                  class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-primary bg-primary text-primary-content text-sm font-semibold shadow-sm"
+                  aria-current="page"
+                >
+                  {n}
+                </span>
+              </li>
+            ) : (
+              <li>
+                <a
+                  href={pageUrl(n)}
+                  class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/60 bg-base-200/40 text-sm font-medium text-base-content/70 hover:bg-base-200 hover:border-primary/40 hover:text-primary transition-colors"
+                >
+                  {n}
+                </a>
+              </li>
+            )
+          )}
+
+          {/* Siguiente */}
+          <li>
+            {page.url.next ? (
+              <a
+                href={page.url.next}
+                class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/60 bg-base-200/40 text-base-content/70 hover:bg-base-200 hover:border-primary/40 hover:text-primary transition-colors"
+                aria-label="Página siguiente"
+              >
+                <Icon name="mdi:chevron-right" class="w-5 h-5" />
+              </a>
+            ) : (
+              <span
+                class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/40 bg-base-200/20 text-base-content/30 cursor-not-allowed"
+                aria-hidden="true"
+              >
+                <Icon name="mdi:chevron-right" class="w-5 h-5" />
+              </span>
+            )}
+          </li>
+        </ul>
+      </nav>
+    )
+  }
 </BaseLayout>

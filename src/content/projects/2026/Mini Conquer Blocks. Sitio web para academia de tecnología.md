@@ -227,15 +227,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ## Enlaces
 
-<div class="btn-group">
-  <a href="https://jaterli.github.io/CSS-entregable-5/" target="_blank" class="btn btn-neutral flex items-center">
-    <svg class="w-5 h-5" fill="currentColor"> <use href="/assets/icons.svg#icon-web"></use> </svg>
-    <span>Ver Proyecto en Vivo</span>
-  </a>
-  <a href="https://github.com/jaterli/CSS-entregable-5" target="_blank" class="btn btn-primary flex items-center"> 
-  <svg class="w-5 h-5" fill="currentColor"> <use href="/assets/icons.svg#icon-github"></use> </svg>
-    <span>Código en GitHub</span>
-  </a>
+<div class="not-prose my-6 flex flex-wrap items-center gap-3">
+
+<a href="https://jaterli.github.io/CSS-entregable-5/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+<svg class="w-5 h-5" fill="currentColor"> <use href="/assets/icons.svg#icon-web"></use> </svg>
+Ver Proyecto en Vivo</a>
+
+<a href="https://github.com/jaterli/CSS-entregable-5" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+<svg class="w-5 h-5" fill="currentColor"> <use href="/assets/icons.svg#icon-github"></use> </svg>
+Código en GitHub</a>
+
 </div>
 
 ---

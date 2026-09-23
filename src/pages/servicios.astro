@@ -1,116 +1,387 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const title = "Servicios Profesionales de Desarrollo Web, Web3 y SEO Técnico";
-const description = "Transformo tus ideas en soluciones digitales potentes, seguras y escalables. Desde plataformas web hasta aplicaciones blockchain y optimización SEO.";
-const image="/images/others/Logo-jtl-domain.png";
+import { Icon } from "astro-icon/components";
+
+const title = "Servicios Profesionales de Desarrollo Web, IA, Web3 y SEO";
+const description = "Soluciones digitales a medida para hacer crecer tu negocio: desarrollo web, integración de inteligencia artificial, blockchain y posicionamiento en Google.";
+const image = "/images/others/Logo-jtl-domain.png";
+
+const services = [
+  {
+    id: "fullstack",
+    title: "Desarrollo Web a Medida",
+    badge: "Servicio Principal",
+    icon: "mdi:code-braces",
+    description:
+      "Creación de páginas y aplicaciones web diseñadas específicamente para las necesidades de tu negocio: rápidas, seguras y adaptadas a cualquier dispositivo.",
+    features: [
+      "Páginas y plataformas web de alto rendimiento que cargan al instante.",
+      "Diseños atractivos, intuitivos y fáciles de usar en móviles, tablets y ordenadores.",
+      "Conexión segura con bases de datos, pasarelas de pago y herramientas externas.",
+      "Sistemas a medida diseñados para crecer al mismo ritmo que tu empresa."
+    ],
+    techs: ["Go", "Django", "React", "Angular", "Astro", "TailwindCSS", "PostgreSQL"]
+  },
+  {
+    id: "ai-mcp",
+    title: "Inteligencia Artificial para tu Negocio",
+    badge: "Innovación",
+    icon: "mdi:robot-outline",
+    description:
+      "Integro herramientas de Inteligencia Artificial en tu empresa para automatizar tareas repetitivas, responder a tus clientes y hacerte ahorrar tiempo.",
+    features: [
+      "Asistentes virtuales y chatbots inteligentes adaptados a la información de tu negocio.",
+      "Automatización de procesos diarios para reducir el trabajo manual.",
+      "Conexión de modelos de IA (como ChatGPT o Claude) con tus propios sistemas.",
+      "Análisis inteligente de datos para ayudarte a tomar mejores decisiones."
+    ],
+    techs: ["Protocolo MCP", "OpenAI", "Claude API", "Python", "Automatizaciones"]
+  },
+  {
+    id: "web3-blockchain",
+    title: "Tecnología Blockchain & Web3",
+    badge: "Descentralizado",
+    icon: "mdi:ethereum",
+    description:
+      "Conecta tu empresa con la tecnología del futuro: cobros seguros con criptomonedas, contratos digitales automáticos y aplicaciones descentralizadas.",
+    features: [
+      "Contratos inteligentes (Smart Contracts) para automatizar acuerdos de forma transparente.",
+      "Integración de pagos con criptomonedas y conexión con monederos digitales (Wallets).",
+      "Sistemas de acceso mediante firma digital, más seguros y sin contraseñas tradicionales.",
+      "Desarrollo de plataformas y mercados digitales sin intermediarios."
+    ],
+    techs: ["Solidity", "EVM", "Ethers.js", "Wallets", "Smart Contracts"]
+  },
+  {
+    id: "security-devops",
+    title: "Ciberseguridad & Mantenimiento",
+    badge: "Protección",
+    icon: "mdi:shield-check-outline",
+    description:
+      "Protejo tu plataforma web frente a ataques informáticos, garantizando que tu información esté a salvo y tu sitio funcione siempre sin interrupciones.",
+    features: [
+      "Protección activa contra hackeos, robos de datos y accesos no autorizados.",
+      "Copias de seguridad automáticas y planes de recuperación rápida ante fallos.",
+      "Configuración de servidores seguros para que tu web aguante grandes volúmenes de visitas.",
+      "Gestión segura de usuarios, contraseñas y permisos de acceso."
+    ],
+    techs: ["Docker", "Servidores Cloud", "Seguridad Web", "Copias de Seguridad"]
+  },
+  {
+    id: "seo-performance",
+    title: "Posicionamiento Google & Velocidad",
+    badge: "Visibilidad",
+    icon: "mdi:chart-line",
+    description:
+      "Optimizo tu sitio web para que aparezca en los primeros puestos de búsqueda de Google y consigas más clientes de forma orgánica.",
+    features: [
+      "Auditoría completa para solucionar fallos técnicos que frenan tu visibilidad.",
+      "Optimización de la velocidad de carga para que los visitantes no abandonen la página.",
+      "Estructuración de textos y metadatos para que Google entienda mejor tu oferta.",
+      "Configuración de herramientas para medir cuántas personas visitan tu web y de dónde vienen."
+    ],
+    techs: ["SEO Técnico", "Google Search Console", "Google Analytics", "Core Web Vitals"]
+  },
+  {
+    id: "wordpress",
+    title: "Páginas Web con WordPress",
+    badge: "Empresarial",
+    icon: "mdi:wordpress",
+    description:
+      "Sitios web corporativos elegantes y fáciles de gestionar por ti mismo, ideales para empresas que necesitan publicar contenido sin complicaciones.",
+    features: [
+      "Diseño web profesional y personalizado, totalmente adaptado a tu imagen de marca.",
+      "Panel de administración intuitivo para que cambies textos e imágenes cuando quieras.",
+      "Adaptación a la ley de protección de datos (RGPD) y formularios de contacto.",
+      "Mantenimiento técnico para mantener tu WordPress actualizado y libre de virus."
+    ],
+    techs: ["WordPress", "PHP", "Adaptado a RGPD", "WooCommerce"]
+  },
+  {
+    id: "consulting-mentoring",
+    title: "Consultoría & Asesoramiento Técnico",
+    badge: "Acompañamiento",
+    icon: "mdi:account-group-outline",
+    description:
+      "Te guío paso a paso para tomar las mejores decisiones tecnológicas en tu proyecto digital o para resolver problemas en sistemas existentes.",
+    features: [
+      "Revisión de proyectos web existentes para detectar errores y proponer mejoras.",
+      "Asesoramiento para elegir las tecnologías y herramientas más rentables para tu caso.",
+      "Formación práctica y acompañamiento para ti o para los miembros de tu equipo.",
+      "Planificación clara de proyectos desde la idea inicial hasta el lanzamiento."
+    ],
+    techs: ["Asesoría Digital", "Auditoría Web", "Gestión de Proyectos", "Mentoría"]
+  }
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Escuchamos tu Idea",
+    description: "Analizamos las necesidades de tu negocio y definimos juntos la mejor estrategia sin tecnicismos innecesarios."
+  },
+  {
+    number: "02",
+    title: "Diseño & Desarrollo",
+    description: "Construimos la solución paso a paso, mostrándote avances periódicos para ajustar cada detalle a tu gusto."
+  },
+  {
+    number: "03",
+    title: "Pruebas & Seguridad",
+    description: "Comprobamos que todo funcione perfectamente en móviles y ordenadores, verificando la velocidad y la seguridad."
+  },
+  {
+    number: "04",
+    title: "Lanzamiento & Apoyo",
+    description: "Publicamos tu proyecto, lo preparamos para Google y te enseñamos a gestionarlo con total tranquilidad."
+  }
+];
 ---
 
-<BaseLayout title={title} description={description} image={image} ogType="article" sideBarActiveItemID="servicios">
-  <article class="prose prose-lg">
-    <h1 class="text-center mb-6">Servicios Profesionales de Desarrollo Web, Web3 y SEO</h1>
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  ogType="website"
+  sideBarActiveItemID="servicios"
+>
+  <!-- ============================================================
+      CABECERA / HERO DE SERVICIOS
+  ============================================================ -->
+  <section
+    class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/80 px-4 sm:px-10 py-12 sm:py-16 shadow-md"
+  >
+    <div
+      class="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('/images/others/hero-pattern.svg')] bg-cover bg-center"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl pointer-events-none"
+      aria-hidden="true"
+    ></div>
 
-    <div class="text-center mb-8">
-      Transformo tus ideas en soluciones digitales potentes, seguras y escalables. Desde plataformas web hasta aplicaciones blockchain y optimización SEO, te acompaño en cada fase del desarrollo, integrando buenas prácticas de arquitectura, seguridad, experiencia de usuario y visibilidad en buscadores.
+    <div class="relative flex flex-col md:flex-row items-center gap-8 lg:gap-12">
+      <!-- Texto Principal (Izquierda) -->
+      <div class="text-center md:text-left flex-1">
+        <span
+          class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/10 text-xs font-semibold text-primary mb-6"
+        >
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Soluciones Digitales Claras y Efectivas
+        </span>
+
+        <h1
+          class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.15] mb-4 text-base-content"
+        >
+          Servicios de <span class="text-primary">Desarrollo Web, IA</span> & Crecimiento Digital
+        </h1>
+
+        <p class="text-base sm:text-lg text-base-content/80 leading-relaxed mb-6">
+          Te ayudo a transformar tu presencia digital con soluciones a medida. Sin palabras complicadas: solo tecnología útil, segura y orientada a conseguir resultados para tu empresa.
+        </p>
+
+        <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+          <a
+            href="/contacto/"
+            class="btn btn-primary rounded-lg px-6 shadow-sm hover:shadow-md transition-all inline-flex items-center gap-2"
+          >
+            <Icon name="mdi:email-outline" class="w-5 h-5" />
+            Cuéntame tu Proyecto
+          </a>
+          <a
+            href="/proyectos/"
+            class="btn btn-outline rounded-lg bg-base-100 hover:bg-base-200 border-base-300 transition-colors inline-flex items-center gap-2"
+          >
+            <Icon name="mdi:folder-outline" class="w-5 h-5 text-primary" />
+            Ver Trabajos Realizados
+          </a>
+        </div>
+      </div>
+
+      <!-- Imagen Representativa (Derecha) -->
+      <div class="relative shrink-0 w-full max-w-xs md:max-w-sm lg:max-w-md">
+        <div class="relative rounded-2xl overflow-hidden border-2 border-base-300 bg-base-100 p-2 shadow-lg">
+          <img
+            src="/images/others/hero-servicios.jpg"
+            alt="Ilustración de Servicios de Desarrollo Web e Inteligencia Artificial"
+            class="w-full h-auto rounded-xl object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GRID DE SERVICIOS (CON ALTO CONTRASTE)
+  ============================================================ -->
+  <section class="mt-12">
+    <div class="text-center mb-10">
+      <h2 class="font-heading text-2xl sm:text-3xl font-semibold tracking-tight">
+        ¿En qué puedo ayudarte?
+      </h2>
+      <p class="text-sm sm:text-base text-base-content/70 mt-2">
+        Servicios adaptados tanto a pequeñas empresas como a proyectos tecnológicos avanzados
+      </p>
     </div>
 
-    <hr class="my-6" />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        services.map((service) => (
+          <div class="group relative flex flex-col justify-between rounded-2xl border-2 border-base-300/60 bg-base-200/40 hover:bg-base-200 hover:border-primary/40  p-4 sm:p-8 hover:border-primary hover:bg-base-200 shadow-md hover:shadow-xl transition-all duration-300">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-4">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary text-primary-content shadow-sm">
+                  <Icon name={service.icon} class="w-6 h-6" />
+                </div>
+                <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-base-100 text-base-content/80 border border-base-300 shadow-xs">
+                  {service.badge}
+                </span>
+              </div>
 
-    <section class="space-y-6">
-      <details class="p-4 bg-base-200 rounded-xl shadow-sm" open>
-        <summary class="text-xl font-semibold cursor-pointer">Desarrollo Backend, APIs Seguras y Go</summary>
-        <ul class="mt-3 list-disc">
-          <li><strong>Aplicaciones robustas con Go y Django</strong> – Backend completo con arquitectura escalable, manejo eficiente de datos, y servicios de alto rendimiento.</li>
-          <li><strong>APIs REST y GraphQL seguras</strong> – Autenticación con JWT en cookies HttpOnly, permisos granulares, y protección contra ataques comunes (SQLi, XSS, CSRF).</li>
-          <li><strong>Integración con Inteligencia Artificial</strong> – Conexión a APIs de IA para generación de contenido, análisis de datos y automatización de procesos dentro de la aplicación.</li>
-          <li><strong>Integración Web3 y autenticación moderna</strong> – Soporte para MetaMask, WalletConnect y validación de firma digital, garantizando accesos seguros y controlados.</li>
-        </ul>
-      </details>
+              <h3 class="font-heading text-xl font-bold mb-3 text-base-content group-hover:text-primary transition-colors">
+                {service.title}
+              </h3>
 
-      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
-        <summary class="text-xl font-semibold cursor-pointer">Desarrollo Frontend Seguro y Escalable</summary>
-        <ul class="mt-3 list-disc ml-5">
-          <li><strong>Interfaces modernas con Angular y React</strong> – Desarrollo con TypeScript, gestión de estado reactiva y componentes reutilizables; diseño adaptable (responsive) y enfoque en accesibilidad y seguridad en el cliente.</li>
-          <li><strong>Frameworks y librerías de estilos</strong> – Uso de <strong>TailwindCSS</strong>, <strong>Bootstrap</strong> y <strong>Chakra UI</strong> para interfaces limpias, consistentes y altamente personalizables.</li>
-          <li><strong>Aplicaciones estáticas y rápidas</strong> – Generación de sitios con Astro o Angular Universal, optimizados para rendimiento y seguridad, fácilmente integrables con APIs y CMS.</li>
-        </ul>
-      </details>
+              <p class="text-sm sm:text-base text-base-content/80 leading-relaxed mb-6">
+                {service.description}
+              </p>
 
-      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
-        <summary class="text-xl font-semibold cursor-pointer">Blockchain y Contratos Inteligentes</summary>
-        <ul class="mt-3 list-disc">
-          <li><strong>Desarrollo de smart contracts seguros</strong> – Contratos en Solidity con patrones recomendados y pruebas rigurosas (tests y simulaciones).</li>
-          <li><strong>Marketplaces Web3 y pagos confiables</strong> – Diseño de plataformas descentralizadas con gestión de pagos, escrow y validación en cadena.</li>
-          <li><strong>Autenticación descentralizada</strong> – Implementación del estándar EIP-4361 ("Sign-In with Ethereum") para login seguro sin contraseñas.</li>
-        </ul>
-      </details>
+              <div class="border-t border-base-300/80 pt-4 mb-6">
+                <h4 class="text-xs uppercase tracking-wider text-base-content/60 font-bold mb-3">
+                  ¿Qué incluye este servicio?
+                </h4>
+                <ul class="space-y-2.5 text-sm text-base-content/90">
+                  {service.features.map((feature) => (
+                    <li class="flex items-start gap-2.5">
+                      <Icon
+                        name="mdi:check-circle"
+                        class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"
+                      />
+                      <span class="leading-snug">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
 
-      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
-        <summary class="text-xl font-semibold cursor-pointer">Seguridad Aplicada en Todo el Ciclo</summary>
-        <ul class="mt-3 list-disc">
-          <li><strong>JWT y sesiones seguras</strong> – Tokens rotativos, control de revocación, sesiones persistentes sin comprometer la seguridad.</li>
-          <li><strong>Anti-fraude en Web3</strong> – Validación de eventos on-chain, detección de actividad sospechosa y alertas.</li>
-          <li><strong>Auditoría técnica de DApps</strong> – Análisis de vulnerabilidades en frontend, contratos y arquitectura general.</li>
-        </ul>
-      </details>
+            <div class="pt-4 border-t border-base-300/80">
+              <p class="text-[11px] uppercase tracking-wider text-base-content/50 font-semibold mb-2">
+                Tecnologías y herramientas:
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                {service.techs.map((tech) => (
+                  <span class="font-mono text-xs px-2 py-0.5 rounded-md bg-base-100 border border-base-300 text-base-content/80 font-medium">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 
-      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
-        <summary class="text-xl font-semibold cursor-pointer">SEO Técnico y Estrategias de Posicionamiento</summary>
-        <ul class="mt-3 list-disc">
-          <li><strong>SEO Técnico</strong> – Optimización de velocidad de carga, arquitectura limpia, indexación eficiente y configuración de metadatos.</li>
-          <li><strong>SEO On-Page</strong> – Contenido optimizado con palabras clave estratégicas, jerarquía de encabezados clara y datos estructurados con JSON-LD.</li>
-          <li><strong>SEO proyectos innovadores</strong> – Adaptación de estrategias de posicionamiento para plataformas digitales, aplicaciones emergentes y tecnologías en crecimiento.</li>
-          <li><strong>Analítica y seguimiento</strong> – Integración con Google Search Console, Analytics y dashboards personalizados.</li>
-        </ul>
-      </details>
+  <!-- ============================================================
+       METODOLOGÍA / PROCESO DE TRABAJO
+  ============================================================ -->
+  <section class="mt-16 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-10 shadow-sm">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="font-heading text-2xl sm:text-3xl font-semibold tracking-tight">
+        Un proceso sencillo y transparente
+      </h2>
+      <p class="text-sm sm:text-base text-base-content/70 mt-2">
+        Sin sorpresas ni complicaciones: sabrás en todo momento en qué fase se encuentra tu proyecto.
+      </p>
+    </div>
 
-      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
-        <summary class="text-xl font-semibold cursor-pointer">Despliegue y Gestión en Producción</summary>
-        <ul class="mt-3 list-disc">
-          <li><strong>Entornos Dockerizados</strong> – Configuración eficiente, segura y fácil de replicar en servidores locales o cloud.</li>
-          <li><strong>Seguridad en producción</strong> – WAF, HTTPS, headers seguros, rate limiting y detección de amenazas.</li>
-          <li><strong>CI/CD y monitoreo</strong> – Integración continua, despliegue automatizado y seguimiento del rendimiento.</li>
-        </ul>
-      </details>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        processSteps.map((step) => (
+          <div class="relative bg-base-100 rounded-xl p-5 border border-base-300 shadow-sm flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-3xl font-extrabold text-primary block mb-2">
+                {step.number}
+              </span>
+              <h3 class="font-heading text-lg font-bold mb-2 text-base-content">
+                {step.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-base-content/70 leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 
-      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
-        <summary class="text-xl font-semibold cursor-pointer">WordPress Profesional para Empresas</summary>
-        <ul class="mt-3 list-disc">
-          <li><strong>Diseño moderno y adaptable</strong> – Sitios rápidos, visualmente atractivos y optimizados para móvil y escritorio.</li>
-          <li><strong>SEO y rendimiento</strong> – Carga optimizada, arquitectura limpia y seguimiento mediante herramientas como Google Search Console.</li>
-          <li><strong>Seguridad reforzada</strong> – Plugins seleccionados, backups automáticos y protección contra malware y spam.</li>
-          <li><strong>Formularios RGPD y multilingüe</strong> – Conformidad legal, accesibilidad y posibilidad de sitio multilingüe.</li>
-          <li><strong>Blog profesional y mantenimiento</strong> – Espacio editorial gestionable y soporte técnico opcional.</li>
-        </ul>
-      </details>
+  <!-- ============================================================
+       BLOQUE DE LLAMADA A LA ACCIÓN (CTA)
+  ============================================================ -->
+  <section class="mt-16 text-center rounded-2xl border-2 border-primary/30 bg-primary/10 p-8 sm:p-12 shadow-sm">
+    <h2 class="font-heading text-2xl sm:text-3xl font-bold mb-3 text-base-content">
+      ¿Hablamos de tu proyecto?
+    </h2>
+    <p class="text-base sm:text-lg text-base-content/80 max-w-2xl mx-auto mb-6">
+      Cuéntame qué necesitas y te responderé con una propuesta clara, ajustada a tus objetivos y sin ningún compromiso.
+    </p>
+    <a
+      href="/contacto/"
+      class="btn btn-primary rounded-lg px-8 shadow-md hover:shadow-lg transition-all inline-flex items-center gap-2"
+    >
+      <Icon name="mdi:send-outline" class="w-5 h-5" />
+      Contactar Ahora
+    </a>
+  </section>
 
-      <details class="p-4 bg-base-200 rounded-xl shadow-sm">
-        <summary class="text-xl font-semibold cursor-pointer">Consultoría Técnica y Formación</summary>
-        <ul class="mt-3 list-disc">
-          <li><strong>Mentoría para equipos de desarrollo</strong> – Asesoría en buenas prácticas de arquitectura, testing, seguridad y patrones de diseño.</li>
-          <li><strong>Formación técnica</strong> – Sesiones personalizadas sobre Django, React, Web3, seguridad, despliegue, SEO y más.</li>
-          <li><strong>Auditoría de código</strong> – Revisión detallada de código base y sugerencias para mejorar escalabilidad y seguridad.</li>
-        </ul>
-      </details>
-    </section>
-  </article>
-
-  <!-- JSON-LD para SEO local de servicios -->
+  <!-- JSON-LD Estructurado para Servicios -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Desarrollo Web, Web3 y SEO Técnico",
-    "provider": {
-      "@type": "Person",
-      "name": "Jaime TL",
-      "url": "https://jaterli.com"
-    },
-    "description": "Servicios profesionales de desarrollo web con Django, React, blockchain y optimización SEO.",
-    "areaServed": "España",
-    "availableChannel": {
-      "@type": "ServiceChannel",
-      "serviceUrl": "https://jaterli.com/servicios"
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Desarrollo Web, Inteligencia Artificial, Web3 y SEO",
+      "provider": {
+        "@type": "Person",
+        "name": "Jaime TL",
+        "url": "https://jaterli.com"
+      },
+      "description": "Servicios de desarrollo web a medida, integración de inteligencia artificial para empresas, soluciones blockchain y posicionamiento SEO.",
+      "areaServed": "España",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Catálogo de Servicios",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Desarrollo Web a Medida"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Inteligencia Artificial para tu Negocio"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Tecnología Blockchain & Web3"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Posicionamiento Google & Velocidad"
+            }
+          }
+        ]
+      }
     }
-  }
   </script>
 </BaseLayout>

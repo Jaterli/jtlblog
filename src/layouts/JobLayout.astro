@@ -2,45 +2,130 @@
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 export type Props = CollectionEntry<"jobs">["data"];
 
-const { title, description, startDate, endDate, heroImage, badge } = Astro.props;
-const format_startDate = new Date(startDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
-const format_endDate = new Date(endDate).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+const { title, description, startDate, endDate, heroImage, badge, jsonLd, tags = [] } = Astro.props;
 
+const format_startDate = startDate
+  ? new Date(startDate).toLocaleDateString("es-ES", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : null;
+
+const format_endDate = endDate
+  ? new Date(endDate).toLocaleDateString("es-ES", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : "Presente";
 ---
 
-<BaseLayout title={title} description={description} image={heroImage}>
-  <article class="prose prose-lg prose-img:mx-auto">
-    {heroImage ? (
-      <div class="hero-post">
-        <Image width={1400} src={heroImage} alt={title} class="w-full hover:scale-105 transition-transform duration-300" />
-        <h1 class="title">{title}</h1>
+<BaseLayout
+  title={title}
+  description={description}
+  image={typeof heroImage === "string" ? heroImage : heroImage?.src}
+  ogType="article"
+  jsonLd={jsonLd}
+>
+  <!-- ============================================================
+       CABECERA DEL DETALLE DE TRABAJO
+  ============================================================ -->
+  <section class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-10 shadow-sm mb-8">
+    <!-- Fondo decorativo -->
+    <div
+      class="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('/images/others/hero-pattern.svg')] bg-cover bg-center"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl pointer-events-none"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative space-y-4">
+      <!-- Metadatos: Badge y Rango de Fechas -->
+      <div class="flex flex-wrap items-center gap-3">
+        {badge && (
+          <span class="font-mono text-xs font-bold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+            {badge}
+          </span>
+        )}
+        {format_startDate && (
+          <span class="flex items-center gap-1.5 text-xs sm:text-sm text-base-content/60">
+            <Icon name="mdi:calendar-range-outline" class="w-4 h-4 text-primary" />
+            <time>{format_startDate}</time> - <time>{format_endDate}</time>
+          </span>
+        )}
       </div>
-    ) : (
-      <h1 class="title">{title}</h1>
-    )}
 
-    {badge && (
-      <div class="badge badge-neutral text-lg mb-1 px-4 py-1 block">
-        {badge}
-      </div>
-    )}  
+      <!-- Título principal -->
+      <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.15] text-base-content">
+        {title}
+      </h1>
 
-    {format_startDate && format_endDate && (
-      <>📅 <time class="italic opacity-70">{format_startDate} - {format_endDate}</time></>
-    )}
-
-    <div class="divider mt-0 mb-2"></div>
-    <slot />
-
-    <div class="text-right pt-4">
-      <a href="javascript:history.back()" class="text-sm opacity-70 hover:opacity-100 transition-opacity duration-300">
-        ← Regresar
-      </a>
+      {description && (
+        <p class="text-base sm:text-lg text-base-content/80 leading-relaxed">
+          {description}
+        </p>
+      )}
     </div>
 
-    <div class="divider my-2"></div>
+    <!-- Imagen destacada -->
+    {heroImage && (
+      <div class="mt-8 relative rounded-xl overflow-hidden border-2 border-base-300 bg-base-100 p-2 shadow-md">
+        <Image
+          width={1400}
+          height={700}
+          src={heroImage}
+          alt={title}
+          class="w-full h-auto rounded-lg object-cover hover:scale-[1.01] transition-transform duration-300"
+        />
+      </div>
+    )}
+  </section>
+
+  <!-- ============================================================
+       CONTENIDO PRINCIPAL DEL TRABAJO
+  ============================================================ -->
+  <article class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-10 shadow-sm mb-8">
+    <div class="prose prose-md max-w-none text-base-content/85 prose-headings:font-heading prose-headings:font-bold prose-headings:text-base-content prose-a:text-primary hover:prose-a:underline prose-strong:text-base-content prose-img:rounded-xl prose-img:border-2 prose-img:border-base-300 prose-code:font-mono prose-code:text-primary">
+      <slot />
+    </div>
   </article>
+
+  <!-- ============================================================
+       SECCIÓN DE ETIQUETAS / TECNOLOGÍAS
+  ============================================================ -->
+  {tags && tags.length > 0 && (
+    <section class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6  shadow-sm mb-6">
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-base-content/60 mr-2">
+          <Icon name="mdi:tag-multiple-outline" class="w-4 h-4 text-primary" />
+          Tecnologías / Etiquetas:
+        </div>
+        {tags.map((tag: string) => (
+          <span class="font-mono text-xs px-3 py-1.5 rounded-lg bg-base-100 border border-base-300 text-base-content/80">
+            #{tag}
+          </span>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- ============================================================
+       BOTÓN DE REGRESO
+  ============================================================ -->
+  <div class="flex justify-end mt-4">
+    <a
+      href="javascript:history.back()"
+      class="btn btn-outline btn-sm rounded-lg bg-base-100 hover:bg-base-200 border-base-300 transition-colors inline-flex items-center gap-2"
+    >
+      <Icon name="mdi:arrow-left" class="w-4 h-4 text-primary" />
+      Regresar
+    </a>
+  </div>
 </BaseLayout>

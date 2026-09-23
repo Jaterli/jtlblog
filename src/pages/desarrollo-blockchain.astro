@@ -1,48 +1,194 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+
+// Metadata
 const title = "Máster en Desarrollo Blockchain | Mi Experiencia";
-const description = "Aprendí a crear contratos inteligentes, aplicaciones descentralizadas (dApps) y soluciones blockchain con Solidity y Rust.";
-const image="/images/others/master-blockchain.webp";
+const description = "Mi experiencia y lo aprendido en el Máster en Desarrollo Blockchain de Conquer Blocks: Contratos inteligentes, dApps, seguridad Web3, tokenización y Rust.";
+const image = "/images/others/master-blockchain.webp";
+
+// Datos de módulos/aprendizajes
+const learningModules = [
+  {
+    title: "Smart Contracts",
+    icon: "mdi:file-code-outline",
+    description: "Programación, despliegue y auditoría de contratos inteligentes en redes EVM y de nueva generación.",
+    topics: ["Solidity (Ethereum)", "Rust (Solana/Polkadot)", "Hardhat", "Remix"]
+  },
+  {
+    title: "Desarrollo de dApps",
+    icon: "mdi:ethereum",
+    description: "Construcción de aplicaciones descentralizadas integrando el frontend con la tecnología blockchain.",
+    topics: ["Ethers.js / Web3.js", "MetaMask", "EIP-4361 (SIWE)", "Integración Web3"]
+  },
+  {
+    title: "Seguridad Web3 & Auditoría",
+    icon: "mdi:shield-bug-outline",
+    description: "Identificación y prevención de vulnerabilidades críticas y vectores de ataque comunes en contratos inteligentes.",
+    topics: ["Reentrancy", "Auditoría de Código", "Buenas Prácticas", "Seguridad On-Chain"]
+  },
+  {
+    title: "Tokenización & Estándares",
+    icon: "mdi:currency-usd-circle-outline",
+    description: "Creación y gestión de activos digitales programables y coleccionables bajo estándares de la industria.",
+    topics: ["Tokens ERC-20", "NFTs (ERC-721 / ERC-1155)", "Gobernanza", "Tokenomics"]
+  },
+  {
+    title: "Escalabilidad & Layer 2",
+    icon: "mdi:layers-triple-outline",
+    description: "Estudio de arquitecturas avanzadas para la optimización de costes de gas y rendimiento.",
+    topics: ["Layer 2 (Rollups)", "Sidechains", "Optimización de Gas", "Sharding"]
+  }
+];
+
+// Datos del impacto profesional
+const careerImpacts = [
+  "Desarrollar contratos inteligentes seguros, probados y eficientes para diversas redes blockchain.",
+  "Crear dApps completas que interactúan directamente con la Web3 y wallets de usuario.",
+  "Implementar soluciones de tokenización sólidas para activos digitales y proyectos descentralizados.",
+  "Aportar valor técnico en proyectos innovadores que buscan transformar industrias mediante descentralización."
+];
 ---
 
 <BaseLayout title={title} description={description} image={image} ogType="article" sideBarActiveItemID="blockchain-master">
 
-  <article>
+  {/* HERO */}
+  <section class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/80 p-4 sm:p-10 shadow-md mb-10">
+    <div class="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('/images/others/hero-pattern.svg')] bg-cover bg-center" aria-hidden="true"></div>
+    <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
 
-    <div class="flex justify-center mb-8">
-      <img src="/images/others/master-blockchain.webp" title="Máster en Desarrollo Full Stack" alt="Máster en Desarrollo Full Stack" class="w-auto object-cover">
-    </div>       
-
-    <h1 class="text-4xl text-center">Máster en Desarrollo Blockchain</h1>
-    <h2 class="text-3xl py-3 text-center">Mi experiencia y lo que aprendí 👨‍💻</h2>
-
-    <div class="py-2">
-      <div class="mx-auto max-w-4xl mt-4 prose prose-lg">
-        <p>Uno de los programas más fascinantes que he cursado es el <strong>Máster en Desarrollo Blockchain</strong> de <strong>Conquer Blocks</strong>. Este máster me permitió adentrarme en el mundo de las tecnologías descentralizadas y aprender a crear soluciones innovadoras basadas en blockchain.</p>
-
-        <p>Quiero compartir contigo lo que aprendí durante este máster y cómo ha influido en mi carrera profesional:</p>
-
-        <h3 class="text-2xl font-bold mt-6">¿Qué aprendí en el máster?</h3>
-        <ul class="list-disc pl-6">
-          <li><strong>Desarrollo de contratos inteligentes:</strong> Aprendí a programar, desplegar y auditar contratos inteligentes usando lenguajes como <strong>Solidity</strong> (para Ethereum) y <strong>Rust</strong> (utilizado en blockchains como Solana y Polkadot).</li>
-          <li><strong>Creación de aplicaciones descentralizadas (dApps):</strong> Desarrollé aplicaciones que interactúan con blockchain, integrando tanto el frontend como el backend para crear soluciones descentralizadas.</li>
-          <li><strong>Seguridad blockchain:</strong> Adquirí conocimientos para identificar y prevenir vulnerabilidades comunes en contratos inteligentes y sistemas descentralizados.</li>
-          <li><strong>Tokenización:</strong> Aprendí a crear y gestionar tokens (ERC-20, ERC-721) para representar activos digitales en la blockchain.</li>
-          <li><strong>Optimización y escalabilidad:</strong> Me formé en técnicas como Layer 2, sidechains y sharding para mejorar el rendimiento de las aplicaciones blockchain.</li>
-        </ul>
-
-        <h3 class="text-2xl font-bold mt-6">¿Cómo ha impactado en mi carrera?</h3>
-        <p>Este máster ha sido fundamental para ampliar mis habilidades en un campo tan innovador como el blockchain. Ahora soy capaz de:</p>
-        <ul class="list-disc pl-6">
-          <li>Desarrollar contratos inteligentes seguros y eficientes para diversas blockchains.</li>
-          <li>Crear aplicaciones descentralizadas (dApps) que aprovechan las ventajas de la tecnología blockchain.</li>
-          <li>Implementar soluciones de tokenización para representar activos digitales de manera confiable.</li>
-          <li>Trabajar en proyectos que exploran el potencial de las tecnologías descentralizadas para transformar industrias.</li>
-        </ul>
-
-        <p class="mt-6">El <strong>Máster en Desarrollo Blockchain</strong> de <strong>Conquer Blocks</strong> ha sido una experiencia enriquecedora que me ha permitido adentrarme en el futuro de la tecnología. Si te interesa el mundo blockchain o quieres conocer más sobre mi formación, no dudes en explorar mis proyectos o contactarme. ¡Estoy aquí para compartir lo que he aprendido!</p>
+    <div class="relative flex flex-col md:flex-row items-center gap-8 lg:gap-12">
+      <div class="relative shrink-0 w-full md:w-1/2 max-w-md">
+        <div class="rounded-xl overflow-hidden border-2 border-base-300 shadow-md bg-base-100">
+          <img src={image} title="Máster en Desarrollo Blockchain" alt="Máster en Desarrollo Blockchain" class="w-full h-auto object-cover" />
+        </div>
       </div>
-    </div>   
 
-  </article>
+      <div class="text-center md:text-left flex-1">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/10 text-xs font-semibold text-primary mb-3">
+          <Icon name="mdi:school-outline" class="w-4 h-4" />
+          Conquer Blocks (2022 - 2024)
+        </span>
+
+        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4 text-base-content">
+          Máster en <span class="text-primary">Desarrollo Blockchain</span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-base-content/80 leading-relaxed mb-6">
+          Uno de los programas más fascinantes de mi trayectoria. Un aprendizaje profundo en el ecosistema Web3 para diseñar, programar y desplegar aplicaciones y contratos totalmente descentralizados.
+        </p>
+
+        <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+          <a href="/contacto/" class="btn btn-primary rounded-lg px-6 shadow-sm">
+            <Icon name="mdi:email-outline" class="w-5 h-5" />
+            Contactar
+          </a>
+          <a href="/about/" class="btn btn-outline rounded-lg bg-base-100 border-base-300">
+            <Icon name="mdi:account-outline" class="w-5 h-5" />
+            Ver Curriculum
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ¿QUÉ APRENDÍ EN EL MÁSTER? */}
+  <section class="mt-12">
+    <div class="flex items-center gap-3 mb-8">
+      <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+        <Icon name="mdi:book-open-page-variant-outline" class="w-6 h-6" />
+      </div>
+      <div>
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">¿Qué aprendí en el máster?</h2>
+        <p class="text-xs sm:text-sm text-base-content/70">Módulos clave y tecnologías abordadas en la formación Web3</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {learningModules.map((module) => (
+        <div class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6 shadow-sm hover:border-primary/50 transition-colors flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2.5 mb-3">
+              <div class="p-2 rounded-lg bg-base-100 border border-base-300 text-primary">
+                <Icon name={module.icon} class="w-5 h-5" />
+              </div>
+              <h3 class="font-heading font-bold text-lg text-base-content">{module.title}</h3>
+            </div>
+            <p class="text-xs sm:text-sm text-base-content/80 leading-relaxed mb-4">{module.description}</p>
+          </div>
+
+          <div class="pt-3 border-t border-base-300/80">
+            <div class="flex flex-wrap gap-1.5">
+              {module.topics.map((topic) => (
+                <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-base-100 border border-base-300 text-base-content/80 font-medium">
+                  {topic}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* IMPACTO EN MI CARRERA */}
+  <section class="mt-12 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm">
+    <div class="flex-col sm:flex-row items-center gap-3 mb-6">
+      <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+        <Icon name="mdi:trending-up" class="w-6 h-6" />
+      </div>
+      <div>
+        <h2 class="font-heading text-2xl font-bold text-base-content">Impacto en mi Carrera Profesional</h2>
+        <p class="text-xs sm:text-sm text-base-content/70">Especialización en tecnologías emergentes y soluciones descentralizadas</p>
+      </div>
+    </div>
+
+    <p class="text-sm sm:text-base text-base-content/80 leading-relaxed mb-6">
+      Este máster ha sido clave para posicionarme en el sector Web3, permitiéndome abordar el desarrollo de software desde un paradigma descentralizado y seguro. Gracias a esta formación, estoy preparado para:
+    </p>
+
+    <div class="bg-base-100 rounded-xl p-5 border border-base-300">
+      <ul class="space-y-3 text-sm text-base-content/80">
+        {careerImpacts.map((impact) => (
+          <li class="flex items-start gap-3">
+            <Icon name="mdi:check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+            <span>{impact}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  {/* CTA FINAL */}
+  <section class="mt-12 text-center rounded-2xl border-2 border-primary/30 bg-primary/10 p-4 sm:p-12 shadow-sm">
+    <h2 class="font-heading text-2xl sm:text-3xl font-bold mb-3 text-base-content">¿Interesado en la Tecnología Blockchain?</h2>
+    <p class="text-base sm:text-lg text-base-content/80 max-w-2xl mx-auto mb-6">
+      El <strong>Máster en Desarrollo Blockchain</strong> de Conquer Blocks me ha otorgado las herramientas necesarias para construir el futuro Web3. ¿Tienes una idea o proyecto en mente? ¡Hablemos!
+    </p>
+
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="/proyectos/" class="btn btn-primary rounded-lg px-8 shadow-md inline-flex items-center gap-2">
+        <Icon name="mdi:folder-outline" class="w-5 h-5" />
+        Ver Proyectos
+      </a>
+      <a href="/contacto/" class="btn btn-outline rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2">
+        <Icon name="mdi:send-outline" class="w-5 h-5" />
+        Contactar Conmigo
+      </a>
+    </div>
+  </section>
+
+  {/* Structured Data JSON-LD */}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Máster en Desarrollo Blockchain & Web3",
+      "description": "Especialización en creación de contratos inteligentes, dApps y seguridad en blockchain.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Conquer Blocks"
+      }
+    }
+  </script>
 </BaseLayout>

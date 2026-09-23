@@ -2,58 +2,67 @@
 import { Image } from "astro:assets";
 import dayjs from "dayjs";
 
-const {
-  title,
-  description,
-  heroImage,
-  badge,
-  pubDate,
-  url,
-  tags
-} = Astro.props;
-const displayDate = dayjs(pubDate).format("DD/MM/YYYY")
+const { title, heroImage, description, badge, pubDate, tags, url } = Astro.props;
+const dateObj = dayjs(pubDate);
+const displayDate = dateObj.format("DD/MM/YYYY");
 ---
 
-<div class="header-card flex-col transition ease-in-out h-full">
+<article
+  class="group flex flex-col h-full rounded-xl border border-base-300/60 bg-base-200/40 hover:bg-base-200 hover:border-primary/40 transition-all duration-200 overflow-hidden"
+>
   {
     heroImage && (
-      <div class="relative w-full">
-        <div class="aspect-video overflow-hidden">
-          <a href={url}>
-            <Image
-              src={heroImage}
-              width={450}
-              height={250}
-              alt={title}
-              class="w-full h-full"
-            />
-          </a>
-        </div>
-      </div>
+      <a href={url} class="block aspect-video overflow-hidden bg-base-100/50">
+        <Image
+          src={heroImage}
+          width={450}
+          height={250}
+          alt={title}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+        />
+      </a>
     )
   }
 
-  <article class="grow w-full p-4">
-    <a href={url}>
-      <h3 class="inline">{title}</h3>
+  <div class="flex flex-col grow p-4 sm:p-6">
+    <!-- Metadatos: fecha + badge -->
+    <div class="flex items-center gap-2 mb-3 text-sm">
+      <time datetime={dateObj.toISOString()} class="text-base-content/50">
+        {displayDate}
+      </time>
       {badge && (
-        <div class="badge badge-neutral inline align-text-top">{badge}</div>
-      )}      
-      <p class="py-4 opacity-90">
-        <span class="mr-1">{description}</span>
-        <span class="text-xs opacity-70 italic"> [{displayDate}]</span>
-      </p>
-    </a>
-    <div class="flex flex-wrap gap-2">
-    {
-      tags &&
-        tags.map((tag: any) => (
-          <a href={`/proyectos/tag/${tag.toLowerCase()}`} class="badge badge-outline">
-            {tag}
-          </a>
-        ))
-    }
+        <span class="px-2 py-0.5 rounded bg-base-100 border border-base-300/60 text-base-content/70 font-medium">
+          {badge}
+        </span>
+      )}
     </div>
 
-  </article>
-</div>
+    <!-- Título con font-heading -->
+    <h3 class="font-heading font-semibold text-2xl leading-snug tracking-tight mb-3">
+      <a href={url} class="group-hover:text-primary transition-colors">
+        {title}
+      </a>
+    </h3>
+
+    <!-- Descripción -->
+    <p class="text-base text-base-content/70 leading-relaxed grow">
+      {description}
+    </p>
+
+    <!-- Tags como chips -->
+    {
+      tags && tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-base-300/60">
+          {tags.map((tag: string) => (
+            <a
+              href={`/proyectos/tag/${tag.toLowerCase()}`}
+              class="font-mono text-xs px-2.5 py-1 rounded-md bg-base-100/70 border border-base-300/60 text-base-content/70 hover:text-base-content hover:border-primary/40 transition-colors"
+            >
+              {tag}
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</article>

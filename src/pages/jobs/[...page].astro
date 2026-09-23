@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import HorizontalJobpItem from "../../components/HorizontalJobItem.astro";
+import HorizontalJobItem from "../../components/HorizontalJobItem.astro";
+import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 import generateSlug from "@lib/generateUrlSlug";
 
@@ -28,80 +29,297 @@ interface Props {
 }
 
 const { page } = Astro.props;
+const title = "Experiencia Profesional";
+const description =
+  "Trayectoria laboral en desarrollo web, gestión de proyectos y tecnología. Un recorrido por los roles, responsabilidades e hitos en mi carrera.";
+const image = "/images/others/profile-photo.webp";
+
+const currentPath = page.url.current.replace(/\/$/, "") || "/";
+const basePath = currentPath.replace(/\/\d+$/, "") || "/";
+
+const pageUrl = (n: number) => (n === 1 ? basePath : `${basePath}/${n}`);
+
+function getPageNumbers(current: number, last: number): (number | "...")[] {
+  if (last <= 7) return Array.from({ length: last }, (_, i) => i + 1);
+  const pages: (number | "...")[] = [1];
+  const start = Math.max(2, current - 1);
+  const end = Math.min(last - 1, current + 1);
+  if (start > 2) pages.push("...");
+  for (let i = start; i <= end; i++) pages.push(i);
+  if (end < last - 1) pages.push("...");
+  pages.push(last);
+  return pages;
+}
+
+const pageNumbers =
+  page.lastPage > 1 ? getPageNumbers(page.currentPage, page.lastPage) : [];
 ---
 
-<BaseLayout title="Experiencia Profesional" description="Trayectoria Laboral en Desarrollo Web y Gestión de Proyectos en general" sideBarActiveItemID="trabajos">
-  
-  <article class="prose prose-lg">
-    <h1>Experiencia Profesional</h1>
-    <h2 class="mt-0">Trayectoria Laboral en Desarrollo Web y Gestión de Proyectos en general</h2>
-    <p>En esta sección encontrarás una selección de mis experiencias profesionales, donde aplico mis conocimientos en desarrollo web, gestión de proyectos y otras áreas relacionadas. Cada trabajo refleja mi evolución como profesional y mi capacidad para diseñar soluciones prácticas, escalables e innovadoras.</p>
-  </article>
-  
-  <div class="my-8">Pág(s). {page.currentPage} de {page.lastPage} (Mostrando {page.data.length} de {page.total} trabajos)</div>
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  sideBarActiveItemID="trabajos"
+>
+  <!-- ============================================================
+       CABECERA / HERO
+  ============================================================ -->
+  <section
+    class="relative overflow-hidden rounded-2xl border border-base-300/60 bg-gradient-to-br from-base-100 via-base-200 to-base-100 px-6 sm:px-10 py-12 sm:py-14"
+  >
+    <!-- Fondo decorativo con patrón y brillo -->
+    <div
+      class="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('/images/others/hero-pattern.svg')] bg-cover bg-center"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl pointer-events-none"
+      aria-hidden="true"
+    ></div>
 
+    <div class="relative flex flex-col md:flex-row items-center justify-between md:gap-12">
+      <!-- Columna Izquierda: Texto, Botones y Habilidades de Gancho -->
+      <div class="w-full md:basis-7/12 md:shrink-0 text-center md:text-left">
+        <span
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-base-300/70 bg-base-100/60 text-xs font-medium tracking-wide text-base-content/70 backdrop-blur mb-4"
+        >
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Trayectoria Laboral
+        </span>
+
+        <h1
+          class="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15] mb-4"
+        >
+          Experiencia en <span class="text-primary">Desarrollo Web & Gestión</span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-base-content/70 leading-relaxed mb-6">
+          Selección de mis experiencias profesionales aplicando conocimientos en desarrollo software, gestión de proyectos y soluciones tecnológicas. Evolución profesional enfocada en crear soluciones <strong class="text-base-content">prácticas, escalables e innovadoras</strong>.
+        </p>
+
+        <!-- Botones de Acción (CTA) -->
+        <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start mb-6">
+          <a
+            href="/contacto/"
+            class="btn btn-primary rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <Icon name="mdi:contact-outline" class="w-5 h-5" />
+            Contactar
+          </a>
+          <a
+            href="https://github.com/Jaterli"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline rounded-lg px-6 hover:bg-base-200 transition-colors"
+          >
+            <Icon name="mdi:github" class="w-5 h-5" />
+            Ver GitHub
+          </a>
+        </div>
+
+        <!-- Chips con Habilidades Clave -->
+        <div class="pt-4 border-t border-base-300/40">
+          <p class="text-xs uppercase tracking-[0.15em] text-base-content/50 mb-3">
+            Áreas de Especialización
+          </p>
+          <ul class="flex flex-wrap gap-2 justify-center md:justify-start">
+            {
+              [
+                "Desarrollo Web Full Stack",
+                "Gestión de Proyectos",
+                "Arquitectura Software",
+                "Liderazgo Técnico",
+                "Metodologías Ágiles",
+                "Integración de Sistemas"
+              ].map((skill) => (
+                <li class="font-mono text-xs px-2.5 py-1 rounded-md bg-base-100/70 border border-base-300/60 text-base-content/80 hover:text-base-content hover:border-primary/40 transition-colors">
+                  {skill}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Abanico diagonal de imágenes -->
+      <div
+        class="hidden md:block relative w-56 h-80 lg:w-64 lg:h-[22rem] flex-shrink-0 md:ml-auto mr-4 lg:mr-8"
+        aria-hidden="true"
+      >
+        <div
+          class="absolute top-1/2 right-4 w-48 lg:w-65 aspect-video overflow-hidden rounded-xl border border-base-300/60 shadow-lg"
+          style="transform: translateY(-60%) translate(-25%, -40%) rotate(-12deg); z-index: 1;"
+        >
+          <img
+            src="https://jaterli.com/images/proyectos/projects.easycryptobuy.jpg"
+            alt="Trabajo 1"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+
+        <div
+          class="absolute top-1/2 right-4 w-48 lg:w-65 aspect-video overflow-hidden rounded-xl border border-base-300/60 shadow-xl"
+          style="transform: translateY(-50%) translate(-5%, -5%) rotate(-2deg) scale(1.05); z-index: 3;"
+        >
+          <img
+            src="https://jaterli.com/images/proyectos/projects.AnGoTest-proyecto-fin-master.webp"
+            alt="Trabajo 2"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+
+        <div
+          class="absolute top-1/2 right-4 w-48 lg:w-65 aspect-video overflow-hidden rounded-xl border border-base-300/60 shadow-lg"
+          style="transform: translateY(-50%) translate(10%, 55%) rotate(10deg); z-index: 2;"
+        >
+          <img
+            src="https://jaterli.com/images/proyectos/projects.react-rickandmorty-explorer.webp"
+            alt="Trabajo 3"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTADOR DE RESULTADOS
+  ============================================================ -->
+  {
+    page.total > 0 && (
+      <div class="mt-8 flex items-center justify-between text-sm text-base-content/60">
+        <p>
+          Mostrando <strong class="text-base-content">{page.data.length}</strong> de{" "}
+          <strong class="text-base-content">{page.total}</strong> trabajos
+        </p>
+        {page.lastPage > 1 && (
+          <p class="hidden sm:block">
+            Página <strong class="text-base-content">{page.currentPage}</strong> de{" "}
+            <strong class="text-base-content">{page.lastPage}</strong>
+          </p>
+        )}
+      </div>
+    )
+  }
+
+  <!-- ============================================================
+       GRID DE TRABAJOS
+  ============================================================ -->
   {
     page.data.length === 0 ? (
-      <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
-        <p class="font-semibold">Lo siento!</p>
-        <p>No hay trabajos publicados en este momento.</p>
+      <div class="mt-8 rounded-xl border border-base-300/60 bg-base-200/40 p-8 text-center">
+        <Icon
+          name="carbon:briefcase"
+          class="w-10 h-10 mx-auto mb-3 text-base-content/30"
+        />
+        <h2 class="font-heading text-xl font-semibold mb-1">
+          Sin trabajos publicados
+        </h2>
+        <p class="text-base text-base-content/60">
+          No hay trabajos publicados en este momento.
+        </p>
       </div>
     ) : (
-      <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
         {page.data.map((entry) => (
-          <HorizontalJobpItem
-              title={entry.data.title}
-              description={entry.data.description}
-              heroImage={entry.data.heroImage}
-              startDate={entry.data.startDate}
-              endDate={entry.data.endDate}
-              badge={entry.data.badge}
-              details={entry.data.details}
-              url={"/jobs/entry/" + generateSlug(entry.id)} // crea el slug basado en el nombre del fichero md
-            />
+          <HorizontalJobItem
+            title={entry.data.title}
+            description={entry.data.description}
+            heroImage={entry.data.heroImage}
+            startDate={entry.data.startDate}
+            endDate={entry.data.endDate}
+            badge={entry.data.badge}
+            details={entry.data.details}
+            url={"/jobs/entry/" + generateSlug(entry.id)}
+          />
         ))}
       </section>
     )
   }
 
-  <div class="flex justify-between">
-    {
-      page.url.prev ? (
-        <a href={page.url.prev} class="btn btn-ghost my-10 mx-5">
-          {" "}
-          <svg
-            class="h-6 w-6 fill-current md:h-8 md:w-8"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
-          </svg>{" "}
-          Trabajos más recientes
-        </a>
-      ) : (
-        <div />
-      )
-    }
-    {
-      page.url.next ? (
-        <a href={page.url.next} class="btn btn-ghost my-10 mx-5">
-          Trabajos más antiguos{" "}
-          <svg
-            class="h-6 w-6 fill-current md:h-8 md:w-8"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            {" "}
-            <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-          </svg>
-        </a>
-      ) : (
-        <div />
-      )
-    }
-  </div>
+  <!-- ============================================================
+       PAGINACIÓN NUMÉRICA
+  ============================================================ -->
+  {
+    page.lastPage > 1 && (
+      <nav
+        class="mt-12 pt-8 border-t border-base-300/60 flex justify-center"
+        aria-label="Paginación de trabajos"
+      >
+        <ul class="flex items-center gap-2 flex-wrap justify-center">
+          {/* Anterior */}
+          <li>
+            {page.url.prev ? (
+              <a
+                href={page.url.prev}
+                class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/60 bg-base-200/40 text-base-content/70 hover:bg-base-200 hover:border-primary/40 hover:text-primary transition-colors"
+                aria-label="Página anterior"
+              >
+                <Icon name="mdi:chevron-left" class="w-5 h-5" />
+              </a>
+            ) : (
+              <span
+                class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/40 bg-base-200/20 text-base-content/30 cursor-not-allowed"
+                aria-hidden="true"
+              >
+                <Icon name="mdi:chevron-left" class="w-5 h-5" />
+              </span>
+            )}
+          </li>
+
+          {/* Números */}
+          {pageNumbers.map((n) =>
+            n === "..." ? (
+              <li>
+                <span class="inline-flex items-center justify-center w-10 h-10 text-base-content/40 select-none">
+                  …
+                </span>
+              </li>
+            ) : n === page.currentPage ? (
+              <li>
+                <span
+                  class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-primary bg-primary text-primary-content text-sm font-semibold shadow-sm"
+                  aria-current="page"
+                >
+                  {n}
+                </span>
+              </li>
+            ) : (
+              <li>
+                <a
+                  href={pageUrl(n)}
+                  class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/60 bg-base-200/40 text-sm font-medium text-base-content/70 hover:bg-base-200 hover:border-primary/40 hover:text-primary transition-colors"
+                >
+                  {n}
+                </a>
+              </li>
+            )
+          )}
+
+          {/* Siguiente */}
+          <li>
+            {page.url.next ? (
+              <a
+                href={page.url.next}
+                class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/60 bg-base-200/40 text-base-content/70 hover:bg-base-200 hover:border-primary/40 hover:text-primary transition-colors"
+                aria-label="Página siguiente"
+              >
+                <Icon name="mdi:chevron-right" class="w-5 h-5" />
+              </a>
+            ) : (
+              <span
+                class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/40 bg-base-200/20 text-base-content/30 cursor-not-allowed"
+                aria-hidden="true"
+              >
+                <Icon name="mdi:chevron-right" class="w-5 h-5" />
+              </span>
+            )}
+          </li>
+        </ul>
+      </nav>
+    )
+  }
 </BaseLayout>
