@@ -1,58 +1,201 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+
+// Metadata
 const title = "Ciclo Superior en Administración de Sistemas Informáticos | Mi Experiencia";
 const description = "Te cuento mi experiencia cursando el Ciclo Formativo de Grado Superior en Administración de Sistemas Informáticos entre 2002 y 2004. Un programa clave en mi formación en IT.";
-const image="/images/others/cfgs-admin-sist-informaticos.webp";
+const image = "/images/others/cfgs-admin-sist-informaticos.webp";
+
+// Datos de módulos/aprendizajes
+const learningModules = [
+  {
+    title: "Administración de Sistemas",
+    icon: "mdi:server-network",
+    description: "Instalación, configuración y mantenimiento de sistemas operativos monousuario y multiusuario en entornos heterogéneos.",
+    topics: ["Windows Server", "Linux", "Gestión de Usuarios", "Servicios del Sistema"]
+  },
+  {
+    title: "Redes de Área Local",
+    icon: "mdi:lan",
+    description: "Diseño, implantación, configuración y gestión de redes de área local (LAN) y topologías de red.",
+    topics: ["Direccionamiento IP", "TCP/IP", "Protocolos de Red", "Configuración de Routers/Switches"]
+  },
+  {
+    title: "Bases de Datos",
+    icon: "mdi:database",
+    description: "Administración y mantenimiento de sistemas gestores de bases de datos relacionales.",
+    topics: ["SQL", "Normalización", "Modelado de Datos", "Mantenimiento DBMS"]
+  },
+  {
+    title: "Desarrollo de Aplicaciones",
+    icon: "mdi:code-tags",
+    description: "Fundamentos de programación y lógica de desarrollo para aplicaciones informáticas y entornos web.",
+    topics: ["HTML", "CSS", "C++", "PHP", "JavaScript"]
+  },
+  {
+    title: "Implantación de Aplicaciones",
+    icon: "mdi:application-cog-outline",
+    description: "Instalación y configuración de software empresarial, integración de sistemas y optimización.",
+    topics: ["ERP / CRM", "Integración de Sistemas", "Optimización", "Software Empresarial"]
+  },
+  {
+    title: "Seguridad Informática",
+    icon: "mdi:shield-check-outline",
+    description: "Principios fundamentales de seguridad en sistemas, respaldos y protección de la información.",
+    topics: ["Backups / Copias de Seguridad", "Políticas de Acceso", "Protección de Datos", "Entornos Multiusuario"]
+  }
+];
+
+// Datos del impacto profesional
+const careerImpacts = [
+  "Comprender en profundidad la infraestructura de sistemas y redes de cualquier organización.",
+  "Adquirir habilidades sólidas en administración de bases de datos y servidores de alto rendimiento.",
+  "Dar mis primeros pasos en la programación y el desarrollo de aplicaciones de gestión.",
+  "Establecer una base técnica rigurosa que impulsó toda mi carrera profesional dentro del sector IT."
+];
 ---
 
 <BaseLayout title={title} description={description} image={image} ogType="article" sideBarActiveItemID="ciclo-asir">
 
-  <article class="prose prose-lg">
+  {/* HERO */}
+  <section class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/80 p-4 sm:p-10 shadow-md mb-10">
+    <div class="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('/images/others/hero-pattern.svg')] bg-cover bg-center" aria-hidden="true"></div>
+    <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
 
-    <div class="flex justify-center mb-8">
-      <img src="/images/others/cfgs-admin-sist-informaticos.webp" title="Ciclo Superior en Administración de Sistemas Informáticos" alt="Ciclo Superior en Administración de Sistemas Informáticos" class="w-auto object-cover">
-    </div>         
+    <div class="relative flex flex-col md:flex-row items-center gap-8 lg:gap-12">
+      <div class="relative shrink-0 w-full md:w-1/2 max-w-md">
+        <div class="rounded-xl overflow-hidden border-2 border-base-300 shadow-md bg-base-100">
+          <img src={image} title="Ciclo Superior en Administración de Sistemas Informáticos" alt="Ciclo Superior en Administración de Sistemas Informáticos" class="w-full h-auto object-cover" />
+        </div>
+      </div>
 
-    <h1 class="text-4xl text-center">Ciclo Superior en Administración de Sistemas Informáticos</h1>
+      <div class="text-center md:text-left flex-1">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/10 text-xs font-semibold text-primary mb-3">
+          <Icon name="mdi:school-outline" class="w-4 h-4" />
+          Formación Profesional (2002 - 2004)
+        </span>
 
-    <div class="py-2">
-      <div class="mx-auto max-w-4xl mt-4 prose prose-lg">
-        <p>Entre 2002 y 2004, cursé el <strong>Ciclo Formativo de Grado Superior en Administración de Sistemas Informáticos</strong>. Este programa fue fundamental en mi formación dentro del mundo IT, proporcionándome conocimientos sólidos en sistemas, redes, bases de datos y programación.</p>
+        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4 text-base-content">
+          Ciclo Superior en <span class="text-primary">Administración de Sistemas Informáticos</span>
+        </h1>
 
-        <p>En este artículo, quiero compartir mi experiencia y las habilidades clave que adquirí durante esos años.</p>
+        <p class="text-base sm:text-lg text-base-content/80 leading-relaxed mb-6">
+          Entre 2002 y 2004, cursé este Ciclo Formativo de Grado Superior. Un programa fundamental en mi trayectoria IT que me proporcionó una base sólida en sistemas, redes, bases de datos y desarrollo de software.
+        </p>
 
-        <h3 class="text-2xl font-bold mt-6">¿Qué aprendí en el ciclo formativo?</h3>
-        <ul class="list-disc pl-6">
-          <li><strong>Administración de Sistemas:</strong> Instalación, configuración y mantenimiento de sistemas operativos monousuario y multiusuario, incluyendo Windows y Linux.</li>
-          <li><strong>Redes de Área Local:</strong> Diseño, configuración y gestión de redes de área local (LAN), incluyendo direccionamiento IP y protocolos de comunicación.</li>
-          <li><strong>Base de Datos:</strong> Administración y mantenimiento de sistemas gestores de bases de datos, SQL y normalización.</li>
-          <li><strong>Desarrollo de Aplicaciones:</strong> Programación en lenguajes como HTML, CSS, C++, PHP, Javascript y primeros pasos en desarrollo de software de gestión.</li>
-          <li><strong>Implantación de Aplicaciones:</strong> Instalación y configuración de software empresarial, integración de aplicaciones y optimización de sistemas.</li>
-          <li><strong>Seguridad Informática:</strong> Principios de seguridad, backup, protección de datos y gestión de usuarios en entornos multiusuario.</li>
-        </ul>
-
-        <h3 class="text-2xl font-bold mt-6">¿Cómo ha impactado en mi carrera?</h3>
-        <p>Este ciclo formativo me proporcionó una base técnica que ha sido clave en mi desarrollo profesional, permitiéndome:</p>
-        <ul class="list-disc pl-6">
-          <li>Comprender la infraestructura de sistemas y redes de una empresa.</li>
-          <li>Adquirir habilidades en administración de bases de datos y servidores.</li>
-          <li>Dar mis primeros pasos en la programación y el desarrollo de aplicaciones.</li>
-        </ul>
-
-        <p class="mt-6">El <strong>Ciclo Formativo de Grado Superior en Administración de Sistemas Informáticos</strong> fue el punto de partida de mi carrera en el sector IT. Desde entonces, he seguido aprendiendo y especializándome en nuevas tecnologías. Si quieres conocer más sobre mi trayectoria, echa un vistazo a mis proyectos o contáctame. ¡Estaré encantado de compartir mi experiencia!</p>
-
-        <div class="mt-6 text-center">
+        <div class="flex flex-wrap gap-3 justify-center md:justify-start">
           <a 
             href="/certifications/Titulo-Certificado-Tecnico-Superior-Administracion-de-Sistemas-Informaticos.jpg" 
             target="_blank" 
-            class="inline-flex items-center no-underline px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 font-semibold rounded-lg shadow-md transition duration-300 ease-in-out"
+            rel="noopener noreferrer"
+            class="btn btn-primary rounded-lg px-6 shadow-sm inline-flex items-center gap-2"
           >
-            📜 Ver título
+            <Icon name="mdi:certificate-outline" class="w-5 h-5" />
+            Ver Título
+          </a>
+          <a href="/contacto/" class="btn btn-outline rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2">
+            <Icon name="mdi:email-outline" class="w-5 h-5" />
+            Contactar
           </a>
         </div>
-        
       </div>
-    </div>   
+    </div>
+  </section>
 
-  </article>
+  {/* ¿QUÉ APRENDÍ EN EL CICLO FORMATIVO? */}
+  <section class="mt-12">
+    <div class="flex items-center gap-3 mb-8">
+      <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+        <Icon name="mdi:book-open-page-variant-outline" class="w-6 h-6" />
+      </div>
+      <div>
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">¿Qué aprendí en el ciclo formativo?</h2>
+        <p class="text-sm text-base-content/70">Módulos clave y competencias adquiridas durante la titulación</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {learningModules.map((module) => (
+        <div class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6 shadow-sm hover:border-primary/50 transition-colors flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2.5 mb-3">
+              <div class="p-2 rounded-lg bg-base-100 border border-base-300 text-primary">
+                <Icon name={module.icon} class="w-5 h-5" />
+              </div>
+              <h3 class="font-heading font-bold text-lg text-base-content">{module.title}</h3>
+            </div>
+            <p class="text-sm text-base-content/80 leading-relaxed mb-4">{module.description}</p>
+          </div>
+
+          <div class="pt-3 border-t border-base-300/80">
+            <div class="flex flex-wrap gap-1.5">
+              {module.topics.map((topic) => (
+                <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-base-100 border border-base-300 text-base-content/80 font-medium">
+                  {topic}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* IMPACTO EN MI CARRERA */}
+  <section class="mt-12 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+        <Icon name="mdi:trending-up" class="w-6 h-6" />
+      </div>
+      <div>
+        <h2 class="font-heading text-2xl font-bold text-base-content">Impacto en mi Carrera Profesional</h2>
+        <p class="text-sm text-base-content/70">Cimientos técnicos para el desarrollo de mi trayectoria en el sector IT</p>
+      </div>
+    </div>
+
+    <p class="text-sm sm:text-base text-base-content/80 leading-relaxed mb-6">
+      Este ciclo formativo proporcionó la base técnica esencial sobre la cual he construido mi experiencia en el sector tecnológico. Gracias a esta formación he podido:
+    </p>
+
+    <div class="py-5">
+      <ul class="space-y-3 text-sm text-base-content/80">
+        {careerImpacts.map((impact) => (
+          <li class="flex items-start gap-3">
+            <Icon name="mdi:check-circle" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+            <span>{impact}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  {/* CTA FINAL */}
+  <section class="mt-12 text-center rounded-2xl border-2 border-primary/30 bg-primary/10 p-4 sm:p-12 shadow-sm">
+    <h2 class="font-heading text-2xl sm:text-3xl font-bold mb-3 text-base-content">¿Quieres conocer más sobre mi trayectoria?</h2>
+    <p class="text-base sm:text-lg text-base-content/80 max-w-2xl mx-auto mb-6">
+      El <strong>Ciclo Formativo de Grado Superior en Administración de Sistemas Informáticos</strong> fue el punto de partida de mi carrera. Desde entonces, he continuado formándome y especializándome en nuevas tecnologías.
+    </p>
+
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="/proyectos/" class="btn btn-primary rounded-lg px-8 shadow-md inline-flex items-center gap-2">
+        <Icon name="mdi:folder-outline" class="w-5 h-5" />
+        Ver Proyectos
+      </a>
+      <a href="/contacto/" class="btn btn-outline rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2">
+        <Icon name="mdi:send-outline" class="w-5 h-5" />
+        Contactar Conmigo
+      </a>
+    </div>
+  </section>
+
+  {/* Structured Data JSON-LD */}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOccupationalCredential",
+      "name": "Técnico Superior en Administración de Sistemas Informáticos",
+      "description": "Formación de grado superior en administración de sistemas operativos, redes, bases de datos y desarrollo informático."
+    }
+  </script>
 </BaseLayout>

@@ -162,7 +162,7 @@ const certifications = [
           <Icon name={item.icon} class="w-5 h-5" />
         </div>
         <h3 class="font-heading font-bold text-base text-base-content mb-1">{item.title}</h3>
-        <p class="text-xs sm:text-sm text-base-content/70 leading-relaxed">{item.description}</p>
+        <p class="text-sm sm:text-base text-base-content/70 leading-relaxed">{item.description}</p>
       </div>
     ))}
   </section>
@@ -188,7 +188,7 @@ const certifications = [
       </div>
       <div>
         <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Carrera Profesional & Experiencia</h2>
-        <p class="text-xs sm:text-sm text-base-content/70">Trayectoria en desarrollo de software, gestión de proyectos y administración técnica</p>
+        <p class="text-sm sm:text-base text-base-content/70">Trayectoria en desarrollo de software, gestión de proyectos y administración técnica</p>
       </div>
     </div>
 
@@ -209,9 +209,9 @@ const certifications = [
 
         <p class="text-sm sm:text-base text-base-content/80 leading-relaxed mb-4">{exp.description}</p>
 
-        <div class="bg-base-100/90 rounded-xl p-4 border border-base-300 mb-5">
+        <div class="py-4 mb-5">
           <h4 class="text-xs uppercase tracking-wider text-base-content/60 font-bold mb-3">Logros y responsabilidades destacadas:</h4>
-          <ul class="space-y-2 text-xs sm:text-sm text-base-content/80">
+          <ul class="space-y-2 text-sm sm:text-base text-base-content/80">
             {exp.achievements.map((item) => (
               <li class="flex items-start gap-2.5">
                 <Icon name="mdi:check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
@@ -281,7 +281,7 @@ const certifications = [
       </div>
       <div>
         <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Educación & Formación Especializada</h2>
-        <p class="text-xs sm:text-sm text-base-content/70">Formación académica oficial y programas de máster de alta especialización</p>
+        <p class="text-sm text-base-content/70">Formación académica oficial y programas de máster de alta especialización</p>
       </div>
     </div>
 
@@ -297,8 +297,8 @@ const certifications = [
               {item.link ? <a href={item.link} class="hover:text-primary transition-colors">{item.degree}</a> : item.degree}
             </h3>
 
-            <p class="text-xs font-semibold text-base-content/60 mb-2">{item.institution}</p>
-            <p class="text-xs sm:text-sm text-base-content/80 leading-relaxed mb-4">{item.description}</p>
+            <p class="text-sm font-semibold text-base-content/60 mb-2">{item.institution}</p>
+            <p class="text-sm text-base-content/80 leading-relaxed mb-4">{item.description}</p>
           </div>
 
           <div>
@@ -326,7 +326,7 @@ const certifications = [
       </div>
       <div>
         <h2 class="font-heading text-xl sm:text-2xl font-bold text-base-content">Certificaciones & Diplomas Acreditados</h2>
-        <p class="text-xs sm:text-sm text-base-content/70">Acreditaciones de cursos, módulos especializados y titulaciones</p>
+        <p class="text-sm text-base-content/70">Acreditaciones de cursos, módulos especializados y titulaciones</p>
       </div>
     </div>
 
@@ -343,7 +343,7 @@ const certifications = [
 
   {/* FILOSOFÍA */}
   <section class="mt-12 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm">
-    <div class="flex-col sm:flex-row items-center gap-3 mb-4">
+    <div class="flex items-center gap-3 mb-4">
       <div class="p-2 rounded-lg bg-primary text-primary-content">
         <Icon name="mdi:lightbulb-on-outline" class="w-6 h-6" />
       </div>
@@ -356,7 +356,7 @@ const certifications = [
           <Icon name="mdi:cogs" class="w-5 h-5 text-primary" />
           Enfoque en la Eficiencia
         </h3>
-        <p class="leading-relaxed text-xs sm:text-sm">
+        <p class="leading-relaxed text-sm">
           Mi objetivo principal es crear soluciones sencillas para el usuario pero potentes por dentro. Apuesto por la automatización de procesos, el código limpio y la formación continua para adaptarme siempre a las mejores prácticas del sector.
         </p>
       </div>
@@ -366,7 +366,7 @@ const certifications = [
           <Icon name="mdi:laptop" class="w-5 h-5 text-primary" />
           Cuaderno de Bitácora
         </h3>
-        <p class="leading-relaxed text-xs sm:text-sm">
+        <p class="leading-relaxed text-sm">
           Este sitio está construido con <strong>Astro</strong> como parte de mi constante evolución práctica. Lo utilizo como plataforma para compartir conocimientos técnicos, tutoriales y exponer proyectos reales desarrollados día a día.
         </p>
       </div>
