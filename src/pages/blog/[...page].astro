@@ -138,7 +138,7 @@ const pageNumbers =
       >
         <!-- Arriba-izquierda -->
         <div
-          class="absolute top-1/2 right-4 w-48 lg:w-65 aspect-video overflow-hidden rounded-xl border border-base-300/60 shadow-lg"
+          class="absolute top-1/2 right-4 w-48 lg:w-65 aspect-video overflow-hidden rounded-xl border border-base-300/60 shadow-lg hover:scale-105 transition-transform"
           style="transform: translateY(-60%) translate(-25%, -40%) rotate(-12deg); z-index: 1;"
         >
           <img
@@ -151,7 +151,7 @@ const pageNumbers =
 
         <!-- Centro (al frente) -->
         <div
-          class="absolute top-1/2 right-4 w-48 lg:w-65 aspect-video overflow-hidden rounded-xl border border-base-300/60 shadow-xl"
+          class="absolute top-1/2 right-4 w-48 lg:w-65 aspect-video overflow-hidden rounded-xl border border-base-300/60 shadow-xl hover:scale-105 transition-transform"
           style="transform: translateY(-50%) translate(-5%, -5%) rotate(-2deg) scale(1.05); z-index: 3;"
         >
           <img
@@ -164,7 +164,7 @@ const pageNumbers =
 
         <!-- Abajo-derecha -->
         <div
-          class="absolute top-1/2 right-4 w-48 lg:w-65 aspect-video overflow-hidden rounded-xl border border-base-300/60 shadow-lg"
+          class="absolute top-1/2 right-4 w-48 lg:w-65 aspect-video overflow-hidden rounded-xl border border-base-300/60 shadow-lg hover:scale-105 transition-transform"
           style="transform: translateY(-50%) translate(10%, 55%) rotate(10deg); z-index: 2;"
         >
           <img
@@ -183,7 +183,7 @@ const pageNumbers =
   ============================================================ -->
   {
     page.total > 0 && (
-      <div class="mt-8 flex items-center justify-between text-sm text-base-content/60">
+      <div class="pt-[6rem] mt-[-3rem] flex items-center justify-between text-sm text-base-content/60" id="blog-posts">
         <p>
           Mostrando del <strong class="text-base-content">{page.start + 1}</strong> al{" "}
           <strong class="text-base-content">{page.end + 1}</strong> de{" "}
@@ -246,7 +246,7 @@ const pageNumbers =
           <li>
             {page.url.prev ? (
               <a
-                href={page.url.prev}
+                href={page.url.prev+"#blog-posts"}
                 class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/60 bg-base-200/40 text-base-content/70 hover:bg-base-200 hover:border-primary/40 hover:text-primary transition-colors"
                 aria-label="Página anterior"
               >
@@ -276,7 +276,7 @@ const pageNumbers =
             ) : (
               <li>
                 <a
-                   href={pageUrl(n, basePath)}
+                   href={pageUrl(n, basePath)+"#blog-posts"}
                   class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/60 bg-base-200/40 text-sm font-medium text-base-content/70 hover:bg-base-200 hover:border-primary/40 hover:text-primary transition-colors"
                 >
                   {n}
@@ -289,7 +289,7 @@ const pageNumbers =
           <li>
             {page.url.next ? (
               <a
-                href={page.url.next}
+                href={page.url.next+"#blog-posts"}
                 class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/60 bg-base-200/40 text-base-content/70 hover:bg-base-200 hover:border-primary/40 hover:text-primary transition-colors"
                 aria-label="Página siguiente"
               >

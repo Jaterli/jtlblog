@@ -85,7 +85,7 @@ const formatDateLabel = (startDay: string | null, endDay: string | null): string
         </div>
       </div>
 
-      <span class="font-mono text-xs font-semibold px-3 py-1 rounded-full bg-base-200 border border-base-300 text-base-content/80">
+      <span class="hidden sm:block font-mono text-xs font-semibold px-3 py-1 rounded-full bg-base-200 border border-base-300 text-base-content/80">
         Total: {totalTasks}
       </span>
     </div>
@@ -96,8 +96,8 @@ const formatDateLabel = (startDay: string | null, endDay: string | null): string
         return (
           <li class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-5 shadow-sm hover:border-primary/50 transition-colors">
             <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-2">
-              <div class="flex items-start gap-3">
-                <div class={`p-1.5 rounded-lg shrink-0 mt-0.5 ${pending ? 'bg-warning/10 text-warning border border-warning/20' : 'bg-emerald-500/10 text-emerald-600 border border-emerald-500/20'}`}>
+              <div class="sm:flex items-start gap-3">
+                <div class={`mb-2 sm:mb-0 w-fit p-1.5 rounded-lg shrink-0 mt-0.5 ${pending ? 'bg-warning/10 text-warning border border-warning/20' : 'bg-emerald-500/10 text-emerald-600 border border-emerald-500/20'}`}>
                   <Icon name={pending ? "mdi:clock-outline" : "mdi:check-circle-outline"} class="w-5 h-5" />
                 </div>
                 <div>
@@ -112,7 +112,7 @@ const formatDateLabel = (startDay: string | null, endDay: string | null): string
                 </div>
               </div>
 
-              <span class={`font-mono text-xs font-bold px-2.5 py-1 rounded-md shrink-0 border self-start ${pending ? 'bg-warning/10 text-warning border-warning/20' : 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20'}`}>
+              <span class={`hidden sm:block font-mono text-xs font-bold px-2.5 py-1 rounded-md shrink-0 border self-start ${pending ? 'bg-warning/10 text-warning border-warning/20' : 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20'}`}>
                 {pending ? 'En Progreso' : 'Completada'}
               </span>
             </div>

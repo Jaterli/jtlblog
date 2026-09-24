@@ -45,7 +45,7 @@ const stack = [
   sideBarActiveItemID="home"
 >
   <!-- ============================================================
-       HERO
+        HERO
   ============================================================ -->
   <section
     class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/80 shadow-md mb-10"
@@ -139,7 +139,7 @@ const stack = [
   </section>
 
   <!-- ============================================================
-       SOBRE MÍ (resumen del CV)
+        SOBRE MÍ (resumen del CV)
   ============================================================ -->
   <section class="mt-12 grid md:grid-cols-3 gap-6">
     {
@@ -172,7 +172,7 @@ const stack = [
   </section>
 
   <!-- ============================================================
-       PROYECTO DESTACADO AMPLIO (AnGoTest)
+        PROYECTO DESTACADO AMPLIO (AnGoTest)
   ============================================================ -->
   <section class="mt-16">
     <div class="flex items-center justify-between mb-6">
@@ -277,7 +277,7 @@ const stack = [
   </section>
 
   <!-- ============================================================
-       ÚLTIMOS PROYECTOS
+        ÚLTIMOS PROYECTOS
   ============================================================ -->
   <section class="mt-16">
     <header class="flex flex-col gap-4 sm:flex-row sm:items-center justify-between mb-6">
@@ -318,7 +318,7 @@ const stack = [
   </section>
 
   <!-- ============================================================
-       ÚLTIMOS POSTS
+        ÚLTIMOS POSTS
   ============================================================ -->
   <section class="mt-16">
     <header class="flex flex-col gap-4 sm:flex-row sm:items-center justify-between mb-6">
@@ -360,7 +360,7 @@ const stack = [
 
   <!-- ============================================================
         ÚLTIMAS TAREAS
-    ============================================================ -->
+  ============================================================ -->
   <section class="mt-16">
     <header class="flex flex-col gap-4 sm:flex-row sm:items-center justify-between mb-6">
       <div class="flex items-center gap-3">
@@ -422,7 +422,55 @@ const stack = [
   </section>
 
   <!-- ============================================================
-       GRÁFICA DE PUBLICACIONES
+        DISPONIBILIDAD Y SERVICIOS / OPORTUNIDADES LABORALES
+  ============================================================ -->
+  <section
+    class="mt-16 rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-base-200 via-base-100 to-base-200 p-6 sm:p-10 shadow-sm relative overflow-hidden"
+  >
+    <div
+      class="absolute -bottom-12 -right-12 w-64 h-64 rounded-full bg-primary/10 blur-3xl pointer-events-none"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative flex flex-col lg:flex-row items-center justify-between gap-8">
+      <div class="space-y-3 text-center lg:text-left max-w-2xl">
+        <span
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-xs font-semibold text-emerald-600"
+        >
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Abierto a propuestas
+        </span>
+
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">
+          ¿Buscas un desarrollador para tu proyecto o equipo?
+        </h2>
+
+        <p class="text-sm sm:text-base text-base-content/80 leading-relaxed">
+          Estoy disponible tanto para la realización de <strong class="text-base-content">proyectos a medida y consultoría freelancing</strong>, como para incorporar mi experiencia técnica a tiempo completo en <strong class="text-base-content">empresas e ingenierías tecnológicas</strong> que busquen aportar valor a su equipo.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row lg:flex-col gap-3 w-full lg:w-auto shrink-0 justify-center">
+        <a
+          href="/servicios/"
+          class="btn btn-primary rounded-lg px-6 shadow-sm inline-flex items-center justify-center gap-2"
+        >
+          <Icon name="mdi:cogs" class="w-5 h-5" />
+          <span>Ver mis servicios</span>
+        </a>
+        <a
+          href="/contacto/"
+          class="btn btn-outline rounded-lg px-6 bg-base-100 border-base-300 inline-flex items-center justify-center gap-2 hover:border-primary/50"
+        >
+          <Icon name="mdi:account-box-outline" class="w-5 h-5" />
+          <span>Contactar directamente</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+        GRÁFICA DE PUBLICACIONES
   ============================================================ -->
   <section
     class="mt-16 mb-8 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 text-center shadow-sm"
