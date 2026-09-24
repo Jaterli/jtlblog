@@ -4,6 +4,7 @@ import HorizontalProjectItem from "@components/HorizontalProjectItem.astro";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 import { getProjectUrl } from "@lib/getProjectUrl";
+import { pageUrl, getPageNumbers } from "@lib/pagination";
 
 export async function getStaticPaths({ paginate }: { paginate: any }) {
   const items = await getCollection("projects");
@@ -36,20 +37,6 @@ const image = "/images/others/profile-photo.webp";
 
 const currentPath = page.url.current.replace(/\/$/, "") || "/";
 const basePath = currentPath.replace(/\/\d+$/, "") || "/";
-
-const pageUrl = (n: number) => (n === 1 ? basePath : `${basePath}/${n}`);
-
-function getPageNumbers(current: number, last: number): (number | "...")[] {
-  if (last <= 7) return Array.from({ length: last }, (_, i) => i + 1);
-  const pages: (number | "...")[] = [1];
-  const start = Math.max(2, current - 1);
-  const end = Math.min(last - 1, current + 1);
-  if (start > 2) pages.push("...");
-  for (let i = start; i <= end; i++) pages.push(i);
-  if (end < last - 1) pages.push("...");
-  pages.push(last);
-  return pages;
-}
 
 const pageNumbers =
   page.lastPage > 1 ? getPageNumbers(page.currentPage, page.lastPage) : [];
@@ -133,7 +120,7 @@ const pageNumbers =
                 "Angular (Signals)",
                 "React Hooks",
                 "Go (Golang)",
-                "Integración IA (Groq)",
+                "Integración IA",
                 "Solidity / Web3",
                 "Docker & Nginx",
                 "PostgreSQL",
@@ -177,7 +164,6 @@ const pageNumbers =
             class="w-full h-full object-cover"
             loading="lazy"
           />
-
         </div>
 
         <!-- Abajo-derecha -->
@@ -197,27 +183,26 @@ const pageNumbers =
   </section>
 
   <!-- ============================================================
-       CONTADOR DE RESULTADOS
+        CONTADOR DE RESULTADOS
   ============================================================ -->
   {
     page.total > 0 && (
       <div class="mt-8 flex items-center justify-between text-sm text-base-content/60">
         <p>
-          Mostrando <strong class="text-base-content">{page.data.length}</strong> de{" "}
+          Mostrando del <strong class="text-base-content">{page.start + 1}</strong> al{" "}
+          <strong class="text-base-content">{page.end + 1}</strong> de{" "}
           <strong class="text-base-content">{page.total}</strong> proyectos
         </p>
-        {page.lastPage > 1 && (
-          <p class="hidden sm:block">
-            Página <strong class="text-base-content">{page.currentPage}</strong> de{" "}
-            <strong class="text-base-content">{page.lastPage}</strong>
-          </p>
-        )}
+        <p>
+          Página <strong class="text-base-content">{page.currentPage}</strong> de{" "}
+          <strong class="text-base-content">{page.lastPage}</strong>
+        </p>
       </div>
     )
   }
 
   <!-- ============================================================
-       GRID DE PROYECTOS
+        GRID DE PROYECTOS
   ============================================================ -->
   {
     page.data.length === 0 ? (
@@ -252,7 +237,7 @@ const pageNumbers =
   }
 
   <!-- ============================================================
-      PAGINACIÓN NUMÉRICA
+        PAGINACIÓN NUMÉRICA (MÁXIMO 3 BOTONES + RETROCEDER/AVANZAR)
   ============================================================ -->
   {
     page.lastPage > 1 && (
@@ -281,15 +266,9 @@ const pageNumbers =
             )}
           </li>
 
-          {/* Números */}
+          {/* Números de página */}
           {pageNumbers.map((n) =>
-            n === "..." ? (
-              <li>
-                <span class="inline-flex items-center justify-center w-10 h-10 text-base-content/40 select-none">
-                  …
-                </span>
-              </li>
-            ) : n === page.currentPage ? (
+            n === page.currentPage ? (
               <li>
                 <span
                   class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-primary bg-primary text-primary-content text-sm font-semibold shadow-sm"
@@ -301,7 +280,7 @@ const pageNumbers =
             ) : (
               <li>
                 <a
-                  href={pageUrl(n)}
+                  href={pageUrl(n, basePath)}
                   class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-base-300/60 bg-base-200/40 text-sm font-medium text-base-content/70 hover:bg-base-200 hover:border-primary/40 hover:text-primary transition-colors"
                 >
                   {n}

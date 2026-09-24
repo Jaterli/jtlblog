@@ -1,16 +1,15 @@
 ---
 import { Icon } from "astro-icon/components";
-import ThemeToggle from "@components/ThemeToggle.astro";
-import { SITE_TITLE } from "../types/config";
+import ThemeToggle from "./ThemeToggle.astro";
 
 const { sideBarActiveItemID } = Astro.props;
 
 const links = [
   { id: "home", label: "Home", href: "/" },
   { id: "proyectos", label: "Proyectos", href: "/proyectos/" },
-  { id: "blog", label: "Blog", href: "/blog/" },
   { id: "servicios", label: "Servicios", href: "/servicios/" },
   { id: "about", label: "Sobre mí", href: "/about/" },
+  { id: "blog", label: "Blog", href: "/blog/" },
   { id: "contacto", label: "Contacto", href: "/contacto/" },
 ];
 ---

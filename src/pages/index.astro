@@ -74,9 +74,8 @@ const stack = [
         <h1
           class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-base-content"
         >
-          Hola, soy <span class="text-primary">Jaime TL</span><br />
           Construyo productos web
-          <span class="text-base-content/70">full stack y blockchain.</span>
+          <span class="text-primary">full stack</span> y <span class="text-primary">blockchain.</span>
         </h1>
 
         <p class="text-base sm:text-lg text-base-content/80 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
@@ -278,47 +277,6 @@ const stack = [
   </section>
 
   <!-- ============================================================
-       ÚLTIMOS POSTS
-  ============================================================ -->
-  <section class="mt-16">
-    <header class="flex flex-col gap-4 sm:flex-row sm:items-center justify-between mb-6">
-      <div class="flex items-center gap-3">
-        <div class="p-2 rounded-lg bg-base-200 border border-base-300 text-primary">
-          <Icon name="mdi:blog-outline" class="w-6 h-6" />
-        </div>
-        <div>
-          <h2 class="font-heading text-2xl font-bold text-base-content">Últimas publicaciones</h2>
-          <p class="text-sm text-base-content/70">Artículos técnicos sobre desarrollo, IA y Web3</p>
-        </div>
-      </div>
-      <a 
-        href="/blog/" 
-        class="btn btn-sm btn-ghost border border-primary/20 text-primary font-semibold hover:bg-primary hover:text-primary-content hover:border-primary transition-all duration-200 inline-flex items-center gap-1.5"
-      >
-        <span>Ver todos los posts</span>
-        <Icon name="mdi:arrow-right" class="w-4 h-4" />
-      </a>
-    </header>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {
-        last_posts.map((post: any) => (
-          <HorizontalCard
-            title={post.data.title}
-            heroImage={post.data.heroImage}
-            description={post.data.description}
-            badge={post.data.badge}
-            pubDate={post.data.pubDate}
-            tags={post.data.tags}
-            url={getPostUrl(post.id)}
-            target="_self"
-          />
-        ))
-      }
-    </div>
-  </section>
-
-  <!-- ============================================================
        ÚLTIMOS PROYECTOS
   ============================================================ -->
   <section class="mt-16">
@@ -360,7 +318,48 @@ const stack = [
   </section>
 
   <!-- ============================================================
-        TAREAS EN CURSO
+       ÚLTIMOS POSTS
+  ============================================================ -->
+  <section class="mt-16">
+    <header class="flex flex-col gap-4 sm:flex-row sm:items-center justify-between mb-6">
+      <div class="flex items-center gap-3">
+        <div class="p-2 rounded-lg bg-base-200 border border-base-300 text-primary">
+          <Icon name="mdi:blog-outline" class="w-6 h-6" />
+        </div>
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-base-content">Últimas publicaciones</h2>
+          <p class="text-sm text-base-content/70">Artículos técnicos sobre desarrollo, IA y Web3</p>
+        </div>
+      </div>
+      <a 
+        href="/blog/" 
+        class="btn btn-sm btn-ghost border border-primary/20 text-primary font-semibold hover:bg-primary hover:text-primary-content hover:border-primary transition-all duration-200 inline-flex items-center gap-1.5"
+      >
+        <span>Ver todos los posts</span>
+        <Icon name="mdi:arrow-right" class="w-4 h-4" />
+      </a>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {
+        last_posts.map((post: any) => (
+          <HorizontalCard
+            title={post.data.title}
+            heroImage={post.data.heroImage}
+            description={post.data.description}
+            badge={post.data.badge}
+            pubDate={post.data.pubDate}
+            tags={post.data.tags}
+            url={getPostUrl(post.id)}
+            target="_self"
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ============================================================
+        ÚLTIMAS TAREAS
     ============================================================ -->
   <section class="mt-16">
     <header class="flex flex-col gap-4 sm:flex-row sm:items-center justify-between mb-6">
@@ -369,8 +368,8 @@ const stack = [
           <Icon name="mdi:clipboard-list-outline" class="w-6 h-6" />
         </div>
         <div>
-          <h2 class="font-heading text-2xl font-bold text-base-content">Tareas en curso</h2>
-          <p class="text-sm text-base-content/70">Estado de aprendizaje y objetivos activos</p>
+          <h2 class="font-heading text-2xl font-bold text-base-content">Últimas tareas</h2>
+          <p class="text-sm text-base-content/70">Estado de aprendizaje y objetivos completados</p>
         </div>
       </div>
       <a 

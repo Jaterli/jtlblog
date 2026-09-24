@@ -237,9 +237,9 @@ class FavoritesManager {
 
 ## Responsive Design
 
-<div class="md-table">
-
 El proyecto implementa una estrategia mobile-first con breakpoints progresivos:
+
+<div class="md-table">
 
 | Breakpoint | Pantalla | Grid personajes | Layout |
 |------------|----------|-----------------|--------|
