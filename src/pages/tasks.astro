@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
 import tasksData from "../data/tasks.json";
 
@@ -66,7 +66,7 @@ const formatDateLabel = (startDay: string | null, endDay: string | null): string
         Mis <span class="text-primary">Tareas & Objetivos</span>
       </h1>
 
-      <p class="text-base sm:text-lg text-base-content/80 leading-relaxed">
+      <p class="text-lg text-base-content/80 leading-relaxed">
         Esta sección sirve como fuente de motivación personal. Ver el progreso tangible me impulsa a seguir aprendiendo, creando y mejorando, mientras comparto mi viaje de aprendizaje continuo con quienes visitan mi sitio.
       </p>
     </div>

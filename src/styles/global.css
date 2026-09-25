@@ -10,6 +10,19 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;  
 }
 
+@media (max-width: 767px) {
+  :root {
+    --text-xs: 0.8rem;
+    --text-sm: 0.915rem;
+    --text-md: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+  }
+}
 
 /* Variables CSS para los temas (alternativa a daisyui) */
 :root, [data-theme="light"] {
@@ -79,6 +92,11 @@ h1, h2, h3, h4 {
   border-collapse: collapse;
 }
 
+.prose-md {
+  font-size: 1.075rem;
+  line-height: 1.6;
+}
+
 @layer utilities {
   .astro-code { 
     font-family: var(--font-mono);
@@ -91,3 +109,30 @@ h1, h2, h3, h4 {
     word-break: break-word;
   }
 }
+
+/* Animación de desplazamiento horizontal para la home (marquee) */
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    display: flex;
+    width: 200%;
+    animation: marquee 25s linear infinite;
+  }
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll { opacity: 1; transform: none; transition: none; }
+  }

@@ -1,11 +1,11 @@
 {
   "tasks": [       
     {
-      "description": "Generación de Snippets para Redes Sociales con la api de ChatGPT",
-      "details": "Generar hilos de Twitter a partir de un post, crear resúmenes atractivos para LinkedIn, proponer hashtags relevantes.",
-      "startDay": "",
-      "endDay": ""
-    }, 
+      "description": "Renovación completa de mi web personal (Jaterli)",
+      "details": "La he dado un toque completamente distinto al anterior, mucho más profesional y atractivo.",
+      "startDay": "2026-09-24",
+      "endDay": "2026-09-25"  
+    },      
     {
       "description": "Entrega del proyecto de final de máster Angotest",
       "details": "A la espera de que el tribunal revise la documentación, el código y el vídeo antes de agendar la reunión para la defensa.",

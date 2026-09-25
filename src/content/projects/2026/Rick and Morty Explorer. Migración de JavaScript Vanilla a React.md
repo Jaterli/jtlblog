@@ -422,11 +422,15 @@ Este proyecto ha permitido consolidar los siguientes conceptos fundamentales de 
 
 El proyecto implementa una estrategia mobile-first con breakpoints progresivos:
 
+<div class="md-table">
+
 | Breakpoint | Pantalla | Grid personajes | Grid episodios |
 |------------|----------|-----------------|----------------|
 | Base | Móvil (<768px) | 1-2 columnas | 1 columna |
 | 768px+ | Tablet | 2-3 columnas | 2 columnas |
 | 1024px+ | Desktop | 4 columnas | 2-3 columnas |
+
+</div>
 
 ### Ejemplo de media queries:
 

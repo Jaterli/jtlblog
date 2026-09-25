@@ -199,12 +199,17 @@ function cargarTareas() {
 
 El proyecto implementa una estrategia mobile-first con breakpoints:
 
+<div class="md-table">
+
 | Breakpoint | Pantalla | Grid ejercicios |
 |------------|----------|-----------------|
 | Base | Móvil (≤480px) | 1 columna |
 | 480px+ | Móvil grande | auto-fill (min 250px) |
 | 768px+ | Tablet | auto-fill con hover effects |
 | 1024px+ | Desktop | Mismos estilos optimizados |
+
+</div>
+
 ---
 
 ## Accesibilidad

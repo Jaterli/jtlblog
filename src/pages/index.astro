@@ -9,7 +9,7 @@ import { Icon } from "astro-icon/components";
 
 import tasksData from "../data/tasks.json";
 
-const title = "Jaime TL — Full Stack & Blockchain Developer";
+const title = "Jaime TL — Full Stack, IA & Blockchain Developer";
 const description =
   "Más de 20 años construyendo soluciones web. Desarrollo Full Stack, Blockchain y automatización con foco en eficiencia, escalabilidad y buenas prácticas.";
 const image = "/images/others/profile-photo.webp";
@@ -31,10 +31,17 @@ const lastTasks = tasks
   )
   .slice(0, 3);
 
-// Stack principal para el hero
+// Stack principal para el Hero & Ticker
 const stack = [
   "Python", "Django", "TypeScript", "React", "Angular", "Astro",
-  "Node.js", "Solidity", "PostgreSQL", "Docker", "Tailwind", "WordPress",
+  "Node.js", "Solidity", "PostgreSQL", "Docker", "TailwindCSS", "FastAPI", "AI", "WordPress"
+];
+
+const stats = [
+  { label: "Experiencia", value: "+20 Años" },
+  { label: "Especialidades", value: "Full Stack & Web3" },
+  { label: "Arquitectura", value: "Docker & Cloud" },
+  { label: "Enfoque", value: "IA & Automatización" },
 ];
 ---
 
@@ -45,137 +52,146 @@ const stack = [
   sideBarActiveItemID="home"
 >
   <!-- ============================================================
-        HERO
+        HERO SECTION PRINCIPAL (HOME IMPACT)
   ============================================================ -->
   <section
-    class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/80 shadow-md mb-10"
+    class="relative overflow-hidden rounded-3xl border-2 border-base-300 bg-linear-to-br from-base-200/90 via-base-100 to-base-200/90 shadow-xl mb-12"
   >
-    <div
-      class="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('/images/others/hero-pattern.svg')] bg-cover bg-center"
-      aria-hidden="true"
-    ></div>
-    <div
-      class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl pointer-events-none"
-      aria-hidden="true"
-    ></div>
+    <!-- Malla y Halos decorativos de fondo -->
+    <div class="absolute inset-0 opacity-[0.05] pointer-events-none bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]" aria-hidden="true"></div>
+    <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/15 blur-3xl pointer-events-none animate-pulse" aria-hidden="true"></div>
+    <div class="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-secondary/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
 
     <div
-      class="relative grid lg:grid-cols-[1.4fr_1fr] gap-8 lg:gap-12 items-center px-4 sm:px-10 py-10 sm:py-14"
+      class="relative grid lg:grid-cols-[1.3fr_1fr] gap-10 items-center px-4 sm:px-12 py-12 sm:py-16"
     >
-      <!-- Columna izquierda: texto -->
+      <!-- Columna izquierda: Presentación -->
       <div class="space-y-6 text-center lg:text-left">
-        <span
-          class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/10 text-xs font-semibold text-primary"
-        >
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          Disponible para nuevos proyectos
-        </span>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-xs font-semibold text-primary shadow-xs">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          Disponible para proyectos & consultoría
+        </div>
 
         <h1
-          class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-base-content"
+          class="font-heading text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-base-content"
         >
-          Construyo productos web
-          <span class="text-primary">full stack</span> y <span class="text-primary">blockchain.</span>
+          Desarrollo <span class="text-transparent bg-clip-text bg-linear-to-r from-primary via-blue-500 to-secondary">Full Stack</span>, IA & Blockchain
         </h1>
 
-        <p class="text-base sm:text-lg text-base-content/80 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-          Más de <strong class="text-base-content">20 años de experiencia</strong> creando
-          plataformas seguras, escalables y automatizadas. Del backend con
-          Django y Node.js al frontend con React, Angular y Astro — pasando por
-          contratos inteligentes en Solidity.
+        <p class="text-lg text-base-content/80 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+          Más de <strong class="text-base-content">20 años de experiencia</strong> transformando arquitecturas complejas en productos digitales de alto rendimiento, seguros y automatizados.
         </p>
-
-        <!-- CTAs -->
-        <div class="flex flex-wrap gap-3 justify-center lg:justify-start pt-2">
+     
+        <!-- Botones de Acción / CTAs -->
+        <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
           <a
             href="/proyectos/"
-            class="btn btn-primary rounded-lg px-6 shadow-sm hover:shadow-md transition-all inline-flex items-center gap-2"
+            class="btn btn-primary rounded-lg px-7 shadow-md hover:shadow-primary/20 hover:scale-105 transition-all duration-200 inline-flex items-center gap-2 group"
           >
-            <Icon name="carbon:portfolio" class="w-5 h-5" />
-            Ver proyectos
+            <Icon name="carbon:portfolio" class="w-5 h-5 group-hover:rotate-12 transition-transform" />
+            Explorar Proyectos
           </a>
           <a
             href="/contacto/"
-            class="btn btn-outline rounded-lg px-6 bg-base-100 border-base-300 inline-flex items-center gap-2"
+            class="btn btn-outline rounded-lg px-7 bg-base-200/80 backdrop-blur-xs border-base-300 hover:border-primary/50 hover:bg-base-200 hover:scale-105 transition-all duration-200 inline-flex items-center gap-2"
           >
-            <Icon name="mdi:email-outline" class="w-5 h-5" />
+            <Icon name="mdi:email-outline" class="w-5 h-5 text-primary" />
             Contactar
           </a>
         </div>
-
-        <!-- Stack chips -->
-        <div class="pt-4 border-t border-base-300/80">
-          <p class="text-xs font-bold uppercase tracking-wider text-base-content/60 mb-3">
-            Stack principal
-          </p>
-          <ul class="flex flex-wrap gap-1.5 justify-center lg:justify-start">
-            {stack.map((tech) => (
-              <li class="font-mono text-xs px-2.5 py-1 rounded-md bg-base-100 border border-base-300 text-base-content/80 font-medium">
-                {tech}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
 
-      <!-- Columna derecha: foto -->
-      <div class="relative flex justify-center">
-        <div class="relative">
-          <div
-            class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-transparent blur-2xl scale-110"
-            aria-hidden="true"
-          ></div>
+      <!-- Columna derecha: Terminal Interactivo + Foto con badge -->
+      <div class="relative flex flex-col items-center justify-center">
+        <!-- Tarjeta tipo Terminal de Código / Dev Showcase -->
+        <div class="w-full max-w-md rounded-2xl border border-base-300 bg-base-300/60 backdrop-blur-md shadow-2xl overflow-hidden font-mono text-xs">
+          {/* Header del Terminal */}
+          <div class="flex items-center justify-between px-4 py-2.5 bg-base-300/90 border-b border-base-300">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+            </div>
+            <span class="text-base-content/60 font-semibold text-[11px]">jaime@jaterli: ~</span>
+            <Icon name="mdi:console" class="w-4 h-4 text-base-content/40" />
+          </div>
+
+          {/* Cuerpo del Terminal */}
+          <div class="p-5 space-y-3 bg-base-100/90 text-base-content/90">
+            <div class="flex gap-2">
+              <span class="text-primary font-bold">❯</span>
+              <span class="text-secondary font-semibold">whoami</span>
+            </div>
+            <p class="text-base-content/70 pl-4 border-l-2 border-primary/40">
+              Jaime TL — Sr. Full Stack & Web3 Engineer
+            </p>
+
+            <div class="flex gap-2 pt-1">
+              <span class="text-primary font-bold">❯</span>
+              <span class="text-secondary font-semibold">cat skills.json</span>
+            </div>
+            <div class="pl-4 text-emerald-600 dark:text-emerald-400 font-mono text-[11px]/5">
+              &#123; "frontend" : ["React", "Angular"], "backend": ["Django", "Node"], "web3": ["Solidity", "EVM"], "ai": ["LLMs", "RAG"] &#125;
+            </div>
+
+            <div class="flex gap-2 pt-1 items-center">
+              <span class="text-primary font-bold">❯</span>
+              <span class="text-secondary font-semibold">status</span>
+              <span class="inline-block w-2 h-4 bg-primary animate-pulse"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avatar superpuesto con efecto flotante -->
+        <div class="relative -mt-8 flex items-center gap-3 bg-base-100/90 border-2 border-base-300 rounded-full py-1.5 px-4 shadow-lg backdrop-blur-md">
           <img
             src="/images/others/profile-photo.webp"
-            alt="Foto de perfil de Jaime TL"
-            width="320"
-            height="320"
-            loading="eager"
-            class="relative w-56 h-56 sm:w-72 sm:h-72 rounded-full object-cover ring-4 ring-base-100 shadow-xl"
+            alt="Foto de Jaime TL"
+            class="w-10 h-10 rounded-full object-cover ring-2 ring-primary"
           />
+          <div class="text-left">
+            <p class="text-xs font-bold leading-none text-base-content">Jaime TL</p>
+            <span class="text-[10px] text-base-content/60 font-mono">Madrid, España</span>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+          CARROUSEL INFINITO / TICKER DE STACK TECNOLÓGICO
+    ============================================================ -->
+    <div class="border-t border-base-300 bg-base-200/50 py-3 overflow-hidden">
+      <div class="animate-marquee whitespace-nowrap flex gap-4">
+        {[...stack, ...stack].map((tech) => (
+          <span class="inline-flex items-center gap-2 font-mono text-xs px-3 py-1 rounded-lg bg-base-100 border border-base-300 text-base-content/80 font-medium shrink-0">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            {tech}
+          </span>
+        ))}
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-        SOBRE MÍ (resumen del CV)
+        STATS / HIGHLIGHTS RÁPIDOS
   ============================================================ -->
-  <section class="mt-12 grid md:grid-cols-3 gap-6">
-    {
-      [
-        {
-          icon: "mdi:briefcase-outline",
-          title: "20+ años",
-          desc: "Desarrollando aplicaciones web empresariales para gestión de traductores y grandes proyectos.",
-        },
-        {
-          icon: "mdi:school-outline",
-          title: "Doble Máster",
-          desc: "Especializado en Full Stack y Blockchain por Conquer Blocks. Formación técnica en constante evolución.",
-        },
-        {
-          icon: "mdi:code-braces",
-          title: "Full Stack + Web3",
-          desc: "Dominio de Django, Node, React, Angular, Astro, PostgreSQL, Docker y smart contracts en Solidity.",
-        },
-      ].map((item) => (
-        <div class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6 shadow-sm hover:border-primary/50 transition-colors">
-          <div class="p-2.5 rounded-xl bg-base-100 border border-base-300 text-primary w-fit mb-4">
-            <Icon name={item.icon} class="w-6 h-6" />
-          </div>
-          <h3 class="font-heading font-bold text-lg text-base-content mb-2">{item.title}</h3>
-          <p class="text-sm sm:text-base text-base-content/80 leading-relaxed">{item.desc}</p>
-        </div>
-      ))
-    }
+  <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14 reveal-on-scroll">
+    {stats.map((s) => (
+      <div class="rounded-2xl border-2 border-base-300 bg-base-200/80 p-4 text-center shadow-xs hover:border-primary/40 hover:-translate-y-1 transition-all">
+        <p class="font-heading text-lg/6 sm:text-2xl font-extrabold text-primary mb-1">{s.value}</p>
+        <p class="text-xs sm:text-sm font-medium text-base-content/70">{s.label}</p>
+      </div>
+    ))}
   </section>
 
   <!-- ============================================================
-        PROYECTO DESTACADO AMPLIO (AnGoTest)
+        PROYECTO DESTACADO (AnGoTest)
   ============================================================ -->
-  <section class="mt-16">
-    <div class="flex items-center justify-between mb-6">
+  <section class="mt-16 reveal-on-scroll">
+    <div class="sm:flex sm:items-center sm:justify-between mb-6">
       <div class="flex items-center gap-3">
         <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
           <Icon name="mdi:star-outline" class="w-6 h-6" />
@@ -185,90 +201,60 @@ const stack = [
           <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Proyecto Destacado</h2>
         </div>
       </div>
-      <a
-        href="/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/"
-        class="btn btn-sm btn-ghost border border-primary/20 text-primary font-semibold hover:bg-primary hover:text-primary-content hover:border-primary transition-all duration-200 hidden sm:inline-flex items-center gap-1.5"
-      >
-        <span>Ver proyecto detallado</span>
-        <Icon name="mdi:arrow-right" class="w-4 h-4" />
+
+      <a href="/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/" 
+        class="text-sm mt-2 sm:mt-0 font-bold text-primary hover:underline flex items-center gap-1">
+        Ver detalles <Icon name="mdi:arrow-right" class="w-4 h-4" />
       </a>
+
     </div>
 
-    <article class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm overflow-hidden">
+    <article class="rounded-3xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-md hover:border-primary/50 transition-all">
       <div class="grid lg:grid-cols-12 gap-8 items-center">
-        <!-- Columna Izquierda: Imagen del proyecto -->
-        <div class="lg:col-span-5 relative group">
-          <div class="overflow-hidden rounded-xl border-2 border-base-300 bg-base-100 shadow-md">
-            <img
-              src="/images/proyectos/projects.AnGoTest-proyecto-fin-master.webp"
-              alt="AnGoTest - Plataforma de Tests Online con Django, Angular e IA"
-              class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-              loading="eager"
-            />
-          </div>
+        <div class="lg:col-span-5 relative group overflow-hidden rounded-2xl border-2 border-base-300 bg-base-100 shadow-md">
+          <img
+            src="/images/proyectos/projects.AnGoTest-proyecto-fin-master.webp"
+            alt="AnGoTest"
+            class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="eager"
+          />
         </div>
 
-        <!-- Columna Derecha: Explicación Detallada -->
-        <div class="lg:col-span-7 flex flex-col justify-between space-y-5">
-          <div>
-            <h3 class="font-heading text-2xl sm:text-3xl font-bold text-base-content mb-3 leading-snug">
-              Plataforma Completa de Tests Online con IA
-            </h3>
-            <p class="text-sm text-base-content/80 leading-relaxed mb-4">
-              Aplicación web <strong>Full-Stack</strong> de alto rendimiento diseñada como Trabajo Fin de Máster. Resuelve las limitaciones de la evaluación tradicional ofreciendo corrección instantánea, ranking de usuarios, dashboard de administración interactivo y <strong>generación de pruebas personalizadas mediante Inteligencia Artificial</strong>.
-            </p>
+        <div class="lg:col-span-7 space-y-4">
+          <h3 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">
+            Plataforma Completa de Tests Online con IA
+          </h3>
+          <p class="text-sm text-base-content/80 leading-relaxed">
+            Aplicación web <strong>Full-Stack</strong> de alto rendimiento. Corrección instantánea, ranking global, dashboard interactivo y <strong>generación de evaluaciones mediante IA</strong>.
+          </p>
 
-            {/* Características clave destacadas */}
-            <ul class="space-y-2 text-sm text-base-content/80 mb-5">
-              <li class="flex items-start gap-2">
-                <Icon name="mdi:check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                <span><strong>Seguridad Avanzada:</strong> Autenticación JWT mediante cookies <code class="bg-base-100 px-1 py-0.5 rounded border border-base-300 font-mono text-xs">HttpOnly</code>, <code class="bg-base-100 px-1 py-0.5 rounded border border-base-300 font-mono text-xs">SameSite=Strict</code> y protección CORS.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <Icon name="mdi:check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                <span><strong>Generación con IA & Cuotas:</strong> Creación automática de cuestionarios estructurados mediante Llama/Mistral con límites de consumo por usuario.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <Icon name="mdi:check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                <span><strong>Arquitectura Dockerizada:</strong> Frontend reactivo en Angular 20, API REST en Django 5 y PostgreSQL orquestados con Docker Compose.</span>
-              </li>
-            </ul>
+          <ul class="space-y-2 text-sm text-base-content/80">
+            <li class="flex items-start gap-2">
+              <Icon name="mdi:check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+              <span><strong>Seguridad:</strong> Autenticación JWT mediante cookies <code class="bg-base-100 px-1 rounded border border-base-300 font-mono">HttpOnly</code>, <code class="bg-base-100 px-1 rounded border border-base-300 font-mono">SameSite=Strict</code> y protección CORS.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="mdi:check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+              <span><strong>Inteligencia Artificial:</strong> Creación automática de cuestionarios estructurados mediante Llama/Mistral con límites de consumo por usuario.</span>
+            </li>
+          </ul>
 
-            {/* Badges de tecnologías */}
-            <div class="flex flex-wrap gap-1.5 pt-2 border-t border-base-300/80">
-              {["Django REST", "Angular", "Groq AI", "PostgreSQL", "Docker", "JWT", "TailwindCSS"].map((t) => (
-                <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-base-100 border border-base-300 text-base-content/80 font-medium">
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Acciones principales */}
-          <div class="flex flex-wrap gap-3 pt-2">
+          <div class="flex flex-wrap gap-3 pt-3">
             <a
               href="/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/"
-              class="btn btn-primary rounded-lg px-5 shadow-sm inline-flex items-center gap-2"
+              class="btn btn-primary btn-sm rounded-lg px-5 shadow-xs inline-flex items-center gap-2"
             >
-              <Icon name="mdi:file-document-outline" class="w-5 h-5" />
-              <span>Leer artículo completo</span>
+              <Icon name="mdi:file-document-outline" class="w-4 h-4" />
+              <span>Ver Proyecto</span>
             </a>
             <a
               href="https://www.youtube.com/watch?v=JOpi1MysM9g"
               target="_blank"
               rel="noopener noreferrer"
-              class="btn btn-outline rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2"
+              class="btn btn-outline btn-sm rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2"
             >
-              <Icon name="mdi:youtube" class="w-5 h-5 text-red-600" />
-              <span>Ver vídeo demostración</span>
-            </a>
-            <a
-              href="/projects/angotest/AngoTest_Documentacion_Tecnica.pdf"
-              target="_blank"
-              class="btn btn-ghost rounded-lg border border-base-300 inline-flex items-center gap-2 text-xs"
-            >
-              <Icon name="mdi:file-pdf-box" class="w-5 h-5 text-primary" />
-              <span>Documentación PDF</span>
+              <Icon name="mdi:youtube" class="w-4 h-4 text-red-600" />
+              <span>Demo en Vídeo</span>
             </a>
           </div>
         </div>
@@ -277,108 +263,91 @@ const stack = [
   </section>
 
   <!-- ============================================================
-        ÚLTIMOS PROYECTOS
+        ÚLTIMOS PROYECTOS Y PUBLICACIONES
   ============================================================ -->
-  <section class="mt-16">
-    <header class="flex flex-col gap-4 sm:flex-row sm:items-center justify-between mb-6">
+  <section class="mt-16 reveal-on-scroll">
+    <header class="sm:flex sm:items-center sm:justify-between mb-6">
       <div class="flex items-center gap-3">
-        <div class="p-2 rounded-lg bg-base-200 border border-base-300 text-primary">
+        <div class="p-2 rounded-xl bg-base-200 border border-base-300 text-primary">
           <Icon name="carbon:portfolio" class="w-6 h-6" />
         </div>
         <div>
-          <h2 class="font-heading text-2xl font-bold text-base-content">Últimos proyectos</h2>
-          <p class="text-sm text-base-content/70">Trabajos recientes e investigaciones prácticas</p>
+          <h2 class="font-heading text-2xl font-bold text-base-content">Últimos Proyectos</h2>
+          <p class="text-sm text-base-content/70">Desarrollos e investigaciones recientes</p>
         </div>
       </div>
-      <a 
-        href="/proyectos/" 
-        class="btn btn-sm btn-ghost border border-primary/20 text-primary font-semibold hover:bg-primary hover:text-primary-content hover:border-primary transition-all duration-200 inline-flex items-center gap-1.5"
-      >
-        <span>Ver todos los proyectos</span>
-        <Icon name="mdi:arrow-right" class="w-4 h-4" />
+      <a href="/proyectos/" class="text-sm mt-2 sm:mt-0 font-bold text-primary hover:underline flex items-center gap-1">
+        Ver todos <Icon name="mdi:arrow-right" class="w-4 h-4" />
       </a>
     </header>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {
-        last_projects.map((project: any) => (
-          <HorizontalProjectItem
-            title={project.data.title}
-            heroImage={project.data.heroImage}
-            description={project.data.description}
-            badge={project.data.badge}
-            pubDate={project.data.pubDate}
-            tags={project.data.tags}
-            url={getProjectUrl(project.id)}
-            target="_self"
-          />
-        ))
-      }
+      {last_projects.map((project: any) => (
+        <HorizontalProjectItem
+          title={project.data.title}
+          heroImage={project.data.heroImage}
+          description={project.data.description}
+          badge={project.data.badge}
+          pubDate={project.data.pubDate}
+          tags={project.data.tags}
+          url={getProjectUrl(project.id)}
+          target="_self"
+        />
+      ))}
     </div>
   </section>
 
-  <!-- ============================================================
-        ÚLTIMOS POSTS
-  ============================================================ -->
-  <section class="mt-16">
-    <header class="flex flex-col gap-4 sm:flex-row sm:items-center justify-between mb-6">
+  <section class="mt-16 reveal-on-scroll">
+    <header class="sm:flex sm:items-center sm:justify-between mb-6">
       <div class="flex items-center gap-3">
-        <div class="p-2 rounded-lg bg-base-200 border border-base-300 text-primary">
+        <div class="p-2 rounded-xl bg-base-200 border border-base-300 text-primary">
           <Icon name="mdi:blog-outline" class="w-6 h-6" />
         </div>
         <div>
-          <h2 class="font-heading text-2xl font-bold text-base-content">Últimas publicaciones</h2>
-          <p class="text-sm text-base-content/70">Artículos técnicos sobre desarrollo, IA y Web3</p>
+          <h2 class="font-heading text-2xl font-bold text-base-content">Últimas Publicaciones</h2>
+          <p class="text-sm text-base-content/70">Artículos técnicos, guías y tutoriales</p>
         </div>
       </div>
-      <a 
-        href="/blog/" 
-        class="btn btn-sm btn-ghost border border-primary/20 text-primary font-semibold hover:bg-primary hover:text-primary-content hover:border-primary transition-all duration-200 inline-flex items-center gap-1.5"
-      >
-        <span>Ver todos los posts</span>
-        <Icon name="mdi:arrow-right" class="w-4 h-4" />
+      <a href="/blog/" class="text-sm mt-2 sm:mt-0 font-bold text-primary hover:underline flex items-center gap-1">
+        Ver todos <Icon name="mdi:arrow-right" class="w-4 h-4" />
       </a>
     </header>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {
-        last_posts.map((post: any) => (
-          <HorizontalCard
-            title={post.data.title}
-            heroImage={post.data.heroImage}
-            description={post.data.description}
-            badge={post.data.badge}
-            pubDate={post.data.pubDate}
-            tags={post.data.tags}
-            url={getPostUrl(post.id)}
-            target="_self"
-          />
-        ))
-      }
+      {last_posts.map((post: any) => (
+        <HorizontalCard
+          title={post.data.title}
+          heroImage={post.data.heroImage}
+          description={post.data.description}
+          badge={post.data.badge}
+          pubDate={post.data.pubDate}
+          tags={post.data.tags}
+          url={getPostUrl(post.id)}
+          target="_self"
+        />
+      ))}
     </div>
   </section>
 
   <!-- ============================================================
         ÚLTIMAS TAREAS
   ============================================================ -->
-  <section class="mt-16">
-    <header class="flex flex-col gap-4 sm:flex-row sm:items-center justify-between mb-6">
+  <section class="mt-16 overflow-hidden reveal-on-scroll">
+    <header class="sm:flex sm:items-center sm:justify-between mb-6">
       <div class="flex items-center gap-3">
         <div class="p-2 rounded-lg bg-base-200 border border-base-300 text-primary">
           <Icon name="mdi:clipboard-list-outline" class="w-6 h-6" />
         </div>
         <div>
           <h2 class="font-heading text-2xl font-bold text-base-content">Últimas tareas</h2>
-          <p class="text-sm text-base-content/70">Estado de aprendizaje y objetivos completados</p>
+          <p class="text-sm text-base-content/70">Objetivos proyectados y completados</p>
         </div>
       </div>
-      <a 
-        href="/tasks/" 
-        class="btn btn-sm btn-ghost border border-primary/20 text-primary font-semibold hover:bg-primary hover:text-primary-content hover:border-primary transition-all duration-200 inline-flex items-center gap-1.5"
-      >
-        <span>Ver todas las tareas</span>
-        <Icon name="mdi:arrow-right" class="w-4 h-4" />
+
+      <a href="/tasks/" class="text-sm mt-2 sm:mt-0 font-bold text-primary hover:underline flex items-center gap-1">
+        Ver todas <Icon name="mdi:arrow-right" class="w-4 h-4" />
       </a>
+
     </header>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -422,58 +391,10 @@ const stack = [
   </section>
 
   <!-- ============================================================
-        DISPONIBILIDAD Y SERVICIOS / OPORTUNIDADES LABORALES
-  ============================================================ -->
-  <section
-    class="mt-16 rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-base-200 via-base-100 to-base-200 p-6 sm:p-10 shadow-sm relative overflow-hidden"
-  >
-    <div
-      class="absolute -bottom-12 -right-12 w-64 h-64 rounded-full bg-primary/10 blur-3xl pointer-events-none"
-      aria-hidden="true"
-    ></div>
-
-    <div class="relative flex flex-col lg:flex-row items-center justify-between gap-8">
-      <div class="space-y-3 text-center lg:text-left max-w-2xl">
-        <span
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-xs font-semibold text-emerald-600"
-        >
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          Abierto a propuestas
-        </span>
-
-        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">
-          ¿Buscas un desarrollador para tu proyecto o equipo?
-        </h2>
-
-        <p class="text-sm sm:text-base text-base-content/80 leading-relaxed">
-          Estoy disponible tanto para la realización de <strong class="text-base-content">proyectos a medida y consultoría freelancing</strong>, como para incorporar mi experiencia técnica a tiempo completo en <strong class="text-base-content">empresas e ingenierías tecnológicas</strong> que busquen aportar valor a su equipo.
-        </p>
-      </div>
-
-      <div class="flex flex-col sm:flex-row lg:flex-col gap-3 w-full lg:w-auto shrink-0 justify-center">
-        <a
-          href="/servicios/"
-          class="btn btn-primary rounded-lg px-6 shadow-sm inline-flex items-center justify-center gap-2"
-        >
-          <Icon name="mdi:cogs" class="w-5 h-5" />
-          <span>Ver mis servicios</span>
-        </a>
-        <a
-          href="/contacto/"
-          class="btn btn-outline rounded-lg px-6 bg-base-100 border-base-300 inline-flex items-center justify-center gap-2 hover:border-primary/50"
-        >
-          <Icon name="mdi:account-box-outline" class="w-5 h-5" />
-          <span>Contactar directamente</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
         GRÁFICA DE PUBLICACIONES
   ============================================================ -->
   <section
-    class="mt-16 mb-8 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 text-center shadow-sm"
+    class="mt-16 mb-8 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 text-center shadow-sm overflow-hidden reveal-on-scroll"
   >
     <div class="flex justify-center mb-2">
       <span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
@@ -492,7 +413,7 @@ const stack = [
         loading="lazy"
       />
     </div>
-    <p class="mt-5 text-xs sm:text-sm text-base-content/70">
+    <p class="mt-5 text-sm text-base-content/70">
       Gráfica automatizada y generada con{" "}
       <a
         class="text-primary font-semibold hover:underline"
@@ -502,4 +423,65 @@ const stack = [
       </a>
     </p>
   </section>
+
+  <!-- ============================================================
+        CTA / DISPONIBILIDAD FINAL
+  ============================================================ -->
+  <section class="mt-16 rounded-3xl border-2 border-primary/30 bg-linear-to-r from-primary/10 via-base-200 to-primary/10 p-4 sm:p-12 text-center shadow-lg relative overflow-hidden reveal-on-scroll">
+    <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-base-content mb-3">
+      ¿Tienes un proyecto en mente o buscas un perfil técnico senior?
+    </h2>
+    <p class="text-sm sm:text-base text-base-content/80 mb-8 leading-relaxed">
+      Estoy disponible tanto para la realización de <strong class="text-base-content">proyectos a medida y consultoría freelancing</strong>, como para incorporar mi experiencia técnica a tiempo completo en <strong class="text-base-content">empresas e ingenierías tecnológicas</strong> que busquen aportar valor a su equipo.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a
+        href="/servicios/"
+        class="btn btn-primary rounded-lg px-6 shadow-sm inline-flex items-center justify-center gap-2"
+      >
+        <Icon name="mdi:cogs" class="w-5 h-5" />
+        <span>Ver mis servicios</span>
+      </a>
+      <a
+        href="/contacto/"
+        class="btn btn-outline rounded-lg px-6 bg-base-100 border-base-300 inline-flex items-center justify-center gap-2 hover:border-primary/50"
+      >
+        <Icon name="mdi:account-box-outline" class="w-5 h-5" />
+        <span>Contactar directamente</span>
+      </a>
+    </div>
+  </section>
+
+  {/* Script de animación progresiva en Scroll */}
+
+  <script>
+    function initReveal() {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target); // opcional: dejar de observar
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      );
+
+      document
+        .querySelectorAll(".reveal-on-scroll:not(.visible)")
+        .forEach((el) => observer.observe(el));
+    }
+
+    // 1) Ejecuta ahora si el DOM ya está listo (caso habitual en Astro)
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initReveal);
+    } else {
+      initReveal();
+    }
+
+    // 2) Si usas View Transitions / ClientRouter, re-ejecuta en cada navegación
+    document.addEventListener("astro:page-load", initReveal);
+  </script>
+
 </BaseLayout>
