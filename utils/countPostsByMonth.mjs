@@ -5,7 +5,7 @@ import { existsSync, mkdirSync } from 'fs';
 
 const baseDir = "src/content";
 const dirs = ['blog', 'projects'];
-const saveDir = "public/data";
+const saveDir = "src/data";
 
 // Calcular la fecha límite (hace 2 años)
 const twoYearsAgo = new Date();
