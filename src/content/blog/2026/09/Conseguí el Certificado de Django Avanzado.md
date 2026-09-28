@@ -39,8 +39,6 @@ jsonLd:
     ]
 ---
 
-# Conseguí el Certificado de Django Avanzado
-
 Hoy, **28 de septiembre de 2026**, he obtenido oficialmente el **Certificado de Django Avanzado**, perteneciente al **Máster de Desarrollo Full Stack** impartido por la **Academia Conquer Blocks**.
 
 ## Un examen pendiente que por fin ha llegado
