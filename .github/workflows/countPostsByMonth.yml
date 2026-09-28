@@ -3,9 +3,8 @@ name: Actualizar conteo de publicaciones por mes
 # Definir cuándo se ejecutará la acción (cron expression para todos los días a las 12:00 UTC)
 
 on:
-  schedule:    
-    #- cron: '0 11 * * *'  # Todos los días a las 11:00
-    - cron: 0 22 * * 5  # Ejecuta el workflow todos los viernes a las 22:00.
+  # schedule:    
+  #   - cron: 0 22 * * 5  # Ejecuta el workflow todos los viernes a las 22:00.
   workflow_dispatch:
     inputs:
       logLevel:
@@ -17,8 +16,8 @@ on:
           - Manually Trigger
           - Add new post
           - Debug          
-  # push: # Siempre que se haga un push en la branch
-  #   branches: [main]  
+  push: # Siempre que se haga un push en la branch
+    branches: [main]  
 
 # Definir los jobs
 jobs:
