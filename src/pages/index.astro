@@ -291,38 +291,7 @@ const maxTotal = Math.max(
   <!-- ============================================================
         ÚLTIMOS PROYECTOS Y PUBLICACIONES
   ============================================================ -->
-  <section class="mt-16 reveal-on-scroll">
-    <header class="sm:flex sm:items-center sm:justify-between mb-6">
-      <div class="flex items-center gap-3">
-        <div class="p-2 rounded-xl bg-base-200 border border-base-300 text-primary">
-          <Icon name="carbon:portfolio" class="w-6 h-6" />
-        </div>
-        <div>
-          <h2 class="font-heading text-2xl font-bold text-base-content">Últimos Proyectos</h2>
-          <p class="text-sm text-base-content/70">Desarrollos e investigaciones recientes</p>
-        </div>
-      </div>
-      <a href="/proyectos/" class="text-sm mt-2 sm:mt-0 font-bold text-primary hover:underline flex items-center gap-1">
-        Ver todos <Icon name="mdi:arrow-right" class="w-4 h-4" />
-      </a>
-    </header>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {last_projects.map((project: any) => (
-        <HorizontalProjectItem
-          title={project.data.title}
-          heroImage={project.data.heroImage}
-          description={project.data.description}
-          badge={project.data.badge}
-          pubDate={project.data.pubDate}
-          tags={project.data.tags}
-          url={getProjectUrl(project.id)}
-          target="_self"
-        />
-      ))}
-    </div>
-  </section>
-
+  
   <section class="mt-16 reveal-on-scroll">
     <header class="sm:flex sm:items-center sm:justify-between mb-6">
       <div class="flex items-center gap-3">
@@ -349,6 +318,38 @@ const maxTotal = Math.max(
           pubDate={post.data.pubDate}
           tags={post.data.tags}
           url={getPostUrl(post.id)}
+          target="_self"
+        />
+      ))}
+    </div>
+  </section>
+  
+  <section class="mt-16 reveal-on-scroll">
+    <header class="sm:flex sm:items-center sm:justify-between mb-6">
+      <div class="flex items-center gap-3">
+        <div class="p-2 rounded-xl bg-base-200 border border-base-300 text-primary">
+          <Icon name="carbon:portfolio" class="w-6 h-6" />
+        </div>
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-base-content">Últimos Proyectos</h2>
+          <p class="text-sm text-base-content/70">Desarrollos e investigaciones recientes</p>
+        </div>
+      </div>
+      <a href="/proyectos/" class="text-sm mt-2 sm:mt-0 font-bold text-primary hover:underline flex items-center gap-1">
+        Ver todos <Icon name="mdi:arrow-right" class="w-4 h-4" />
+      </a>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {last_projects.map((project: any) => (
+        <HorizontalProjectItem
+          title={project.data.title}
+          heroImage={project.data.heroImage}
+          description={project.data.description}
+          badge={project.data.badge}
+          pubDate={project.data.pubDate}
+          tags={project.data.tags}
+          url={getProjectUrl(project.id)}
           target="_self"
         />
       ))}
