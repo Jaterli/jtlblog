@@ -33,7 +33,7 @@ const format_endDate = endDate
   jsonLd={jsonLd}
 >
   <!-- ============================================================
-       CABECERA DEL DETALLE DE TRABAJO
+        CABECERA DEL DETALLE DE TRABAJO
   ============================================================ -->
   <section class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-10 shadow-sm mb-8">
     <!-- Fondo decorativo -->
@@ -46,11 +46,11 @@ const format_endDate = endDate
       aria-hidden="true"
     ></div>
 
-    <div class="relative space-y-4">
+    <div class="relative space-y-4 z-10">
       <!-- Metadatos: Badge y Rango de Fechas -->
       <div class="flex flex-wrap items-center gap-3">
         {badge && (
-          <span class="font-mono text-xs font-bold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+          <span class="px-2 py-0.5 rounded bg-primary/30 border border-primary/40 text-xs font-mono text-base-content/70 font-medium">
             {badge}
           </span>
         )}
@@ -68,27 +68,52 @@ const format_endDate = endDate
       </h1>
 
       {description && (
-        <p class="text-lg text-base-content/80 leading-relaxed">
+        <p class="text-lg text-base-content/80 leading-relaxed max-w-3xl">
           {description}
         </p>
       )}
     </div>
 
-    <!-- Imagen destacada -->
+    <!-- Galería / Pila de imágenes del trabajo -->
     {heroImage && (
-      <div class="text-center mt-8 relative rounded-xl overflow-hidden border-2 border-base-300 bg-base-100 p-2 shadow-md">
-        <Image
-          width={1280}
-          src={heroImage}
-          alt={title}
-          class="max-h-[720px] inline-block rounded-lg object-cover hover:scale-[1.01] transition-transform duration-300"
-        />
+      <div class="relative mt-12 mb-6 flex justify-center items-center min-h-[220px] sm:min-h-[380px] md:min-h-[480px]">
+        
+        <!-- Imagen Fondo Izquierda -->
+        <div class="absolute left-2 sm:left-6 md:left-12 top-4 w-[65%] sm:w-[55%] -rotate-6 scale-90 z-0 rounded-xl overflow-hidden border-2 border-base-300/80 bg-base-100 p-1.5 shadow-md opacity-45 grayscale contrast-125 saturate-50 blur-[1px]">
+          <Image
+            width={1280}
+            src={heroImage}
+            alt="Otras experiencias"
+            class="max-h-[500px] w-full rounded-lg object-cover"
+          />
+        </div>
+
+        <!-- Imagen Fondo Derecha -->
+        <div class="absolute right-2 sm:right-6 md:right-12 top-4 w-[65%] sm:w-[55%] rotate-6 scale-90 z-0 rounded-xl overflow-hidden border-2 border-base-300/80 bg-base-100 p-1.5 shadow-md opacity-45 hue-rotate-60 saturate-150 blur-[1px]">
+          <Image
+            width={1280}
+            src={heroImage}
+            alt="Otras experiencias"
+            class="max-h-[500px] w-full rounded-lg object-cover"
+          />
+        </div>
+
+        <!-- Imagen Central Protagonista -->
+        <div class="relative z-10 w-[75%] rounded-xl overflow-hidden border-2 border-primary/50 bg-base-100 p-2 shadow-2xl transition-all duration-300 hover:scale-[1.01]">
+          <Image
+            width={1280}
+            src={heroImage}
+            alt={title}
+            class="max-h-[620px] w-full inline-block rounded-lg object-cover"
+          />
+        </div>
+
       </div>
     )}
   </section>
 
   <!-- ============================================================
-       CONTENIDO PRINCIPAL DEL TRABAJO
+        CONTENIDO PRINCIPAL DEL TRABAJO
   ============================================================ -->
   <article class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-10 shadow-sm mb-8">
     <div class="prose prose-md max-w-none text-base-content/85 prose-headings:font-heading prose-headings:font-bold prose-headings:text-base-content prose-a:text-primary hover:prose-a:underline prose-strong:text-base-content prose-img:rounded-xl prose-img:border-2 prose-img:border-base-300 prose-code:font-mono prose-code:text-primary">
@@ -97,10 +122,10 @@ const format_endDate = endDate
   </article>
 
   <!-- ============================================================
-       SECCIÓN DE ETIQUETAS / TECNOLOGÍAS
+        SECCIÓN DE ETIQUETAS / TECNOLOGÍAS
   ============================================================ -->
   {tags && tags.length > 0 && (
-    <section class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6  shadow-sm mb-6">
+    <section class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6 shadow-sm mb-6">
       <div class="flex flex-wrap items-center gap-2">
         <div class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-base-content/60 mr-2">
           <Icon name="mdi:tag-multiple-outline" class="w-4 h-4 text-primary" />
@@ -116,7 +141,7 @@ const format_endDate = endDate
   )}
 
   <!-- ============================================================
-       BOTÓN DE REGRESO
+        BOTÓN DE REGRESO
   ============================================================ -->
   <div class="flex justify-end mt-4">
     <a

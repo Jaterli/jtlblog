@@ -25,7 +25,7 @@ const displayDate = pubDate
   jsonLd={jsonLd}
 >
   <!-- ============================================================
-       CABECERA DEL PROYECTO
+        CABECERA DEL PROYECTO
   ============================================================ -->
   <section class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-10 shadow-sm mb-8">
     <!-- Fondo decorativo -->
@@ -38,11 +38,11 @@ const displayDate = pubDate
       aria-hidden="true"
     ></div>
 
-    <div class="relative space-y-4">
+    <div class="relative space-y-4 z-10">
       <!-- Metadatos: Badge y Fecha -->
       <div class="flex flex-wrap items-center gap-3">
         {badge && (
-            <span class="px-2 py-0.5 rounded bg-primary/30 border border-primary/40 text-xs font-mono text-base-content/70 font-medium">
+          <span class="px-2 py-0.5 rounded bg-primary/30 border border-primary/40 text-xs font-mono text-base-content/70 font-medium">
             {badge}
           </span>
         )}
@@ -66,21 +66,46 @@ const displayDate = pubDate
       )}
     </div>
 
-    <!-- Imagen destacada -->
+    <!-- Galería / Pila de imágenes de proyectos con protagonismo central -->
     {heroImage && (
-      <div class="text-center mt-8 relative rounded-xl overflow-hidden border-2 border-base-300 bg-base-100 p-2 shadow-md">
-        <Image
-          width={1280}
-          src={heroImage}
-          alt={title}
-          class="max-h-[720px] inline-block rounded-lg object-cover hover:scale-[1.01] transition-transform duration-300"
-        />
+      <div class="relative mt-12 mb-6 flex justify-center items-center min-h-[220px] sm:min-h-[380px] md:min-h-[480px]">
+        
+        <!-- Imagen Fondo Izquierda (Simula otro proyecto detrás) -->
+        <div class="absolute left-2 sm:left-6 md:left-12 top-4 w-[65%] sm:w-[55%] -rotate-6 scale-90 z-0 rounded-xl overflow-hidden border-2 border-base-300/80 bg-base-100 p-1.5 shadow-md opacity-45 grayscale contrast-125 saturate-50 blur-[1px]">
+          <Image
+            width={1280}
+            src={heroImage}
+            alt="Otros proyectos"
+            class="max-h-[500px] w-full rounded-lg object-cover"
+          />
+        </div>
+
+        <!-- Imagen Fondo Derecha (Simula otro proyecto detrás) -->
+        <div class="absolute right-2 sm:right-6 md:right-12 top-4 w-[65%] sm:w-[55%] rotate-6 scale-90 z-0 rounded-xl overflow-hidden border-2 border-base-300/80 bg-base-100 p-1.5 shadow-md opacity-45 hue-rotate-60 saturate-150 blur-[1px]">
+          <Image
+            width={1280}
+            src={heroImage}
+            alt="Otros proyectos"
+            class="max-h-[500px] w-full rounded-lg object-cover"
+          />
+        </div>
+
+        <!-- Imagen Central Protagonista (Proyecto Actual) -->
+        <div class="relative z-10 w-[75%] rounded-xl overflow-hidden border-2 border-primary/50 bg-base-100 p-2 shadow-2xl transition-all duration-300 hover:scale-[1.01]">
+          <Image
+            width={1280}
+            src={heroImage}
+            alt={title}
+            class="max-h-[620px] w-full inline-block rounded-lg object-cover"
+          />
+        </div>
+
       </div>
     )}
   </section>
 
   <!-- ============================================================
-       CONTENIDO PRINCIPAL DEL PROYECTO
+        CONTENIDO PRINCIPAL DEL PROYECTO
   ============================================================ -->
   <article class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-10 shadow-sm mb-8">
     <div class="prose prose-md max-w-none text-base-content/85 prose-headings:font-heading prose-headings:font-bold prose-headings:text-base-content prose-a:text-primary hover:prose-a:underline prose-strong:text-base-content prose-img:rounded-xl prose-img:border-2 prose-img:border-base-300 prose-code:font-mono prose-code:text-primary">
@@ -89,7 +114,7 @@ const displayDate = pubDate
   </article>
 
   <!-- ============================================================
-       SECCIÓN DE ETIQUETAS
+        SECCIÓN DE ETIQUETAS
   ============================================================ -->
   {tags && tags.length > 0 && (
     <section class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6 shadow-sm mb-6">
@@ -111,7 +136,7 @@ const displayDate = pubDate
   )}
 
   <!-- ============================================================
-       BOTÓN DE REGRESO
+        BOTÓN DE REGRESO
   ============================================================ -->
   <div class="flex justify-end mt-4">
     <a
