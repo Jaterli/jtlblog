@@ -23,6 +23,9 @@ pnpm-debug.log*
 # Netlify
 .netlify/
 
+# Netlify Functions
+dev-tips.json
+
 # Other
 *.key
 *.ai

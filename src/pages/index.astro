@@ -9,6 +9,9 @@ import { Icon } from "astro-icon/components";
 
 import tasksData from "../data/tasks.json";
 
+// Importación directa del JSON
+import devTipsData from "../data/dev-tips.json";
+
 const title = "Jaime TL — Full Stack, IA & Blockchain Developer";
 const description =
   "Más de 20 años construyendo soluciones web. Desarrollo Full Stack, Blockchain y automatización con foco en eficiencia, escalabilidad y buenas prácticas.";
@@ -31,7 +34,37 @@ const lastTasks = tasks
   )
   .slice(0, 3);
 
-// Stack principal para el Hero & Ticker
+// ============================================================
+// OBTENCIÓN DE DEV TIPS (HASTA 5 PARA EL CARRUSEL)
+// ============================================================
+interface DevTip {
+  title: string;
+  summary: string;
+  category: string;
+  source: string;
+  url: string;
+}
+
+const devTips: DevTip[] = (devTipsData.tips || []).slice(0, 5);
+const devTipsDate = devTipsData.date || "";
+
+// Helper para colores por categoría
+const getCategoryBadgeClass = (category: string) => {
+  switch (category?.toLowerCase()) {
+    case "ia":
+      return "bg-purple-500/10 text-purple-600 border-purple-500/20";
+    case "css":
+      return "bg-blue-500/10 text-blue-600 border-blue-500/20";
+    case "herramientas":
+      return "bg-amber-500/10 text-amber-600 border-amber-500/20";
+    case "rendimiento":
+      return "bg-emerald-500/10 text-emerald-600 border-emerald-500/20";
+    default:
+      return "bg-primary/10 text-primary border-primary/20";
+  }
+};
+
+// Stack principal
 const stack = [
   "Python", "Django", "TypeScript", "React", "Angular", "Astro",
   "Node.js", "Solidity", "PostgreSQL", "Docker", "TailwindCSS", "FastAPI", "AI", "WordPress"
@@ -44,11 +77,8 @@ const stats = [
   { label: "Enfoque", value: "IA & Automatización" },
 ];
 
-// GRAFICO DE BARRAS DE PUBLICACIONES POR MES
-// 1. Añade la importación del JSON en la parte superior del frontmatter de index.astro (si no la tenías):
 import postsByMonthData from "../data/postsByMonth.json";
 
-// 2. Unificamos todos los meses presentes en el JSON y los ordenamos
 const allMonths = Array.from(
   new Set([
     ...Object.keys(postsByMonthData.blog || {}),
@@ -59,10 +89,8 @@ const allMonths = Array.from(
 const blogCounts: Record<string, number> = postsByMonthData.blog;
 const projectCounts: Record<string, number> = postsByMonthData.projects;
 
-// Seleccionamos los últimos 12 meses
 const selectedMonths = allMonths.slice(-12);
 
-// Calculamos la suma total (blog + proyectos) máxima para escalar la altura de las barras
 const maxTotal = Math.max(
   ...selectedMonths.map(
     (m) => (blogCounts[m] || 0) + (projectCounts[m] || 0)
@@ -81,9 +109,8 @@ const maxTotal = Math.max(
         HERO SECTION PRINCIPAL (HOME IMPACT)
   ============================================================ -->
   <section
-    class="relative overflow-hidden rounded-3xl border-2 border-base-300 bg-linear-to-br from-base-200/90 via-base-100 to-base-200/90 shadow-xl mb-12"
+    class="relative overflow-hidden rounded-3xl border-2 border-base-300 bg-linear-to-br from-base-200/90 via-base-100 to-base-200/90 shadow-xl mb-10 reveal-on-scroll"
   >
-    <!-- Malla y Halos decorativos de fondo -->
     <div class="absolute inset-0 opacity-[0.05] pointer-events-none bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]" aria-hidden="true"></div>
     <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/15 blur-3xl pointer-events-none animate-pulse" aria-hidden="true"></div>
     <div class="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-secondary/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
@@ -91,7 +118,6 @@ const maxTotal = Math.max(
     <div
       class="relative grid lg:grid-cols-[1.3fr_1fr] gap-10 items-center px-4 sm:px-12 py-12 sm:py-16"
     >
-      <!-- Columna izquierda: Presentación -->
       <div class="space-y-6 text-center lg:text-left">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-xs font-semibold text-primary shadow-xs">
           <span class="relative flex h-2.5 w-2.5">
@@ -111,7 +137,6 @@ const maxTotal = Math.max(
           Más de <strong class="text-base-content">20 años de experiencia</strong> transformando arquitecturas complejas en productos digitales de alto rendimiento, seguros y automatizados.
         </p>
      
-        <!-- Botones de Acción / CTAs -->
         <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
           <a
             href="/proyectos/"
@@ -130,11 +155,8 @@ const maxTotal = Math.max(
         </div>
       </div>
 
-      <!-- Columna derecha: Terminal Interactivo + Foto con badge -->
       <div class="relative flex flex-col items-center justify-center">
-        <!-- Tarjeta tipo Terminal de Código / Dev Showcase -->
         <div class="w-full max-w-md rounded-2xl border border-base-300 bg-base-300/60 backdrop-blur-md shadow-2xl overflow-hidden font-mono text-xs">
-          {/* Header del Terminal */}
           <div class="flex items-center justify-between px-4 py-2.5 bg-base-300/90 border-b border-base-300">
             <div class="flex items-center gap-2">
               <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
@@ -145,7 +167,6 @@ const maxTotal = Math.max(
             <Icon name="mdi:console" class="w-4 h-4 text-base-content/40" />
           </div>
 
-          {/* Cuerpo del Terminal */}
           <div class="p-5 space-y-3 bg-base-100/90 text-base-content/90">
             <div class="flex gap-2">
               <span class="text-primary font-bold">❯</span>
@@ -171,7 +192,6 @@ const maxTotal = Math.max(
           </div>
         </div>
 
-        <!-- Avatar superpuesto con efecto flotante -->
         <div class="relative -mt-8 flex items-center gap-3 bg-base-100/90 border-2 border-base-300 rounded-full py-1.5 px-4 shadow-lg backdrop-blur-md">
           <img
             src="/images/others/profile-photo.webp"
@@ -186,9 +206,6 @@ const maxTotal = Math.max(
       </div>
     </div>
 
-    <!-- ============================================================
-          CARROUSEL INFINITO / TICKER DE STACK TECNOLÓGICO
-    ============================================================ -->
     <div class="border-t border-base-300 bg-base-200/50 py-3 overflow-hidden">
       <div class="animate-marquee whitespace-nowrap flex gap-4">
         {[...stack, ...stack].map((tech) => (
@@ -201,9 +218,7 @@ const maxTotal = Math.max(
     </div>
   </section>
 
-  <!-- ============================================================
-        STATS / HIGHLIGHTS RÁPIDOS
-  ============================================================ -->
+  <!-- STATS -->
   <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14 reveal-on-scroll">
     {stats.map((s) => (
       <div class="rounded-2xl border-2 border-base-300 bg-base-200/80 p-4 text-center shadow-xs hover:border-primary/40 hover:-translate-y-1 transition-all">
@@ -214,8 +229,113 @@ const maxTotal = Math.max(
   </section>
 
   <!-- ============================================================
-        PROYECTO DESTACADO (AnGoTest)
+        SECCIÓN DESTACADA: DEV TIPS SLIDER (1 EN 1, HASTA 5 ITEMS)
   ============================================================ -->
+  {devTips.length > 0 && (
+    <section class="mb-14 reveal-on-scroll">
+      <div class="rounded-3xl border-2 border-primary/30 bg-linear-to-r from-base-200/90 via-base-100 to-base-200/90 p-4 sm:p-8 shadow-lg relative overflow-hidden">
+        
+        <!-- Cabecera del Slider -->
+        <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:mb-6 border-b border-base-300/80 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+              <Icon name="mdi:lightbulb-on" class="w-6 h-6 animate-pulse" />
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-primary">Dev Tip destacado</span>
+                {devTipsDate && (
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-base-300 text-base-content/70">
+                    {new Date(devTipsDate).toLocaleDateString("es-ES")}
+                  </span>
+                )}
+              </div>
+              <h2 class="font-heading text-xl sm:text-2xl font-bold text-base-content">
+                Novedades & Consejos Técnicos
+              </h2>
+            </div>
+          </div>
+
+          <!-- Controles del Slider -->
+          <div class="flex items-center gap-2 justify-center sm:self-end sm:self-auto">
+            <button
+              id="prev-tip-btn"
+              class="btn btn-circle btn-sm btn-outline border-base-300 hover:border-primary hover:bg-primary hover:text-primary-content transition-all"
+              aria-label="Consejo anterior"
+            >
+              <Icon name="mdi:chevron-left" class="w-5 h-5" />
+            </button>
+            <button
+              id="next-tip-btn"
+              class="btn btn-circle btn-sm btn-outline border-base-300 hover:border-primary hover:bg-primary hover:text-primary-content transition-all"
+              aria-label="Siguiente consejo"
+            >
+              <Icon name="mdi:chevron-right" class="w-5 h-5" />
+            </button>
+          </div>
+        </header>
+
+        <!-- Contenedor del Carrusel (Slides 1 a 1) -->
+        <div class="relative overflow-hidden min-h-[160px]">
+          <div id="tips-slider-track" class="flex transition-transform duration-500 ease-in-out">
+            {devTips.map((tip) => (
+              <div class="w-full shrink-0 px-1">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                  <div class="space-y-3 max-w-4xl">
+                    <div class="flex items-center gap-2">
+                      <span class={`text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full border ${getCategoryBadgeClass(tip.category)}`}>
+                        {tip.category}
+                      </span>
+                      <span class="text-xs font-mono text-base-content/60">
+                        vía {tip.source}
+                      </span>
+                    </div>
+
+                    <h3 class="font-heading text-lg sm:text-xl font-bold text-base-content leading-snug">
+                      <a href={tip.url} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
+                        {tip.title}
+                      </a>
+                    </h3>
+
+                    <p class="text-sm text-base-content/80 leading-relaxed">
+                      {tip.summary}
+                    </p>
+                  </div>
+
+                  <div class="shrink-0 flex items-center md:self-center">
+                    <a
+                      href={tip.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-primary rounded-xl px-5 shadow-sm inline-flex items-center gap-2 text-sm w-full md:w-auto justify-center"
+                    >
+                      <span>Leer completo</span>
+                      <Icon name="mdi:open-in-new" class="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Indicadores (Puntos de posición) -->
+        <div id="tips-indicators" class="flex justify-center gap-2 mt-5">
+          {devTips.map((_, index) => (
+            <button
+              class="w-2.5 h-2.5 rounded-full bg-base-300 transition-all duration-300 indicator-btn"
+              data-index={index}
+              aria-label={`Ir al consejo ${index + 1}`}
+            ></button>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  )}
+
+
+  <!-- PROYECTO DESTACADO -->
   <section class="mt-16 reveal-on-scroll">
     <div class="sm:flex sm:items-center sm:justify-between mb-6">
       <div class="flex items-center gap-3">
@@ -232,7 +352,6 @@ const maxTotal = Math.max(
         class="text-sm mt-2 sm:mt-0 font-bold text-primary hover:underline flex items-center gap-1">
         Ver detalles <Icon name="mdi:arrow-right" class="w-4 h-4" />
       </a>
-
     </div>
 
     <article class="rounded-3xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-md hover:border-primary/50 transition-all">
@@ -288,10 +407,7 @@ const maxTotal = Math.max(
     </article>
   </section>
 
-  <!-- ============================================================
-        ÚLTIMOS PROYECTOS Y PUBLICACIONES
-  ============================================================ -->
-  
+  <!-- ÚLTIMAS PUBLICACIONES Y PROYECTOS -->
   <section class="mt-16 reveal-on-scroll">
     <header class="sm:flex sm:items-center sm:justify-between mb-6">
       <div class="flex items-center gap-3">
@@ -356,9 +472,7 @@ const maxTotal = Math.max(
     </div>
   </section>
 
-  <!-- ============================================================
-        ÚLTIMAS TAREAS
-  ============================================================ -->
+  <!-- ÚLTIMAS TAREAS -->
   <section class="mt-16 overflow-hidden reveal-on-scroll">
     <header class="sm:flex sm:items-center sm:justify-between mb-6">
       <div class="flex items-center gap-3">
@@ -374,7 +488,6 @@ const maxTotal = Math.max(
       <a href="/tasks/" class="text-sm mt-2 sm:mt-0 font-bold text-primary hover:underline flex items-center gap-1">
         Ver todas <Icon name="mdi:arrow-right" class="w-4 h-4" />
       </a>
-
     </header>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -417,109 +530,95 @@ const maxTotal = Math.max(
     </div>
   </section>
 
-<!-- ============================================================
-      GRÁFICA DE BARRAS APILADAS (BLOG + PROYECTOS POR MES)
-============================================================ -->
-<section
-  class="mt-16 mb-8 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm overflow-hidden reveal-on-scroll"
->
-  <div class="text-center mb-6">
-    <span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
-      Estadísticas del Sitio
-    </span>
-    <h2 class="font-heading text-2xl font-bold text-base-content mt-3">
-      Publicaciones & Proyectos por Mes
-    </h2>
-    <p class="text-sm text-base-content/70 mt-1 text-balance">
-      Evolución unificada de la actividad en el sitio web
-    </p>
-  </div>
-
-  <!-- Leyenda explicativa de colores -->
-  <div class="flex items-center justify-center gap-6 mb-6 text-xs font-medium font-mono">
-    <div class="flex items-center gap-2">
-      <span class="w-3.5 h-3.5 rounded-sm bg-primary inline-block"></span>
-      <span class="text-base-content/80">Blog</span>
+  <!-- GRÁFICO DE BARRAS -->
+  <section
+    class="mt-16 mb-8 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm overflow-hidden reveal-on-scroll"
+  >
+    <div class="text-center mb-6">
+      <span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+        Estadísticas del Sitio
+      </span>
+      <h2 class="font-heading text-2xl font-bold text-base-content mt-3">
+        Publicaciones & Proyectos por Mes
+      </h2>
+      <p class="text-sm text-base-content/70 mt-1 text-balance">
+        Evolución unificada de la actividad en el sitio web
+      </p>
     </div>
-    <div class="flex items-center gap-2">
-      <span class="w-3.5 h-3.5 rounded-sm bg-accent-content inline-block"></span>
-      <span class="text-base-content/80">Proyectos</span>
+
+    <div class="flex items-center justify-center gap-6 mb-6 text-xs font-medium font-mono">
+      <div class="flex items-center gap-2">
+        <span class="w-3.5 h-3.5 rounded-sm bg-primary inline-block"></span>
+        <span class="text-base-content/80">Blog</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-3.5 h-3.5 rounded-sm bg-accent-content inline-block"></span>
+        <span class="text-base-content/80">Proyectos</span>
+      </div>
     </div>
-  </div>
 
-  <!-- Contenedor del Gráfico -->
-  <div class="bg-base-100 rounded-xl border border-base-300">
-    <div class="h-64 sm:h-72 flex items-end justify-between gap-2 sm:gap-4 pt-6 pb-4 px-4 border-b border-base-300">
-      {selectedMonths.map((month) => {
-        const blogCount = blogCounts[month] || 0;
-        const projectCount = projectCounts[month] || 0;
-        const totalCount = blogCount + projectCount;
-        
-        // Formateo del mes (ej. "2026-09" -> "09/26")
-        const [year, m] = month.split("-");
-        const formattedMonth = `${m}/${year.slice(2)}`;
+    <div class="bg-base-100 rounded-xl border border-base-300">
+      <div class="h-64 sm:h-72 flex items-end justify-between gap-2 sm:gap-4 pt-6 pb-4 px-4 border-b border-base-300">
+        {selectedMonths.map((month) => {
+          const blogCount = blogCounts[month] || 0;
+          const projectCount = projectCounts[month] || 0;
+          const totalCount = blogCount + projectCount;
+          
+          const [year, m] = month.split("-");
+          const formattedMonth = `${m}/${year.slice(2)}`;
 
-        // Proporciones porcentuales
-        const totalHeightPct = (totalCount / maxTotal) * 100;
-        const blogPct = totalCount > 0 ? (blogCount / totalCount) * 100 : 0;
-        const projectPct = totalCount > 0 ? (projectCount / totalCount) * 100 : 0;
+          const totalHeightPct = (totalCount / maxTotal) * 100;
+          const blogPct = totalCount > 0 ? (blogCount / totalCount) * 100 : 0;
+          const projectPct = totalCount > 0 ? (projectCount / totalCount) * 100 : 0;
 
-        return (
-          <div class="flex-1 min-w-[15px] flex flex-col items-center h-full justify-end group relative">
-            
-            <!-- Tooltip explicativo al pasar el cursor -->
-            <div class="absolute -top-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 bg-base-300 text-base-content text-[10px] font-mono py-1 px-2 rounded-md shadow-md whitespace-nowrap">
-              <span class="font-bold">{formattedMonth}:</span><br />{blogCount} Blog<br />{projectCount} Proyectos<br />(Total: {totalCount})
-            </div>
-
-            <!-- Estructura de la Barra Única Apilada -->
-            <div class="w-full flex justify-center h-full items-end">
-              <div 
-                class="w-full max-w-[36px] flex flex-col-reverse rounded-t-md overflow-hidden transition-all duration-500 ease-out"
-                style={`height: ${Math.max(totalHeightPct, 4)}%; min-height: 8px;`}
-              >
-                <!-- Segmento de Blog (Base / Abajo) -->
-                {blogCount > 0 && (
-                  <div 
-                    class="bg-primary text-primary-content flex items-center justify-center font-mono font-bold text-[10px] leading-none transition-all"
-                    style={`height: ${blogPct}%;`}
-                    title={`Blog: ${blogCount}`}
-                  >
-                    <span>{blogCount}</span>
-                  </div>
-                )}
-
-                <!-- Segmento de Proyectos (Parte Superior) -->
-                {projectCount > 0 && (
-                  <div 
-                    class="bg-accent-content text-secondary-content flex items-center justify-center font-mono font-bold text-[10px] leading-none transition-all"
-                    style={`height: ${projectPct}%;`}
-                    title={`Proyectos: ${projectCount}`}
-                  >
-                    <span>{projectCount}</span>
-                  </div>
-                )}
+          return (
+            <div class="flex-1 min-w-[15px] flex flex-col items-center h-full justify-end group relative">
+              <div class="absolute -top-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 bg-base-300 text-base-content text-[10px] font-mono py-1 px-2 rounded-md shadow-md whitespace-nowrap">
+                <span class="font-bold">{formattedMonth}:</span><br />{blogCount} Blog<br />{projectCount} Proyectos<br />(Total: {totalCount})
               </div>
+
+              <div class="w-full flex justify-center h-full items-end">
+                <div 
+                  class="w-full max-w-[36px] flex flex-col-reverse rounded-t-md overflow-hidden transition-all duration-500 ease-out"
+                  style={`height: ${Math.max(totalHeightPct, 4)}%; min-height: 8px;`}
+                >
+                  {blogCount > 0 && (
+                    <div 
+                      class="bg-primary text-primary-content flex items-center justify-center font-mono font-bold text-[10px] leading-none transition-all"
+                      style={`height: ${blogPct}%;`}
+                      title={`Blog: ${blogCount}`}
+                    >
+                      <span>{blogCount}</span>
+                    </div>
+                  )}
+
+                  {projectCount > 0 && (
+                    <div 
+                      class="bg-accent-content text-secondary-content flex items-center justify-center font-mono font-bold text-[10px] leading-none transition-all"
+                      style={`height: ${projectPct}%;`}
+                      title={`Proyectos: ${projectCount}`}
+                    >
+                      <span>{projectCount}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <span class="text-[10px] sm:text-xs font-mono text-base-content/60 mt-3 rotate-90 sm:rotate-0 inline-block">
+                {formattedMonth}
+              </span>
             </div>
-
-            <!-- Etiqueta del Mes (Eje X) -->
-            <span class="text-[10px] sm:text-xs font-mono text-base-content/60 mt-3 rotate-90 sm:rotate-0 inline-block">
-              {formattedMonth}
-            </span>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
-  </div>
 
-  <p class="mt-6 text-xs text-base-content/60 text-center font-mono">
-    Datos sincronizados automáticamente desde <code class="bg-base-100 px-1.5 py-0.5 rounded border border-base-300">data/postsByMonth.json</code>
-  </p>
-</section>
+    <p class="mt-6 text-xs text-base-content/60 text-center font-mono">
+      Datos sincronizados automáticamente desde <code class="bg-base-100 px-1.5 py-0.5 rounded border border-base-300">data/postsByMonth.json</code>
+    </p>
+  </section>
 
-  <!-- ============================================================
-        CTA / DISPONIBILIDAD FINAL
-  ============================================================ -->
+  <!-- CTA FINAL -->
   <section class="mt-16 rounded-3xl border-2 border-primary/30 bg-linear-to-r from-primary/10 via-base-200 to-primary/10 p-4 sm:p-12 text-center shadow-lg relative overflow-hidden reveal-on-scroll">
     <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-base-content mb-3">
       ¿Tienes un proyecto en mente o buscas un perfil técnico senior?
@@ -545,16 +644,58 @@ const maxTotal = Math.max(
     </div>
   </section>
 
-  {/* Script de animación progresiva en Scroll */}
-
+  <!-- LÓGICA DEL CARRUSEL Y REVEAL ON SCROLL -->
   <script>
+    function setupTipsSlider() {
+      const track = document.getElementById("tips-slider-track");
+      const prevBtn = document.getElementById("prev-tip-btn");
+      const nextBtn = document.getElementById("next-tip-btn");
+      const indicators = document.querySelectorAll(".indicator-btn");
+
+      if (!track || indicators.length === 0) return;
+
+      let currentIndex = 0;
+      const totalSlides = indicators.length;
+
+      function updateSlider(index: number) {
+        if (!track) return;
+
+        currentIndex = (index + totalSlides) % totalSlides;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        indicators.forEach((btn, i) => {
+          if (i === currentIndex) {
+            btn.classList.add("bg-primary", "w-6");
+            btn.classList.remove("bg-base-300", "w-2.5");
+          } else {
+            btn.classList.add("bg-base-300", "w-2.5");
+            btn.classList.remove("bg-primary", "w-6");
+          }
+        });
+      }
+
+      prevBtn?.addEventListener("click", () => updateSlider(currentIndex - 1));
+      nextBtn?.addEventListener("click", () => updateSlider(currentIndex + 1));
+
+      indicators.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const target = e.target as HTMLElement;
+          const idx = parseInt(target.getAttribute("data-index") || "0", 10);
+          updateSlider(idx);
+        });
+      });
+
+      // Inicializar primer slide
+      updateSlider(0);
+    }
+
     function initReveal() {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("visible");
-              observer.unobserve(entry.target); // opcional: dejar de observar
+              observer.unobserve(entry.target);
             }
           });
         },
@@ -566,15 +707,18 @@ const maxTotal = Math.max(
         .forEach((el) => observer.observe(el));
     }
 
-    // 1) Ejecuta ahora si el DOM ya está listo (caso habitual en Astro)
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initReveal);
-    } else {
+    function initPage() {
       initReveal();
+      setupTipsSlider();
     }
 
-    // 2) Si usas View Transitions / ClientRouter, re-ejecuta en cada navegación
-    document.addEventListener("astro:page-load", initReveal);
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initPage);
+    } else {
+      initPage();
+    }
+
+    document.addEventListener("astro:page-load", initPage);
   </script>
 
 </BaseLayout>
