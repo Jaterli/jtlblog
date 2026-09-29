@@ -6,11 +6,9 @@ import { getCollection } from "astro:content";
 import { getPostUrl } from "@lib/getPostUrl";
 import { getProjectUrl } from "@lib/getProjectUrl";
 import { Icon } from "astro-icon/components";
+import { getStore } from "@netlify/blobs"; // Importar SDK de Netlify Blobs
 
 import tasksData from "../data/tasks.json";
-
-// Importación directa del JSON
-import devTipsData from "../data/dev-tips.json";
 
 const title = "Jaime TL — Full Stack, IA & Blockchain Developer";
 const description =
@@ -35,7 +33,7 @@ const lastTasks = tasks
   .slice(0, 3);
 
 // ============================================================
-// OBTENCIÓN DE DEV TIPS (HASTA 5 PARA EL CARRUSEL)
+// OBTENCIÓN DE DEV TIPS DESDE NETLIFY BLOBS
 // ============================================================
 interface DevTip {
   title: string;
@@ -43,6 +41,28 @@ interface DevTip {
   category: string;
   source: string;
   url: string;
+}
+
+interface DevTipsResponse {
+  date?: string;
+  generatedAt?: string;
+  tips?: DevTip[];
+}
+
+let devTipsData: DevTipsResponse = { tips: [], date: "" };
+
+try {
+  // Conectar con la tienda de Netlify Blobs (ajusta el 'name' al nombre de tu store o usa el predeterminado)
+  const tipsStore = getStore("dev-tips"); 
+  
+  // Obtener el JSON almacenado (ajusta 'latest' o el nombre de clave que estés utilizando)
+  const data = await tipsStore.get("latest", { type: "json" });
+  
+  if (data) {
+    devTipsData = data as DevTipsResponse;
+  }
+} catch (error) {
+  console.error("Error al obtener Dev Tips desde Netlify Blobs:", error);
 }
 
 const devTips: DevTip[] = (devTipsData.tips || []).slice(0, 5);
