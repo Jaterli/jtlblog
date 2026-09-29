@@ -356,8 +356,6 @@ const maxTotal = Math.max(
                         day: "2-digit",
                         month: "2-digit",
                         year: "numeric",
-                        hour: "2-digit",
-                        minute: "2-digit",
                       })}
                     </span>
                   )}
@@ -432,7 +430,7 @@ const maxTotal = Math.max(
         </div>
 
         <!-- Indicadores (Puntos de posición) -->
-        <div id="tips-indicators" class="flex justify-center gap-2 mt-5">
+        <div id="tips-indicators" class="flex justify-center gap-3 mt-5">
           {devTips.map((_, index) => (
             <button
               class="w-2.5 h-2.5 rounded-full bg-base-300 transition-all duration-300 indicator-btn"
@@ -536,7 +534,7 @@ const maxTotal = Math.max(
           return (
             <div class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-5 shadow-sm hover:border-primary/50 transition-colors flex flex-col justify-between">
               <div>
-                <div class="flex items-start gap-3 mb-2">
+                <div class="flex items-center gap-3 mb-2">
                   <div class={`p-1.5 rounded-lg shrink-0 mt-0.5 ${isPending ? 'bg-warning/10 text-warning border border-warning/20' : 'bg-emerald-500/10 text-emerald-600 border border-emerald-500/20'}`}>
                     <Icon name={isPending ? "mdi:clock-outline" : "mdi:check-circle-outline"} class="w-5 h-5" />
                   </div>
