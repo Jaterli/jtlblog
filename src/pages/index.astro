@@ -6,9 +6,16 @@ import { getCollection } from "astro:content";
 import { getPostUrl } from "@lib/getPostUrl";
 import { getProjectUrl } from "@lib/getProjectUrl";
 import { Icon } from "astro-icon/components";
-import { getStore } from "@netlify/blobs"; // Importar SDK de Netlify Blobs
+import { getStore } from "@netlify/blobs";
 
 import tasksData from "../data/tasks.json";
+import postsByMonthData from "../data/postsByMonth.json";
+
+export const prerender = false;
+Astro.response.headers.set(
+  "Cache-Control",
+  "public, s-maxage=3600, stale-while-revalidate=86400"
+);
 
 const title = "Jaime TL — Full Stack, IA & Blockchain Developer";
 const description =
@@ -44,29 +51,37 @@ interface DevTip {
 }
 
 interface DevTipsResponse {
-  date?: string;
   generatedAt?: string;
   tips?: DevTip[];
 }
 
-let devTipsData: DevTipsResponse = { tips: [], date: "" };
+let devTipsData: DevTipsResponse = { tips: [] };
+
+const siteID = import.meta.env.NETLIFY_SITE_ID ?? process.env.NETLIFY_SITE_ID;
+const token = import.meta.env.NETLIFY_BLOBS_TOKEN ?? process.env.NETLIFY_BLOBS_TOKEN;
 
 try {
-  // Conectar con la tienda de Netlify Blobs (ajusta el 'name' al nombre de tu store o usa el predeterminado)
-  const tipsStore = getStore("dev-tips"); 
-  
-  // Obtener el JSON almacenado (ajusta 'latest' o el nombre de clave que estés utilizando)
+  const tipsStore = getStore({
+    name: "dev-tips",
+    consistency: "strong",
+    ...(siteID && token ? { siteID, token } : {}),
+  });
+
   const data = await tipsStore.get("latest", { type: "json" });
-  
   if (data) {
     devTipsData = data as DevTipsResponse;
+    console.log("Dev Tips generados el:", devTipsData.generatedAt);
   }
 } catch (error) {
   console.error("Error al obtener Dev Tips desde Netlify Blobs:", error);
 }
 
-const devTips: DevTip[] = (devTipsData.tips || []).slice(0, 5);
-const devTipsDate = devTipsData.date || "";
+const devTips: DevTip[] = Array.isArray(devTipsData.tips)
+  ? devTipsData.tips
+      .filter((t) => t && typeof t.title === "string" && typeof t.url === "string")
+      .slice(0, devTipsData.tips.length)
+  : [];
+const devTipsGeneratedAt = devTipsData.generatedAt || "";
 
 // Helper para colores por categoría
 const getCategoryBadgeClass = (category: string) => {
@@ -97,8 +112,6 @@ const stats = [
   { label: "Enfoque", value: "IA & Automatización" },
 ];
 
-import postsByMonthData from "../data/postsByMonth.json";
-
 const allMonths = Array.from(
   new Set([
     ...Object.keys(postsByMonthData.blog || {}),
@@ -117,6 +130,7 @@ const maxTotal = Math.max(
   ),
   1
 );
+
 ---
 
 <BaseLayout
@@ -248,11 +262,83 @@ const maxTotal = Math.max(
     ))}
   </section>
 
+  <!-- PROYECTO DESTACADO -->
+  <section class="mt-16 reveal-on-scroll">
+    <div class="sm:flex sm:items-center sm:justify-between mb-6">
+      <div class="flex items-center gap-3">
+        <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+          <Icon name="mdi:star-outline" class="w-6 h-6" />
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Trabajo Fin de Máster</span>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Proyecto Destacado</h2>
+        </div>
+      </div>
+
+      <a href="/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/" 
+        class="text-sm mt-2 sm:mt-0 font-bold text-primary hover:underline flex items-center gap-1">
+        Ver detalles <Icon name="mdi:arrow-right" class="w-4 h-4" />
+      </a>
+    </div>
+
+    <article class="rounded-3xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-md hover:border-primary/50 transition-all">
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-5 relative group overflow-hidden rounded-2xl border-2 border-base-300 bg-base-100 shadow-md">
+          <img
+            src="/images/proyectos/projects.AnGoTest-proyecto-fin-master.webp"
+            alt="AnGoTest"
+            class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="eager"
+          />
+        </div>
+
+        <div class="lg:col-span-7 space-y-4">
+          <h3 class="font-heading text-2xl font-bold text-base-content">
+            Plataforma Completa de Tests Online con IA
+          </h3>
+          <p class="text-base-content/80 leading-relaxed">
+            Aplicación web <strong>Full-Stack</strong> de alto rendimiento. Corrección instantánea, ranking global, dashboard interactivo y <strong>generación de evaluaciones mediante IA</strong>.
+          </p>
+
+          <ul class="space-y-2 text-base-content/80">
+            <li class="flex items-start gap-2">
+              <Icon name="mdi:check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+              <span><strong>Seguridad:</strong> Autenticación JWT mediante cookies <code class="bg-base-100 px-1 rounded border border-base-300 font-mono">HttpOnly</code>, <code class="bg-base-100 px-1 rounded border border-base-300 font-mono">SameSite=Strict</code> y protección CORS.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <Icon name="mdi:check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+              <span><strong>Inteligencia Artificial:</strong> Creación automática de cuestionarios estructurados mediante Llama/Mistral con límites de consumo por usuario.</span>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-3 pt-3">
+            <a
+              href="/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/"
+              class="btn btn-primary btn-sm rounded-lg px-5 shadow-xs inline-flex items-center gap-2"
+            >
+              <Icon name="mdi:file-document-outline" class="w-4 h-4" />
+              <span>Ver Proyecto</span>
+            </a>
+            <a
+              href="https://www.youtube.com/watch?v=JOpi1MysM9g"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline btn-sm rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2"
+            >
+              <Icon name="mdi:youtube" class="w-4 h-4 text-red-600" />
+              <span>Demo en Vídeo</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
   <!-- ============================================================
         SECCIÓN DESTACADA: DEV TIPS SLIDER (1 EN 1, HASTA 5 ITEMS)
   ============================================================ -->
   {devTips.length > 0 && (
-    <section class="mb-14 reveal-on-scroll">
+    <section class="mt-14 reveal-on-scroll">
       <div class="rounded-3xl border-2 border-primary/30 bg-linear-to-r from-base-200/90 via-base-100 to-base-200/90 p-4 sm:p-8 shadow-lg relative overflow-hidden">
         
         <!-- Cabecera del Slider -->
@@ -264,11 +350,17 @@ const maxTotal = Math.max(
             <div>
               <div class="flex items-center gap-2">
                 <span class="text-xs font-bold uppercase tracking-wider text-primary">Dev Tip destacado</span>
-                {devTipsDate && (
-                  <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-base-300 text-base-content/70">
-                    {new Date(devTipsDate).toLocaleDateString("es-ES")}
-                  </span>
-                )}
+                  {devTipsGeneratedAt && (
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-base-300 text-base-content/70">
+                      {new Date(devTipsGeneratedAt).toLocaleString("es-ES", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </span>
+                  )}
               </div>
               <h2 class="font-heading text-xl sm:text-2xl font-bold text-base-content">
                 Novedades & Consejos Técnicos
@@ -317,7 +409,7 @@ const maxTotal = Math.max(
                       </a>
                     </h3>
 
-                    <p class="text-sm text-base-content/80 leading-relaxed">
+                    <p class="text-base text-base-content/80 leading-relaxed">
                       {tip.summary}
                     </p>
                   </div>
@@ -354,79 +446,6 @@ const maxTotal = Math.max(
     </section>
   )}
 
-
-  <!-- PROYECTO DESTACADO -->
-  <section class="mt-16 reveal-on-scroll">
-    <div class="sm:flex sm:items-center sm:justify-between mb-6">
-      <div class="flex items-center gap-3">
-        <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
-          <Icon name="mdi:star-outline" class="w-6 h-6" />
-        </div>
-        <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-primary">Trabajo Fin de Máster</span>
-          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Proyecto Destacado</h2>
-        </div>
-      </div>
-
-      <a href="/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/" 
-        class="text-sm mt-2 sm:mt-0 font-bold text-primary hover:underline flex items-center gap-1">
-        Ver detalles <Icon name="mdi:arrow-right" class="w-4 h-4" />
-      </a>
-    </div>
-
-    <article class="rounded-3xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-md hover:border-primary/50 transition-all">
-      <div class="grid lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-5 relative group overflow-hidden rounded-2xl border-2 border-base-300 bg-base-100 shadow-md">
-          <img
-            src="/images/proyectos/projects.AnGoTest-proyecto-fin-master.webp"
-            alt="AnGoTest"
-            class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-            loading="eager"
-          />
-        </div>
-
-        <div class="lg:col-span-7 space-y-4">
-          <h3 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">
-            Plataforma Completa de Tests Online con IA
-          </h3>
-          <p class="text-base-content/80 leading-relaxed">
-            Aplicación web <strong>Full-Stack</strong> de alto rendimiento. Corrección instantánea, ranking global, dashboard interactivo y <strong>generación de evaluaciones mediante IA</strong>.
-          </p>
-
-          <ul class="space-y-2 text-base-content/80">
-            <li class="flex items-start gap-2">
-              <Icon name="mdi:check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-              <span><strong>Seguridad:</strong> Autenticación JWT mediante cookies <code class="bg-base-100 px-1 rounded border border-base-300 font-mono">HttpOnly</code>, <code class="bg-base-100 px-1 rounded border border-base-300 font-mono">SameSite=Strict</code> y protección CORS.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <Icon name="mdi:check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-              <span><strong>Inteligencia Artificial:</strong> Creación automática de cuestionarios estructurados mediante Llama/Mistral con límites de consumo por usuario.</span>
-            </li>
-          </ul>
-
-          <div class="flex flex-wrap gap-3 pt-3">
-            <a
-              href="/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/"
-              class="btn btn-primary btn-sm rounded-lg px-5 shadow-xs inline-flex items-center gap-2"
-            >
-              <Icon name="mdi:file-document-outline" class="w-4 h-4" />
-              <span>Ver Proyecto</span>
-            </a>
-            <a
-              href="https://www.youtube.com/watch?v=JOpi1MysM9g"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-outline btn-sm rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2"
-            >
-              <Icon name="mdi:youtube" class="w-4 h-4 text-red-600" />
-              <span>Demo en Vídeo</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </article>
-  </section>
-
   <!-- ÚLTIMAS PUBLICACIONES Y PROYECTOS -->
   <section class="mt-16 reveal-on-scroll">
     <header class="sm:flex sm:items-center sm:justify-between mb-6">
@@ -435,7 +454,7 @@ const maxTotal = Math.max(
           <Icon name="mdi:blog-outline" class="w-6 h-6" />
         </div>
         <div>
-          <h2 class="font-heading text-2xl font-bold text-base-content">Últimas Publicaciones</h2>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Últimas Publicaciones</h2>
           <p class="text-sm text-base-content/70">Artículos técnicos, guías y tutoriales</p>
         </div>
       </div>
@@ -467,7 +486,7 @@ const maxTotal = Math.max(
           <Icon name="carbon:portfolio" class="w-6 h-6" />
         </div>
         <div>
-          <h2 class="font-heading text-2xl font-bold text-base-content">Últimos Proyectos</h2>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Últimos Proyectos</h2>
           <p class="text-sm text-base-content/70">Desarrollos e investigaciones recientes</p>
         </div>
       </div>
@@ -500,7 +519,7 @@ const maxTotal = Math.max(
           <Icon name="mdi:clipboard-list-outline" class="w-6 h-6" />
         </div>
         <div>
-          <h2 class="font-heading text-2xl font-bold text-base-content">Últimas tareas</h2>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Últimas tareas</h2>
           <p class="text-sm text-base-content/70">Objetivos proyectados y completados</p>
         </div>
       </div>
@@ -670,9 +689,14 @@ const maxTotal = Math.max(
       const track = document.getElementById("tips-slider-track");
       const prevBtn = document.getElementById("prev-tip-btn");
       const nextBtn = document.getElementById("next-tip-btn");
-      const indicators = document.querySelectorAll(".indicator-btn");
+      const indicators = document.querySelectorAll<HTMLElement>(".indicator-btn");
 
       if (!track || indicators.length === 0) return;
+
+      // Evita registrar los listeners dos veces sobre el mismo DOM
+      // (DOMContentLoaded + astro:page-load con ClientRouter).
+      if (track.dataset.ready === "true") return;
+      track.dataset.ready = "true";
 
       let currentIndex = 0;
       const totalSlides = indicators.length;
@@ -699,7 +723,7 @@ const maxTotal = Math.max(
 
       indicators.forEach((btn) => {
         btn.addEventListener("click", (e) => {
-          const target = e.target as HTMLElement;
+          const target = e.currentTarget as HTMLElement;
           const idx = parseInt(target.getAttribute("data-index") || "0", 10);
           updateSlider(idx);
         });

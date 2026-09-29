@@ -18,9 +18,9 @@ export default async (req: Request) => {
   }
 
   const doc = await saveTips(tips)
-  console.log(`Guardados ${doc.tips.length} tips para ${doc.date}. Próxima ejecución: ${next_run}`)
+  console.log(`Guardados ${doc.tips.length} tips. Próxima ejecución: ${next_run}`)
 }
 
 export const config: Config = {
-  schedule: '0 21 * * *', // Todos los días a las 21:00 UTC + 2
+  schedule: '0 0 * * *', // Todos los días a las 00:00 UTC
 }

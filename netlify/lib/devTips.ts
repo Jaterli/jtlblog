@@ -35,7 +35,6 @@ export interface DevTip {
 }
 
 export interface DevTipsDocument {
-  date: string
   generatedAt: string
   tips: DevTip[]
 }
@@ -100,7 +99,7 @@ export const generateTips = async (items: FeedItem[]): Promise<DevTip[]> => {
         role: 'user',
         content:
           `Artículos recientes:\n${JSON.stringify(items)}\n\n` +
-          'Elige entre 5 y 8 artículos de mayor relevancia práctica, priorizando los más recientes (evita duplicados y notas corporativas sin interés técnico) ' +
+          'Elige entre 4 y 6 artículos de mayor relevancia práctica, priorizando los más recientes (evita duplicados y notas corporativas sin interés técnico) ' +
           'y devuelve SOLO un array JSON, sin texto adicional, con objetos de la forma ' +
           '{"title": string (título del tip en español), "summary": string (2-3 frases con el consejo accionable), "category": string, "source": string, "url": string}. ' +
           `"category" debe ser una de: ${CATEGORIES.join(', ')}. "url" y "source" deben copiarse exactamente del artículo elegido.`,
@@ -119,11 +118,10 @@ export const generateTips = async (items: FeedItem[]): Promise<DevTip[]> => {
 export const saveTips = async (tips: DevTip[]): Promise<DevTipsDocument> => {
   const now = new Date()
   const doc: DevTipsDocument = {
-    date: now.toISOString().slice(0, 10),
     generatedAt: now.toISOString(),
     tips,
   }
   const store = getStore(TIPS_STORE)
-  await Promise.all([store.setJSON(LATEST_KEY, doc), store.setJSON(`history/${doc.date}`, doc)])
+  await store.setJSON(LATEST_KEY, doc)
   return doc
 }
