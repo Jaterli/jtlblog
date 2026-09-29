@@ -33,7 +33,7 @@ const format_endDate = endDate
   jsonLd={jsonLd}
 >
   <!-- ============================================================
-        CABECERA DEL DETALLE DE TRABAJO
+        CABECERA DEL DETALLE DE TRABAJO (texto izq / imagen der)
   ============================================================ -->
   <section class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-10 shadow-sm mb-8">
     <!-- Fondo decorativo -->
@@ -46,70 +46,82 @@ const format_endDate = endDate
       aria-hidden="true"
     ></div>
 
-    <div class="relative space-y-4 z-10">
-      <!-- Metadatos: Badge y Rango de Fechas -->
-      <div class="flex flex-wrap items-center gap-3">
-        {badge && (
-          <span class="px-2 py-0.5 rounded bg-primary/30 border border-primary/40 text-xs font-mono text-base-content/70 font-medium">
-            {badge}
-          </span>
-        )}
-        {format_startDate && (
-          <span class="flex items-center gap-1.5 text-xs sm:text-sm text-base-content/60">
-            <Icon name="mdi:calendar-range-outline" class="w-4 h-4 text-primary" />
-            <time>{format_startDate}</time> - <time>{format_endDate}</time>
-          </span>
+    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+      <!-- ===== Columna izquierda: texto ===== -->
+      <div class="space-y-4">
+        <!-- Metadatos: Badge y Rango de Fechas -->
+        <div class="flex flex-wrap items-center gap-3">
+          {badge && (
+            <span class="px-2 py-0.5 rounded bg-primary/30 border border-primary/40 text-xs font-mono text-base-content/70 font-medium">
+              {badge}
+            </span>
+          )}
+          {format_startDate && (
+            <span class="flex items-center gap-1.5 text-xs sm:text-sm text-base-content/60">
+              <Icon name="mdi:calendar-range-outline" class="w-4 h-4 text-primary" />
+              <time>{format_startDate}</time> - <time>{format_endDate}</time>
+            </span>
+          )}
+        </div>
+
+        <!-- Título principal -->
+        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.10] text-base-content">
+          {title}
+        </h1>
+
+        {description && (
+          <p class="text-lg text-base-content/80 leading-relaxed">
+            {description}
+          </p>
         )}
       </div>
 
-      <!-- Título principal -->
-      <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.15] text-base-content">
-        {title}
-      </h1>
+      <!-- ===== Columna derecha: pila de imágenes (apiladas en vertical) ===== -->
+      {heroImage && (
+        <div class="relative flex justify-center items-center py-10 lg:py-14">
+          <!-- Contenedor cuyo ancho lo marca SIEMPRE la imagen central -->
+          <div class="relative w-full">
 
-      {description && (
-        <p class="text-lg text-base-content/80 leading-relaxed">
-          {description}
-        </p>
+            <!-- Imagen trasera SUPERIOR (solo sobresale por arriba) -->
+            <div
+              class="absolute -top-8 left-1/2 -translate-x-1/2 w-[85%] -rotate-2 z-0 rounded-xl overflow-hidden border-2 border-base-300/80 bg-base-100 p-1.5 shadow-md opacity-90 grayscale contrast-125 saturate-50 blur-[1px]"
+              aria-hidden="true"
+            >
+              <Image
+                width={1280}
+                src={heroImage}
+                alt=""
+                class="max-h-[500px] w-full rounded-lg object-cover"
+              />
+            </div>
+
+            <!-- Imagen trasera INFERIOR (solo sobresale por abajo) -->
+            <div
+              class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-[85%] rotate-2 z-0 rounded-xl overflow-hidden border-2 border-base-300/80 bg-base-100 p-1.5 shadow-md opacity-90 hue-rotate-60 saturate-150 blur-[1px]"
+              aria-hidden="true"
+            >
+              <Image
+                width={1280}
+                src={heroImage}
+                alt=""
+                class="max-h-[500px] w-full rounded-lg object-cover"
+              />
+            </div>
+
+            <!-- Imagen CENTRAL protagonista (define el ancho del bloque) -->
+            <div class="relative z-10 w-full rounded-xl overflow-hidden border-2 border-primary/50 bg-base-100 p-2 shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+              <Image
+                width={1280}
+                src={heroImage}
+                alt={title}
+                class="max-h-[560px] w-full inline-block rounded-lg object-cover"
+              />
+            </div>
+
+          </div>
+        </div>
       )}
     </div>
-
-    <!-- Galería / Pila de imágenes del trabajo -->
-    {heroImage && (
-      <div class="relative mt-12 mb-6 flex justify-center items-center min-h-[200px]">
-        
-        <!-- Imagen Fondo Izquierda -->
-        <div class="absolute left-2 sm:left-6 md:left-12 top-4 w-[65%] sm:w-[55%] -rotate-6 scale-90 z-0 rounded-xl overflow-hidden border-2 border-base-300/80 bg-base-100 p-1.5 shadow-md opacity-90 grayscale contrast-125 saturate-50 blur-[1px]">
-          <Image
-            width={1280}
-            src={heroImage}
-            alt="Otras experiencias"
-            class="max-h-[500px] w-full rounded-lg object-cover"
-          />
-        </div>
-
-        <!-- Imagen Fondo Derecha -->
-        <div class="absolute right-2 sm:right-6 md:right-12 top-4 w-[65%] sm:w-[55%] rotate-6 scale-90 z-0 rounded-xl overflow-hidden border-2 border-base-300/80 bg-base-100 p-1.5 shadow-md opacity-90 hue-rotate-60 saturate-150 blur-[1px]">
-          <Image
-            width={1280}
-            src={heroImage}
-            alt="Otras experiencias"
-            class="max-h-[500px] w-full rounded-lg object-cover"
-          />
-        </div>
-
-        <!-- Imagen Central Protagonista -->
-        <div class="relative z-10 w-[75%] rounded-xl overflow-hidden border-2 border-primary/50 bg-base-100 p-2 shadow-2xl transition-all duration-300 hover:scale-[1.01]">
-          <Image
-            width={1280}
-            src={heroImage}
-            alt={title}
-            class="max-h-[620px] w-full inline-block rounded-lg object-cover"
-          />
-        </div>
-
-      </div>
-    )}
   </section>
 
   <!-- ============================================================

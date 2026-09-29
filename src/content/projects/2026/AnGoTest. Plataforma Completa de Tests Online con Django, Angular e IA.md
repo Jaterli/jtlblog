@@ -75,6 +75,8 @@ La plataforma está diseñada para educadores, estudiantes, autodidactas, empres
 
 ### Backend (Django + DRF)
 
+<div class="md-table">
+
 | Tecnología | Versión / Componente | Justificación |
 |------------|----------------------|---------------|
 | **Django** | 5.0.3 | Framework web robusto con ORM, autenticación, migraciones y administración integrada. |
@@ -89,9 +91,13 @@ La plataforma está diseñada para educadores, estudiantes, autodidactas, empres
 | **Groq API SDK** | 0.4.2 | Integración con IA para generación de tests (modelos Llama y Mistral). |
 | **Gunicorn** | - | Servidor WSGI para producción con múltiples workers. |
 
+</div>
+
 **Decisión de diseño**: he optado por usar `APIView` y vistas genéricas en lugar de `ViewSet`, porque la lógica de negocio incluye operaciones complejas (invitaciones, generación con IA, cuotas, expiración automática) que no encajan en el patrón CRUD estándar. Esto proporciona mayor control, claridad y mantenibilidad.
 
 ### Frontend (Angular + Tailwind)
+
+<div class="md-table">
 
 | Tecnología | Versión | Justificación |
 |------------|---------|---------------|
@@ -105,7 +111,11 @@ La plataforma está diseñada para educadores, estudiantes, autodidactas, empres
 | **Tailwind CSS** | 4.1.17 | Framework utility-first para diseño rápido y responsivo, con modo oscuro. |
 | **Font Awesome** | - | Iconos vectoriales para mejorar la interfaz. |
 
+</div>
+
 ### DevOps y despliegue
+
+<div class="md-table">
 
 | Tecnología / Herramienta | Componente | Justificación |
 |--------------------------|------------|---------------|
@@ -117,6 +127,9 @@ La plataforma está diseñada para educadores, estudiantes, autodidactas, empres
 | **Cron** | Tarea programada | Expiración diaria de resultados en progreso y copias de seguridad con `pg_dump`. |
 | **Variables de entorno** | `.env` | Secretos, credenciales, API keys y parámetros de entorno. |
 | **VPS / DigitalOcean** | - | Despliegue con Docker, CORS y cookies seguras (`Secure`). HTTPS con Let's Encrypt. |
+
+</div>
+
 ---
 
 ## 4. Funcionalidades clave (casos de uso)
