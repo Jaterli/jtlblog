@@ -42,7 +42,7 @@ const formatDateLabel = (startDay: string | null, endDay: string | null): string
     });
     return startDay === endDay
       ? `Finalizado el ${formattedStart}`
-      : `Desde el ${formattedStart} hasta el ${formattedEnd}`;
+      : `${formattedStart} → ${formattedEnd}`;
   }
 
   return `Iniciado el ${formattedStart}`;
@@ -105,7 +105,7 @@ const formatDateLabel = (startDay: string | null, endDay: string | null): string
                     {task.description}
                   </h3>
                   {task.details && (
-                    <p class="text-xs sm:text-sm text-base-content/80 leading-relaxed mt-1">
+                    <p class="text-sm sm:text-base text-base-content/80 leading-relaxed mt-1">
                       {task.details}
                     </p>
                   )}
@@ -166,7 +166,7 @@ const formatDateLabel = (startDay: string | null, endDay: string | null): string
               const formattedStart = new Date(task.startDay).toLocaleDateString("es-ES", { year: "numeric", month: "short", day: "numeric" });
               if (task.endDay) {
                 const formattedEnd = new Date(task.endDay).toLocaleDateString("es-ES", { year: "numeric", month: "short", day: "numeric" });
-                dateText = task.startDay === task.endDay ? `Finalizado el ${formattedStart}` : `Desde el ${formattedStart} hasta el ${formattedEnd}`;
+                dateText = task.startDay === task.endDay ? `Finalizado el ${formattedStart}` : `${formattedStart} → ${formattedEnd}`;
               } else {
                 dateText = `Iniciado el ${formattedStart}`;
               }

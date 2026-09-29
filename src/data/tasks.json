@@ -5,7 +5,19 @@
       "details": "La he dado un toque completamente distinto al anterior, mucho más profesional y atractivo.",
       "startDay": "2026-09-24",
       "endDay": "2026-09-25"  
-    },      
+    }, 
+    {
+      "description": "Evaluación de ORMs de Python",
+      "details": "He superado la prueba de evaluación en ORMs de Python y he optenido la certificación.",
+      "startDay": "2026-09-29",
+      "endDay": "2026-09-29"    
+    },
+    {
+      "description": "Evaluación de Django Avanzado",
+      "details": "He superado la prueba de evaluación en Django Avanzado y he optenido la certificación.",
+      "startDay": "2026-09-28",
+      "endDay": "2026-09-28"    
+    },     
     {
       "description": "Entrega del proyecto de final de máster Angotest",
       "details": "A la espera de que el tribunal revise la documentación, el código y el vídeo antes de agendar la reunión para la defensa.",

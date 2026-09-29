@@ -62,10 +62,21 @@ const displayDate = pubDate
         </h1>
 
         {description && (
-          <p class="text-lg text-base-content/80 leading-relaxed">
+          <p class="text-lg text-base-content/80 leading-relaxed mb-6">
             {description}
           </p>
         )}
+
+        <div>
+          <a
+            href="/proyectos/"
+            class="btn btn-outline rounded-lg bg-base-100 hover:bg-base-200 border-base-300 transition-colors inline-flex items-center gap-2"
+          >
+            <Icon name="mdi:folder-multiple" class="w-5 h-5 text-primary" />
+            Ver todos los proyectos
+          </a>
+        </div>
+
       </div>
 
       <!-- ===== Columna derecha: pila de imágenes (apiladas en vertical) ===== -->
