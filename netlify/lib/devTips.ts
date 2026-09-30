@@ -13,10 +13,13 @@ const FEEDS = [
   { source: 'CSS-Tricks', url: 'https://css-tricks.com/feed/' },
   { source: 'Smashing Magazine', url: 'https://www.smashingmagazine.com/feed/' },
   { source: 'GitHub Blog', url: 'https://github.blog/feed/' },
+  { source: 'CoinDesk', url: 'https://www.coindesk.com/arc/outboundfeeds/rss/' },
+  { source: 'Angular Blog', url: 'https://blog.angular.dev/feed/' },
+  { source: 'r/reactjs', url: 'https://www.reddit.com/r/css.rss/' }
 ]
 
 const ITEMS_PER_FEED = 6
-const CATEGORIES = ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Frameworks', 'Rendimiento', 'Accesibilidad', 'Seguridad', 'Herramientas', 'IA']
+const CATEGORIES = ['HTML', 'CSS', 'Web Design', 'Frontend', 'Backend', 'Django', 'Python', 'Angular', 'React', 'JavaScript', 'TypeScript', 'Frameworks', 'Rendimiento', 'Seguridad', 'Herramientas', 'Accesibilidad', 'IA', 'Blockchain', 'Web3']
 
 export interface FeedItem {
   source: string
