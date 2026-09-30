@@ -7,7 +7,7 @@ export const LATEST_KEY = 'latest'
 
 // Fuentes RSS/Atom fiables del mundo del desarrollo web
 const FEEDS = [
-  { source: 'web.dev', url: 'https://web.dev/feed.xml' },
+  { source: 'DEV Community', url: 'https://dev.to/feed' },
   { source: 'MDN Blog', url: 'https://developer.mozilla.org/en-US/blog/rss.xml' },
   { source: 'Chrome for Developers', url: 'https://developer.chrome.com/static/blog/feed.xml' },
   { source: 'CSS-Tricks', url: 'https://css-tricks.com/feed/' },
@@ -32,6 +32,7 @@ export interface DevTip {
   category: string
   source: string
   url: string
+  pubDate: string
 }
 
 export interface DevTipsDocument {
@@ -86,7 +87,8 @@ export const fetchFeedItems = async (): Promise<FeedItem[]> => {
 
 export const generateTips = async (items: FeedItem[]): Promise<DevTip[]> => {
   const anthropic = new Anthropic()
-  const validUrls = new Set(items.map((i) => i.url))
+  // Índice por URL para recuperar la fecha original y validar el origen del tip
+  const itemsByUrl = new Map(items.map((item) => [item.url, item]))
 
   const response = await anthropic.messages.create({
     model: 'claude-haiku-4-5',
@@ -109,10 +111,19 @@ export const generateTips = async (items: FeedItem[]): Promise<DevTip[]> => {
 
   const text = response.content.map((block) => (block.type === 'text' ? block.text : '')).join('')
   const json = text.slice(text.indexOf('['), text.lastIndexOf(']') + 1)
-  const tips = JSON.parse(json) as DevTip[]
+  const rawTips = JSON.parse(json) as Array<Omit<DevTip, 'pubDate'>>
 
   // Descartamos cualquier tip cuya URL no provenga de las fuentes
-  return tips.filter((tip) => tip.title && tip.summary && validUrls.has(tip.url))
+  // y rellenamos pubDate con la fecha original del artículo (nunca inventada por el modelo)
+  return rawTips
+    .filter((tip) => tip.title && tip.summary && itemsByUrl.has(tip.url))
+    .map((tip) => {
+      const original = itemsByUrl.get(tip.url)!
+      return {
+        ...tip,
+        pubDate: original.date ?? new Date().toISOString(),
+      }
+    })
 }
 
 export const saveTips = async (tips: DevTip[]): Promise<DevTipsDocument> => {

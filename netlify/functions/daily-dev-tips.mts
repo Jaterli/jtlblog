@@ -22,5 +22,5 @@ export default async (req: Request) => {
 }
 
 export const config: Config = {
-  schedule: '0 0 * * *', // Todos los días a las 00:00 UTC
+  schedule: '0 0 * * 1,4', // Lunes y jueves a las 00:00 UTC
 }

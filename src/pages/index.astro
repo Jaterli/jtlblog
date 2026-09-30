@@ -47,6 +47,7 @@ interface DevTip {
   summary: string;
   category: string;
   source: string;
+  pubDate: string;
   url: string;
 }
 
@@ -97,6 +98,20 @@ const getCategoryBadgeClass = (category: string) => {
     default:
       return "bg-primary/10 text-primary border-primary/20";
   }
+};
+
+// Formatea la fecha ISO del feed a un formato corto en español: "12 sep 2026"
+const formatDate = (iso?: string) => {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  return d
+    .toLocaleDateString("es-ES", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    })
+    .replace(".", ""); // quita el punto que a veces añade "sep."
 };
 
 // Stack principal
@@ -352,11 +367,7 @@ const maxTotal = Math.max(
                 <span class="text-xs font-bold uppercase tracking-wider text-primary">Dev Tip destacado</span>
                   {devTipsGeneratedAt && (
                     <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-base-300 text-base-content/70">
-                      {new Date(devTipsGeneratedAt).toLocaleString("es-ES", {
-                        day: "2-digit",
-                        month: "2-digit",
-                        year: "numeric",
-                      })}
+                      {formatDate(devTipsGeneratedAt)}
                     </span>
                   )}
               </div>
@@ -392,15 +403,20 @@ const maxTotal = Math.max(
               <div class="w-full shrink-0 px-1">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
                   <div class="space-y-3 max-w-4xl">
-                    <div class="flex items-center gap-2">
+                    <div class="flex flex-wrap items-center gap-2">
                       <span class={`text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full border ${getCategoryBadgeClass(tip.category)}`}>
                         {tip.category}
                       </span>
                       <span class="text-xs font-mono text-base-content/60">
                         vía {tip.source}
                       </span>
+                      {tip.pubDate && (
+                        <span class="inline-flex items-center gap-1 text-[11px] font-mono text-base-content/50">
+                          <Icon name="mdi:calendar-blank-outline" class="w-3.5 h-3.5" />
+                          {formatDate(tip.pubDate)}
+                        </span>
+                      )}
                     </div>
-
                     <h3 class="font-heading text-lg sm:text-xl font-bold text-base-content leading-snug">
                       <a href={tip.url} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
                         {tip.title}
