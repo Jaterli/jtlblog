@@ -21,7 +21,7 @@ jsonLd:
       "image": "https://jaterli.com/images/blog/blog.video-angotest.webp",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://jaterli.com/blog/posts/2026/09/angotest-la-experiencia-de-grabar-un-video-profesional/"
+        "@id": "https://jaterli.com/blog/posts/2026/09/la-experiencia-de-grabar-un-video-profesional-para-mi-proyecto-de-fin-de-master-angotest/"
       }
     }
   ]

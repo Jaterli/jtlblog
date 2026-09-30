@@ -9,13 +9,13 @@ export const LATEST_KEY = 'latest'
 const FEEDS = [
   { source: 'DEV Community', url: 'https://dev.to/feed' },
   { source: 'MDN Blog', url: 'https://developer.mozilla.org/en-US/blog/rss.xml' },
-  { source: 'Chrome for Developers', url: 'https://developer.chrome.com/static/blog/feed.xml' },
   { source: 'CSS-Tricks', url: 'https://css-tricks.com/feed/' },
   { source: 'Smashing Magazine', url: 'https://www.smashingmagazine.com/feed/' },
   { source: 'GitHub Blog', url: 'https://github.blog/feed/' },
   { source: 'CoinDesk', url: 'https://www.coindesk.com/arc/outboundfeeds/rss/' },
   { source: 'Angular Blog', url: 'https://blog.angular.dev/feed/' },
-  { source: 'r/reactjs', url: 'https://www.reddit.com/r/css.rss/' }
+  { source: 'r/reactjs', url: 'https://www.reddit.com/r/css.rss/' },
+  { source: 'Chrome for Developers', url: 'https://developer.chrome.com/static/blog/feed.xml' },
 ]
 
 const ITEMS_PER_FEED = 6

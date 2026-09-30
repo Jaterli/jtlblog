@@ -21,7 +21,7 @@ jsonLd:
       "image": "https://jaterli.com/images/blog/blog.renovacion-web.jpg",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://jaterli.com/blog/posts/2026/09/renovacion-web-alineando-mi-carta-de-presentacion/"
+        "@id": "https://jaterli.com/blog/posts/2026/09/renovacion-web-alineando-mi-carta-de-presentacion-con-mi-evolucion-full-stack/"
       }
     }
   ]

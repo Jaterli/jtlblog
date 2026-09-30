@@ -1,0 +1,124 @@
+{
+  "skills": [
+    {
+      "titulo": "Desarrollo Backend Avanzado con Django y Python",
+      "tag": "Backend & Python",
+      "url": "https://jaterli.com/blog/posts/2026/09/consegui-el-certificado-de-django-avanzado",
+      "descripcion": "Dominio en la construcción de APIs RESTful utilizando Django REST Framework, serializadores avanzados y vistas basadas en clases. Capacidad para diseñar arquitecturas backend modulares y seguras mediante autenticación JWT almacenada en cookies HttpOnly con banderas Secure y SameSite. Experiencia en la optimización de consultas a bases de datos con Django ORM mediante agregaciones, anotaciones y técnicas de precarga como select_related y prefetch_related."
+    },
+    {
+      "titulo": "Desarrollo Frontend Reactivo con Angular y Signals",
+      "tag": "Frontend & Angular",
+      "url": "https://jaterli.com/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia",
+      "descripcion": "Especialización en la creación de aplicaciones web de una sola página (SPA) con Angular 20+, utilizando componentes standalone y la nueva sintaxis de control de flujo. Implementación de gestión de estado reactivo mediante Signals y programación reactiva con RxJS. Aplicación de controles de acceso mediante guards de navegación, interceptores HTTP para credenciales y estructuración modular escalable."
+    },
+    {
+      "titulo": "Desarrollo Frontend Moderno con React, Hooks y Context API",
+      "tag": "Frontend & React",
+      "url": "https://jaterli.com/proyectos/entry/2026/rick-and-morty-explorer-migracion-de-javascript-vanilla-a-react",
+      "descripcion": "Capacidad para desarrollar interfaces dinámicas utilizando React 18/19 con componentes funcionales y Hooks como useState, useEffect, useCallback y useRef. Experiencia en la gestión de estado global sin prop drilling mediante Context API y en la creación de Custom Hooks reusables. Implementación de clientes HTTP con Axios y sistemas de caché en memoria con Map() para optimizar peticiones."
+    },
+    {
+      "titulo": "Integración de Agentes de Inteligencia Artificial y Protocolo MCP",
+      "tag": "Inteligencia Artificial",
+      "url": "https://jaterli.com/blog/posts/2026/06/consegui-el-certificado-de-agent-harness",
+      "descripcion": "Conocimiento avanzado en la arquitectura e implementación de agentes autónomos de IA en entorno CLI usando Agent Harness. Dominio de memorias episódica, semántica y contextual, integración del protocolo MCP (Model Context Protocol) de Anthropic y patrón razonamiento-acción ReAct. Experiencia en la integración de modelos como Llama y Mistral mediante la API de Groq para generación dinámica de contenidos."
+    },
+    {
+      "titulo": "Desarrollo Web3, Smart Contracts y Pagos Blockchain",
+      "tag": "Blockchain & Web3",
+      "url": "https://jaterli.com/proyectos/entry/2025/comercio-electronico-con-pagos-blockchain",
+      "descripcion": "Habilidad para programar Smart Contracts en Solidity desplegados en la red Ethereum y testnets como Sepolia. Integración de Web3 en el frontend mediante Wagmi, Viem, Ethers.js y conexión con wallets como MetaMask. Desarrollo de sistemas de autenticación descentralizada con firma criptográfica (EIP-4361) y listeners de eventos on-chain resilientes ante caídas del servidor."
+    },
+    {
+      "titulo": "Gestión de Bases de Datos Relacionales y SQL Avanzado",
+      "tag": "Bases de Datos",
+      "url": "https://jaterli.com/blog/posts/2026/04/consegui-el-certificado-de-sql-avanzado",
+      "descripcion": "Sólidos conocimientos en el diseño, administración y optimización de bases de datos relacionales como PostgreSQL y MySQL. Dominio en la escritura de consultas SQL complejas utilizando subconsultas, operadores EXISTS y HAVING, agrupaciones y funciones de ventana como ROW_NUMBER. Capacidad para analizar planes de ejecución, gestionar índices y estructurar transacciones atómicas."
+    },
+    {
+      "titulo": "Dominio de ORMs en Python (Django ORM y SQLAlchemy)",
+      "tag": "Backend & Python",
+      "url": "https://jaterli.com/blog/posts/2026/09/consegui-el-certificado-de-orms-en-python",
+      "descripcion": "Especialización en el mapeo objeto-relacional (ORM) en Python utilizando Django ORM y SQLAlchemy declarativo. Capacidad para definir relaciones complejas, gestionar el ciclo de vida de sesiones, resolver el problema de consultas N+1 y ejecutar migraciones de esquemas versionadas en producción. Criterio técnico para decidir cuándo utilizar abstracciones ORM o recurrir a SQL nativo para maximizar el rendimiento."
+    },
+    {
+      "titulo": "DevOps, Containerización con Docker y Despliegue Cloud",
+      "tag": "DevOps & Infraestructura",
+      "url": "https://jaterli.com/servicios/",
+      "descripcion": "Experiencia en la dockerización y orquestación de aplicaciones de múltiples servicios mediante Docker Compose. Configuración de servidores de producción VPS en DigitalOcean con proxy inverso Nginx, servidores WSGI como Gunicorn y bases de datos con volúmenes persistentes. Automatización de tareas de mantenimiento mediante cron, copias de seguridad con pg_dump y cifrado HTTPS mediante Let's Encrypt."
+    },
+    {
+      "titulo": "Maquetación Web Avanzada con SASS y Estrategia Mobile-First",
+      "tag": "Frontend & CSS",
+      "url": "https://jaterli.com/blog/posts/2026/04/consegui-el-certificado-de-css-experto",
+      "descripcion": "Capacidad para maquetar interfaces web con fidelidad pixel-perfect a partir de diseños en Figma. Implementación de arquitecturas SASS/SCSS modulares organizadas en archivos parciales y nomenclatura BEM. Diseño responsive estructurado mediante media queries min-width (Mobile-First), sistemas de rejilla CSS Grid, Flexbox y espacios de color modernos como OKLCH."
+    },
+    {
+      "titulo": "Programación en JavaScript ES6+, Manipulación del DOM y Persistencia",
+      "tag": "Frontend & JS",
+      "url": "https://jaterli.com/blog/posts/2025/07/consegui-el-certificado-de-javascript-avanzado",
+      "descripcion": "Dominio de la sintaxis moderna de JavaScript (ES6+), programación asíncrona mediante async/await y consumo de APIs REST. Habilidad en la manipulación directa del DOM, gestión de eventos y estados de la interfaz. Aplicación de la Web Crypto API para aleatoriedad segura y manejo de persistencia de datos local mediante LocalStorage."
+    },
+    {
+      "titulo": "Desarrollo Web Corporativo y CMS con WordPress",
+      "tag": "WordPress & CMS",
+      "url": "https://jaterli.com/proyectos/entry/2025/desarrollo-de-web-corporativa-en-wordpress/",
+      "descripcion": "Creación y desarrollo de páginas web corporativas profesionales utilizando WordPress y maquetadores visuales como Elementor. Configuración de sitios autogestionables alineados con la identidad de marca, integrando WooCommerce, formularios de contacto y arquitectura accesible. Atención al detalle visual, optimización para cumplimiento normativo del RGPD y mantenimiento técnico de seguridad."
+    },
+    {
+      "titulo": "Ciberseguridad Web y Estrategias Defensivas de Autenticación",
+      "tag": "Ciberseguridad",
+      "url": "https://jaterli.com/servicios/",
+      "descripcion": "Implementación de medidas de seguridad web integradas para proteger aplicaciones contra vulnerabilidades como SQL Injection, XSS, CSRF y Clickjacking. Configuración de autenticación mediante JWT almacenado en cookies seguras HttpOnly con SameSite=Strict. Aplicación de mecanismos de rate limiting, hashing seguro de contraseñas con PBKDF2 y firma de mensajes criptográficos con nonces de un solo uso."
+    },
+    {
+      "titulo": "SEO Técnico y Optimización del Rendimiento Web",
+      "tag": "SEO & Rendimiento",
+      "url": "https://jaterli.com/servicios/",
+      "descripcion": "Especialización en auditorías de SEO técnico para mejorar la visibilidad orgánica en buscadores como Google. Implementación de metadatos estructurados bajo el estándar Schema.org / JSON-LD en páginas y publicaciones. Optimización de velocidad de carga y métricas Core Web Vitals mediante técnicas como lazy loading de imágenes y estructuración eficiente del código."
+    },
+    {
+      "titulo": "Metodologías Ágiles, Scrum e Innovación Lean",
+      "tag": "Metodologías Ágiles",
+      "url": "https://jaterli.com/blog/posts/2026/05/consegui-el-certificado-de-metodologias-agiles-y-scrum",
+      "descripcion": "Conocimiento práctico de marcos de trabajo ágiles como Scrum, Kanban y Extreme Programming (XP) para la entrega continua de valor. Manejo de roles, artefactos (Product Backlog, Sprint Backlog) y eventos del ciclo de desarrollo. Aplicación de metodologías de innovación como Design Thinking para el diseño centrado en el usuario y Lean Startup para la validación mediante Producto Mínimo Viable (MVP)."
+    },
+    {
+      "titulo": "Soft Skills, Trabajo en Equipo y Comunicación Efectiva",
+      "tag": "Soft Skills",
+      "url": "https://jaterli.com/blog/posts/2026/05/consegui-el-certificado-de-soft-skills",
+      "descripcion": "Desarrollo de competencias interpersonales para la colaboración en equipos de desarrollo de software. Aplicación de técnicas de escucha activa, Comunicación No Violenta (Rosenberg), modelo de negociación de Harvard y resolución de conflictos. Capacidad para el pensamiento crítico mediante el marco Paul-Elder y estructuración de comunicaciones mediante el Círculo Dorado de Sinek."
+    },
+    {
+      "titulo": "Migración de Arquitecturas Backend y Análisis Técnico",
+      "tag": "Arquitectura Backend",
+      "url": "https://jaterli.com/proyectos/entry/2026/angotest-migracion-de-go-a-django-un-salto-en-productividad-y-escalabilidad",
+      "descripcion": "Capacidad para analizar y ejecutar procesos complejos de refactorización y migración de backend entre distintas tecnologías, como la transición de Go a Django. Rediseño de estructuras de proyecto monolíticas o por capas hacia arquitecturas modulares divididas por aplicaciones. Evaluación fundada de ventajas operativas entre la simplicidad/rendimiento de Go y la productividad/seguridad de Django."
+    },
+    {
+      "titulo": "Desarrollo de Plataformas SaaS y Herramientas Empresariales",
+      "tag": "SaaS & Enterprise",
+      "url": "https://jaterli.com/blog/posts/2026/06/translator-management-modernizacion-y-nuevas-funcionalidades/",
+      "descripcion": "Diseño de soluciones de software a medida para la gestión de perfiles profesionales y administración interna de empresas. Implementación de sistemas de homologación y validación de perfiles, buscadores con filtrado dinámico en tiempo real y personalización de columnas de datos exportables. Creación de cuadros de mando interactivas con métricas clave y estadísticas operativas."
+    },
+    {
+      "titulo": "Gestión Integral de Proyectos y Sistemas (+20 Años)",
+      "tag": "Perfil Senior",
+      "url": "https://jaterli.com/about/",
+      "descripcion": "Trayectoria profesional de más de 20 años en el desarrollo de software a medida, gestión de proyectos digitales y administración técnica. Experiencia en la gestión completa de hosting, servidores web Linux, bases de datos MySQL/PostgreSQL, configuración de zonas DNS y cuentas de correo. Enfoque en entender las necesidades del negocio para aportar soluciones tecnológicas eficientes que optimicen procesos."
+    },
+    {
+      "titulo": "Creación de Interfaces Reactivas con VueJS y Vuex",
+      "tag": "Frontend & Vue",
+      "url": "https://jaterli.com/blog/posts/2026/04/consegui-el-certificado-de-vuejs",
+      "descripcion": "Capacidad para construir interfaces de usuario reactivas utilizando Vue.js y las novedades de Vue 3 con Composition API. Manejo de estado centralizado mediante Vuex, gestión de enrutamiento dinámico con Vue Router y comunicación entre componentes mediante props y eventos. Aplicación de técnicas avanzadas de depuración (debugging) e inspección de aplicaciones desde las herramientas del navegador."
+    },
+    {
+      "titulo": "Producción de Vídeo Técnico, Comunicación y Divulgación",
+      "tag": "Comunicación & Tech",
+      "url": "https://jaterli.com/blog/posts/2026/09/la-experiencia-de-grabar-un-video-profesional-para-mi-proyecto-de-fin-de-master-angotest/",
+      "descripcion": "Habilidad para sintetizar y exponer proyectos tecnológicos complejos en formato audiovisual en menos de 5 minutos. Planificación mediante guiones técnicos, grabación por escenas y locución de voz en off profesional. Manejo de herramientas de grabación y edición de vídeo como OBS Studio y Canva para demostraciones funcionales de software."
+    }
+  ]
+}

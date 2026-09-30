@@ -1,6 +1,6 @@
 ---
-title: "AnGoTest: Plataforma Completa de Tests Online con Django, Angular e IA"
-description: "Una aplicación full-stack de tests online con autenticación JWT, dashboard de administración avanzado, rankings detallados y generación de tests mediante inteligencia artificial (IA)."
+title: "AnGoTest: Plataforma Completa de Tests Online con IA"
+description: "Aplicación full-stack de tests online con dashboard de administración avanzado, rankings detallados y generación de tests mediante inteligencia artificial."
 pubDate: "2026-09-03"
 heroImage: "/images/proyectos/projects.AnGoTest-proyecto-fin-master.webp"
 badge: "DESTACADO"
@@ -11,7 +11,7 @@ jsonLd:
   "name": "AnGoTest"
   "applicationCategory": "EducationalApplication"
   "operatingSystem": "Web"
-  "description": "Plataforma full-stack de tests online con panel de administración avanzado, rankings de usuarios y generación de tests mediante IA, desarrollada con Angular y Django."
+  "description": "Aplicación full-stack de tests online con dashboard de administración avanzado, rankings detallados y generación de tests mediante inteligencia artificial."
   "image": "https://jaterli.com/images/proyectos/projects.AnGoTest-proyecto-fin-master.webp"
   "url": "https://jaterli.com/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/"
   "author": {

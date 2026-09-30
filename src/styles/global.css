@@ -136,3 +136,12 @@ h1, h2, h3, h4 {
   @media (prefers-reduced-motion: reduce) {
     .reveal-on-scroll { opacity: 1; transform: none; transition: none; }
   }
+
+  /* Añade el parpadeo del cursor en el Hero del index */
+  .typing-cursor {
+    animation: blink-caret 1s step-end infinite;
+  }
+  @keyframes blink-caret {
+    0%, 50%    { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+  }

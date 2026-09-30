@@ -3,8 +3,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
 
 // Metadata
-const title = "Sobre Mí & Curriculum Vitae | Jaime TL - Desarrollador Full Stack, IA & Blockchain";
-const description = "Perfil profesional y Curriculum Vitae de Jaime TL. Más de 20 años de experiencia en desarrollo de software, administración de sistemas, gestión de proyectos, Inteligencia Artificial y Blockchain.";
+const title = "Desarrollador Full Stack, IA & Blockchain";
+const description = "Apasionado de la tecnología con más de 20 años de experiencia transformando ideas en soluciones digitales reales.";
 const image = "/images/others/profile-photo.webp";
 
 // Datos
@@ -104,7 +104,9 @@ const certifications = [
   { name: "Metodologías Ágiles (Scrum)", url: "/certifications/Certificado-de-Metodologias-Agiles-Scrum.png" },
   { name: "Soft Skills & Comunicación", url: "/certifications/Certificado-de-Soft-Skills.png" },
   { name: "Agent Harness (Agentes CLI / IA)", url: "/certifications/Certificado-de-Agent-Harness.png" },
-  { name: "Django Avanzado", url: "/certifications/Certificado-de-Django-Avanzado.png" }
+  { name: "Django Avanzado", url: "/certifications/Certificado-de-Django-Avanzado.png" },
+  { name: "ORMs en Python", url: "/certifications/Certificado-de-ORMs-en-Python.png" }  
+
 ];
 ---
 
@@ -353,21 +355,21 @@ const certifications = [
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm sm:text-base text-base-content/80">
       <div class="bg-base-100 p-5 rounded-xl border border-base-300">
-        <h3 class="font-heading font-bold text-base text-base-content mb-2 flex items-center gap-2">
+        <h3 class="font-heading font-bold text-lg text-base-content mb-2 flex items-center gap-2">
           <Icon name="mdi:cogs" class="w-5 h-5 text-primary" />
           Enfoque en la Eficiencia
         </h3>
-        <p class="leading-relaxed text-sm">
+        <p class="leading-relaxed text-base">
           Mi objetivo principal es crear soluciones sencillas para el usuario pero potentes por dentro. Apuesto por la automatización de procesos, el código limpio y la formación continua para adaptarme siempre a las mejores prácticas del sector.
         </p>
       </div>
 
       <div class="bg-base-100 p-5 rounded-xl border border-base-300">
-        <h3 class="font-heading font-bold text-base text-base-content mb-2 flex items-center gap-2">
+        <h3 class="font-heading font-bold text-lg text-base-content mb-2 flex items-center gap-2">
           <Icon name="mdi:laptop" class="w-5 h-5 text-primary" />
           Cuaderno de Bitácora
         </h3>
-        <p class="leading-relaxed text-sm">
+        <p class="leading-relaxed text-base">
           Este sitio está construido con <strong>Astro</strong> como parte de mi constante evolución práctica. Lo utilizo como plataforma para compartir conocimientos técnicos, tutoriales y exponer proyectos reales desarrollados día a día.
         </p>
       </div>

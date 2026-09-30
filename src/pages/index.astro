@@ -8,8 +8,8 @@ import { getProjectUrl } from "@lib/getProjectUrl";
 import { Icon } from "astro-icon/components";
 import { getStore } from "@netlify/blobs";
 
-import tasksData from "../data/tasks.json";
 import postsByMonthData from "../data/postsByMonth.json";
+import skillsData from "../data/skills.json";
 
 export const prerender = false;
 Astro.response.headers.set(
@@ -19,29 +19,10 @@ Astro.response.headers.set(
 
 const title = "Jaime TL — Full Stack, IA & Blockchain Developer";
 const description =
-  "Más de 20 años construyendo soluciones web. Desarrollo Full Stack, Blockchain y automatización con foco en eficiencia, escalabilidad y buenas prácticas.";
+  "Construcción de arquitecturas digitales completas, interfaces reactivas con servicios backend sólidos, soluciones descentralizadas y automatizaciones impulsadas por IA.";
 const image = "/images/others/profile-photo.webp";
 
-const posts = (await getCollection("blog")).sort(
-  (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-const projects = (await getCollection("projects")).sort(
-  (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-const last_posts = posts.slice(0, 3);
-const last_projects = projects.slice(0, 3);
-
-const tasks = tasksData.tasks;
-const lastTasks = tasks
-  .filter((task) => task.startDay)
-  .sort(
-    (a, b) => new Date(b.startDay).getTime() - new Date(a.startDay).getTime()
-  )
-  .slice(0, 3);
-
-// ============================================================
-// OBTENCIÓN DE DEV TIPS DESDE NETLIFY BLOBS
-// ============================================================
+/* ---------- Fetch en paralelo: colecciones + Blobs ---------- */
 interface DevTip {
   title: string;
   summary: string;
@@ -50,57 +31,54 @@ interface DevTip {
   pubDate: string;
   url: string;
 }
-
 interface DevTipsResponse {
   generatedAt?: string;
   tips?: DevTip[];
 }
 
-let devTipsData: DevTipsResponse = { tips: [] };
+const siteID =
+  import.meta.env.NETLIFY_SITE_ID ?? process.env.NETLIFY_SITE_ID;
+const token =
+  import.meta.env.NETLIFY_BLOBS_TOKEN ?? process.env.NETLIFY_BLOBS_TOKEN;
 
-const siteID = import.meta.env.NETLIFY_SITE_ID ?? process.env.NETLIFY_SITE_ID;
-const token = import.meta.env.NETLIFY_BLOBS_TOKEN ?? process.env.NETLIFY_BLOBS_TOKEN;
-
-try {
-  const tipsStore = getStore({
-    name: "dev-tips",
-    consistency: "strong",
-    ...(siteID && token ? { siteID, token } : {}),
-  });
-
-  const data = await tipsStore.get("latest", { type: "json" });
-  if (data) {
-    devTipsData = data as DevTipsResponse;
-    console.log("Dev Tips generados el:", devTipsData.generatedAt);
+const blobsPromise: Promise<DevTipsResponse> = (async () => {
+  try {
+    const tipsStore = getStore({
+      name: "dev-tips",
+      consistency: "strong",
+      ...(siteID && token ? { siteID, token } : {}),
+    });
+    const data = await tipsStore.get("latest", { type: "json" });
+    return (data as DevTipsResponse) ?? { tips: [] };
+  } catch (error) {
+    console.error("Error al obtener Dev Tips desde Netlify Blobs:", error);
+    return { tips: [] };
   }
-} catch (error) {
-  console.error("Error al obtener Dev Tips desde Netlify Blobs:", error);
-}
+})();
 
+const [postsCollection, projectsCollection, devTipsData] = await Promise.all([
+  getCollection("blog"),
+  getCollection("projects"),
+  blobsPromise,
+]);
+
+/* ---------- Ordenaciones ---------- */
+const byPubDateDesc = <T extends { data: { pubDate: Date } }>(a: T, b: T) =>
+  b.data.pubDate.getTime() - a.data.pubDate.getTime();
+
+const posts = [...postsCollection].sort(byPubDateDesc);
+const projects = [...projectsCollection].sort(byPubDateDesc);
+const last_posts = posts.slice(0, 3);
+const last_projects = projects.slice(0, 3);
+
+/* ---------- Dev Tips ---------- */
 const devTips: DevTip[] = Array.isArray(devTipsData.tips)
-  ? devTipsData.tips
-      .filter((t) => t && typeof t.title === "string" && typeof t.url === "string")
-      .slice(0, devTipsData.tips.length)
+  ? devTipsData.tips.filter(
+      (t) => t && typeof t.title === "string" && typeof t.url === "string"
+    )
   : [];
 const devTipsGeneratedAt = devTipsData.generatedAt || "";
 
-// Helper para colores por categoría
-const getCategoryBadgeClass = (category: string) => {
-  switch (category?.toLowerCase()) {
-    case "ia":
-      return "bg-purple-500/10 text-purple-600 border-purple-500/20";
-    case "css":
-      return "bg-blue-500/10 text-blue-600 border-blue-500/20";
-    case "herramientas":
-      return "bg-amber-500/10 text-amber-600 border-amber-500/20";
-    case "rendimiento":
-      return "bg-emerald-500/10 text-emerald-600 border-emerald-500/20";
-    default:
-      return "bg-primary/10 text-primary border-primary/20";
-  }
-};
-
-// Formatea la fecha ISO del feed a un formato corto en español: "12 sep 2026"
 const formatDate = (iso?: string) => {
   if (!iso) return "";
   const d = new Date(iso);
@@ -111,13 +89,26 @@ const formatDate = (iso?: string) => {
       month: "short",
       year: "numeric",
     })
-    .replace(".", ""); // quita el punto que a veces añade "sep."
+    .replace(".", "");
 };
 
-// Stack principal
+/* ---------- Skills (Fisher–Yates, sin sesgo) ---------- */
+function shuffle<T>(arr: readonly T[]): T[] {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+const allSkills = skillsData.skills || [];
+const randomSkills = shuffle(allSkills).slice(0, 5);
+
+/* ---------- Estáticos ---------- */
 const stack = [
-  "Python", "Django", "TypeScript", "React", "Angular", "Astro",
-  "Node.js", "Solidity", "PostgreSQL", "Docker", "TailwindCSS", "FastAPI", "AI", "WordPress"
+  "Python","Django","TypeScript","React","Angular","Astro",
+  "Node.js","Solidity","PostgreSQL","Docker","TailwindCSS","FastAPI","AI","WordPress",
 ];
 
 const stats = [
@@ -127,6 +118,7 @@ const stats = [
   { label: "Enfoque", value: "IA & Automatización" },
 ];
 
+/* ---------- Gráfico por mes ---------- */
 const allMonths = Array.from(
   new Set([
     ...Object.keys(postsByMonthData.blog || {}),
@@ -136,16 +128,12 @@ const allMonths = Array.from(
 
 const blogCounts: Record<string, number> = postsByMonthData.blog;
 const projectCounts: Record<string, number> = postsByMonthData.projects;
-
 const selectedMonths = allMonths.slice(-12);
 
 const maxTotal = Math.max(
-  ...selectedMonths.map(
-    (m) => (blogCounts[m] || 0) + (projectCounts[m] || 0)
-  ),
+  ...selectedMonths.map((m) => (blogCounts[m] || 0) + (projectCounts[m] || 0)),
   1
 );
-
 ---
 
 <BaseLayout
@@ -154,9 +142,7 @@ const maxTotal = Math.max(
   image={image}
   sideBarActiveItemID="home"
 >
-  <!-- ============================================================
-        HERO SECTION PRINCIPAL (HOME IMPACT)
-  ============================================================ -->
+  <!-- ============ HERO ============ -->
   <section
     class="relative overflow-hidden rounded-3xl border-2 border-base-300 bg-linear-to-br from-base-200/90 via-base-100 to-base-200/90 shadow-xl mb-10 reveal-on-scroll"
   >
@@ -164,9 +150,7 @@ const maxTotal = Math.max(
     <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/15 blur-3xl pointer-events-none animate-pulse" aria-hidden="true"></div>
     <div class="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-secondary/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
 
-    <div
-      class="relative grid lg:grid-cols-[1.3fr_1fr] gap-10 items-center px-4 sm:px-12 py-12 sm:py-16"
-    >
+    <div class="relative grid lg:grid-cols-[1.3fr_1fr] gap-10 items-center px-4 sm:px-12 py-12 sm:py-16">
       <div class="space-y-6 text-center lg:text-left">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-xs font-semibold text-primary shadow-xs">
           <span class="relative flex h-2.5 w-2.5">
@@ -176,28 +160,20 @@ const maxTotal = Math.max(
           Disponible para proyectos & consultoría
         </div>
 
-        <h1
-          class="font-heading text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-base-content"
-        >
+        <h1 class="font-heading text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-base-content">
           Desarrollo <span class="text-transparent bg-clip-text bg-linear-to-r from-primary via-blue-500 to-secondary">Full Stack</span>, IA & Blockchain
         </h1>
 
         <p class="text-lg text-base-content/80 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-          Más de <strong class="text-base-content">20 años de experiencia</strong> transformando arquitecturas complejas en productos digitales de alto rendimiento, seguros y automatizados.
+          Especialista en la construcción de arquitecturas digitales completas, conectando interfaces reactivas con servicios backend sólidos, soluciones descentralizadas y automatizaciones impulsadas por Inteligencia Artificial.
         </p>
-     
+
         <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
-          <a
-            href="/proyectos/"
-            class="btn btn-primary rounded-lg px-7 shadow-md hover:shadow-primary/20 hover:scale-105 transition-all duration-200 inline-flex items-center gap-2 group"
-          >
+          <a href="/proyectos/" class="btn btn-primary rounded-lg px-7 shadow-md hover:shadow-primary/20 hover:scale-105 transition-all duration-200 inline-flex items-center gap-2 group">
             <Icon name="carbon:portfolio" class="w-5 h-5 group-hover:rotate-12 transition-transform" />
             Explorar Proyectos
           </a>
-          <a
-            href="/contacto/"
-            class="btn btn-outline rounded-lg px-7 bg-base-200/80 backdrop-blur-xs border-base-300 hover:border-primary/50 hover:bg-base-200 hover:scale-105 transition-all duration-200 inline-flex items-center gap-2"
-          >
+          <a href="/contacto/" class="btn btn-outline rounded-lg px-7 bg-base-200/80 backdrop-blur-xs border-base-300 hover:border-primary/50 hover:bg-base-200 hover:scale-105 transition-all duration-200 inline-flex items-center gap-2">
             <Icon name="mdi:email-outline" class="w-5 h-5 text-primary" />
             Contactar
           </a>
@@ -233,19 +209,26 @@ const maxTotal = Math.max(
               &#123; "frontend" : ["React", "Angular"], "backend": ["Django", "Node"], "web3": ["Solidity", "EVM"], "ai": ["LLMs", "RAG"] &#125;
             </div>
 
-            <div class="flex gap-2 pt-1 items-center">
+            <div class="flex gap-2 pt-1">
               <span class="text-primary font-bold">❯</span>
-              <span class="text-secondary font-semibold">status</span>
-              <span class="inline-block w-2 h-4 bg-primary animate-pulse"></span>
+              <span class="text-secondary font-semibold">skill --random</span>
             </div>
+            <p class="pl-4 border-l-2 border-primary/40 text-base-content/80 items-start min-h-[2.2rem] flex items-center gap-0.5">
+              <span
+                id="typing-skill-target"
+                data-skills={JSON.stringify(randomSkills.map((s: any) => s.titulo))}
+              ></span>
+              <span class="typing-cursor inline-block w-2 h-4 bg-primary" aria-hidden="true"></span>
+            </p>
           </div>
         </div>
 
-        <div class="relative -mt-8 flex items-center gap-3 bg-base-100/90 border-2 border-base-300 rounded-full py-1.5 px-4 shadow-lg backdrop-blur-md">
+        <div class="relative -mt-4 sm:-mt-6 flex items-center gap-3 bg-base-100/90 border-2 border-base-300 rounded-full py-1.5 px-4 shadow-lg backdrop-blur-md">
           <img
             src="/images/others/profile-photo.webp"
             alt="Foto de Jaime TL"
             class="w-10 h-10 rounded-full object-cover ring-2 ring-primary"
+            width="40" height="40" decoding="async"
           />
           <div class="text-left">
             <p class="text-xs font-bold leading-none text-base-content">Jaime TL</p>
@@ -256,7 +239,7 @@ const maxTotal = Math.max(
     </div>
 
     <div class="border-t border-base-300 bg-base-200/50 py-3 overflow-hidden">
-      <div class="animate-marquee whitespace-nowrap flex gap-4">
+      <div class="animate-marquee whitespace-nowrap flex gap-4 will-change-transform">
         {[...stack, ...stack].map((tech) => (
           <span class="inline-flex items-center gap-2 font-mono text-xs px-3 py-1 rounded-lg bg-base-100 border border-base-300 text-base-content/80 font-medium shrink-0">
             <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
@@ -267,7 +250,7 @@ const maxTotal = Math.max(
     </div>
   </section>
 
-  <!-- STATS -->
+  <!-- ============ STATS ============ -->
   <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14 reveal-on-scroll">
     {stats.map((s) => (
       <div class="rounded-2xl border-2 border-base-300 bg-base-200/80 p-4 text-center shadow-xs hover:border-primary/40 hover:-translate-y-1 transition-all">
@@ -277,7 +260,7 @@ const maxTotal = Math.max(
     ))}
   </section>
 
-  <!-- PROYECTO DESTACADO -->
+  <!-- ============ PROYECTO DESTACADO ============ -->
   <section class="mt-16 reveal-on-scroll">
     <div class="sm:flex sm:items-center sm:justify-between mb-6">
       <div class="flex items-center gap-3">
@@ -290,7 +273,7 @@ const maxTotal = Math.max(
         </div>
       </div>
 
-      <a href="/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/" 
+      <a href="/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/"
         class="text-sm mt-2 sm:mt-0 font-bold text-primary hover:underline flex items-center gap-1">
         Ver detalles <Icon name="mdi:arrow-right" class="w-4 h-4" />
       </a>
@@ -303,7 +286,8 @@ const maxTotal = Math.max(
             src="/images/proyectos/projects.AnGoTest-proyecto-fin-master.webp"
             alt="AnGoTest"
             class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-            loading="eager"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 
@@ -327,19 +311,11 @@ const maxTotal = Math.max(
           </ul>
 
           <div class="flex flex-wrap gap-3 pt-3">
-            <a
-              href="/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/"
-              class="btn btn-primary btn-sm rounded-lg px-5 shadow-xs inline-flex items-center gap-2"
-            >
+            <a href="/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/" class="btn btn-primary btn-sm rounded-lg px-5 shadow-xs inline-flex items-center gap-2">
               <Icon name="mdi:file-document-outline" class="w-4 h-4" />
               <span>Ver Proyecto</span>
             </a>
-            <a
-              href="https://www.youtube.com/watch?v=JOpi1MysM9g"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-outline btn-sm rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2"
-            >
+            <a href="https://www.youtube.com/watch?v=JOpi1MysM9g" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2">
               <Icon name="mdi:youtube" class="w-4 h-4 text-red-600" />
               <span>Demo en Vídeo</span>
             </a>
@@ -349,14 +325,10 @@ const maxTotal = Math.max(
     </article>
   </section>
 
-  <!-- ============================================================
-        SECCIÓN DESTACADA: DEV TIPS SLIDER (1 EN 1, HASTA 5 ITEMS)
-  ============================================================ -->
+  <!-- ============ DEV TIPS ============ -->
   {devTips.length > 0 && (
     <section class="mt-14 reveal-on-scroll">
       <div class="rounded-3xl border-2 border-primary/30 bg-linear-to-r from-base-200/90 via-base-100 to-base-200/90 p-4 sm:p-8 shadow-lg relative overflow-hidden">
-        
-        <!-- Cabecera del Slider -->
         <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:mb-6 border-b border-base-300/80 pb-4">
           <div class="flex items-center gap-3">
             <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
@@ -365,11 +337,11 @@ const maxTotal = Math.max(
             <div>
               <div class="flex items-center gap-2">
                 <span class="text-xs font-bold uppercase tracking-wider text-primary">Dev Tip destacado</span>
-                  {devTipsGeneratedAt && (
-                    <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-base-300 text-base-content/70">
-                      {formatDate(devTipsGeneratedAt)}
-                    </span>
-                  )}
+                {devTipsGeneratedAt && (
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-base-300 text-base-content/70">
+                    {formatDate(devTipsGeneratedAt)}
+                  </span>
+                )}
               </div>
               <h2 class="font-heading text-xl sm:text-2xl font-bold text-base-content">
                 Novedades & Consejos Técnicos
@@ -377,39 +349,27 @@ const maxTotal = Math.max(
             </div>
           </div>
 
-          <!-- Controles del Slider -->
           <div class="flex items-center gap-2 justify-center sm:self-end sm:self-auto">
-            <button
-              id="prev-tip-btn"
-              class="btn btn-circle btn-sm btn-outline border-base-300 hover:border-primary hover:bg-primary hover:text-primary-content transition-all"
-              aria-label="Consejo anterior"
-            >
+            <button id="prev-tip-btn" class="btn btn-circle btn-sm btn-outline border-base-300 hover:border-primary hover:bg-primary hover:text-primary-content transition-all" aria-label="Consejo anterior">
               <Icon name="mdi:chevron-left" class="w-5 h-5" />
             </button>
-            <button
-              id="next-tip-btn"
-              class="btn btn-circle btn-sm btn-outline border-base-300 hover:border-primary hover:bg-primary hover:text-primary-content transition-all"
-              aria-label="Siguiente consejo"
-            >
+            <button id="next-tip-btn" class="btn btn-circle btn-sm btn-outline border-base-300 hover:border-primary hover:bg-primary hover:text-primary-content transition-all" aria-label="Siguiente consejo">
               <Icon name="mdi:chevron-right" class="w-5 h-5" />
             </button>
           </div>
         </header>
 
-        <!-- Contenedor del Carrusel (Slides 1 a 1) -->
         <div class="relative overflow-hidden min-h-[160px]">
-          <div id="tips-slider-track" class="flex transition-transform duration-500 ease-in-out">
+          <div id="tips-slider-track" class="flex transition-transform duration-500 ease-in-out will-change-transform">
             {devTips.map((tip) => (
               <div class="w-full shrink-0 px-1">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
                   <div class="space-y-3 max-w-4xl">
                     <div class="flex flex-wrap items-center gap-2">
-                      <span class={`text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full border ${getCategoryBadgeClass(tip.category)}`}>
+                      <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full border bg-blue-500/10 text-blue-600 border-blue-500/20">
                         {tip.category}
                       </span>
-                      <span class="text-xs font-mono text-base-content/60">
-                        vía {tip.source}
-                      </span>
+                      <span class="text-xs font-mono text-base-content/60">vía {tip.source}</span>
                       {tip.pubDate && (
                         <span class="inline-flex items-center gap-1 text-[11px] font-mono text-base-content/50">
                           <Icon name="mdi:calendar-blank-outline" class="w-3.5 h-3.5" />
@@ -422,19 +382,13 @@ const maxTotal = Math.max(
                         {tip.title}
                       </a>
                     </h3>
-
                     <p class="text-base text-base-content/80 leading-relaxed">
                       {tip.summary}
                     </p>
                   </div>
 
                   <div class="shrink-0 flex items-center md:self-center">
-                    <a
-                      href={tip.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="btn btn-primary rounded-xl px-5 shadow-sm inline-flex items-center gap-2 text-sm w-full md:w-auto justify-center"
-                    >
+                    <a href={tip.url} target="_blank" rel="noopener noreferrer" class="btn btn-primary rounded-xl px-5 shadow-sm inline-flex items-center gap-2 text-sm w-full md:w-auto justify-center">
                       <span>Leer completo</span>
                       <Icon name="mdi:open-in-new" class="w-4 h-4" />
                     </a>
@@ -445,22 +399,90 @@ const maxTotal = Math.max(
           </div>
         </div>
 
-        <!-- Indicadores (Puntos de posición) -->
         <div id="tips-indicators" class="flex justify-center gap-3 mt-5">
           {devTips.map((_, index) => (
-            <button
-              class="w-2.5 h-2.5 rounded-full bg-base-300 transition-all duration-300 indicator-btn"
-              data-index={index}
-              aria-label={`Ir al consejo ${index + 1}`}
-            ></button>
+            <button class="w-2.5 h-2.5 rounded-full bg-base-300 transition-all duration-300 indicator-btn" data-index={index} aria-label={`Ir al consejo ${index + 1}`}></button>
           ))}
         </div>
-
       </div>
     </section>
   )}
 
-  <!-- ÚLTIMAS PUBLICACIONES Y PROYECTOS -->
+  <!-- ============ SKILLS ============ -->
+  {randomSkills.length > 0 && (
+    <section class="mt-14 reveal-on-scroll">
+      <div class="rounded-3xl border-2 border-primary/30 bg-linear-to-r from-base-200/90 via-base-100 to-base-200/90 p-4 sm:p-8 shadow-lg relative overflow-hidden">
+        <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:mb-6 border-b border-base-300/80 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+              <Icon name="mdi:code-tags" class="w-6 h-6 animate-pulse" />
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-primary">Destacados al azar</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-base-300 text-base-content/70">
+                  {randomSkills.length} Skills
+                </span>
+              </div>
+              <h2 class="font-heading text-xl sm:text-2xl font-bold text-base-content">
+                Conocimientos & Competencias Tácticas
+              </h2>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 justify-center sm:self-end sm:self-auto">
+            <button id="prev-skill-btn" class="btn btn-circle btn-sm btn-outline border-base-300 hover:border-primary hover:bg-primary hover:text-primary-content transition-all" aria-label="Skill anterior">
+              <Icon name="mdi:chevron-left" class="w-5 h-5" />
+            </button>
+            <button id="next-skill-btn" class="btn btn-circle btn-sm btn-outline border-base-300 hover:border-primary hover:bg-primary hover:text-primary-content transition-all" aria-label="Siguiente skill">
+              <Icon name="mdi:chevron-right" class="w-5 h-5" />
+            </button>
+          </div>
+        </header>
+
+        <div class="relative overflow-hidden min-h-[160px]">
+          <div id="skills-slider-track" class="flex transition-transform duration-500 ease-in-out will-change-transform">
+            {randomSkills.map((skill) => (
+              <div class="w-full shrink-0 px-1">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                  <div class="space-y-3 max-w-4xl">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full border bg-primary/10 text-primary border-primary/20">
+                        {skill.tag}
+                      </span>
+                    </div>
+                    <h3 class="font-heading text-lg sm:text-xl font-bold text-base-content leading-snug">
+                      <a href={skill.url} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">
+                        {skill.titulo}
+                      </a>
+                    </h3>
+                    <p class="text-base text-base-content/80 leading-relaxed">
+                      {skill.descripcion}
+                    </p>
+                  </div>
+
+                  <div class="shrink-0 flex items-center md:self-center">
+                    <a href={skill.url} target="_blank" rel="noopener noreferrer" class="btn btn-primary rounded-xl px-5 shadow-sm inline-flex items-center gap-2 text-sm w-full md:w-auto justify-center">
+                      <span>Saber más</span>
+                      <Icon name="mdi:open-in-new" class="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div id="skills-indicators" class="flex justify-center gap-3 mt-5">
+          {randomSkills.map((_, index) => (
+            <button class="w-2.5 h-2.5 rounded-full bg-base-300 transition-all duration-300 skill-indicator-btn" data-index={index} aria-label={`Ir a la skill ${index + 1}`}></button>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ============ ÚLTIMAS PUBLICACIONES ============ -->
   <section class="mt-16 reveal-on-scroll">
     <header class="sm:flex sm:items-center sm:justify-between mb-6">
       <div class="flex items-center gap-3">
@@ -492,7 +514,8 @@ const maxTotal = Math.max(
       ))}
     </div>
   </section>
-  
+
+  <!-- ============ ÚLTIMOS PROYECTOS ============ -->
   <section class="mt-16 reveal-on-scroll">
     <header class="sm:flex sm:items-center sm:justify-between mb-6">
       <div class="flex items-center gap-3">
@@ -525,68 +548,8 @@ const maxTotal = Math.max(
     </div>
   </section>
 
-  <!-- ÚLTIMAS TAREAS -->
-  <section class="mt-16 overflow-hidden reveal-on-scroll">
-    <header class="sm:flex sm:items-center sm:justify-between mb-6">
-      <div class="flex items-center gap-3">
-        <div class="p-2 rounded-lg bg-base-200 border border-base-300 text-primary">
-          <Icon name="mdi:clipboard-list-outline" class="w-6 h-6" />
-        </div>
-        <div>
-          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Últimas tareas</h2>
-          <p class="text-sm text-base-content/70">Objetivos proyectados y completados</p>
-        </div>
-      </div>
-
-      <a href="/tasks/" class="text-sm mt-2 sm:mt-0 font-bold text-primary hover:underline flex items-center gap-1">
-        Ver todas <Icon name="mdi:arrow-right" class="w-4 h-4" />
-      </a>
-    </header>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {
-        lastTasks.map((task) => {
-          const isPending = !task.endDay || new Date(task.endDay) > new Date();
-          return (
-            <div class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-5 shadow-sm hover:border-primary/50 transition-colors flex flex-col justify-between">
-              <div>
-                <div class="flex items-center gap-3 mb-2">
-                  <div class={`p-1.5 rounded-lg shrink-0 mt-0.5 ${isPending ? 'bg-warning/10 text-warning border border-warning/20' : 'bg-emerald-500/10 text-emerald-600 border border-emerald-500/20'}`}>
-                    <Icon name={isPending ? "mdi:clock-outline" : "mdi:check-circle-outline"} class="w-5 h-5" />
-                  </div>
-                  <h3 class="font-heading font-bold text-base text-base-content leading-snug">
-                    {task.description}
-                  </h3>
-                </div>
-                {task.details && (
-                  <p class="text-sm text-base-content/80 leading-relaxed mb-3">
-                    {task.details}
-                  </p>
-                )}
-              </div>
-
-              <div class="flex items-center gap-1.5 pt-3 mt-2 border-t border-base-300/80 font-mono text-xs text-base-content/60">
-                <Icon name="mdi:calendar-month-outline" class="w-4 h-4 text-primary shrink-0" />
-                <span>
-                  {task.startDay
-                    ? new Date(task.startDay).toLocaleDateString("es-ES")
-                    : "Sin fecha"}
-                  {task.endDay &&
-                    task.endDay !== task.startDay &&
-                    ` → ${new Date(task.endDay).toLocaleDateString("es-ES")}`}
-                </span>
-              </div>
-            </div>
-          );
-        })
-      }
-    </div>
-  </section>
-
-  <!-- GRÁFICO DE BARRAS -->
-  <section
-    class="mt-16 mb-8 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm overflow-hidden reveal-on-scroll"
-  >
+  <!-- ============ GRÁFICO ============ -->
+  <section class="mt-16 mb-8 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm overflow-hidden reveal-on-scroll">
     <div class="text-center mb-6">
       <span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
         Estadísticas del Sitio
@@ -616,7 +579,7 @@ const maxTotal = Math.max(
           const blogCount = blogCounts[month] || 0;
           const projectCount = projectCounts[month] || 0;
           const totalCount = blogCount + projectCount;
-          
+
           const [year, m] = month.split("-");
           const formattedMonth = `${m}/${year.slice(2)}`;
 
@@ -631,12 +594,12 @@ const maxTotal = Math.max(
               </div>
 
               <div class="w-full flex justify-center h-full items-end">
-                <div 
+                <div
                   class="w-full max-w-[36px] flex flex-col-reverse rounded-t-md overflow-hidden transition-all duration-500 ease-out"
                   style={`height: ${Math.max(totalHeightPct, 4)}%; min-height: 8px;`}
                 >
                   {blogCount > 0 && (
-                    <div 
+                    <div
                       class="bg-primary text-primary-content flex items-center justify-center font-mono font-bold text-[10px] leading-none transition-all"
                       style={`height: ${blogPct}%;`}
                       title={`Blog: ${blogCount}`}
@@ -646,7 +609,7 @@ const maxTotal = Math.max(
                   )}
 
                   {projectCount > 0 && (
-                    <div 
+                    <div
                       class="bg-accent-content text-secondary-content flex items-center justify-center font-mono font-bold text-[10px] leading-none transition-all"
                       style={`height: ${projectPct}%;`}
                       title={`Proyectos: ${projectCount}`}
@@ -671,7 +634,7 @@ const maxTotal = Math.max(
     </p>
   </section>
 
-  <!-- CTA FINAL -->
+  <!-- ============ CTA FINAL ============ -->
   <section class="mt-16 rounded-3xl border-2 border-primary/30 bg-linear-to-r from-primary/10 via-base-200 to-primary/10 p-4 sm:p-12 text-center shadow-lg relative overflow-hidden reveal-on-scroll">
     <h2 class="font-heading text-2xl sm:text-3xl font-extrabold text-base-content mb-3">
       ¿Tienes un proyecto en mente o buscas un perfil técnico senior?
@@ -680,103 +643,228 @@ const maxTotal = Math.max(
       Estoy disponible tanto para la realización de <strong class="text-base-content">proyectos a medida y consultoría freelancing</strong>, como para incorporar mi experiencia técnica a tiempo completo en <strong class="text-base-content">empresas e ingenierías tecnológicas</strong> que busquen aportar valor a su equipo.
     </p>
     <div class="flex flex-wrap justify-center gap-4">
-      <a
-        href="/servicios/"
-        class="btn btn-primary rounded-lg px-6 shadow-sm inline-flex items-center justify-center gap-2"
-      >
+      <a href="/servicios/" class="btn btn-primary rounded-lg px-6 shadow-sm inline-flex items-center justify-center gap-2">
         <Icon name="mdi:cogs" class="w-5 h-5" />
         <span>Ver mis servicios</span>
       </a>
-      <a
-        href="/contacto/"
-        class="btn btn-outline rounded-lg px-6 bg-base-100 border-base-300 inline-flex items-center justify-center gap-2 hover:border-primary/50"
-      >
+      <a href="/contacto/" class="btn btn-outline rounded-lg px-6 bg-base-100 border-base-300 inline-flex items-center justify-center gap-2 hover:border-primary/50">
         <Icon name="mdi:account-box-outline" class="w-5 h-5" />
         <span>Contactar directamente</span>
       </a>
     </div>
   </section>
 
-  <!-- LÓGICA DEL CARRUSEL Y REVEAL ON SCROLL -->
   <script>
-    function setupTipsSlider() {
-      const track = document.getElementById("tips-slider-track");
-      const prevBtn = document.getElementById("prev-tip-btn");
-      const nextBtn = document.getElementById("next-tip-btn");
-      const indicators = document.querySelectorAll<HTMLElement>(".indicator-btn");
+    /* ============================================================
+       TIPING EFFECT
+    ============================================================ */
+    function setupTypingEffect(): void {
+      const target = document.getElementById("typing-skill-target");
+      if (!target || target.dataset.ready === "true") return;
+      target.dataset.ready = "true";
 
-      if (!track || indicators.length === 0) return;
+      let skills: string[] = [];
+      try {
+        skills = JSON.parse(target.dataset.skills || "[]");
+      } catch {
+        skills = [];
+      }
+      if (!skills.length) return;
 
-      // Evita registrar los listeners dos veces sobre el mismo DOM
-      // (DOMContentLoaded + astro:page-load con ClientRouter).
-      if (track.dataset.ready === "true") return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        target.textContent = skills[0];
+        return;
+      }
+
+      const el = target;
+      const TYPE_SPEED = 65;
+      const DELETE_SPEED = 30;
+      const HOLD_AFTER_TYPE = 2200;
+      const HOLD_AFTER_DELETE = 400;
+
+      let skillIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+
+      function tick(): void {
+        const currentSkill = skills[skillIndex];
+
+        if (!isDeleting) {
+          charIndex++;
+          el.textContent = currentSkill.slice(0, charIndex);
+          if (charIndex >= currentSkill.length) {
+            isDeleting = true;
+            setTimeout(tick, HOLD_AFTER_TYPE);
+            return;
+          }
+          setTimeout(tick, TYPE_SPEED);
+        } else {
+          charIndex--;
+          el.textContent = currentSkill.slice(0, charIndex);
+          if (charIndex <= 0) {
+            isDeleting = false;
+            skillIndex = (skillIndex + 1) % skills.length;
+            setTimeout(tick, HOLD_AFTER_DELETE);
+            return;
+          }
+          setTimeout(tick, DELETE_SPEED);
+        }
+      }
+
+      tick();
+    }
+
+    /* ============================================================
+       SLIDER 1-a-1 (idempotente)
+    ============================================================ */
+    interface SliderOptions {
+      trackId: string;
+      prevId: string;
+      nextId: string;
+      indicatorClass: string;
+      autoPlay?: boolean;
+      intervalTime?: number;
+    }
+
+    function setupSlider({
+      trackId,
+      prevId,
+      nextId,
+      indicatorClass,
+      autoPlay = false,
+      intervalTime = 10000,
+    }: SliderOptions): void {
+      const track = document.getElementById(trackId);
+      if (!track || track.dataset.ready === "true") return;
+
+      const indicators = Array.from(
+        document.querySelectorAll<HTMLElement>(`.${indicatorClass}`)
+      );
+      if (indicators.length === 0) return;
+
       track.dataset.ready = "true";
 
-      let currentIndex = 0;
       const totalSlides = indicators.length;
+      let currentIndex = 0;
+      let autoPlayTimer: ReturnType<typeof setInterval> | null = null;
 
-      function updateSlider(index: number) {
-        if (!track) return;
+      function updateSlider(index: number): void {
+        currentIndex = ((index % totalSlides) + totalSlides) % totalSlides;
+        track!.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-        currentIndex = (index + totalSlides) % totalSlides;
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        for (let i = 0; i < totalSlides; i++) {
+          const btn = indicators[i];
+          const isActive = i === currentIndex;
+          btn.classList.toggle("bg-primary", isActive);
+          btn.classList.toggle("w-6", isActive);
+          btn.classList.toggle("bg-base-300", !isActive);
+          btn.classList.toggle("w-2.5", !isActive);
+        }
+      }
 
-        indicators.forEach((btn, i) => {
-          if (i === currentIndex) {
-            btn.classList.add("bg-primary", "w-6");
-            btn.classList.remove("bg-base-300", "w-2.5");
-          } else {
-            btn.classList.add("bg-base-300", "w-2.5");
-            btn.classList.remove("bg-primary", "w-6");
-          }
+      function startAutoPlay(): void {
+        if (!autoPlay || autoPlayTimer) return;
+        autoPlayTimer = setInterval(
+          () => updateSlider(currentIndex + 1),
+          intervalTime
+        );
+      }
+
+      function stopAutoPlay(): void {
+        if (!autoPlayTimer) return;
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+
+      function resetAutoPlay(): void {
+        if (!autoPlay) return;
+        stopAutoPlay();
+        startAutoPlay();
+      }
+
+      document.getElementById(prevId)?.addEventListener("click", () => {
+        updateSlider(currentIndex - 1);
+        resetAutoPlay();
+      });
+
+      document.getElementById(nextId)?.addEventListener("click", () => {
+        updateSlider(currentIndex + 1);
+        resetAutoPlay();
+      });
+
+      for (let i = 0; i < totalSlides; i++) {
+        const btn = indicators[i];
+        btn.addEventListener("click", () => {
+          updateSlider(i);
+          resetAutoPlay();
         });
       }
 
-      prevBtn?.addEventListener("click", () => updateSlider(currentIndex - 1));
-      nextBtn?.addEventListener("click", () => updateSlider(currentIndex + 1));
+      if (autoPlay) {
+        const sliderContainer = track.parentElement?.parentElement;
+        sliderContainer?.addEventListener("mouseenter", stopAutoPlay, { passive: true });
+        sliderContainer?.addEventListener("mouseleave", startAutoPlay, { passive: true });
+      }
 
-      indicators.forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          const target = e.currentTarget as HTMLElement;
-          const idx = parseInt(target.getAttribute("data-index") || "0", 10);
-          updateSlider(idx);
-        });
-      });
-
-      // Inicializar primer slide
       updateSlider(0);
+      startAutoPlay();
     }
 
-    function initReveal() {
+    /* ============================================================
+       REVEAL ON SCROLL (idempotente)
+    ============================================================ */
+    function initReveal(): void {
+      const targets = document.querySelectorAll<HTMLElement>(
+        ".reveal-on-scroll:not(.visible)"
+      );
+      if (targets.length === 0) return;
+
       const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
+        (entries, obs) => {
+          for (const entry of entries) {
             if (entry.isIntersecting) {
               entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
+              obs.unobserve(entry.target);
             }
-          });
+          }
         },
         { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
       );
 
-      document
-        .querySelectorAll(".reveal-on-scroll:not(.visible)")
-        .forEach((el) => observer.observe(el));
+      targets.forEach((el) => observer.observe(el));
     }
 
-    function initPage() {
+    /* ============================================================
+       INIT
+    ============================================================ */
+    function initPage(): void {
       initReveal();
-      setupTipsSlider();
+      setupTypingEffect();
+
+      setupSlider({
+        trackId: "tips-slider-track",
+        prevId: "prev-tip-btn",
+        nextId: "next-tip-btn",
+        indicatorClass: "indicator-btn",
+        autoPlay: true,
+        intervalTime: 10000,        
+      });
+
+      setupSlider({
+        trackId: "skills-slider-track",
+        prevId: "prev-skill-btn",
+        nextId: "next-skill-btn",
+        indicatorClass: "skill-indicator-btn",
+      });
     }
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initPage);
-    } else {
+    // Astro dispara 'astro:page-load' también en la carga inicial, así que
+    // no hace falta registrar también DOMContentLoaded (evita doble init).
+    document.addEventListener("astro:page-load", initPage);
+
+    // Fallback por si el script se ejecuta fuera de Astro (tests, Storybook).
+    if (document.readyState === "complete") {
       initPage();
     }
-
-    document.addEventListener("astro:page-load", initPage);
   </script>
-
 </BaseLayout>
