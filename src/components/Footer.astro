@@ -13,6 +13,12 @@ const quickLinks = [
   { label: "Contacto", href: "/contacto/" },
 ];
 
+const legalLinks = [
+  { label: "Aviso Legal", href: "/aviso-legal/" },
+  { label: "Privacidad", href: "/politica-de-privacidad/" },
+  { label: "Cookies", href: "/politica-de-cookies/" },
+];
+
 const socials = [
   {
     label: "LinkedIn",
@@ -129,16 +135,26 @@ const socials = [
     </div>
 
     <!-- Divisor y Footer Inferior -->
-    <div class="mt-12 pt-7 border-t border-base-300/60 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-sm text-base-content/55 text-center sm:text-left">
+    <div class="mt-12 pt-7 border-t border-base-300/60 flex flex-col lg:flex-row items-center justify-between gap-4">
+      <!-- Copyright + enlaces legales -->
+      <div class="flex flex-col sm:flex-row items-center flex-wrap justify-center gap-2 sm:gap-4 text-sm text-base-content/55 text-center sm:text-left">
         <p>&copy; {year} Jaime TL · Todos los derechos reservados.</p>
         <span class="hidden sm:inline text-base-content/30">•</span>
-        <a 
-          href="/privacy-and-cookies/" 
-          class="hover:text-primary transition-colors underline decoration-base-300 underline-offset-4 hover:decoration-primary"
-        >
-          Privacidad y Cookies
-        </a>
+        <nav aria-label="Enlaces legales" class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+          {legalLinks.map((l, i) => (
+            <>
+              <a
+                href={l.href}
+                class="hover:text-primary transition-colors underline decoration-base-300 underline-offset-4 hover:decoration-primary"
+              >
+                {l.label}
+              </a>
+              {i < legalLinks.length - 1 && (
+                <span class="text-base-content/30" aria-hidden="true">·</span>
+              )}
+            </>
+          ))}
+        </nav>
       </div>
 
       <p class="text-sm text-base-content/55 flex items-center gap-1.5">

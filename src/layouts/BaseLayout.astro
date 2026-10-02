@@ -16,6 +16,7 @@ const {
   ogType,
   jsonLd,
   includeSidebar = true,
+  noindex = false, 
   sideBarActiveItemID,  
 } = Astro.props;
 ---
@@ -41,6 +42,9 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`https://www.jaterli.com${image}`} />
+    {/* Bloquea la indexación si la página lo solicita */}
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    
     <!-- <meta property="og:image" content={new URL(image, Astro.url)} /> -->
 
     <!-- JSON-LD específico (Markdown) -->

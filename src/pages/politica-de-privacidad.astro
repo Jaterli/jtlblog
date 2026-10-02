@@ -3,16 +3,16 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
 
 // Metadata
-const title = "Política de Privacidad y Cookies | Jaime TL";
+const title = "Política de Privacidad | Jaime TL";
 const description =
-  "Información transparente sobre el tratamiento de datos personales, alojamiento en Netlify y ausencia de cookies de rastreo en la web de Jaime TL (jaterli.com).";
+  "Información sobre el tratamiento de datos personales conforme al RGPD y la LOPDGDD en la web de Jaime TL (jaterli.com).";
 const image = "/images/others/profile-photo.webp";
 
 // Fecha de última actualización
 const lastUpdated = "24/09/2026";
 ---
 
-<BaseLayout title={title} description={description} image={image} sideBarActiveItemID="privacidad">
+<BaseLayout title={title} description={description} image={image} sideBarActiveItemID="privacidad" noindex={true}>
   {/* HERO / CABECERA */}
   <section class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/80 p-4 sm:p-10 shadow-md mb-10">
     <div class="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('/images/others/hero-pattern.svg')] bg-cover bg-center" aria-hidden="true"></div>
@@ -22,15 +22,15 @@ const lastUpdated = "24/09/2026";
       <div class="text-center md:text-left flex-1">
         <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/10 text-xs font-semibold text-primary mb-3">
           <Icon name="mdi:shield-account-outline" class="w-4 h-4" />
-          Transparencia y Privacidad
+          Protección de Datos
         </span>
 
         <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4 text-base-content">
-          Política de <span class="text-primary">Privacidad y Cookies</span>
+          Política de <span class="text-primary">Privacidad</span>
         </h1>
 
         <p class="text-lg text-base-content/80 leading-relaxed">
-          En este sitio web prima la privacidad y el uso mínimo de datos. A continuación se detalla de forma clara cómo se gestiona la información y la ausencia de rastreo de navegación.
+          Información sobre el tratamiento de tus datos personales conforme al Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD).
         </p>
 
         <p class="mt-4 font-mono text-xs text-base-content/60">
@@ -48,50 +48,54 @@ const lastUpdated = "24/09/2026";
         <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
           <Icon name="mdi:account-box-outline" class="w-6 h-6" />
         </div>
-        <h2 class="font-heading text-2xl font-bold text-base-content">1. Responsable del Sitio Web</h2>
+        <h2 class="font-heading text-xl sm:text-2xl font-bold text-base-content">1. Responsable del Tratamiento</h2>
       </div>
 
       <div class="text-base text-base-content/80 leading-relaxed space-y-3">
         <p>
-          En cumplimiento del Reglamento General de Protección de Datos (RGPD - Reglamento UE 2016/679) y la Ley Orgánica 3/2018 (LOPDGDD), se informa sobre la titularidad del sitio web:
+          En cumplimiento del Reglamento General de Protección de Datos (RGPD - Reglamento UE 2016/679) y la Ley Orgánica 3/2018 (LOPDGDD), se informa de los datos del responsable del tratamiento:
         </p>
         <ul class="space-y-2 bg-base-100 p-4 rounded-xl border border-base-300 font-mono text-xs sm:text-sm">
-          <li><strong>Titular:</strong> Jaime TL</li>
-          <li><strong>Dominio:</strong> jaterli.com</li>
-          <li><strong>Ubicación:</strong> Madrid, España</li>
+          <li><strong>Responsable:</strong> Jaime Terciado</li>
+          <li><strong>NIF:</strong> 01933536H</li>
+          <li><strong>Domicilio:</strong> Madrid, España</li>
           <li><strong>Correo electrónico:</strong> admin@jaterli.com</li>
         </ul>
       </div>
     </section>
 
-    {/* 2. FORMULARIO DE CONTACTO Y DATOS */}
+    {/* 2. DATOS QUE RECOGEMOS Y FINALIDAD */}
     <section class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm">
       <div class="flex items-center gap-3 mb-4">
         <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
           <Icon name="mdi:email-outline" class="w-6 h-6" />
         </div>
-        <h2 class="font-heading text-2xl font-bold text-base-content">2. Recogida de Datos de Contacto</h2>
+        <h2 class="font-heading text-xl sm:text-2xl font-bold text-base-content">2. Datos Personales y Finalidad</h2>
       </div>
 
       <div class="text-base text-base-content/80 leading-relaxed space-y-3">
         <p>
-          Los únicos datos personales que se recaban directamente son aquellos proporcionados voluntariamente al utilizar el formulario de contacto o al enviar un correo electrónico directo.
+          Los datos personales que tratamos son aquellos que nos proporcionas voluntariamente a través del formulario de contacto o por correo electrónico:
         </p>
         <ul class="p-4 space-y-2 list-disc">
-          <li><strong>Finalidad:</strong> Responder a las consultas, mensajes o solicitudes de proyectos recibidos.</li>
-          <li><strong>Legitimación:</strong> Consentimiento del interesado al enviar el mensaje.</li>
-          <li><strong>Conservación:</strong> Los datos se conservarán únicamente durante el tiempo necesario para atender y gestionar la consulta recibida.</li>
+          <li><strong>Datos identificativos:</strong> Nombre, dirección de correo electrónico.</li>
+          <li><strong>Datos de contacto:</strong> Cualquier información adicional que incluyas en tu mensaje.</li>
         </ul>
+        <div class="bg-base-100 p-4 rounded-xl border border-base-300 space-y-2 text-sm">
+          <p><strong>Finalidad:</strong> Responder a tus consultas, mensajes o solicitudes de proyectos.</p>
+          <p><strong>Legitimación:</strong> Consentimiento del interesado al enviar el mensaje (art. 6.1.a RGPD).</p>
+          <p><strong>Conservación:</strong> Los datos se conservarán únicamente durante el tiempo necesario para atender y gestionar la consulta recibida, y posteriormente durante los plazos legales aplicables.</p>
+        </div>
       </div>
     </section>
 
-    {/* 3. ALOJAMIENTO Y REGISTROS DEL SERVIDOR (NETLIFY) */}
+    {/* 3. DESTINATARIOS Y TRANSFERENCIAS */}
     <section class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm">
       <div class="flex items-center gap-3 mb-4">
         <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
           <Icon name="mdi:server-network" class="w-6 h-6" />
         </div>
-        <h2 class="font-heading text-2xl font-bold text-base-content">3. Infraestructura y Servidores (Netlify)</h2>
+        <h2 class="font-heading text-xl sm:text-2xl font-bold text-base-content">3. Destinatarios y Transferencias Internacionales</h2>
       </div>
 
       <div class="text-base text-base-content/80 leading-relaxed space-y-3">
@@ -101,43 +105,38 @@ const lastUpdated = "24/09/2026";
         <p class="text-sm bg-base-100 p-4 rounded-xl border border-base-300">
           Esta información puede incluir: dirección IP de origen, tipo y versión de navegador, sistema operativo, URL de procedencia y fecha/hora de las solicitudes. Estos datos son tratados por el proveedor de hosting para prevenir ataques cibernéticos, detectar errores y mantener la disponibilidad de la web, amparándose en su interés legítimo. Puedes consultar más detalles en la <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" class="text-primary underline">Política de Privacidad de Netlify</a>.
         </p>
-      </div>
-    </section>
-
-    {/* 4. AUSENCIA DE COOKIES Y SEGUIMIENTO */}
-    <section class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
-          <Icon name="mdi:cookie-off-outline" class="w-6 h-6" />
-        </div>
-        <h2 class="font-heading text-2xl font-bold text-base-content">4. Uso de Cookies</h2>
-      </div>
-
-      <div class="text-base text-base-content/80 leading-relaxed space-y-3">
-        <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3">
-          <Icon name="mdi:check-decagram" class="w-6 h-6 text-emerald-600 shrink-0 mt-0.5" />
-          <p class="text-xs sm:text-sm text-base-content">
-            <strong>Este sitio web no utiliza cookies de seguimiento, publicidad ni analíticas de terceros.</strong>
-          </p>
-        </div>
-        <p>
-          No se almacenan cookies en tu navegador para identificar ni rastrear tu perfil de navegación en internet. El sitio web está diseñado de forma estática para ofrecer la máxima velocidad sin comprometer tu privacidad.
+        <p class="text-sm">
+          Netlify puede realizar transferencias internacionales de datos fuera del Espacio Económico Europeo (EEE). Estas transferencias se realizan al amparo de las Cláusulas Contractuales Tipo aprobadas por la Comisión Europea u otras garantías adecuadas.
         </p>
       </div>
     </section>
 
-    {/* 5. DERECHOS ARCO */}
+    {/* 4. DERECHOS DEL INTERESADO */}
     <section class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm">
       <div class="flex items-center gap-3 mb-4">
         <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
           <Icon name="mdi:shield-check-outline" class="w-6 h-6" />
         </div>
-        <h2 class="font-heading text-2xl font-bold text-base-content">5. Ejercicio de Derechos</h2>
+        <h2 class="font-heading text-xl sm:text-2xl font-bold text-base-content">4. Tus Derechos</h2>
       </div>
 
       <div class="text-base text-base-content/80 leading-relaxed space-y-3">
         <p>
-          Tienes derecho a acceder, rectificar, limitar o solicitar la supresión de tus datos personales aportados voluntariamente. Para ejercer estos derechos, puedes remitir un correo electrónico a <a href="mailto:admin@jaterli.com" class="text-primary font-semibold hover:underline">admin@jaterli.com</a>.
+          Tienes derecho a:
+        </p>
+        <ul class="p-4 space-y-2 list-disc">
+          <li>Acceder a tus datos personales.</li>
+          <li>Solicitar la rectificación de datos inexactos.</li>
+          <li>Solicitar la supresión de tus datos.</li>
+          <li>Solicitar la limitación del tratamiento.</li>
+          <li>Oponerte al tratamiento.</li>
+          <li>Solicitar la portabilidad de tus datos.</li>
+        </ul>
+        <p>
+          Puedes ejercer estos derechos remitiendo un correo electrónico a <a href="mailto:admin@jaterli.com" class="text-primary font-semibold hover:underline">admin@jaterli.com</a>.
+        </p>
+        <p class="text-sm bg-base-100 p-4 rounded-xl border border-base-300">
+          Si consideras que el tratamiento de tus datos no se ajusta a la normativa, tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) a través de su sede electrónica: <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer" class="text-primary underline">www.aepd.es</a>.
         </p>
       </div>
     </section>
@@ -145,7 +144,7 @@ const lastUpdated = "24/09/2026";
 
   {/* CTA FINAL */}
   <section class="mt-12 text-center rounded-2xl border-2 border-primary/30 bg-primary/10 p-4 sm:p-10 shadow-sm">
-    <h2 class="font-heading text-xl sm:text-2xl font-bold mb-2 text-base-content">¿Tienes alguna pregunta?</h2>
+    <h2 class="font-heading text-2xl sm:text-3xl font-bold mb-3 text-base-content">¿Tienes alguna pregunta?</h2>
     <p class="text-base text-base-content/80 max-w-xl mx-auto mb-6">
       Si deseas más aclaraciones sobre la privacidad de este sitio web, no dudes en escribirme.
     </p>
