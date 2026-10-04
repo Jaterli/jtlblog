@@ -9,7 +9,7 @@ const description =
 const image = "/images/others/profile-photo.webp";
 
 // Fecha de última actualización
-const lastUpdated = "24/09/2026";
+const lastUpdated = "04/10/2026";
 ---
 
 <BaseLayout title={title} description={description} image={image} sideBarActiveItemID="privacidad" noindex={true}>
@@ -58,7 +58,7 @@ const lastUpdated = "24/09/2026";
         <ul class="space-y-2 bg-base-100 p-4 rounded-xl border border-base-300 font-mono text-xs sm:text-sm">
           <li><strong>Responsable:</strong> Jaime Terciado</li>
           <li><strong>NIF:</strong> 01933536H</li>
-          <li><strong>Domicilio:</strong> Madrid, España</li>
+          <li><strong>Domicilio:</strong> Arganda del Rey, Madrid</li>
           <li><strong>Correo electrónico:</strong> admin@jaterli.com</li>
         </ul>
       </div>
@@ -80,11 +80,12 @@ const lastUpdated = "24/09/2026";
         <ul class="p-4 space-y-2 list-disc">
           <li><strong>Datos identificativos:</strong> Nombre, dirección de correo electrónico.</li>
           <li><strong>Datos de contacto:</strong> Cualquier información adicional que incluyas en tu mensaje.</li>
+          <li><strong>Constancia del consentimiento:</strong> registro de la aceptación de esta política al enviar el formulario (fecha y hora de envío).</li>
         </ul>
         <div class="bg-base-100 p-4 rounded-xl border border-base-300 space-y-2 text-sm">
           <p><strong>Finalidad:</strong> Responder a tus consultas, mensajes o solicitudes de proyectos.</p>
           <p><strong>Legitimación:</strong> Consentimiento del interesado al enviar el mensaje (art. 6.1.a RGPD).</p>
-          <p><strong>Conservación:</strong> Los datos se conservarán únicamente durante el tiempo necesario para atender y gestionar la consulta recibida, y posteriormente durante los plazos legales aplicables.</p>
+          <p><strong>Conservación:</strong> Los datos se conservarán durante el tiempo necesario para atender tu consulta y, después, bloqueados durante los plazos de prescripción de posibles responsabilidades legales. Puedes retirar tu consentimiento en cualquier momento sin que ello afecte a la licitud del tratamiento previo.</p>
         </div>
       </div>
     </section>
@@ -105,8 +106,11 @@ const lastUpdated = "24/09/2026";
         <p class="text-sm bg-base-100 p-4 rounded-xl border border-base-300">
           Esta información puede incluir: dirección IP de origen, tipo y versión de navegador, sistema operativo, URL de procedencia y fecha/hora de las solicitudes. Estos datos son tratados por el proveedor de hosting para prevenir ataques cibernéticos, detectar errores y mantener la disponibilidad de la web, amparándose en su interés legítimo. Puedes consultar más detalles en la <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" class="text-primary underline">Política de Privacidad de Netlify</a>.
         </p>
-        <p class="text-sm">
-          Netlify puede realizar transferencias internacionales de datos fuera del Espacio Económico Europeo (EEE). Estas transferencias se realizan al amparo de las Cláusulas Contractuales Tipo aprobadas por la Comisión Europea u otras garantías adecuadas.
+        <p class="text-sm bg-base-100 p-4 rounded-xl border border-base-300">
+          <strong>Formulario de contacto:</strong> los mensajes enviados se reciben y almacenan mediante <strong>Netlify Forms</strong> (Netlify, Inc.), que actúa como encargado del tratamiento. Para evitar spam y abusos se utiliza <strong>Google reCAPTCHA Enterprise</strong> (Google LLC), que analiza datos técnicos de tu navegación (como la dirección IP y el comportamiento en la página) con finalidad de seguridad; su uso se rige por la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-primary underline">Política de Privacidad de Google</a>.
+        </p>
+        <p>
+          Netlify y Google pueden realizar transferencias internacionales de datos fuera del Espacio Económico Europeo (EEE). Estas transferencias se realizan al amparo de las Cláusulas Contractuales Tipo aprobadas por la Comisión Europea u otras garantías adecuadas.
         </p>
       </div>
     </section>
@@ -145,7 +149,7 @@ const lastUpdated = "24/09/2026";
   {/* CTA FINAL */}
   <section class="mt-12 text-center rounded-2xl border-2 border-primary/30 bg-primary/10 p-4 sm:p-10 shadow-sm">
     <h2 class="font-heading text-2xl sm:text-3xl font-bold mb-3 text-base-content">¿Tienes alguna pregunta?</h2>
-    <p class="text-base text-base-content/80 max-w-xl mx-auto mb-6">
+    <p class="text-base sm:text-lg text-base-content/80 max-w-2xl mx-auto mb-6">
       Si deseas más aclaraciones sobre la privacidad de este sitio web, no dudes en escribirme.
     </p>
 

@@ -9,7 +9,7 @@ const description =
 const image = "/images/others/profile-photo.webp";
 
 // Fecha de última actualización
-const lastUpdated = "24/09/2026";
+const lastUpdated = "04/10/2026";
 ---
 
 <BaseLayout title={title} description={description} image={image} sideBarActiveItemID="cookies" noindex={true}>
@@ -71,7 +71,7 @@ const lastUpdated = "24/09/2026";
         <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3">
           <Icon name="mdi:check-decagram" class="w-6 h-6 text-emerald-600 shrink-0 mt-0.5" />
           <p class="text-xs sm:text-sm text-base-content font-semibold">
-            Este sitio web no utiliza cookies de seguimiento, publicidad ni analíticas de terceros.
+            Este sitio web no utiliza cookies de seguimiento, publicidad ni analíticas.
           </p>
         </div>
         <p>
@@ -80,6 +80,50 @@ const lastUpdated = "24/09/2026";
         <p class="text-sm bg-base-100 p-4 rounded-xl border border-base-300">
           <strong>Nota:</strong> El proveedor de alojamiento (Netlify) puede utilizar cookies técnicas estrictamente necesarias para el funcionamiento y la seguridad del servicio. Estas cookies están exentas del deber de consentimiento según el artículo 22.2 de la LSSI.
         </p>
+        <div class="text-sm bg-base-100 p-4 rounded-xl border border-base-300 space-y-3">
+          <p>
+            <strong>Preferencia de tema (claro/oscuro):</strong> si utilizas el botón de cambio de tema, tu elección se guarda en el almacenamiento local de tu navegador (<span class="font-mono">localStorage</span>) para recordarla en tus próximas visitas. Es un dato propio, solo se crea cuando tú pulsas el botón, no se envía a ningún servidor ni se comparte con terceros, y está exento de consentimiento por ser una opción de personalización elegida por el usuario (art. 22.2 LSSI). Puedes borrarlo en cualquier momento desde los ajustes de tu navegador.
+          </p>
+          <div class="overflow-x-auto">
+            <table class="table table-sm w-full">
+              <thead>
+                <tr><th>Clave</th><th>Titular</th><th>Finalidad</th><th>Duración</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-mono">theme</td>
+                  <td>Propia</td>
+                  <td>Recordar el tema visual elegido (claro/oscuro)</td>
+                  <td>Persistente hasta que la borres</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="text-sm bg-base-100 p-4 rounded-xl border border-base-300 space-y-3">
+          <p>
+            <strong>Formulario de contacto (Google reCAPTCHA Enterprise):</strong> el servicio antispam de Google <strong>solo se carga cuando marcas la casilla de aceptación de la política de privacidad</strong> en el formulario de contacto o, en su defecto, al enviarlo. No se carga al visitar el resto del sitio.
+          </p>
+          <p>
+            Una vez cargado, Google puede utilizar cookies o tecnologías similares con la única finalidad de distinguir a personas de robots y proteger el formulario frente a abusos. Se trata de una medida de seguridad necesaria para prestar el servicio que solicitas (enviar un mensaje). Más información en la
+            <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener noreferrer" class="text-primary underline">política de cookies de Google</a>.
+          </p>
+          <div class="overflow-x-auto">
+            <table class="table table-sm w-full">
+              <thead>
+                <tr><th>Cookie</th><th>Titular</th><th>Finalidad</th><th>Tipo</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-mono">_GRECAPTCHA</td>
+                  <td>Google (tercero)</td>
+                  <td>Análisis de riesgo y protección antispam del formulario</td>
+                  <td>Técnica / seguridad</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </section>
 
