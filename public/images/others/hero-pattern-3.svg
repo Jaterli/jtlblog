@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%">
+  <defs>
+    <!-- Gradiente azul para el círculo inferior izquierdo -->
+    <linearGradient id="grad-bottom-left" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#003B95" stop-opacity="0.4"/>
+    </linearGradient>
+
+    <!-- Gradiente azul para el círculo superior derecho (más grande) -->
+    <linearGradient id="grad-top-right" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0052D4" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#4364F7" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#6FB1FC" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <!-- Filtro de desenfocado suave -->
+    <filter id="blur-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="65" />
+    </filter>
+  </defs>
+
+  <!-- Círculo difuminado en la parte inferior izquierda -->
+  <circle cx="150" cy="380" r="220" fill="url(#grad-bottom-left)" filter="url(#blur-glow)" />
+
+  <!-- Círculo difuminado más grande en la parte superior derecha -->
+  <circle cx="1050" cy="20" r="320" fill="url(#grad-top-right)" filter="url(#blur-glow)" />
+
+  <!-- Arcos punteados decorativos -->
+  <circle cx="1050" cy="20" r="200" stroke="#00F2FE" stroke-width="1.5" stroke-dasharray="6 8" fill="none" opacity="0.25" />
+  <circle cx="150" cy="380" r="140" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="4 6" fill="none" opacity="0.2" />
+</svg>

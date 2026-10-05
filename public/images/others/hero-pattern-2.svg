@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%">
+  <defs>
+    <!-- Gradientes principales -->
+    <linearGradient id="grad-bottom-left" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0052D4" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00C6FF" stop-opacity="0.4"/>
+    </linearGradient>
+
+    <linearGradient id="grad-top-right" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#4FACFE" stop-opacity="0.4"/>
+    </linearGradient>
+
+    <linearGradient id="grad-ring" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#0072FF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#4FACFE" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <!-- Filtros de desenfoque suave -->
+    <filter id="blur-soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="40" />
+    </filter>
+    
+    <filter id="blur-strong" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="65" />
+    </filter>
+  </defs>
+
+  <!-- Círculo difuminado inferior izquierdo -->
+  <circle cx="120" cy="360" r="180" fill="url(#grad-bottom-left)" filter="url(#blur-strong)" />
+  <circle cx="100" cy="340" r="120" fill="#00C6FF" opacity="0.3" filter="url(#blur-soft)" />
+
+  <!-- Círculo más grande superior derecho -->
+  <circle cx="1020" cy="50" r="260" fill="url(#grad-top-right)" filter="url(#blur-strong)" />
+  <circle cx="1050" cy="30" r="180" fill="#0052D4" opacity="0.25" filter="url(#blur-soft)" />
+
+  <!-- Circunferencias de gran diámetro en la parte central -->
+  <!-- Superior -->
+  <circle cx="580" cy="120" r="320" stroke="url(#grad-ring)" stroke-width="2" fill="none" opacity="0.6" />
+  
+  <!-- Inferior -->
+  <circle cx="620" cy="260" r="380" stroke="url(#grad-ring)" stroke-width="1.5" stroke-dasharray="12 8" fill="none" opacity="0.45" />
+
+  <!-- Pequeños destellos decorativos -->
+  <circle cx="320" cy="220" r="4" fill="#00F2FE" opacity="0.8" />
+  <circle cx="880" cy="180" r="3" fill="#ffffff" opacity="0.6" />
+</svg>
