@@ -41,7 +41,11 @@ const siteID =
 const token =
   import.meta.env.NETLIFY_BLOBS_TOKEN ?? process.env.NETLIFY_BLOBS_TOKEN;
 
+// En GitHub Pages solo se intenta leer Blobs si hay credenciales (si no, se oculta la sección)
+const isGithubPages = import.meta.env.PUBLIC_DEPLOY_TARGET === "github";
+
 const blobsPromise: Promise<DevTipsResponse> = (async () => {
+  if (isGithubPages && !(siteID && token)) return { tips: [] };
   try {
     const tipsStore = getStore({
       name: "dev-tips",
@@ -729,7 +733,7 @@ const maxTotal = Math.max(
       nextId,
       indicatorClass,
       autoPlay = false,
-      intervalTime = 10000,
+      intervalTime = 15000,
     }: SliderOptions): void {
       const track = document.getElementById(trackId);
       if (!track || track.dataset.ready === "true") return;
@@ -844,7 +848,7 @@ const maxTotal = Math.max(
         nextId: "next-tip-btn",
         indicatorClass: "indicator-btn",
         autoPlay: true,
-        intervalTime: 10000,        
+        intervalTime: 15000,        
       });
 
       setupSlider({
@@ -852,6 +856,8 @@ const maxTotal = Math.max(
         prevId: "prev-skill-btn",
         nextId: "next-skill-btn",
         indicatorClass: "skill-indicator-btn",
+        autoPlay: true,
+        intervalTime: 15000,
       });
     }
 

@@ -7,6 +7,7 @@ const title = "Contacto | Jaime TL - Desarrollador Full Stack, IA & Blockchain";
 const description =
   "Desarrollo web, Inteligencia Artificial, Blockchain, ciberseguridad, SEO, consultoría técnica";
 const image = "/images/others/profile-photo.webp";
+const isGithubPages = import.meta.env.PUBLIC_DEPLOY_TARGET === "github";
 
 const socials = [
   {
@@ -165,7 +166,9 @@ const socials = [
             Envia un Mensaje
           </h2>
           <p class="text-base text-base-content/70 mt-1">
-            Rellena el siguiente formulario y me pondré en contacto contigo lo antes posible.
+            {isGithubPages
+              ? "Consulta el aviso de abajo para saber cómo escribirme mientras tanto."
+              : "Rellena el siguiente formulario y me pondré en contacto contigo lo antes posible."}
           </p>
         </div>
 
