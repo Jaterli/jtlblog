@@ -39,7 +39,7 @@ const experiences = [
     badge: "Inicios Laborales",
     description: "Gestión de preparación de pedidos y control de envíos para la distribución a grandes superficies, compaginado con la finalización del Bachillerato.",
     achievements: [
-      "Organización y verificación de mercancía bajo estándares de tiempo strictly.",
+      "Organización y verificación de mercancía bajo estándares de tiempo estrictos.",
       "Desarrollo de habilidades de trabajo en equipo, responsabilidad y disciplina horaria."
     ],
     techs: ["Logística", "Gestión de Pedidos", "Trabajo en Equipo"]
@@ -76,15 +76,6 @@ const educationList = [
   }
 ];
 
-const skillCategories = [
-  { category: "Lenguajes de Programación", icon: "mdi:code-tags", skills: ["Python", "JavaScript", "TypeScript", "PHP", "Solidity", "SQL"] },
-  { category: "Desarrollo Backend & APIs", icon: "mdi:server", skills: ["Django", "Go (Golang)", "FastAPI", "Node.js", "APIs RESTful", "GraphQL"] },
-  { category: "Desarrollo Frontend & UI", icon: "mdi:monitor-dashboard", skills: ["React", "Angular", "Astro", "Vue.js", "TailwindCSS", "Bootstrap", "Chakra UI", "HTML5 / CSS3"] },
-  { category: "Blockchain & Web3", icon: "mdi:ethereum", skills: ["Smart Contracts", "Ethers.js", "Hardhat", "MetaMask", "EIP-4361 (SIWE)", "Tokens ERC-20 / ERC-721"] },
-  { category: "Bases de Datos & Sistemas", icon: "mdi:database", skills: ["PostgreSQL", "MySQL", "Django ORM", "Linux (Bash, Cron)", "Gestión de Servidores", "DNS / Hosting"] },
-  { category: "Herramientas, SEO & Diseño", icon: "mdi:wrench-outline", skills: ["Git & GitHub", "SEO Técnico (JSON-LD)", "Metodología Scrum", "Figma", "Photoshop", "Agentes de IA (MCP)"] }
-];
-
 const certifications = [
   { name: "Título Oficial Técnico Superior ASI", url: "/certifications/Titulo-Certificado-Tecnico-Superior-Administracion-de-Sistemas-Informaticos.jpg" },
   { name: "HTML5", url: "/certifications/Certificado-de-HTML.png" },
@@ -114,7 +105,7 @@ const certifications = [
   
   {/* HERO */}
   <section class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/80 p-4 sm:p-10 shadow-md">
-    <div class="absolute inset-0 opacity-20 pointer-events-none bg-[url('/images/others/hero-pattern.svg')] g-repeat bg-cover" aria-hidden="true"></div>
+    <div class="absolute inset-0 opacity-20 pointer-events-none bg-[url('/images/others/hero-pattern.svg')] bg-repeat bg-cover" aria-hidden="true"></div>
     <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
 
     <div class="relative flex flex-col md:flex-row items-center gap-8 lg:gap-12">
@@ -122,7 +113,7 @@ const certifications = [
         <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-primary shadow-lg bg-base-100">
           <img src={image} alt="Jaime TL" title="Jaime TL" class="w-full h-full object-cover" />
         </div>
-        <span class="absolute bottom-2 right-2 w-5 h-5 rounded-full bg-emerald-500 border-2 border-base-100" title="Disponible para proyectos"></span>
+        <span class="absolute bottom-2 right-2 w-5 h-5 rounded-full bg-emerald-500 border-2 border-base-100" title="Abierto a nuevas oportunidades"></span>
       </div>
 
       <div class="text-center md:text-left flex-1">
@@ -242,38 +233,18 @@ const certifications = [
     ))}
   </section>
 
-  {/* SKILLS */}
+  {/* ENLACE A CAPACIDADES */}
   <section class="mt-12">
-    <div class="flex flex-col text-center sm:flex-row sm:text-left items-center gap-3 mb-6">
+    <a href="/capacidades/" class="group flex flex-col sm:flex-row items-center gap-4 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6 shadow-sm hover:border-primary/60 transition-all text-center sm:text-left">
       <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs w-fit">
         <Icon name="mdi:laptop" class="w-6 h-6" />
       </div>
-      <div>
-        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Habilidades Técnicas (Skills)</h2>
-        <p class="text-sm sm:text-base text-base-content/70">Stack tecnológico y competencias dominadas en la práctica diaria</p>
+      <div class="flex-1">
+        <h2 class="font-heading text-xl sm:text-2xl font-bold text-base-content group-hover:text-primary transition-colors">Capacidades & Stack Técnico</h2>
+        <p class="text-sm sm:text-base text-base-content/70">Qué puedo aportar a un equipo, con los proyectos y artículos que lo demuestran.</p>
       </div>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {skillCategories.map((cat) => (
-        <div class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6 shadow-sm hover:border-primary/50 transition-colors">
-          <div class="flex items-center gap-2.5 mb-4">
-            <div class="p-2 rounded-lg bg-base-100 border border-base-300 text-primary">
-              <Icon name={cat.icon} class="w-5 h-5" />
-            </div>
-            <h3 class="font-heading font-bold text-base text-base-content">{cat.category}</h3>
-          </div>
-
-          <div class="flex flex-wrap gap-1.5">
-            {cat.skills.map((skill) => (
-              <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-base-100 border border-base-300 text-base-content/80 font-medium">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
+      <Icon name="mdi:arrow-right" class="w-6 h-6 text-primary group-hover:translate-x-1 transition-transform" />
+    </a>
   </section>
 
   {/* EDUCACIÓN */}
@@ -380,7 +351,7 @@ const certifications = [
   <section class="mt-12 text-center rounded-2xl border-2 border-primary/30 bg-primary/10 p-4 sm:p-12 shadow-sm">
     <h2 class="font-heading text-2xl sm:text-3xl font-bold mb-3 text-base-content">¿Construimos algo juntos?</h2>
     <p class="text-base sm:text-lg text-base-content/80 max-w-2xl mx-auto mb-6">
-      Si buscas colaborar en un proyecto innovador, necesitas asesoramiento técnico o deseas descargar una copia completa de mi currículum en PDF, estaré encantado de conversar contigo.
+      Si buscas sumar un perfil Full Stack & Blockchain a tu equipo, quieres colaborar en un proyecto innovador o deseas descargar una copia completa de mi currículum en PDF, estaré encantado de conversar contigo.
     </p>
 
     <div class="flex flex-wrap gap-4 justify-center">

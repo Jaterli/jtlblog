@@ -43,6 +43,8 @@ Para acompañar este salto de nivel, no solo he renovado la interfaz y la estruc
 * **Sección de Servicios:** He incorporado un apartado dedicado a detallar de forma clara cómo puedo aportar valor, desde proyectos a medida para particulares hasta consultoría y desarrollo para empresas o ingenierías tecnológicas.
 * **Proyectos destacados:** Integración directa de trabajos clave como **AnGoTest**, con enlaces a su documentación, repositorios y demostraciones en vídeo.
 
+> **Actualización (octubre de 2026):** la sección de Servicios se ha sustituido por una nueva página de [Capacidades](/capacidades/). Este sitio es mi carta de presentación como desarrollador, no una web de venta de servicios, así que ahora muestro qué puedo aportar a un equipo y, junto a cada área, los proyectos y artículos donde lo he puesto en práctica.
+
 ## El aprendizaje continuo no se detiene
 
 A pesar de contar con una estructura más orientada al entorno profesional y de servicios, este portal no perderá su esencia original. El desarrollo software exige un aprendizaje continuo, por lo que seguiré publicando artículos, tutoriales y reflexiones sobre nuevas tecnologías, herramientas y retos técnicos que vaya superando.

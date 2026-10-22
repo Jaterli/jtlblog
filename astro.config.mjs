@@ -26,6 +26,10 @@ export default defineConfig({
     // Escluye las páginas que cumplan con la condición
       filter: (page) => !page.includes('/blog/tag/')
   }), ...(isGithubPages ? [forceStatic] : []) ],
+  // La antigua página de servicios se sustituyó por la de capacidades
+  redirects: {
+    '/servicios': '/capacidades',
+  },
   output: "static", // El sitio se construye como estático por defecto
   adapter: isGithubPages ? undefined : netlify(), // Adaptador de Netlify para funciones serverless
   vite: {

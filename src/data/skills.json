@@ -28,7 +28,7 @@
       "titulo": "Desarrollo Web3, Smart Contracts y Pagos Blockchain",
       "tag": "Blockchain & Web3",
       "url": "https://jaterli.com/proyectos/entry/2025/comercio-electronico-con-pagos-blockchain",
-      "descripcion": "Habilidad para programar Smart Contracts en Solidity desplegados en la red Ethereum y testnets como Sepolia. Integración de Web3 en el frontend mediante Wagmi, Viem, Ethers.js y conexión con wallets como MetaMask. Desarrollo de sistemas de autenticación descentralizada con firma criptográfica (EIP-4361) y listeners de eventos on-chain resilientes ante caídas del servidor."
+      "descripcion": "Habilidad para programar Smart Contracts en Solidity desplegados en la red Ethereum y testnets como Sepolia. Integración de Web3 en el frontend mediante Wagmi, Viem y conexión con wallets como MetaMask. Desarrollo de sistemas de autenticación descentralizada con firma criptográfica (EIP-4361) y listeners de eventos on-chain resilientes ante caídas del servidor."
     },
     {
       "titulo": "Gestión de Bases de Datos Relacionales y SQL Avanzado",
@@ -45,7 +45,7 @@
     {
       "titulo": "DevOps, Containerización con Docker y Despliegue Cloud",
       "tag": "DevOps & Infraestructura",
-      "url": "https://jaterli.com/servicios/",
+      "url": "https://jaterli.com/blog/posts/2025/08/guia-de-despliegue-en-produccion-django--react-vite--nginx--gunicorn/",
       "descripcion": "Experiencia en la dockerización y orquestación de aplicaciones de múltiples servicios mediante Docker Compose. Configuración de servidores de producción VPS en DigitalOcean con proxy inverso Nginx, servidores WSGI como Gunicorn y bases de datos con volúmenes persistentes. Automatización de tareas de mantenimiento mediante cron, copias de seguridad con pg_dump y cifrado HTTPS mediante Let's Encrypt."
     },
     {
@@ -64,19 +64,25 @@
       "titulo": "Desarrollo Web Corporativo y CMS con WordPress",
       "tag": "WordPress & CMS",
       "url": "https://jaterli.com/proyectos/entry/2025/desarrollo-de-web-corporativa-en-wordpress/",
-      "descripcion": "Creación y desarrollo de páginas web corporativas profesionales utilizando WordPress y maquetadores visuales como Elementor. Configuración de sitios autogestionables alineados con la identidad de marca, integrando WooCommerce, formularios de contacto y arquitectura accesible. Atención al detalle visual, optimización para cumplimiento normativo del RGPD y mantenimiento técnico de seguridad."
+      "descripcion": "Creación y desarrollo de páginas web corporativas profesionales utilizando WordPress y maquetadores visuales como Elementor. Configuración de sitios autogestionables alineados con la identidad de marca, integrando formularios de contacto y arquitectura accesible. Atención al detalle visual, optimización para cumplimiento normativo del RGPD y mantenimiento técnico de seguridad."
     },
     {
       "titulo": "Ciberseguridad Web y Estrategias Defensivas de Autenticación",
       "tag": "Ciberseguridad",
-      "url": "https://jaterli.com/servicios/",
+      "url": "https://jaterli.com/blog/posts/2026/01/de-localstorage-a-cookies-httponly-mejorando-la-seguridad-en-angotest/",
       "descripcion": "Implementación de medidas de seguridad web integradas para proteger aplicaciones contra vulnerabilidades como SQL Injection, XSS, CSRF y Clickjacking. Configuración de autenticación mediante JWT almacenado en cookies seguras HttpOnly con SameSite=Strict. Aplicación de mecanismos de rate limiting, hashing seguro de contraseñas con PBKDF2 y firma de mensajes criptográficos con nonces de un solo uso."
     },
     {
       "titulo": "SEO Técnico y Optimización del Rendimiento Web",
       "tag": "SEO & Rendimiento",
-      "url": "https://jaterli.com/servicios/",
-      "descripcion": "Especialización en auditorías de SEO técnico para mejorar la visibilidad orgánica en buscadores como Google. Implementación de metadatos estructurados bajo el estándar Schema.org / JSON-LD en páginas y publicaciones. Optimización de velocidad de carga y métricas Core Web Vitals mediante técnicas como lazy loading de imágenes y estructuración eficiente del código."
+      "url": "https://jaterli.com/blog/posts/2025/09/una-de-las-mejores-sensaciones-el-reconocimiento-de-quien-admiras/",
+      "descripcion": "Implementación de metadatos estructurados bajo el estándar Schema.org / JSON-LD en páginas y publicaciones para mejorar la visibilidad en buscadores como Google. Uso de HTML semántico como base del posicionamiento y la accesibilidad. Optimización de la velocidad de carga mediante técnicas como lazy loading de imágenes y estructuración eficiente del código."
+    },
+    {
+      "titulo": "Machine Learning aplicado a la Ciberseguridad",
+      "tag": "Inteligencia Artificial",
+      "url": "https://jaterli.com/proyectos/entry/2026/verithreat-plataforma-de-threat-intelligence-con-ia-y-blockchain/",
+      "descripcion": "Desarrollo de un modelo de clasificación con scikit-learn (gradient boosting) para estimar si un dominio es malicioso, con una puntuación de severidad de 0 a 100 explicable para cada indicador. Ingesta automatizada de fuentes abiertas de Threat Intelligence en un modelo de datos unificado en PostgreSQL y validación de la fiabilidad de las fuentes con VirusTotal."
     },
     {
       "titulo": "Metodologías Ágiles, Scrum e Innovación Lean",

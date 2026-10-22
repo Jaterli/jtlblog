@@ -1,0 +1,436 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+
+const title = "Capacidades | Desarrollo Full Stack, IA & Blockchain";
+const description = "Qué puedo aportar a un equipo de desarrollo: frontend, backend, Web3, IA, despliegue y análisis funcional, con proyectos y artículos que lo demuestran.";
+const image = "/images/others/Logo-jtl-domain.png";
+
+// Cada capacidad enlaza a proyectos o artículos del propio sitio que la demuestran
+const capabilities = [
+  {
+    id: "frontend",
+    title: "Desarrollo Frontend",
+    icon: "mdi:monitor-dashboard",
+    description:
+      "Interfaces reactivas, accesibles y responsive, desde maquetación pixel-perfect a partir de Figma hasta SPAs completas con gestión de estado.",
+    points: [
+      "SPAs con Angular (componentes standalone, Signals, RxJS, guards e interceptores HTTP).",
+      "Aplicaciones React con Hooks, Context API y Custom Hooks reutilizables.",
+      "Maquetación con SASS modular (BEM), CSS Grid, Flexbox y enfoque Mobile-First.",
+      "Accesibilidad desde la base: HTML semántico y atributos ARIA."
+    ],
+    techs: ["Angular", "React", "TypeScript", "JavaScript", "Astro", "SASS", "Tailwind CSS", "Bootstrap", "Chakra UI"],
+    evidence: [
+      { label: "AnGoTest: plataforma de tests con Angular", href: "/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/" },
+      { label: "Rick and Morty Explorer: migración a React", href: "/proyectos/entry/2026/rick-and-morty-explorer-migracion-de-javascript-vanilla-a-react/" },
+      { label: "Landing profesional con HTML, SASS y JavaScript", href: "/proyectos/entry/2026/maquetacion-de-documentos-landing-profesional-en-html-sass-y-javascript/" },
+      { label: "La importancia de la semántica HTML", href: "/blog/posts/2026/03/la-importancia-de-la-semantica-html-el-cimiento-olvidado-del-desarrollo-web/" }
+    ]
+  },
+  {
+    id: "backend",
+    title: "Backend, APIs & Datos",
+    icon: "mdi:server",
+    description:
+      "APIs REST seguras y bases de datos bien diseñadas, con criterio para elegir la tecnología adecuada y migrar entre ellas cuando conviene.",
+    points: [
+      "APIs RESTful con Django REST Framework y Go (Gin).",
+      "Autenticación JWT en cookies HttpOnly, roles y permisos.",
+      "Modelado y optimización de consultas en PostgreSQL y MySQL.",
+      "Migración completa de un backend de Go a Django."
+    ],
+    techs: ["Python", "Django", "DRF", "Go", "Gin", "PHP", "PostgreSQL", "MySQL", "Django ORM"],
+    evidence: [
+      { label: "AnGoTest: migración de Go a Django", href: "/proyectos/entry/2026/angotest-migracion-de-go-a-django-un-salto-en-productividad-y-escalabilidad/" },
+      { label: "Plataforma de gestión para traductores con React y Django", href: "/proyectos/entry/2025/plataforma-de-gestion-para-traductores-con-react-y-django/" },
+      { label: "Exponential Backoff para sistemas resilientes", href: "/blog/posts/2025/05/exponential-backoff---un-patron-esencial-para-sistemas-resilientes/" },
+      { label: "Certificado de Django Avanzado", href: "/blog/posts/2026/09/consegui-el-certificado-de-django-avanzado/" }
+    ]
+  },
+  {
+    id: "web3",
+    title: "Blockchain & Web3",
+    icon: "mdi:ethereum",
+    description:
+      "Integración de pagos on-chain y autenticación descentralizada en aplicaciones web convencionales, además de contratos inteligentes en Solidity.",
+    points: [
+      "Conexión con wallets (MetaMask) desde React con Wagmi y Viem.",
+      "Autenticación por firma criptográfica (EIP-4361) con nonces de un solo uso.",
+      "Listeners de eventos on-chain resilientes para confirmar pagos automáticamente.",
+      "Smart contracts ERC-20 en Solidity sobre OpenZeppelin."
+    ],
+    techs: ["Solidity", "Wagmi", "Viem", "MetaMask", "ERC-20", "EIP-4361", "OpenZeppelin"],
+    evidence: [
+      { label: "EasyCryptoBuy: e-commerce con pagos blockchain", href: "/proyectos/entry/2025/comercio-electronico-con-pagos-blockchain/" },
+      { label: "Sistema de autenticación seguro para pagos on-chain", href: "/blog/posts/2025/05/sistema-de-autenticacion-seguro-para-pagos-on-chain/" },
+      { label: "Evolución del listener de pagos blockchain", href: "/blog/posts/2025/05/evolucion-del-listener-de-pagos-blockchain/" },
+      { label: "Token ERC-20 con mint, burn y límite de suministro", href: "/proyectos/entry/2024/token-erc-20-con-mint-burn-y-un-limite-de-suministro/" }
+    ]
+  },
+  {
+    id: "ai",
+    title: "Inteligencia Artificial",
+    icon: "mdi:robot-outline",
+    description:
+      "Integración de modelos de lenguaje y de machine learning en aplicaciones reales, con control de uso y resultados explicables.",
+    points: [
+      "Generación de contenido con LLMs (Llama, Mistral) a través de la API de Groq.",
+      "Control de cuotas de uso de IA por usuario.",
+      "Modelos de clasificación con scikit-learn (gradient boosting) y puntuación de riesgo explicable.",
+      "Arquitectura de agentes de IA y protocolo MCP."
+    ],
+    techs: ["Groq API", "Llama", "Mistral", "scikit-learn", "Python", "Agentes IA", "MCP"],
+    evidence: [
+      { label: "AnGoTest: generación de tests con IA", href: "/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/" },
+      { label: "VeriThreat: Threat Intelligence con IA (en desarrollo)", href: "/proyectos/entry/2026/verithreat-plataforma-de-threat-intelligence-con-ia-y-blockchain/" },
+      { label: "Certificado de Agent Harness", href: "/blog/posts/2026/06/consegui-el-certificado-de-agent-harness/" }
+    ]
+  },
+  {
+    id: "devops-security",
+    title: "Despliegue & Seguridad",
+    icon: "mdi:shield-check-outline",
+    description:
+      "Llevo las aplicaciones hasta producción y las mantengo seguras: contenedores, servidores Linux, HTTPS y buenas prácticas frente a ataques web.",
+    points: [
+      "Dockerización de aplicaciones multiservicio con Docker Compose.",
+      "Despliegue en VPS con Nginx, Gunicorn, HTTPS (Let's Encrypt) y copias con pg_dump.",
+      "Protección frente a XSS, CSRF, inyección SQL y clickjacking.",
+      "Automatización con GitHub Actions y tareas cron."
+    ],
+    techs: ["Docker", "Nginx", "Gunicorn", "Linux", "DigitalOcean", "GitHub Actions", "Let's Encrypt"],
+    evidence: [
+      { label: "Guía de despliegue: Django + React + Nginx + Gunicorn", href: "/blog/posts/2025/08/guia-de-despliegue-en-produccion-django--react-vite--nginx--gunicorn/" },
+      { label: "De localStorage a cookies HttpOnly en AnGoTest", href: "/blog/posts/2026/01/de-localstorage-a-cookies-httponly-mejorando-la-seguridad-en-angotest/" },
+      { label: "GitHub Action para generar gráficas automáticamente", href: "/proyectos/entry/2024/github-action-para-generar-graficas-automaticamente/" },
+      { label: "Certificado de Linux y la Terminal", href: "/blog/posts/2025/08/consegui-el-certificado-de-linux-y-la-terminal-de-linux/" }
+    ]
+  },
+  {
+    id: "analysis",
+    title: "Análisis, Gestión & Comunicación",
+    icon: "mdi:account-group-outline",
+    description:
+      "Más de 20 años traduciendo necesidades de negocio en herramientas que se usan a diario, y explicando lo técnico de forma clara.",
+    points: [
+      "Recogida de requisitos y gestión de proyectos de principio a fin.",
+      "Diseño de herramientas internas: buscadores con filtros, encuestas y presupuestos.",
+      "Trabajo con metodologías ágiles (Scrum, Kanban).",
+      "Documentación técnica en el blog y demostraciones en vídeo."
+    ],
+    techs: ["Análisis funcional", "Gestión de proyectos", "Scrum", "Documentación técnica", "Figma"],
+    evidence: [
+      { label: "20 años de desarrollo y gestión de proyectos", href: "/jobs/entry/desarrollo-de-aplicaciones-web-gestion-de-proyectos/" },
+      { label: "Translator Management: modernización y nuevas funcionalidades", href: "/blog/posts/2026/06/translator-management-modernizacion-y-nuevas-funcionalidades/" },
+      { label: "Certificado de Metodologías Ágiles y Scrum", href: "/blog/posts/2026/05/consegui-el-certificado-de-metodologias-agiles-y-scrum/" },
+      { label: "Grabar un vídeo profesional para AnGoTest", href: "/blog/posts/2026/09/la-experiencia-de-grabar-un-video-profesional-para-mi-proyecto-de-fin-de-master-angotest/" }
+    ]
+  }
+];
+
+const skillCategories = [
+  { category: "Lenguajes", icon: "mdi:code-tags", skills: ["Python", "JavaScript", "TypeScript", "Go", "PHP", "Solidity", "SQL"] },
+  { category: "Frontend & UI", icon: "mdi:monitor-dashboard", skills: ["Angular", "React", "Vue.js", "Astro", "Tailwind CSS", "SASS", "Bootstrap", "Chakra UI", "HTML5 / CSS3"] },
+  { category: "Backend & Datos", icon: "mdi:database", skills: ["Django", "Django REST Framework", "Gin", "PostgreSQL", "MySQL", "Django ORM", "SQLAlchemy"] },
+  { category: "Blockchain & Web3", icon: "mdi:ethereum", skills: ["Smart Contracts", "Wagmi", "Viem", "MetaMask", "OpenZeppelin", "ERC-20", "EIP-4361 (SIWE)"] },
+  { category: "Inteligencia Artificial", icon: "mdi:robot-outline", skills: ["Groq API", "Llama / Mistral", "scikit-learn", "Agentes IA", "MCP"] },
+  { category: "DevOps & Herramientas", icon: "mdi:wrench-outline", skills: ["Docker", "Nginx", "Linux (Bash, Cron)", "Git & GitHub", "GitHub Actions", "Figma", "WordPress", "SEO técnico (JSON-LD)"] }
+];
+
+const workSteps = [
+  {
+    number: "01",
+    title: "Entender el problema",
+    description: "Recojo los requisitos, hago las preguntas necesarias y defino la solución antes de escribir código."
+  },
+  {
+    number: "02",
+    title: "Desarrollo iterativo",
+    description: "Avanzo en entregas pequeñas y revisables, con control de versiones en Git y código limpio."
+  },
+  {
+    number: "03",
+    title: "Calidad & seguridad",
+    description: "Compruebo el diseño responsive, la accesibilidad y la seguridad desde el principio, no al final."
+  },
+  {
+    number: "04",
+    title: "Despliegue & documentación",
+    description: "Llevo el proyecto a producción y documento las decisiones para que el equipo pueda continuarlo."
+  }
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  ogType="website"
+  sideBarActiveItemID="capacidades"
+>
+  <!-- ============================================================
+      CABECERA / HERO DE CAPACIDADES
+  ============================================================ -->
+  <section
+    class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/80 px-4 sm:px-10 py-12 sm:py-16 shadow-md"
+  >
+    <div
+      class="absolute inset-0 opacity-20 pointer-events-none bg-[url('/images/others/hero-pattern.svg')] bg-repeat bg-cover"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl pointer-events-none"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative flex flex-col md:flex-row items-center gap-8 lg:gap-12">
+      <div class="text-center md:text-left flex-1">
+        <span
+          class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/10 text-xs font-semibold text-primary mb-6"
+        >
+          <Icon name="mdi:check-decagram-outline" class="w-4 h-4" />
+          Cada capacidad, respaldada por proyectos reales
+        </span>
+
+        <h1
+          class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.15] mb-4 text-base-content"
+        >
+          Qué puedo aportar a tu <span class="text-primary">equipo</span>
+        </h1>
+
+        <p class="text-lg text-base-content/80 leading-relaxed mb-6">
+          Desarrollo Full Stack, Web3 e Inteligencia Artificial, con más de 20 años de experiencia en gestión de proyectos. Junto a cada área encontrarás los proyectos y artículos donde la he puesto en práctica.
+        </p>
+
+        <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+          <a
+            href="/proyectos/"
+            class="btn btn-primary rounded-lg px-6 shadow-sm hover:shadow-md transition-all inline-flex items-center gap-2"
+          >
+            <Icon name="mdi:folder-outline" class="w-5 h-5" />
+            Ver Proyectos
+          </a>
+          <a
+            href="/about/"
+            class="btn btn-outline rounded-lg bg-base-100 hover:bg-base-200 border-base-300 transition-colors inline-flex items-center gap-2"
+          >
+            <Icon name="mdi:account-outline" class="w-5 h-5 text-primary" />
+            Mi Trayectoria
+          </a>
+        </div>
+      </div>
+
+      <div class="relative shrink-0 w-full max-w-xs md:max-w-sm lg:max-w-md">
+        <div class="relative rounded-2xl overflow-hidden border-2 border-base-300 bg-base-100 p-2 shadow-lg">
+          <img
+            src="/images/others/hero-servicios.webp"
+            alt="Ilustración de desarrollo web, Inteligencia Artificial y Blockchain"
+            class="w-full h-auto rounded-xl object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ÁREAS DE CAPACIDAD
+  ============================================================ -->
+  <section class="mt-12">
+    <div class="text-center mb-10">
+      <h2 class="font-heading text-2xl sm:text-3xl font-semibold tracking-tight">
+        Áreas de capacidad
+      </h2>
+      <p class="text-sm sm:text-base text-base-content/70 mt-2">
+        Lo que sé hacer y dónde puedes comprobarlo
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        capabilities.map((cap) => (
+          <article id={cap.id} class="group relative flex flex-col justify-between rounded-2xl border-2 border-base-300/60 bg-base-200/40 p-4 sm:p-8 hover:border-primary/40 hover:bg-base-200 shadow-md hover:shadow-xl transition-all duration-300">
+            <div>
+              <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary text-primary-content shadow-sm mb-4">
+                <Icon name={cap.icon} class="w-6 h-6" />
+              </div>
+
+              <h3 class="font-heading text-2xl font-bold mb-3 text-base-content group-hover:text-primary transition-colors">
+                {cap.title}
+              </h3>
+
+              <p class="text-base-content/80 leading-relaxed mb-6">
+                {cap.description}
+              </p>
+
+              <ul class="space-y-2.5 text-base-content/90 mb-6">
+                {cap.points.map((point) => (
+                  <li class="flex items-start gap-2.5">
+                    <Icon name="mdi:check-circle" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <span class="leading-snug">{point}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="border-t border-base-300/80 pt-4 mb-6">
+                <h4 class="text-sm uppercase tracking-wider text-base-content/60 font-bold mb-3">
+                  Lo he aplicado en
+                </h4>
+                <ul class="space-y-2">
+                  {cap.evidence.map((item) => (
+                    <li>
+                      <a href={item.href} class="inline-flex items-start gap-2 text-sm font-medium text-primary hover:underline">
+                        <Icon name="mdi:arrow-right" class="w-4 h-4 shrink-0 mt-0.5" />
+                        <span>{item.label}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-base-300/80">
+              <div class="flex flex-wrap gap-1.5">
+                {cap.techs.map((tech) => (
+                  <span class="font-mono text-xs px-2 py-0.5 rounded-md bg-base-100 border border-base-300 text-base-content/80 font-medium">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STACK TÉCNICO
+  ============================================================ -->
+  <section class="mt-16">
+    <div class="flex flex-col text-center sm:flex-row sm:text-left items-center gap-3 mb-6">
+      <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs w-fit">
+        <Icon name="mdi:laptop" class="w-6 h-6" />
+      </div>
+      <div>
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Stack técnico</h2>
+        <p class="text-sm sm:text-base text-base-content/70">Tecnologías que he utilizado en proyectos y formación acreditada</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {skillCategories.map((cat) => (
+        <div class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6 shadow-sm hover:border-primary/50 transition-colors">
+          <div class="flex items-center gap-2.5 mb-4">
+            <div class="p-2 rounded-lg bg-base-100 border border-base-300 text-primary">
+              <Icon name={cat.icon} class="w-5 h-5" />
+            </div>
+            <h3 class="font-heading font-bold text-base text-base-content">{cat.category}</h3>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5">
+            {cat.skills.map((skill) => (
+              <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-base-100 border border-base-300 text-base-content/80 font-medium">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CÓMO TRABAJO
+  ============================================================ -->
+  <section class="mt-16 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-10 shadow-sm">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="font-heading text-2xl sm:text-3xl font-semibold tracking-tight">
+        Cómo trabajo
+      </h2>
+      <p class="text-sm sm:text-base text-base-content/70 mt-2">
+        Del análisis de requisitos a producción, con el foco puesto en la calidad y en el equipo.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        workSteps.map((step) => (
+          <div class="relative bg-base-100 rounded-xl p-5 border border-base-300 shadow-sm">
+            <span class="font-mono text-3xl font-extrabold text-primary block mb-2">
+              {step.number}
+            </span>
+            <h3 class="font-heading text-lg font-bold mb-2 text-base-content">
+              {step.title}
+            </h3>
+            <p class="text-sm text-base-content/70 leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ============================================================
+        BLOQUE DE LLAMADA A LA ACCIÓN (CTA)
+  ============================================================ -->
+  <section class="mt-16 text-center rounded-2xl border-2 border-primary/30 bg-primary/10 p-4 sm:p-12 shadow-sm relative overflow-hidden">
+    <div class="max-w-3xl mx-auto space-y-4">
+      <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-xs font-semibold text-emerald-600">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        Abierto a nuevas oportunidades
+      </span>
+
+      <h2 class="font-heading text-2xl sm:text-3xl text-balance font-bold text-base-content">
+        ¿Buscas un perfil Full Stack & Blockchain para tu equipo?
+      </h2>
+
+      <p class="text-lg text-base-content/80 leading-relaxed">
+        Si crees que mi experiencia encaja en tu empresa o proyecto, estaré encantado de conversar contigo.
+      </p>
+
+      <div class="pt-4 flex flex-wrap justify-center gap-4">
+        <a
+          href="/contacto/"
+          class="btn btn-primary rounded-lg px-8 shadow-md hover:shadow-lg transition-all inline-flex items-center gap-2"
+        >
+          <Icon name="mdi:send-outline" class="w-5 h-5" />
+          Contactar
+        </a>
+        <a
+          href="https://www.linkedin.com/in/jaterli"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2"
+        >
+          <Icon name="mdi:linkedin" class="w-5 h-5 text-[#0A66C2]" />
+          Ver Perfil en LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- JSON-LD: perfil profesional con sus áreas de conocimiento -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "name": "Capacidades de Jaime TL",
+      "url": "https://jaterli.com/capacidades/",
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "https://jaterli.com/about/",
+        "name": "Jaime TL",
+        "jobTitle": "Desarrollador Full Stack, IA y Blockchain",
+        "knowsAbout": [
+          "Desarrollo Frontend", "Angular", "React", "TypeScript",
+          "Django", "Go", "APIs REST", "PostgreSQL",
+          "Solidity", "Web3", "Smart Contracts",
+          "Inteligencia Artificial", "Machine Learning",
+          "Docker", "Seguridad Web", "Análisis Funcional", "Gestión de Proyectos"
+        ]
+      }
+    }
+  </script>
+</BaseLayout>
