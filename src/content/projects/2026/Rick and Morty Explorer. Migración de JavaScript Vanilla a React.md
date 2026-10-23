@@ -12,7 +12,7 @@ jsonLd:
   "operatingSystem": "Web"
   "description": "Aplicación web SPA desarrollada con React que consume la API de Rick and Morty. Incluye exploración de personajes y episodios, búsqueda en tiempo real, filtros combinados, sistema de favoritos con persistencia LocalStorage, vista detallada con modales y navegación bidireccional."
   "image": "https://jaterli.com/images/proyectos/projects.react-rickandmorty-explorer.webp"
-  "url": "https://jaterli.com/proyectos/entry/2026/rick-and-morty-explorer-migracion-de-javascript-a-react"
+  "url": "https://jaterli.com/proyectos/entry/2026/rick-and-morty-explorer-migracion-de-javascript-vanilla-a-react/"
   "author": {
     "@type": "Person",
     "name": "Jaterli"
