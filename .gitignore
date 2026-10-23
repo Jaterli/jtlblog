@@ -2,7 +2,8 @@
 dist/
 .cache
 # dependencies
-node_modules/
+# Sin barra final: en WSL node_modules es un enlace simbólico al disco de Linux (scripts/setup-wsl.sh)
+node_modules
 
 # logs
 npm-debug.log*

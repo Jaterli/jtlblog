@@ -17,6 +17,23 @@ Una vez instalados los paquetes, estarás listo para ejecutar Astro. Astro inclu
 pnpm run dev
 ```
 
+### En WSL con el proyecto en un disco de Windows
+
+Leer muchos ficheros a través de `/mnt/...` es muy lento. Por eso `node_modules` es un enlace simbólico a
+`~/jaterli_deps/node_modules`, en el disco de Linux. El script lo crea y lo rellena con yarn (el proyecto usa
+`yarn.lock`):
+
+```bash
+bash scripts/setup-wsl.sh   # solo la primera vez o si se borran las dependencias
+yarn dev                    # http://localhost:4321
+```
+
+Para **añadir o quitar paquetes** usa `bash scripts/yarn.sh add <paquete>` (o `remove`) en lugar de `yarn add`:
+yarn reinstalaría `node_modules` en `/mnt`, que es lento. `yarn dev`, `yarn build`, etc. funcionan con normalidad.
+
+Abre el proyecto en VS Code **desde WSL** (`code .` en la terminal de Linux). VS Code en modo Windows no puede
+seguir el enlace simbólico y marcaría errores falsos de dependencias.
+
 ## Tecnologías Utilizadas
 
 - [Astro](https://astro.build)
