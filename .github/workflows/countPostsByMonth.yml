@@ -1,32 +1,23 @@
 name: Actualizar conteo de publicaciones por mes
 
-# Definir cuándo se ejecutará la acción (cron expression para todos los días a las 12:00 UTC)
+# Se ejecuta en cada push a main y también se puede lanzar a mano.
+# Al terminar con éxito dispara el despliegue (deploy-github-pages.yml).
 
 on:
-  # schedule:    
+  # schedule:
   #   - cron: 0 22 * * 5  # Ejecuta el workflow todos los viernes a las 22:00.
   workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'Manually Trigger'
-        type: choice
-        options:
-          - Manually Trigger
-          - Add new post
-          - Debug          
   push: # Siempre que se haga un push en la branch
-    branches: [main]  
+    branches: [main]
 
 # Definir los jobs
 jobs:
-  run-python-script: # build
+  count-posts:
     runs-on: ubuntu-latest  # Usaremos una máquina con Ubuntu
 
     permissions:
       contents: write
-      
+
     steps:
       # Paso 1: Checkout (obtener el código del repositorio)
       - name: Checkout repository
@@ -37,22 +28,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'  # Usar la última versión estable (LTS)
+          cache: yarn
 
       # Paso 3: Instalar dependencias del proyecto
       - name: Install dependencies
         run: |
-          npm install
+          yarn install
 
       # Paso 4: Ejecutar el script de conteo
       - name: Run countPostsByMonth script
         run: |
           node ./utils/countPostsByMonth.mjs
 
-  
       # Paso 5: Commit y Push si el archivo fue modificado
+      # (el push con GITHUB_TOKEN no vuelve a disparar este workflow)
       - name: Commit and Push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
@@ -63,25 +53,3 @@ jobs:
             git commit -m "Updated postsByMonth.json"
             git push
           fi
-        if: success()  # Solo hacer commit si el script se ejecuta correctamente
-
-
-name: Limpiar ejecuciones antiguas
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '30 0 * * *' # Se ejecuta diariamente a las 00:30 UTC (00:30 en España peninsular)
-jobs:
-  delete-runs:
-    runs-on: ubuntu-latest
-    permissions:
-      actions: write
-      contents: read
-    steps:
-      - name: Delete workflow runs
-        uses: Mattraks/delete-workflow-runs@v2
-        with:
-          token: ${{ github.token }}
-          repository: ${{ github.repository }}
-          retain_days: 10 # Borra ejecuciones de más de 10 días
-          keep_minimum_runs: 6

@@ -1,0 +1,21 @@
+name: Limpiar ejecuciones antiguas
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 0 * * 6' # Se ejecuta los sábados a las 00:30 UTC
+
+jobs:
+  delete-runs:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 10 # Borra ejecuciones de más de 10 días
+          keep_minimum_runs: 6 # Conserva al menos 6 por workflow
