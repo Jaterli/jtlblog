@@ -64,3 +64,24 @@ jobs:
             git push
           fi
         if: success()  # Solo hacer commit si el script se ejecuta correctamente
+
+
+name: Limpiar ejecuciones antiguas
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 0 * * *' # Se ejecuta diariamente a las 00:30 UTC (00:30 en España peninsular)
+jobs:
+  delete-runs:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 10 # Borra ejecuciones de más de 10 días
+          keep_minimum_runs: 6
