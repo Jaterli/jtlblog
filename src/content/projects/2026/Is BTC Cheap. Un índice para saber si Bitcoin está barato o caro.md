@@ -46,11 +46,11 @@ El índice reúne cinco categorías de datos:
 * **Ciclo:** sitúa el momento actual dentro del ciclo de unos 4 años que marcan los halvings y respecto a la tendencia de largo plazo de Bitcoin.
 * **Liquidez:** mide si entra o sale dinero del sistema financiero (liquidez de la Reserva Federal, masa monetaria M2, fuerza del dólar y oferta de stablecoins).
 * **Sentimiento:** el miedo o la euforia de los inversores (Fear & Greed Index) y el apalancamiento en los mercados de futuros (funding rate).
-* **Análisis técnico:** RSI, bandas de Bollinger y distancia a la media de 200 velas, calculados en vivo.
+* **Análisis técnico:** RSI, bandas de Bollinger y distancia a la media de 200 velas (48 en la temporalidad mensual), calculados en vivo.
 
 Cada métrica se convierte en una puntuación de 0 a 100 según su **percentil en los últimos 4 años**, un ciclo completo de halving. Así cada dato se compara solo con su pasado reciente, y no con las burbujas de 2013 o 2017, cuando el mercado era mucho más pequeño y volátil.
 
-El índice se puede consultar en **cinco temporalidades**, de 15 minutos a 1 semana. Los pesos cambian según la temporalidad: en las cortas pesan más el técnico y el sentimiento; en las largas, la valoración y el ciclo.
+El índice se puede consultar en **cinco temporalidades**, de 1 hora a 1 mes. Los pesos cambian según la temporalidad: en las cortas pesan más el técnico y el sentimiento; en las largas, la valoración y el ciclo.
 
 ---
 
