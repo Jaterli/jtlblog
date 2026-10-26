@@ -58,7 +58,7 @@ const tag = params.tag ? params.tag.toUpperCase() : "";
 
 const title = `Blog: ${tag}`;
 const description = `Artículos, tutoriales y guías sobre desarrollo web, IA y blockchain filtrados por la etiqueta ${tag}.`;
-const image = "/images/others/profile-photo.webp";
+const image = "/images/others/og-default.jpg";
 
 const currentPath = page.url.current.replace(/\/$/, "") || "/";
 const basePath = currentPath.replace(/\/\d+$/, "") || "/";
@@ -71,6 +71,7 @@ const pageNumbers =
   title={title}
   description={description}
   image={image}
+  noindex={true}
   sideBarActiveItemID="blog"
 >
   <!-- ============================================================

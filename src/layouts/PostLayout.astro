@@ -3,6 +3,8 @@ import type { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import { getCanonicalUrl } from "@lib/getCanonicalUrl";
+import { buildJsonLd } from "@lib/structuredData";
 
 export type Props = CollectionEntry<"blog">["data"];
 
@@ -11,6 +13,16 @@ const { title, description, pubDate, heroImage, jsonLd, badge, tags = [] } = Ast
 // Sin el CDN de Netlify (GitHub Pages), Astro exige ambas dimensiones en imágenes de /public
 const heroHeight =
   import.meta.env.PUBLIC_DEPLOY_TARGET === "github" && typeof heroImage === "string" ? 720 : undefined;
+
+const ogImage = typeof heroImage === "string" ? heroImage : heroImage?.src;
+const structuredData = buildJsonLd(jsonLd, {
+  title,
+  description,
+  pubDate,
+  image: ogImage,
+  tags,
+  url: getCanonicalUrl(Astro.url, Astro.site),
+});
 
 const displayDate = pubDate
   ? new Date(pubDate).toLocaleDateString("es-ES", {
@@ -24,9 +36,9 @@ const displayDate = pubDate
 <BaseLayout
   title={title}
   description={description}
-  image={typeof heroImage === "string" ? heroImage : heroImage?.src}
+  image={ogImage}
   ogType="article"
-  jsonLd={jsonLd}
+  jsonLd={structuredData}
 >
   <!-- ============================================================
         CABECERA DEL POST (texto izq / imagen der)
@@ -124,6 +136,8 @@ const displayDate = pubDate
                 height={heroHeight}
                 src={heroImage}
                 alt={title}
+                loading="eager"
+                fetchpriority="high"
                 class="max-h-[560px] w-full h-auto inline-block rounded-lg object-cover"
               />
             </div>

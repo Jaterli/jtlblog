@@ -58,7 +58,7 @@ const tag = params.tag ? params.tag.toUpperCase() : "";
 
 const title = `Proyectos en Full Stack, IA y Web3: ${tag}`;
 const description = `Portfolio de proyectos de programación filtrados por la etiqueta ${tag}. Explora las soluciones y aplicaciones desarrolladas.`;
-const image = "/images/others/profile-photo.webp";
+const image = "/images/others/og-default.jpg";
 
 const currentPath = page.url.current.replace(/\/$/, "") || "/";
 const basePath = currentPath.replace(/\/\d+$/, "") || "/";
@@ -71,6 +71,7 @@ const pageNumbers =
   title={title}
   description={description}
   image={image}
+  noindex={true}
   sideBarActiveItemID="proyectos"
 >
   <!-- ============================================================

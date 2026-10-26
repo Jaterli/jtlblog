@@ -30,8 +30,8 @@ export default defineConfig({
   site: 'https://jaterli.com',
   //base: '/jtlblog',
   integrations: [mdx(), icon(), sitemap({
-    // Escluye las páginas que cumplan con la condición
-      filter: (page) => !page.includes('/blog/tag/')
+    // Excluye las páginas de etiquetas (llevan noindex: poco contenido propio)
+      filter: (page) => !page.includes('/blog/tag/') && !page.includes('/proyectos/tag/')
   }), ...(isGithubPages ? [forceStatic] : []) ],
   // La antigua página de servicios se sustituyó por la de capacidades
   redirects: {

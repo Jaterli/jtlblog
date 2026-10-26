@@ -3,6 +3,7 @@ import Footer from "@components/Footer.astro";
 import SideBar from "@components/SideBar.astro";
 import { ClientRouter } from 'astro:transitions';
 import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from "../types/config";
+import { getCanonicalUrl } from "@lib/getCanonicalUrl";
 import "@fontsource-variable/space-grotesk";
 import "@fontsource-variable/inter";
 import "@fontsource/jetbrains-mono/400.css";
@@ -17,8 +18,13 @@ const {
   jsonLd,
   includeSidebar = true,
   noindex = false, 
-  sideBarActiveItemID,  
+  sideBarActiveItemID,
 } = Astro.props;
+
+const canonicalURL = getCanonicalUrl(Astro.url, Astro.site);
+
+// Imagen para redes sociales: URL absoluta y, si la página no tiene, una por defecto de 1200x630
+const ogImage = new URL(image ?? "/images/others/og-default.jpg", Astro.site);
 ---
 
 <!doctype html>
@@ -35,17 +41,24 @@ const {
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    {/* Bloquea la indexación si la página lo solicita, pero deja que se sigan sus enlaces */}
+    {noindex && <meta name="robots" content="noindex, follow" />}
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content={ogType} />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:type" content={ogType ?? "website"} />
+    <meta property="og:site_name" content="Jaime TL" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`https://www.jaterli.com${image}`} />
-    {/* Bloquea la indexación si la página lo solicita */}
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
-    
-    <!-- <meta property="og:image" content={new URL(image, Astro.url)} /> -->
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- JSON-LD específico (Markdown) -->
     {jsonLd && (
@@ -99,10 +112,14 @@ const {
         "JavaScript",
         "TypeScript",
         "Solidity",
-        "Rust",
+        "Angular",
+        "Go",
         "Web3",
         "Blockchain",
         "Smart Contracts",
+        "Machine Learning",
+        "Artificial Intelligence",
+        "Threat Intelligence",
         "Full Stack Development",
         "WordPress"
       ],
