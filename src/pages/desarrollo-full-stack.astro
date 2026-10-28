@@ -4,52 +4,117 @@ import { Icon } from "astro-icon/components";
 
 // Metadata
 const title = "Máster en Desarrollo Full Stack | Mi Experiencia";
-const description = "Mi experiencia y todo lo aprendido durante el Máster en Desarrollo Full Stack en Conquer Blocks: Frontend, Backend, DevOps, Seguridad y Metodologías Ágiles.";
+const description = "Diploma del Máster en Desarrollo Full Stack de Conquer Blocks: módulos cursados, proyecto final AnGoTest y certificaciones obtenidas en Frontend, Backend, IA, despliegue y desarrollo profesional.";
 const image = "/images/others/master-fullstack.jpg";
 
-// Datos de módulos/aprendizajes
+// Diploma y proyecto final
+const diploma = {
+  image: "/certifications/Diploma-Master-Desarrollo-Full-Stack.png",
+  date: "28 de octubre de 2026",
+  post: "/blog/posts/2026/10/diploma-del-master-en-desarrollo-full-stack-de-conquer-blocks/",
+};
+
+const finalProject = {
+  name: "AnGoTest",
+  url: "/proyectos/entry/2026/angotest-plataforma-completa-de-tests-online-con-django-angular-e-ia/",
+  video: "https://www.youtube.com/watch?v=JOpi1MysM9g",
+  repo: "https://github.com/Jaterli/angotest",
+  description: "Plataforma de tests online con generación de tests mediante IA, autenticación JWT con cookies HttpOnly, roles de usuario, rankings y panel de administración. Desplegada en producción con Docker, Nginx y PostgreSQL.",
+  stack: ["Django REST Framework", "Angular", "PostgreSQL", "Docker", "IA (Groq)"],
+};
+
+// Módulos cursados, agrupados por áreas
 const learningModules = [
+  {
+    title: "Fundamentos",
+    icon: "mdi:code-braces",
+    description: "Las bases de la programación y las herramientas del día a día de cualquier desarrollador.",
+    topics: ["Pseudocódigo", "Linux y la Terminal", "Python", "Git y GitHub", "SQL"]
+  },
   {
     title: "Desarrollo Frontend",
     icon: "mdi:monitor-dashboard",
     description: "Creación de interfaces de usuario dinámicas, interactivas y totalmente responsivas.",
-    topics: ["HTML5 / CSS3", "JavaScript & TypeScript", "React", "Vue.js", "Angular"]
+    topics: ["HTML", "CSS", "JavaScript", "ReactJS", "Frontend + IA", "Diseña con IA"]
   },
   {
-    title: "Desarrollo Backend",
+    title: "Backend & Producción",
     icon: "mdi:server",
-    description: "Construcción de APIs robustas, servicios RESTful y gestión de la lógica de servidor.",
-    topics: ["Node.js", "Django", "Spring Boot", "Bases de Datos SQL & NoSQL"]
+    description: "Construcción de APIs robustas, despliegue en servidores y visibilidad en buscadores.",
+    topics: ["Django", "Backend + IA", "Despliegue", "SEO"]
   },
   {
-    title: "DevOps & Despliegue",
-    icon: "mdi:cloud-upload-outline",
-    description: "Administración de infraestructura, contenedorización y automatización de despliegues.",
-    topics: ["Docker", "Pipelines CI/CD", "Gestión de Servidores", "Cloud (AWS / Azure)"]
+    title: "IA & Agentes",
+    icon: "mdi:robot-outline",
+    description: "Uso de la inteligencia artificial para programar, automatizar tareas y construir agentes.",
+    topics: ["IA Google Antigravity", "Automatizaciones y Agentes", "Agentes CLI"]
   },
   {
-    title: "Seguridad & Optimización",
-    icon: "mdi:shield-check-outline",
-    description: "Implementación de buenas prácticas para garantizar aplicaciones seguras y eficientes.",
-    topics: ["Autenticación & JWT", "Control de Accesos", "Optimización de Rendimiento", "Buenas Prácticas"]
-  },
-  {
-    title: "Metodologías Ágiles",
+    title: "Carrera Profesional",
     icon: "mdi:account-group-outline",
-    description: "Gestión de proyectos en equipo utilizando marcos de trabajo modernos y control de versiones.",
-    topics: ["Scrum", "Git & GitHub", "Flujos de Trabajo", "Herramientas de Colaboración"]
+    description: "Trabajo en equipo, metodologías ágiles y preparación para el mercado laboral.",
+    topics: ["Desarrollo Profesional", "Preparación de Entrevistas", "Metodologías Ágiles y Scrum", "Soft Skills", "Propuestas Laborales"]
   }
+];
+
+// Certificaciones obtenidas durante el máster (cada una con su entrada en el blog)
+const certifications = [
+  { name: "Git y GitHub", url: "/blog/posts/2025/05/certificado-de-git-y-github-superado-con-exito/" },
+  { name: "JavaScript Avanzado", url: "/blog/posts/2025/07/consegui-el-certificado-de-javascript-avanzado/" },
+  { name: "TypeScript", url: "/blog/posts/2025/07/consegui-el-certificado-de-typescript/" },
+  { name: "Linux y la Terminal", url: "/blog/posts/2025/08/consegui-el-certificado-de-linux-y-la-terminal-de-linux/" },
+  { name: "WordPress", url: "/blog/posts/2025/08/consegui-el-certificado-de-wordpress/" },
+  { name: "ReactJS", url: "/blog/posts/2025/09/consegui-el-certificado-de-react/" },
+  { name: "Angular", url: "/blog/posts/2026/03/certificacion-en-angular-y-desarrollo-de-angotest/" },
+  { name: "CSS Experto", url: "/blog/posts/2026/04/consegui-el-certificado-de-css-experto/" },
+  { name: "Node JS" },
+  { name: "SQL Avanzado", url: "/blog/posts/2026/04/consegui-el-certificado-de-sql-avanzado/" },
+  { name: "VueJS", url: "/blog/posts/2026/04/consegui-el-certificado-de-vuejs/" },
+  { name: "Metodologías Ágiles y Scrum", url: "/blog/posts/2026/05/consegui-el-certificado-de-metodologias-agiles-y-scrum/" },
+  { name: "Soft Skills", url: "/blog/posts/2026/05/consegui-el-certificado-de-soft-skills/" },
+  { name: "Agent Harness", url: "/blog/posts/2026/06/consegui-el-certificado-de-agent-harness/" },
+  { name: "ORMs en Python", url: "/blog/posts/2026/09/consegui-el-certificado-de-orms-en-python/" },
+  { name: "Django Avanzado", url: "/blog/posts/2026/09/consegui-el-certificado-de-django-avanzado/" },
 ];
 
 // Datos del impacto profesional
 const careerImpacts = [
   "Construir aplicaciones web completas desde cero, integrando armónicamente el frontend y el backend.",
   "Gestionar el ciclo de vida integral de un proyecto, desde el diseño inicial hasta su despliegue en producción.",
+  "Integrar la inteligencia artificial tanto en el flujo de desarrollo como en las propias aplicaciones.",
   "Trabajar de forma ágil y coordinada en equipos multidisciplinares, manteniendo altos estándares de calidad."
 ];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Course",
+      "name": "Máster en Desarrollo Full Stack",
+      "description": "Formación en fundamentos de programación, frontend, backend, inteligencia artificial, despliegue y desarrollo profesional.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Conquer Blocks",
+        "url": "https://conquerblocks.com"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Máster en Desarrollo Full Stack",
+      "credentialCategory": "Máster",
+      "dateIssued": "2026-10-28",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Conquer Blocks",
+        "url": "https://conquerblocks.com"
+      },
+      "image": `https://jaterli.com${diploma.image}`
+    }
+  ]
+};
 ---
 
-<BaseLayout title={title} description={description} image={image} ogType="article" sideBarActiveItemID="fullstack-master">
+<BaseLayout title={title} description={description} image={image} ogType="article" jsonLd={jsonLd} sideBarActiveItemID="fullstack-master">
 
   {/* HERO */}
   <section class="relative overflow-hidden rounded-2xl border-2 border-base-300 bg-base-200/80 p-4 sm:p-10 shadow-md mb-10">
@@ -64,27 +129,97 @@ const careerImpacts = [
       </div>
 
       <div class="text-center md:text-left flex-1">
-        <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/10 text-xs font-semibold text-primary mb-3">
-          <Icon name="mdi:school-outline" class="w-4 h-4" />
-          Conquer Blocks (2022 - 2024)
-        </span>
+        <div class="flex flex-wrap gap-2 justify-center md:justify-start mb-3">
+          <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/10 text-xs font-semibold text-primary">
+            <Icon name="mdi:school-outline" class="w-4 h-4" />
+            Conquer Blocks (2024 - 2026)
+          </span>
+          <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-emerald-600/30 bg-emerald-600/10 text-xs font-semibold text-emerald-600">
+            <Icon name="mdi:certificate-outline" class="w-4 h-4" />
+            Titulado
+          </span>
+        </div>
 
         <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-4 text-base-content">
           Máster en <span class="text-primary">Desarrollo Full Stack</span>
         </h1>
 
         <p class="text-lg text-base-content/80 leading-relaxed mb-6">
-          Uno de los hitos más importantes en mi formación. Este programa me permitió dominar la construcción de aplicaciones web completas, desde el frontend hasta el backend, junto con su despliegue e infraestructura.
+          Uno de los hitos más importantes en mi formación. Este programa me permitió dominar la construcción de aplicaciones web completas, desde el frontend hasta el backend, junto con su despliegue e infraestructura. Tras aprobar mi proyecto final, <strong>AnGoTest</strong>, obtuve el diploma el {diploma.date}.
         </p>
 
         <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-          <a href="/contacto/" class="btn btn-primary rounded-lg px-6 shadow-sm">
-            <Icon name="mdi:email-outline" class="w-5 h-5" />
-            Contactar
+          <a href="#diploma" class="btn btn-primary rounded-lg px-6 shadow-sm">
+            <Icon name="mdi:certificate-outline" class="w-5 h-5" />
+            Ver diploma
           </a>
           <a href="/about/" class="btn btn-outline rounded-lg bg-base-100 border-base-300">
             <Icon name="mdi:account-outline" class="w-5 h-5" />
             + sobre mí
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* DIPLOMA Y PROYECTO FINAL */}
+  <section id="diploma" class="mt-12 scroll-mt-24">
+    <div class="flex items-center gap-3 mb-8">
+      <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+        <Icon name="mdi:certificate-outline" class="w-6 h-6" />
+      </div>
+      <div>
+        <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">Diploma y proyecto final</h2>
+        <p class="text-sm text-base-content/70">El cierre oficial del máster, tras aprobar el proyecto de fin de máster</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Diploma */}
+      <div class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6 shadow-sm flex flex-col">
+        <a href={diploma.image} target="_blank" rel="noopener" class="block rounded-xl overflow-hidden border-2 border-base-300 bg-base-100 hover:border-primary/50 transition-colors">
+          <img src={diploma.image} alt="Diploma del Máster en Desarrollo Full Stack de Conquer Blocks" width="1233" height="872" loading="lazy" decoding="async" class="w-full h-auto" />
+        </a>
+        <div class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <p class="text-base text-base-content/80">
+            <strong class="text-base-content">Diploma oficial</strong> · {diploma.date}
+          </p>
+          <a href={diploma.post} class="btn btn-outline btn-sm rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2">
+            <Icon name="mdi:book-open-outline" class="w-4 h-4 text-primary" />
+            Leer la entrada del blog
+          </a>
+        </div>
+      </div>
+
+      {/* Proyecto final */}
+      <div class="rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-6 shadow-sm flex flex-col justify-between">
+        <div>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-primary/20 border border-primary/30 text-xs font-mono text-base-content/70 font-medium mb-3">
+            Proyecto de Fin de Máster
+          </span>
+          <h3 class="font-heading font-bold text-2xl text-base-content mb-3">{finalProject.name}</h3>
+          <p class="text-base text-base-content/80 leading-relaxed mb-4">{finalProject.description}</p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            {finalProject.stack.map((tech) => (
+              <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-base-100 border border-base-300 text-base-content/80 font-medium">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a href={finalProject.url} class="btn btn-primary btn-sm rounded-lg inline-flex items-center gap-2">
+            <Icon name="mdi:file-document-outline" class="w-4 h-4" />
+            Ver proyecto
+          </a>
+          <a href={finalProject.video} target="_blank" rel="noopener" class="btn btn-outline btn-sm rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2">
+            <Icon name="mdi:youtube" class="w-4 h-4 text-primary" />
+            Vídeo de presentación
+          </a>
+          <a href={finalProject.repo} target="_blank" rel="noopener" class="btn btn-outline btn-sm rounded-lg bg-base-100 border-base-300 inline-flex items-center gap-2">
+            <Icon name="mdi:github" class="w-4 h-4 text-primary" />
+            Repositorio
           </a>
         </div>
       </div>
@@ -99,7 +234,7 @@ const careerImpacts = [
       </div>
       <div>
         <h2 class="font-heading text-2xl sm:text-3xl font-bold text-base-content">¿Qué aprendí en el máster?</h2>
-        <p class="text-sm text-base-content/70">Competencias y áreas clave desarrolladas durante la especialización</p>
+        <p class="text-sm text-base-content/70">Módulos cursados, agrupados por áreas</p>
       </div>
     </div>
 
@@ -126,6 +261,28 @@ const careerImpacts = [
             </div>
           </div>
         </div>
+      ))}
+    </div>
+  </section>
+
+  {/* CERTIFICACIONES */}
+  <section class="mt-12 rounded-2xl border-2 border-base-300 bg-base-200/90 p-4 sm:p-8 shadow-sm">
+    <div class="flex items-center gap-3 mb-6">
+      <div class="p-2.5 rounded-xl bg-primary text-primary-content shadow-xs">
+        <Icon name="mdi:medal-outline" class="w-6 h-6" />
+      </div>
+      <div>
+        <h2 class="font-heading text-2xl font-bold text-base-content">Certificaciones obtenidas</h2>
+        <p class="text-sm text-base-content/70">Exámenes superados durante el máster. Cada uno tiene su entrada en el blog</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      {certifications.map((cert) => (
+        <a href={cert.url} class="flex items-center gap-2.5 rounded-lg bg-base-100 border border-base-300 px-3 py-2.5 text-sm text-base-content/80 hover:border-primary/50 hover:text-primary transition-colors">
+          <Icon name="mdi:check-decagram" class="w-5 h-5 text-primary shrink-0" />
+          <span>{cert.name}</span>
+        </a>
       ))}
     </div>
   </section>
@@ -176,18 +333,4 @@ const careerImpacts = [
       </a>
     </div>
   </section>
-
-  {/* Structured Data JSON-LD */}
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Course",
-      "name": "Máster en Desarrollo Full Stack",
-      "description": "Formación en desarrollo frontend, backend, DevOps y metodologías ágiles.",
-      "provider": {
-        "@type": "Organization",
-        "name": "Conquer Blocks"
-      }
-    }
-  </script>
 </BaseLayout>
