@@ -1,11 +1,12 @@
 name: Desplegar en GitHub Pages (temporal)
 
-# Se ejecuta tras actualizar el conteo de publicaciones (que corre en cada push a main),
-# así el build siempre incluye el postsByMonth.json más reciente. También se puede lanzar a mano.
+# Plan B por si Netlify no está disponible: solo se lanza a mano (Actions → Run workflow).
+# Para reactivarlo en cada push, añade de nuevo este disparador:
+#   workflow_run:
+#     workflows: ["Actualizar conteo de publicaciones por mes"]
+#     types: [completed]
+# y apunta los DNS de jaterli.com a GitHub Pages (185.199.108-111.153).
 on:
-  workflow_run:
-    workflows: ["Actualizar conteo de publicaciones por mes"]
-    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -19,7 +20,6 @@ concurrency:
 
 jobs:
   build:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     env:
       PUBLIC_DEPLOY_TARGET: github
