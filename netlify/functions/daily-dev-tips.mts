@@ -22,5 +22,5 @@ export default async (req: Request) => {
 }
 
 export const config: Config = {
-  schedule: '0 30 * * 5', // viernes a las 00:30 UTC
+  schedule: '30 0 * * 5', // viernes a las 00:30 UTC
 }
