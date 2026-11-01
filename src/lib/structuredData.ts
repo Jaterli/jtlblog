@@ -8,6 +8,7 @@ interface PageData {
   title: string;
   description: string;
   pubDate?: Date | string;
+  updatedDate?: Date | string;
   image?: string;
   tags?: string[];
   url: URL;
@@ -15,9 +16,11 @@ interface PageData {
 
 type Node = Record<string, unknown>;
 
-function fixUrls(node: Node, url: string): Node {
+function fixUrls(node: Node, url: string, updatedDate?: Date | string): Node {
   const fixed: Node = { ...node };
   if (typeof fixed.url === "string" && fixed.url.includes("jaterli.com")) fixed.url = url;
+  // La fecha de actualización del frontmatter manda: así no hay que repetirla en el jsonLd del Markdown
+  if (updatedDate && fixed.datePublished) fixed.dateModified = new Date(updatedDate).toISOString();
   return fixed;
 }
 
@@ -27,9 +30,9 @@ export function buildJsonLd(jsonLd: Node | undefined, page: PageData): Node {
   if (jsonLd) {
     const graph = jsonLd["@graph"];
     if (Array.isArray(graph)) {
-      return { ...jsonLd, "@graph": graph.map((node) => fixUrls(node as Node, url)) };
+      return { ...jsonLd, "@graph": graph.map((node) => fixUrls(node as Node, url, page.updatedDate)) };
     }
-    return fixUrls(jsonLd, url);
+    return fixUrls(jsonLd, url, page.updatedDate);
   }
 
   return {
@@ -41,6 +44,7 @@ export function buildJsonLd(jsonLd: Node | undefined, page: PageData): Node {
     mainEntityOfPage: url,
     inLanguage: "es",
     ...(page.pubDate && { datePublished: new Date(page.pubDate).toISOString() }),
+    ...(page.updatedDate && { dateModified: new Date(page.updatedDate).toISOString() }),
     ...(page.image && { image: new URL(page.image, page.url).href }),
     ...(page.tags?.length && { keywords: page.tags.join(", ") }),
     author: { "@id": PERSON_ID, "@type": "Person", name: "Jaime TL" },

@@ -21,6 +21,8 @@ const projectCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
+    /** Última actualización del contenido; se muestra junto a la fecha de publicación */
+    updatedDate: z.coerce.date().optional(),
     badge: z.string().optional(),
     heroImage: z.string().optional(),
     jsonLd: z.record(z.string(), z.unknown()).optional(),

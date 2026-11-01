@@ -8,7 +8,7 @@ import { buildJsonLd } from "@lib/structuredData";
 
 export type Props = CollectionEntry<"projects">["data"];
 
-const { title, description, heroImage, jsonLd, badge, pubDate, tags } = Astro.props;
+const { title, description, heroImage, jsonLd, badge, pubDate, updatedDate, tags } = Astro.props;
 
 // Sin el CDN de Netlify (GitHub Pages), Astro exige ambas dimensiones en imágenes de /public
 const heroHeight =
@@ -19,18 +19,18 @@ const structuredData = buildJsonLd(jsonLd, {
   title,
   description,
   pubDate,
+  updatedDate,
   image: ogImage,
   tags,
   url: getCanonicalUrl(Astro.url, Astro.site),
 });
 
-const displayDate = pubDate
-  ? new Date(pubDate).toLocaleDateString("es-ES", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
-  : null;
+const formatDate = (d: Date | string) =>
+  new Date(d).toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" });
+const displayDate = pubDate ? formatDate(pubDate) : null;
+// Solo si es posterior a la publicación
+const displayUpdated =
+  updatedDate && (!pubDate || new Date(updatedDate) > new Date(pubDate)) ? formatDate(updatedDate) : null;
 ---
 
 <BaseLayout
@@ -67,7 +67,13 @@ const displayDate = pubDate
           {displayDate && (
             <span class="flex items-center gap-1.5 text-xs sm:text-sm text-base-content/60">
               <Icon name="mdi:calendar-month-outline" class="w-4 h-4 text-primary" />
-              <time>{displayDate}</time>
+              <time datetime={new Date(pubDate).toISOString().slice(0, 10)}>{displayDate}</time>
+            </span>
+          )}
+          {displayUpdated && (
+            <span class="flex items-center gap-1.5 text-xs sm:text-sm text-base-content/60">
+              <Icon name="mdi:update" class="w-4 h-4 text-primary" />
+              Actualizado el <time datetime={new Date(updatedDate).toISOString().slice(0, 10)}>{displayUpdated}</time>
             </span>
           )}
         </div>

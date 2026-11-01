@@ -3,9 +3,11 @@ import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import dayjs from "dayjs";
 
-const { title, heroImage, description, badge, pubDate, tags, url } = Astro.props;
+const { title, heroImage, description, badge, pubDate, updatedDate, tags, url } = Astro.props;
 const dateObj = dayjs(pubDate);
 const displayDate = dateObj.format("DD/MM/YYYY");
+// Solo se muestra si es posterior a la de publicación
+const updatedObj = updatedDate && dayjs(updatedDate).isAfter(dateObj) ? dayjs(updatedDate) : null;
 ---
 
 <article
@@ -27,11 +29,17 @@ const displayDate = dateObj.format("DD/MM/YYYY");
 
   <div class="flex flex-col grow p-4 sm:p-6">
     <!-- Metadatos: fecha + badge -->
-    <div class="flex items-center gap-2 mb-3 text-sm">
+    <div class="flex flex-wrap items-center gap-2 mb-3 text-sm">
       <span class="flex items-center gap-1.5 text-xs font-mono text-base-content/60">
         <Icon name="mdi:calendar-month-outline" class="w-4 h-4 text-primary" />
-        <time>{displayDate}</time>
+        <time datetime={dateObj.format("YYYY-MM-DD")}>{displayDate}</time>
       </span>
+      {updatedObj && (
+        <span class="flex items-center gap-1.5 text-xs font-mono text-base-content/60" title="Fecha de actualización">
+          <Icon name="mdi:update" class="w-4 h-4 text-primary" />
+          <time datetime={updatedObj.format("YYYY-MM-DD")}>{updatedObj.format("DD/MM/YYYY")}</time>
+        </span>
+      )}
       {badge && (
         <span class="px-2 py-0.5 rounded bg-primary/30 border border-primary/40 text-xs font-mono text-base-content/70 font-medium">
           {badge}
