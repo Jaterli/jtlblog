@@ -3,6 +3,7 @@ draft: false
 title: "Cómo uso la inteligencia artificial en Is BTC Cheap?"
 description: "La IA en Is BTC Cheap? no decide si Bitcoin está barato o caro: selecciona y traduce noticias, traduce la agenda económica y redacta un análisis diario del precio que valido antes de publicarlo. Así lo he diseñado, qué modelos uso y cuánto cuesta."
 pubDate: "2026-10-31"
+updatedDate: "2026-11-10"
 heroImage: "/images/proyectos/projects.isbtccheap.png"
 category: "Desarrollo Web"
 tags: [Inteligencia Artificial, LLM, Bitcoin, Python, Claude Code, Gemini, DigitalOcean]
@@ -18,6 +19,7 @@ jsonLd:
         "name": "Jaime TL"
       },
       "datePublished": "2026-10-31T00:00:00+01:00",
+      "dateModified": "2026-11-10T00:00:00+01:00",
       "image": "https://jaterli.com/images/proyectos/projects.isbtccheap.png",
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -47,15 +49,16 @@ Un modelo de lenguaje no ofrece esas garantías. Por eso la parte central del pr
 
 ## 1. Noticias: clasificar, eliminar duplicados y traducir
 
-La web muestra las **10 noticias que más pueden mover el precio de Bitcoin** en las últimas 48 horas. Cada 15 minutos, un script lee los feeds RSS de siete medios (Cointelegraph, CoinDesk, Decrypt, Investing.com, CNBC, BBC y la Reserva Federal) y la IA hace tres tareas, **cada una en su propia llamada**:
+La web muestra las **10 noticias que más pueden mover el precio de Bitcoin** en las últimas 48 horas. Cada 15 minutos mientras las bolsas están abiertas (y cada hora el resto del tiempo), un script lee los feeds RSS de seis medios (Cointelegraph, CoinDesk, Investing.com, CNBC, BBC y la Reserva Federal) y la IA hace tres tareas, **cada una en su propia llamada**:
 
 1. **Clasificar:** asigna a cada titular una categoría (macro, geopolítica, flujos, cripto…) y un **impacto de 0 a 10** según cuánto puede mover el precio en horas o días.
-2. **Eliminar duplicados:** cuando varios medios cuentan el mismo hecho, los agrupa y se queda con uno.
+2. **Eliminar duplicados:** cuando varios medios cuentan el mismo hecho, los agrupa y se queda con uno. Solo se hace cuando entra un titular que puede llegar a publicarse.
 3. **Traducir:** pasa al español solo las noticias que se van a publicar.
 
 Algunas decisiones de diseño:
 
-* **Una tarea por llamada.** Con modelos abiertos, pedirlo todo a la vez daba resultados menos fiables. Separado, cada respuesta es más sencilla y más fácil de validar.
+* **Una tarea por llamada.** Con modelos abiertos, pedirlo todo a la vez daba resultados menos fiables. Separado, cada respuesta es más sencilla y más fácil de validar. Además, cada tarea puede usar el modelo que mejor la hace: para los duplicados, **Gemini 3.5 Flash** fue el más fiable en mis pruebas (agrupa los casos claros sin juntar hechos distintos), y además es gratuito.
+* **Menos fuentes, mejor elegidas.** Medí entre qué medios se repetían las noticias y retiré dos feeds (Decrypt y la sección de bolsa de Investing.com): la mayoría de lo que publicaban ya lo contaba otro medio, y nada de lo que solo traían ellos tenía un impacto alto.
 * **No pagar dos veces por lo mismo.** Cada titular clasificado se recuerda durante 7 días, así que solo se envían al modelo los nuevos. Y la traducción solo se paga para las 10 que se publican.
 * **Salidas estructuradas.** Cada llamada exige una respuesta JSON con un esquema estricto, así que el script recibe siempre datos con el formato esperado, no texto libre que interpretar.
 * **El impacto se diluye.** La prioridad de cada noticia es su impacto menos su antigüedad: una noticia de hace dos días, por importante que fuera, deja sitio a las nuevas.
@@ -66,7 +69,7 @@ La **agenda económica** de la semana (datos de empleo, inflación, decisiones d
 
 ## 2. El análisis diario del precio
 
-La funcionalidad más reciente es la página de **[Análisis](https://isbtccheap.com/analisis/)**: un análisis breve de la situación de Bitcoin que se genera de lunes a viernes a las 10:00 y a las 17:00, y los domingos a las 18:00 (hora de Madrid). Incluye:
+La funcionalidad más reciente es la página de **[Análisis](https://isbtccheap.com/analisis/)**: un análisis breve de la situación de Bitcoin que se genera de lunes a viernes a las 10:00 y a las 17:00, los sábados a las 12:00 y los domingos a las 18:00 (hora de Madrid). Incluye:
 
 * Un **resumen** de la situación y las claves que están moviendo el precio.
 * De **1 a 3 zonas de soporte y de resistencia**, con su fuerza.
@@ -79,21 +82,30 @@ La web dibuja todo esto sobre el gráfico de velas: las zonas como bandas de col
 
 Aquí tomé una decisión importante: **el modelo recibe datos en bruto, nunca mis conclusiones**. No le paso niveles calculados ni le digo si el mercado está alcista; recibe:
 
-* Velas diarias, de 4 horas y de 1 hora.
+* Velas semanales, diarias, de 4 horas y de 1 hora.
+* **Indicadores técnicos calculados con esas velas**: RSI, bandas de Bollinger, distancia a las medias de 50 y 200, máximos y mínimos recientes y ATR (cuánto se mueve el precio en cada vela). No son conclusiones, sino la misma información ya procesada: midiendo sus análisis vi que el modelo calculaba mal esa aritmética de cabeza y ponía objetivos del doble de lejos de lo que se movía el precio.
 * Datos de derivados: funding rate, open interest, porcentaje de cuentas en largo y ratio de compras y ventas a mercado.
 * El Fear & Greed Index y los flujos de los ETF de las últimas 20 sesiones.
+* **Las pérdidas de los holders de corto plazo** (quienes compraron en los últimos meses), de [Bitview](https://bitview.space/): cuánto pierden sobre el papel y cuánto han vendido con pérdidas en las últimas 24 horas, comparado con su media de 90 días y con los últimos 4 años, y el SOPR (si quienes venden lo hacen con ganancias o con pérdidas). Cuando estos compradores recientes venden en masa con pérdidas suele haber una capitulación, y con estos datos el modelo puede detectarla.
+* **Lo que espera el mercado de la Reserva Federal**: las probabilidades de cada decisión de tipos en las dos próximas reuniones, según los mercados de predicción de [Kalshi](https://kalshi.com/), y cuánto han cambiado en 24 horas y en 7 días. Lo que mueve el precio no es tanto la decisión como el cambio en lo que se espera de ella.
 * Los **titulares de impacto medio y alto** de las últimas 48 horas, que ya clasifica el sistema de noticias.
 * La **agenda económica de la semana**, con la previsión y el dato real cuando ya se ha publicado.
 * La fecha y la hora, y si la bolsa de EE. UU. está abierta.
 
 Con eso, **el análisis es suyo**: el modelo decide qué factores pesan más.
 
+### Que justifique cada nivel
+
+En los primeros análisis, el modelo mencionaba precios a los que podía llegar Bitcoin sin explicar por qué esos niveles importaban. Ahora tiene que decirlo: cada precio que cita debe indicar qué es (una zona donde el precio reaccionó antes, una acumulación de stops, un hueco que el precio dejó sin rellenar, un máximo o mínimo relevante, un nivel de Fibonacci o simplemente lo que suele moverse el precio) y en qué temporalidad lo ve.
+
+Además, el script comprueba en las velas que de verdad haya un nivel así cerca del precio que cita. Por ahora solo lo anota: quiero ver con qué frecuencia falla antes de decidir si un análisis debe rechazarse por eso.
+
 ### ¿Por qué darle los datos en vez de dejar que busque en internet?
 
 Lo valoré, e incluso lo probé con la búsqueda integrada de Gemini. Me quedé con pasarle los datos por varias razones:
 
 * **Control:** sé exactamente con qué información trabaja y de qué momento es.
-* **Reproducibilidad:** cada análisis se guarda en un registro, y puedo revisar después qué datos tenía y cuánto acertó.
+* **Reproducibilidad:** cada análisis se guarda en un registro, y puedo revisar después qué datos tenía y cuánto acertó. Y lo comparo con el azar: si el objetivo está cerca y la invalidación lejos, se acierta a menudo sin saber nada, así que un análisis solo aporta si acierta más de lo que acertaría un precio moviéndose al azar.
 * **Coste:** la búsqueda con Gemini requiere un plan de pago; con los datos, cada análisis cuesta una fracción de céntimo.
 
 ### Lo que decidí NO darle
@@ -119,9 +131,8 @@ Si una respuesta no supera los controles, **se pasa al siguiente modelo**. Y si 
 Probé varios modelos con exactamente los mismos datos y comparé sus respuestas:
 
 * **GLM-5.3 Flash** (inferencia serverless de DigitalOcean) dio el análisis más completo y preciso. Es el principal.
-* **Qwen 3.5** es el primer respaldo.
-* **Gemini 3.5 Flash** acertó también, aunque con menos detalle, y queda como último respaldo usando su nivel gratuito.
-* Otros, como **DeepSeek V4 Flash**, interpretaban mal la tendencia de los datos de derivados, así que los descarté.
+* **Gemini 3.5 Flash** acertó también, aunque con menos detalle, y queda como respaldo usando su nivel gratuito.
+* Otros, como **DeepSeek V4 Flash**, interpretaban mal la tendencia de los datos de derivados, así que los descarté. Y **gpt-oss-120b**, que probé como respaldo, llegó a confundir máximos antiguos con el último máximo, así que también salió de la lista: prefiero mantener el análisis anterior a publicar uno equivocado.
 
 La comparación me enseñó que no basta con elegir "el mejor modelo" en abstracto: hay que **probarlos con tus datos y tu tarea**. Fue así como detecté, por ejemplo, que algunos proponían un escenario alternativo en la misma dirección que el principal, y añadí la validación correspondiente.
 
@@ -132,8 +143,8 @@ La comparación me enseñó que no basta con elegir "el mejor modelo" en abstrac
 Uno de mis objetivos era que el proyecto fuera **sostenible con un coste mínimo**:
 
 * **Noticias y agenda:** 1-2 $ al mes.
-* **Análisis diario:** unos 0,35 $ al mes.
-* **Gemini**, cuando hace falta como respaldo, dentro de su nivel gratuito.
+* **Análisis diario:** unos 0,50 $ al mes.
+* **Gemini**, para los duplicados y como respaldo del análisis, dentro de su nivel gratuito.
 
 Menos de lo que cuesta un café al mes por toda la IA de la plataforma.
 
