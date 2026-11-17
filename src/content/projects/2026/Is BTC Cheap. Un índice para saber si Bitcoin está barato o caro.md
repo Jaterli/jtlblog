@@ -2,7 +2,7 @@
 title: "Is BTC Cheap?: un índice para saber si Bitcoin está barato o caro"
 description: "Presento Is BTC Cheap?, una plataforma gratuita que resume en un índice de 1 a 100 si Bitcoin está barato o caro, combinando valoración on-chain, ciclo, liquidez, sentimiento y análisis técnico, y que ahora suma un análisis diario del precio hecho con IA."
 pubDate: "2026-10-23"
-updatedDate: "2026-11-01"
+updatedDate: "2026-11-10"
 heroImage: "/images/proyectos/projects.isbtccheap.png"
 tags: [Bitcoin, React, TypeScript, Python, Pandas, GitHub Actions, Docker, Análisis de Datos, Inteligencia Artificial, Claude Code]
 jsonLd:
@@ -68,7 +68,7 @@ Pero un número solo no cuenta toda la historia, así que la plataforma añade c
 * **Histórico del score frente al precio** desde 2011, con zoom y desplazamiento, para ver dónde marcó el índice los suelos y techos de cada ciclo. En el rango de 6 meses se puede ver también **con velas de 4 horas**: el score de esa temporalidad recalculado vela a vela solo con lo que se sabía en cada momento.
 * **"Qué hizo el precio después":** toma los días del histórico con un score parecido al actual y muestra qué hizo Bitcoin al cabo de 1, 3, 6 y 12 meses (mediana, porcentaje de veces que subió y mejor y peor caso). También indica cuántos episodios independientes hay detrás de cada cifra, porque Bitcoin solo tiene unos pocos ciclos completos y conviene saber cuánto pesa cada dato.
 * **Volatilidad:** cuánto se ha movido el precio en el último mes comparado con los últimos 4 años.
-* **Noticias y agenda económica**, en una misma tarjeta con un selector para pasar de una a otra: las 10 noticias de más impacto de las últimas 48 horas, seleccionadas y traducidas con IA a partir de siete medios (Cointelegraph, CoinDesk, Decrypt, Investing.com, CNBC, BBC y la Reserva Federal), y los datos económicos y decisiones de tipos de la semana que más pueden mover el precio, con el dato real en cuanto se publica.
+* **Noticias y agenda económica**, en una misma tarjeta con un selector para pasar de una a otra: las 10 noticias de más impacto de las últimas 48 horas, seleccionadas y traducidas con IA a partir de seis medios (Cointelegraph, CoinDesk, Investing.com, CNBC, BBC y la Reserva Federal), y los datos económicos y decisiones de tipos de la semana que más pueden mover el precio, con el dato real en cuanto se publica.
 * **Explicaciones en cada métrica:** qué mide y cómo interpretarla, para que el índice no sea una caja negra. También hay una sección de preguntas frecuentes.
 
 Además del índice, la web tiene **páginas temáticas** para profundizar en cada aspecto del mercado:
@@ -90,7 +90,7 @@ La plataforma está disponible en **español e inglés**.
 
 ## Análisis diario con IA
 
-La última gran incorporación es la página de **[Análisis](https://isbtccheap.com/analisis/)**. De lunes a viernes a las 10:00 y a las 17:00, y los domingos a las 18:00 (hora de Madrid), un modelo de lenguaje analiza la situación de Bitcoin y publica:
+La última gran incorporación es la página de **[Análisis](https://isbtccheap.com/analisis/)**. De lunes a viernes a las 10:00 y a las 17:00, los sábados a las 12:00 y los domingos a las 18:00 (hora de Madrid), un modelo de lenguaje analiza la situación de Bitcoin y publica:
 
 * Un **resumen** de la situación y las claves que están moviendo el precio.
 * De **1 a 3 zonas de soporte y de resistencia**, con su fuerza.
@@ -112,7 +112,7 @@ Uno de los objetivos era que funcionara **con un coste mínimo** y sin consumir 
 * **Pipeline diario en Python (pandas):** una GitHub Action descarga cada noche los datos de Coin Metrics, Alternative.me, FRED, DefiLlama, Bitview (SOPR y precio realizado) y The Commoner Bitcoin ETF Tracker (flujos de ETF), calcula las métricas y los percentiles, y guarda el resultado en ficheros JSON en el repositorio. Una segunda ejecución a media mañana recoge los flujos de los ETF de la última sesión, que se publican después del cierre de la bolsa de EE. UU.
 * **Frontend en React + TypeScript (Vite):** la web lee esos JSON directamente del repositorio, así que los datos del día llegan sin redesplegar nada. Las métricas rápidas (técnico, funding rate y, en 1 y 4 horas, los derivados) las calcula el propio navegador con la API pública de Binance.
 * **Noticias y agenda con IA:** dos scripts en Python, programados con cron en el servidor, leen los titulares de los feeds RSS y el calendario de Forex Factory. Un modelo de lenguaje de la inferencia serverless de DigitalOcean clasifica las noticias por impacto, descarta las repetidas y las traduce. Cuesta 1-2 $ al mes.
-* **Análisis con IA:** un tercer script reúne los datos de mercado, las noticias y la agenda, pide el análisis a GLM-5.3 Flash (con Qwen y Gemini de respaldo) y lo valida antes de escribirlo. Unos céntimos al mes.
+* **Análisis con IA:** un tercer script reúne los datos de mercado, las noticias y la agenda, pide el análisis a GLM-5.3 Flash (con Gemini de respaldo) y lo valida antes de escribirlo. Unos céntimos al mes.
 * **Despliegue:** contenedor Docker con nginx en un droplet de DigitalOcean, detrás del mismo reverse proxy que uso para mis otros proyectos. Cada página tiene su propio contenido para buscadores e imágenes para compartir en redes.
 * **Privacidad:** la web no usa cookies ni analítica; solo guarda en el navegador las preferencias del usuario (idioma, temporalidad, rangos de las gráficas). Cuenta con aviso legal, política de privacidad y política de cookies, y los registros del servidor se borran a los 14 días.
 
